@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team — Moddable.Games</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="icon" type="image/png" href="../../assets/moddable-logo.png">
+<style>
+  html, body { margin: 0; padding: 0; background: #f5f4ef; }
+  body { font-family: var(--mg-font-body); color: var(--mg-ink); }
+  * { box-sizing: border-box; }
+  em { font-style: italic; }
+  button:focus-visible, a:focus-visible { outline: 2px solid #6fb5ff; outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="../marketing/Buttons.jsx"></script>
+<script type="text/babel" src="../marketing/NavBar.jsx"></script>
+<script type="text/babel" src="../marketing/Footer.jsx"></script>
+<script type="text/babel" src="../about/PageHero.jsx"></script>
+
+<script type="text/babel">
+
+const TEAM = [
+  { handle: "@ascelot",   name: "Riley",  role: "Founder · rules",    bio: "Designs the mods, runs the playtests, refuses to use Comic Sans on the PDFs.",            color: "#d11a1a" },
+  { handle: "@cobalt",    name: "Sam",    role: "Original games",     bio: "Lead on Endless Skies + Mongo. Holds the only spreadsheet that explains TI4 in one row.", color: "#0c4f8d" },
+  { handle: "@hexbear",   name: "Joel",   role: "Art + components",   bio: "Hexagonal everything. Drew 61 tiles for Talisman: Hexed in three weeks.",                color: "#3a9928" },
+  { handle: "@tessellate",name: "Tess",   role: "Community",          bio: "Runs the Discord. Runs the mod jams. Has read every house-rule thread on BoardGameGeek.", color: "#e89a1a" },
+  { handle: "@nukular",   name: "Kit",    role: "Tools + dev",        bio: "Built the dice roller. Maintains the modding hooks repo. Loses every game of Nuke Catan.", color: "#5d2a8a" },
+  { handle: "@longest",   name: "Ben",    role: "Words",              bio: "Writes the news posts you actually read. Strictly written by humans, including this bio.", color: "#936d62" },
+];
+
+function MemberCard({ handle, name, role, bio, color }) {
+  return (
+    <article style={{
+      background: "#fff",
+      border: "1px solid #e6e3d8",
+      borderRadius: 20,
+      padding: 24,
+      display: "flex",
+      flexDirection: "column",
+      gap: 14,
+    }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+        <div style={{
+          width: 56, height: 56, borderRadius: 9999,
+          background: `linear-gradient(135deg, ${color}, ${color}88)`,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          fontFamily: "var(--mg-font-pixel)", fontSize: 14, color: "#fff",
+          flex: "none",
+        }}>{name[0]}</div>
+        <div>
+          <div style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: 20, color: "#14161c", letterSpacing: "-0.2px" }}>{name}</div>
+          <div style={{ fontFamily: "var(--mg-font-mono)", fontSize: 12, color: "#7a8290" }}>{handle}  ·  {role}</div>
+        </div>
+      </div>
+      <p style={{ fontFamily: "var(--mg-font-body)", fontSize: 14, lineHeight: 1.55, color: "#3a3d44", margin: 0 }}>{bio}</p>
+    </article>
+  );
+}
+
+function TeamGrid() {
+  return (
+    <section style={{ background: "#f5f4ef", padding: "72px 32px 96px" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 32, flexWrap: "wrap", gap: 16 }}>
+          <h2 style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: 40, lineHeight: 1.15, letterSpacing: "-0.5px", color: "#14161c", margin: 0 }}>Six humans.</h2>
+          <span style={{ fontFamily: "var(--mg-font-mono)", fontSize: 13, color: "#7a8290" }}>No AI. No interns. Strictly written by humans.</span>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+          {TEAM.map(m => <MemberCard key={m.handle} {...m} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  return (
+    <div data-screen-label="Team">
+      <NavBar />
+      <PageHero eyebrow="▲ THE TEAM" title="The people at the table." accent="#3a9928" />
+      <TeamGrid />
+      <Footer />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+
+</body>
+</html>

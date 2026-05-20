@@ -1,0 +1,7 @@
+.DS_Store
+.claude/
+CLAUDE.md
+build-preview.py
+moddable-preview.html
+node_modules/
+dist/

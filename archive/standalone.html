@@ -1,0 +1,2038 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moddable.Games — Master Plan</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="icon" type="image/png" href="../assets/moddable-logo.png">
+<style>
+  /* ---- Deck-stage sizing (1920x1080) ---- */
+  deck-stage { --slide-width: 1920px; --slide-height: 1080px; --slide-bg: #000; }
+
+  html, body { margin: 0; padding: 0; background: #000; color: #fff; font-family: var(--mg-font-body); }
+  * { box-sizing: border-box; }
+
+  /* ---- Slide chrome ---- */
+  .slide {
+    position: relative;
+    width: 1920px; height: 1080px;
+    overflow: hidden;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+  }
+  .slide.dark { background: #000; color: #fff; }
+  .slide.ivory { background: var(--mg-surface-soft); color: var(--mg-ink); }
+  .slide.cosmic { background: #000; color: #fff; }
+  .slide.blue { background: var(--mg-blue); color: #fff; }
+  .slide.red { background: var(--mg-red); color: #fff; }
+
+  /* Hex-horizon backdrop on cosmic slides */
+  .hex-bg {
+    position: absolute; inset: 0;
+    background-image: url('../assets/hex-horizon.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  .hex-bg::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(8,10,30,0.55) 0%, rgba(8,10,30,0.18) 35%, rgba(0,0,0,0.55) 58%, rgba(0,0,0,0.45) 75%, rgba(0,0,0,0.7) 90%, #000 100%);
+  }
+
+  /* ---- Background variants (non-hex) ----
+     Hex grid is reserved for the opening + closing slides.
+     These cleaner backdrops carry every interior dark slide. */
+
+  /* Clean cosmic — deep blue glow, no pattern */
+  .bg-cosmic {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 110% 80% at 50% 110%, rgba(58,123,232,0.42) 0%, rgba(26,54,128,0.18) 35%, transparent 65%),
+      radial-gradient(ellipse 140% 100% at 50% -10%, rgba(10,13,42,0.95) 0%, transparent 55%),
+      linear-gradient(180deg, #0a0d2a 0%, #050616 50%, #000 100%);
+  }
+  .bg-cosmic::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 90% 55% at 50% 95%, rgba(111,181,255,0.18), transparent 55%);
+    pointer-events: none;
+  }
+
+  /* Clean ink — pure black with subtle warmth lift */
+  .bg-ink {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 20%, rgba(22,28,48,0.7) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 50% at 50% 100%, rgba(10,13,42,0.6) 0%, transparent 60%),
+      #000;
+  }
+  .bg-ink::after {
+    content: ""; position: absolute; inset: 0;
+    background-image: var(--mg-hex-grid);
+    background-size: 120px 138px;
+    opacity: 0.18;
+    mask-image: radial-gradient(ellipse 60% 80% at 100% 50%, #000 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 60% 80% at 100% 50%, #000 0%, transparent 70%);
+  }
+
+  /* Red-tinted hex horizon — Nukes / destructive theme */
+  .bg-hex-red {
+    position: absolute; inset: 0; z-index: 0;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .bg-hex-red::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: url('../assets/hex-horizon.jpg');
+    background-size: cover; background-position: center bottom;
+    filter: brightness(0.5) contrast(1.05) saturate(0.25);
+  }
+  .bg-hex-red::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 90% 55% at 50% 95%, rgba(230,50,50,0.55) 0%, rgba(140,18,18,0.4) 35%, rgba(40,4,4,0.5) 70%, transparent 100%),
+      linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 30%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0.85) 100%);
+  }
+
+  /* Green-tinted hex horizon — Dungeon Chess / adventure theme */
+  .bg-hex-green {
+    position: absolute; inset: 0; z-index: 0;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .bg-hex-green::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: url('../assets/hex-horizon.jpg');
+    background-size: cover; background-position: center bottom;
+    filter: brightness(0.45) contrast(1.05) saturate(0.2);
+  }
+  .bg-hex-green::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 90% 55% at 50% 95%, rgba(78,183,53,0.45) 0%, rgba(44,115,32,0.35) 40%, rgba(8,28,12,0.6) 75%, transparent 100%),
+      linear-gradient(180deg, rgba(0,0,0,0.65) 0%, transparent 30%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0.9) 100%);
+  }
+
+  /* Lede scrim helper for any hero slide — darkens horizon directly behind text */
+  .lede-scrim {
+    text-shadow: 0 2px 16px rgba(0,0,0,0.95), 0 0 60px rgba(0,0,0,0.6);
+  }
+
+  /* ---- Content wrapper ---- */
+  .pad {
+    position: relative; z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 84px 120px 132px;
+  }
+
+  /* ---- Slide header (eyebrow + slide number) ---- */
+  .slide-head {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 64px;
+  }
+  .eyebrow {
+    font-family: var(--mg-font-pixel);
+    font-size: 16px;
+    letter-spacing: 2.5px;
+    color: var(--mg-cosmic-glow);
+    text-transform: uppercase;
+  }
+  .slide.ivory .eyebrow { color: var(--mg-blue); }
+  .eyebrow .arrow { color: var(--mg-cosmic-bright); margin-right: 14px; }
+  .slide.ivory .eyebrow .arrow { color: var(--mg-red); }
+
+  .pagenum {
+    font-family: var(--mg-font-mono);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--mg-stone);
+    opacity: 0.85;
+    white-space: nowrap;
+  }
+  .slide.dark .pagenum, .slide.cosmic .pagenum { color: rgba(255,255,255,0.45); }
+
+  /* ---- Typography ---- */
+  h1.display {
+    font-family: var(--mg-font-display);
+    font-weight: 600;
+    font-size: 168px;
+    line-height: 0.92;
+    letter-spacing: -3.5px;
+    margin: 0;
+  }
+  h1.title {
+    font-family: var(--mg-font-display);
+    font-weight: 600;
+    font-size: 112px;
+    line-height: 0.96;
+    letter-spacing: -2.2px;
+    margin: 0;
+  }
+  h2.heading {
+    font-family: var(--mg-font-display);
+    font-weight: 600;
+    font-size: 84px;
+    line-height: 1.02;
+    letter-spacing: -1.6px;
+    margin: 0;
+  }
+  h3.sub {
+    font-family: var(--mg-font-display);
+    font-weight: 600;
+    font-size: 44px;
+    line-height: 1.15;
+    letter-spacing: -0.6px;
+    margin: 0;
+  }
+  .lede {
+    font-family: var(--mg-font-body);
+    font-size: 32px;
+    line-height: 1.4;
+    letter-spacing: -0.2px;
+    max-width: 1100px;
+    color: var(--mg-on-dark-mute);
+    font-weight: 400;
+  }
+  .slide.ivory .lede { color: var(--mg-charcoal); }
+  .body {
+    font-family: var(--mg-font-body);
+    font-size: 22px;
+    line-height: 1.55;
+  }
+  .body-lg {
+    font-family: var(--mg-font-body);
+    font-size: 26px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.86);
+  }
+  .slide.ivory .body-lg { color: var(--mg-charcoal); }
+
+  .mono { font-family: var(--mg-font-mono); }
+  .pixel { font-family: var(--mg-font-pixel); }
+
+  em { font-style: italic; }
+
+  /* Typography hygiene — prevent orphan words and unbalanced wraps.
+     Headlines + short copy get balanced wrapping; long prose gets pretty.
+     Pill/chip controls and inline labels never wrap. */
+  h1, h2, h3, .heading, .display, .title, .sub,
+  .lede, .body, .body-lg, ul.clean li,
+  .stat-label { text-wrap: balance; }
+  p:not(.body):not(.lede):not(.body-lg) { text-wrap: pretty; }
+  .pill, .chip, .ui-pill, .ui-chip-sm, .eyebrow, .pagenum, button {
+    white-space: nowrap;
+  }
+  /* Tabular figures for stat numbers — keep digit widths consistent */
+  .stat-num { font-variant-numeric: tabular-nums; }
+
+  /* ---- UI atoms ---- */
+  .pill {
+    display: inline-flex; align-items: center; gap: 12px;
+    height: 56px; padding: 0 28px;
+    border-radius: 9999px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.16);
+    font-family: var(--mg-font-mono); font-size: 18px; letter-spacing: 0.04em;
+    color: #fff;
+  }
+  .slide.ivory .pill {
+    background: #fff; border: 1px solid var(--mg-hairline-light); color: var(--mg-ink);
+  }
+  .pill .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--mg-green); }
+  .pill.live .dot { background: var(--mg-green-bright); box-shadow: 0 0 12px var(--mg-green-bright); }
+
+  .chip {
+    display: inline-flex; align-items: center; gap: 10px;
+    height: 44px; padding: 0 18px;
+    border-radius: 9999px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    font-family: var(--mg-font-body); font-weight: 500; font-size: 18px;
+    color: #fff;
+  }
+  .slide.ivory .chip {
+    background: #fff; border: 1px solid var(--mg-hairline-light); color: var(--mg-ink);
+  }
+  .chip.red { background: var(--mg-red); border-color: transparent; }
+  .chip.green { background: var(--mg-green); border-color: transparent; }
+  .chip.blue { background: var(--mg-blue); border-color: transparent; }
+
+  /* ---- Card primitives ---- */
+  .card {
+    border-radius: 20px;
+    background: #fff;
+    padding: 40px;
+    border: 1px solid var(--mg-hairline-light);
+  }
+  .slide.dark .card, .slide.cosmic .card {
+    background: var(--mg-surface-elevated);
+    border: 1px solid var(--mg-hairline-strong);
+    color: #fff;
+  }
+  .card .stripe {
+    height: 6px; width: 56px; border-radius: 3px;
+    background: var(--mg-blue);
+    margin-bottom: 28px;
+  }
+  .card .stripe.red { background: var(--mg-red); }
+  .card .stripe.green { background: var(--mg-green); }
+
+  /* ---- Footer bar ---- */
+  .footer {
+    position: absolute; bottom: 40px; left: 120px; right: 120px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--mg-font-mono);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.35);
+    z-index: 3;
+    white-space: nowrap;
+  }
+  .footer > span { white-space: nowrap; }
+  .slide.ivory .footer { color: var(--mg-stone); }
+  .footer .brand-mark {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-family: var(--mg-font-pixel); font-size: 14px; letter-spacing: 0.18em;
+  }
+  .footer .brand-mark .glyph {
+    color: var(--mg-cosmic-bright); margin-right: 0;
+  }
+
+  /* image placeholder */
+  .img-placeholder {
+    position: relative;
+    background:
+      repeating-linear-gradient(135deg, rgba(58,123,232,0.08) 0 12px, rgba(58,123,232,0.02) 12px 24px),
+      var(--mg-surface-elevated);
+    border: 1px solid var(--mg-hairline-strong);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.55);
+    font-family: var(--mg-font-mono); font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    overflow: hidden;
+  }
+  .slide.ivory .img-placeholder {
+    background:
+      repeating-linear-gradient(135deg, rgba(12,79,141,0.06) 0 12px, rgba(12,79,141,0.02) 12px 24px),
+      #fff;
+    border: 1px solid var(--mg-hairline-light);
+    color: var(--mg-stone);
+  }
+
+  /* dotted underline for emphasis */
+  .uline { border-bottom: 2px dotted currentColor; padding-bottom: 4px; }
+
+  /* arrow */
+  .arrow-r::after { content: " →"; }
+
+  /* number badges */
+  .stat-num {
+    font-family: var(--mg-font-display);
+    font-weight: 600;
+    font-size: 152px;
+    line-height: 0.9;
+    letter-spacing: -3px;
+  }
+  .stat-num.sm { font-size: 96px; }
+  .stat-label {
+    font-family: var(--mg-font-body);
+    font-size: 20px;
+    line-height: 1.45;
+    color: var(--mg-charcoal);
+    max-width: 320px;
+  }
+  .slide.dark .stat-label, .slide.cosmic .stat-label { color: rgba(255,255,255,0.7); }
+
+  /* progress bar */
+  .progress {
+    height: 14px;
+    border-radius: 9999px;
+    background: rgba(255,255,255,0.1);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .slide.ivory .progress { background: #e6e3d8; border: 1px solid #d9d4c4; }
+  .progress > span {
+    display: block; height: 100%;
+    background: var(--mg-cosmic-bright);
+    border-radius: 9999px;
+  }
+  .progress.red > span { background: var(--mg-red); }
+  .progress.green > span { background: var(--mg-green); }
+  .progress.blue > span { background: var(--mg-blue); }
+
+  /* ---- Logo strip ---- */
+  .brand-strip {
+    display: flex; align-items: center; gap: 18px;
+  }
+  .cube-glyph {
+    width: 40px; height: 40px;
+    display: inline-block;
+  }
+
+  /* ---- Bulleted list ---- */
+  ul.clean { list-style: none; margin: 0; padding: 0; }
+  ul.clean li {
+    display: flex; gap: 18px; align-items: baseline;
+    padding: 14px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-family: var(--mg-font-body);
+    font-size: 22px;
+    line-height: 1.45;
+  }
+  ul.clean li:first-child { border-top: none; padding-top: 0; }
+  .slide.ivory ul.clean li { border-top-color: var(--mg-hairline-light); }
+  ul.clean li .num {
+    font-family: var(--mg-font-mono);
+    font-size: 13px;
+    color: var(--mg-cosmic-glow);
+    width: 32px; flex-shrink: 0; letter-spacing: 0.1em;
+    padding-top: 6px;
+  }
+  .slide.ivory ul.clean li .num { color: var(--mg-blue); }
+
+  /* highlight word */
+  .hl-red { color: var(--mg-red); }
+  .hl-green { color: var(--mg-green); }
+  .hl-blue { color: var(--mg-blue-bright); }
+  .slide.ivory .hl-blue { color: var(--mg-blue); }
+  .hl-cosmic { color: var(--mg-cosmic-bright); }
+  /* Highlight choices that stay legible on cosmic / red / green backgrounds */
+  .hl-glow   { color: #aed4ff; text-decoration: underline dotted #aed4ff; text-underline-offset: 8px; text-decoration-thickness: 2px; }
+  .hl-amber  { color: #f7c14b; text-decoration: underline dotted rgba(247,193,75,0.6); text-underline-offset: 8px; text-decoration-thickness: 2px; }
+  .hl-mint   { color: #b8f0a8; text-decoration: underline dotted rgba(184,240,168,0.6); text-underline-offset: 8px; text-decoration-thickness: 2px; }
+  .hl-rose   { color: #ffb3b3; text-decoration: underline dotted rgba(255,179,179,0.6); text-underline-offset: 8px; text-decoration-thickness: 2px; }
+
+  /* divider */
+  .rule { height: 1px; background: rgba(255,255,255,0.12); }
+  .slide.ivory .rule { background: var(--mg-hairline-light); }
+
+  /* ---- UI mock (for the Beyond-Hexes tool screenshots) ---- */
+  .ui-mock {
+    background: linear-gradient(180deg, rgba(8,12,30,0.92), rgba(2,4,14,0.95));
+    border: 1px solid rgba(174,212,255,0.18);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 14px 50px rgba(0,0,0,0.55);
+  }
+  .ui-chrome {
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px 14px;
+    background: rgba(0,0,0,0.45);
+    border-bottom: 1px solid rgba(174,212,255,0.12);
+  }
+  .ui-dots { display: inline-flex; gap: 6px; }
+  .ui-dots span {
+    display: block; width: 10px; height: 10px; border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+  }
+  .ui-url {
+    flex: 1;
+    font-family: var(--mg-font-mono);
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.04em;
+    padding: 5px 14px;
+    border-radius: 9999px;
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .ui-badge {
+    font-family: var(--mg-font-mono);
+    font-size: 11px;
+    color: #b8f0a8;
+    letter-spacing: 0.14em;
+  }
+  .ui-body { padding: 22px 24px; }
+  .ui-pill {
+    display: inline-flex; align-items: center;
+    height: 32px; padding: 0 14px;
+    border-radius: 9999px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    font-family: var(--mg-font-body);
+    font-weight: 600;
+    font-size: 13px;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .ui-pill-primary {
+    background: #aed4ff; color: #14161c; border-color: transparent;
+  }
+  .ui-chip-sm {
+    display: inline-flex; align-items: center;
+    height: 26px; padding: 0 10px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    font-family: var(--mg-font-mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.06em;
+  }
+  .ui-chip-sm.active {
+    background: rgba(184,240,168,0.15);
+    border-color: rgba(184,240,168,0.45);
+    color: #b8f0a8;
+  }
+</style>
+</head>
+<body>
+
+<template id="__bundler_thumbnail" data-bg-color="#0a0d2a">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="glow" cx="50%" cy="70%" r="60%">
+        <stop offset="0%" stop-color="#3a7be8" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#0a0d2a" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="1200" height="800" fill="#0a0d2a"/>
+    <rect width="1200" height="800" fill="url(#glow)"/>
+    <g transform="translate(600 400)" stroke="#6fb5ff" stroke-width="3" fill="none" opacity="0.85">
+      <polygon points="0,-150 130,-75 130,75 0,150 -130,75 -130,-75"/>
+      <polygon points="0,-90 78,-45 78,45 0,90 -78,45 -78,-45" opacity="0.5"/>
+      <polygon points="0,-40 35,-20 35,20 0,40 -35,20 -35,-20" opacity="0.3"/>
+    </g>
+    <text x="600" y="640" text-anchor="middle" font-family="sans-serif" font-size="32" font-weight="600" fill="#ffffff" letter-spacing="4">MODDABLE.GAMES</text>
+    <text x="600" y="680" text-anchor="middle" font-family="monospace" font-size="16" fill="#6fb5ff" letter-spacing="3">MASTER PLAN · 2026</text>
+  </svg>
+</template>
+
+<deck-stage>
+
+  <!-- ============================================================
+       SLIDE 1 — TITLE
+       ============================================================ -->
+  <section class="slide cosmic" data-screen-label="01 Title">
+    <div class="hex-bg"></div>
+    <div class="pad" style="justify-content: center; align-items: center; text-align: center;">
+      <div class="eyebrow" style="margin-bottom: 36px; text-shadow: 0 0 16px rgba(111,181,255,0.4);">
+        <span class="arrow">▲</span> MODDABLE.GAMES · MASTER PLAN · 2026
+      </div>
+      <h1 class="display" style="max-width: 1500px; text-shadow: 0 8px 40px rgba(0,0,0,0.55);">
+        Making games<br/>you already own.
+      </h1>
+      <p class="lede" style="margin: 56px auto 0; max-width: 880px; text-align: center; text-shadow: 0 2px 16px rgba(0,0,0,0.95), 0 0 60px rgba(0,0,0,0.6);">
+        A plan for the tabletop ecosystem we're building — open-source rulebooks,
+        a hex-grid online engine, and a marketplace for the modders who'll fill it.
+      </p>
+      <div style="margin-top: 88px; display: flex; gap: 14px;">
+        <span class="pill live"><span class="dot"></span>Open alpha&nbsp;·&nbsp;nukes.moddable.games</span>
+        <span class="pill">team@moddable.games</span>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span>01 / 20</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 2 — MISSION
+       ============================================================ -->
+  <section class="slide dark" data-screen-label="02 Mission">
+    <div class="bg-ink"></div>
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Our mission</span>
+        <span class="pagenum">02 / 20</span>
+      </div>
+
+      <h1 class="title" style="max-width: 1500px;">
+        Publish moddable tabletop games — and turn <em class="hl-cosmic">players, artists
+        and designers</em> into co-creators.
+      </h1>
+
+      <div style="margin-top: 88px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
+        <div>
+          <h3 class="sub" style="margin-bottom: 24px;">An open-source ethos.</h3>
+          <p class="body-lg">
+            Every rulebook is forkable. Every component is replaceable. Every variant
+            is a pull request waiting to happen. Modders aren't a side channel —
+            they're how the catalogue grows.
+          </p>
+        </div>
+        <div>
+          <h3 class="sub" style="margin-bottom: 24px;">Why we're called <em>Moddable</em>.</h3>
+          <p class="body-lg">
+            Not a publisher. Not a platform. A toolkit — a hex-grid engine,
+            a print-on-demand pipeline, and a marketplace — that turns the boards
+            on your shelf into the boards you wanted them to be.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span>Open-source · public-domain-first</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 3 — NUKES (intro)
+       ============================================================ -->
+  <section class="slide dark" data-screen-label="03 Nukes">
+    <div class="bg-hex-red"></div>
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Our first open-source tabletop game</span>
+        <span class="pagenum">03 / 20</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items: center; flex: 1;">
+
+        <!-- LEFT: hero pitch -->
+        <div>
+          <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 28px; line-height: 1;">
+            <span style="font-size: 88px; line-height: 1; color: #ffb84d; text-shadow: 0 0 36px rgba(255,184,77,0.55), 0 0 12px rgba(230,50,50,0.5); display: inline-flex; align-items: center;">☢</span>
+            <span class="pixel" style="font-size: 92px; line-height: 1; color: #fff; letter-spacing: 4px; text-shadow: 0 0 32px rgba(230,50,50,0.55); display: inline-flex; align-items: center;">NUKES</span>
+          </div>
+
+          <h2 class="heading" style="font-size: 56px; max-width: 720px; line-height: 1.05;">
+            Territory. Attrition.<br/><em class="hl-rose">Nuclear brinkmanship.</em>
+          </h2>
+
+          <p class="body-lg" style="margin-top: 22px; max-width: 680px; text-shadow: 0 2px 12px rgba(0,0,0,0.6);">
+            A hex-tile board game where every token is a unit, a hostage,
+            and a countdown timer — all at once. Plays on a board you
+            already own.
+          </p>
+
+          <!-- stats row -->
+          <div style="margin-top: 32px; display: flex; gap: 10px; flex-wrap: wrap;">
+            <div class="pill" style="gap: 14px; background: rgba(0,0,0,0.4); border-color: rgba(255,184,77,0.3); height: 48px;">
+              <span class="mono" style="font-size: 12px; opacity: 0.65; letter-spacing: 0.12em;">PLAYERS</span>
+              <span class="mono" style="font-weight: 600; color: #fff; font-size: 18px;">2–3</span>
+            </div>
+            <div class="pill" style="gap: 14px; background: rgba(0,0,0,0.4); border-color: rgba(255,184,77,0.3); height: 48px;">
+              <span class="mono" style="font-size: 12px; opacity: 0.65; letter-spacing: 0.12em;">TIME</span>
+              <span class="mono" style="font-weight: 600; color: #fff; font-size: 18px;">45+ MIN</span>
+            </div>
+            <div class="pill" style="gap: 14px; background: rgba(0,0,0,0.4); border-color: rgba(255,184,77,0.3); height: 48px;">
+              <span class="mono" style="font-size: 12px; opacity: 0.65; letter-spacing: 0.12em;">AGE</span>
+              <span class="mono" style="font-weight: 600; color: #fff; font-size: 18px;">12+</span>
+            </div>
+          </div>
+
+          <!-- installed-base callout -->
+          <div style="margin-top: 24px; padding: 20px 24px; border-radius: 16px; background: rgba(0,0,0,0.55); border: 1px solid rgba(255,179,179,0.25); max-width: 620px;">
+            <div class="mono" style="font-size: 11px; color: #ffb3b3; letter-spacing: 0.14em; margin-bottom: 6px;">▲ THE INSTALLED-BASE PLAY</div>
+            <p class="body" style="font-size: 18px; color: #fff; margin: 0; line-height: 1.4;">
+              Catan's hex tiles are a Nukes board out of the box. <em class="hl-amber">45 million homes</em> are already set up.
+            </p>
+          </div>
+        </div>
+
+        <!-- RIGHT: Nukes Online — live screenshot in chrome frame -->
+        <div>
+          <div class="ui-mock">
+            <div class="ui-chrome">
+              <div class="ui-dots"><span></span><span></span><span></span></div>
+              <div class="ui-url">moddable.games/tool/nukes</div>
+              <div class="ui-badge" style="color: #ffb3b3;">● ALPHA · v0.9.2</div>
+            </div>
+            <div style="background: #fff; display: block; aspect-ratio: 16/10; overflow: hidden;">
+              <img src="../assets/nukes-online-cropped.png" alt="Nukes Online — live hex-board prototype" style="width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block;"/>
+            </div>
+          </div>
+
+          <!-- mechanic chip row -->
+          <div style="margin-top: 16px;">
+            <div class="mono" style="font-size: 11px; color: #ffb3b3; letter-spacing: 0.14em; margin-bottom: 10px;">CORE MECHANIC · TOKEN COUNT = UNIT TYPE</div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <span class="chip" style="background: rgba(0,0,0,0.55); border-color: rgba(255,179,179,0.25); color: #fff; gap: 8px;"><span style="color:#ffb3b3; font-family: var(--mg-font-mono); font-size: 13px;">1</span> Infantry</span>
+              <span class="chip" style="background: rgba(0,0,0,0.55); border-color: rgba(255,179,179,0.25); color: #fff; gap: 8px;"><span style="color:#ffb3b3; font-family: var(--mg-font-mono); font-size: 13px;">2</span> Artillery</span>
+              <span class="chip" style="background: rgba(0,0,0,0.55); border-color: rgba(255,179,179,0.25); color: #fff; gap: 8px;"><span style="color:#ffb3b3; font-family: var(--mg-font-mono); font-size: 13px;">3</span> Airborne</span>
+              <span class="chip" style="background: rgba(230,50,50,0.85); border-color: transparent; color: #fff; gap: 8px;"><span style="font-family: var(--mg-font-mono); font-size: 13px; opacity: 0.9;">4+</span> Base ☢</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="mono">nukes.moddable.games · rulebook v0.9.2</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 4 — HEXES
+       ============================================================ -->
+  <section class="slide ivory" data-screen-label="04 Hexes">
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Why hexagons</span>
+        <span class="pagenum">04 / 20</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; flex: 1;">
+        <div>
+          <h1 class="title" style="font-size: 104px;">
+            Replacing<br/>squares with<br/><em class="hl-blue">hexagons.</em>
+          </h1>
+          <p class="lede" style="margin-top: 40px;">
+            Six neighbours instead of four. No diagonal exceptions. No edge-case
+            rules. The math of strategy gets cleaner the moment the grid does.
+          </p>
+          <div style="margin-top: 48px; display: flex; gap: 12px;">
+            <span class="chip blue">6 adjacencies</span>
+            <span class="chip" style="background: #fff; color: var(--mg-ink); border-color: var(--mg-hairline-light);">0 diagonals</span>
+            <span class="chip" style="background: #fff; color: var(--mg-ink); border-color: var(--mg-hairline-light);">∞ variants</span>
+          </div>
+        </div>
+
+        <!-- Visual: squares vs hexes -->
+        <div style="display: grid; grid-template-rows: auto 1fr; gap: 24px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+            <!-- Square grid -->
+            <div>
+              <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-stone); margin-bottom: 12px;">SQUARES · 4 NEIGHBOURS</div>
+              <svg viewBox="0 0 280 280" style="width: 100%; height: auto; display: block;">
+                <g fill="none" stroke="#7a8290" stroke-width="1.4">
+                  <!-- 5x5 grid -->
+                  <g>
+                    <rect x="20" y="20" width="48" height="48"/>
+                    <rect x="68" y="20" width="48" height="48"/>
+                    <rect x="116" y="20" width="48" height="48"/>
+                    <rect x="164" y="20" width="48" height="48"/>
+                    <rect x="212" y="20" width="48" height="48"/>
+                    <rect x="20" y="68" width="48" height="48"/>
+                    <rect x="68" y="68" width="48" height="48"/>
+                    <rect x="116" y="68" width="48" height="48" fill="#d11a1a" stroke="#d11a1a"/>
+                    <rect x="164" y="68" width="48" height="48"/>
+                    <rect x="212" y="68" width="48" height="48"/>
+                    <rect x="20" y="116" width="48" height="48"/>
+                    <rect x="68" y="116" width="48" height="48" fill="#0c4f8d" stroke="#0c4f8d"/>
+                    <rect x="116" y="116" width="48" height="48" fill="#14161c" stroke="#14161c"/>
+                    <rect x="164" y="116" width="48" height="48" fill="#0c4f8d" stroke="#0c4f8d"/>
+                    <rect x="212" y="116" width="48" height="48"/>
+                    <rect x="20" y="164" width="48" height="48"/>
+                    <rect x="68" y="164" width="48" height="48"/>
+                    <rect x="116" y="164" width="48" height="48" fill="#0c4f8d" stroke="#0c4f8d"/>
+                    <rect x="164" y="164" width="48" height="48"/>
+                    <rect x="212" y="164" width="48" height="48"/>
+                    <rect x="20" y="212" width="48" height="48"/>
+                    <rect x="68" y="212" width="48" height="48"/>
+                    <rect x="116" y="212" width="48" height="48"/>
+                    <rect x="164" y="212" width="48" height="48"/>
+                    <rect x="212" y="212" width="48" height="48"/>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <!-- Hex grid -->
+            <div>
+              <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-blue); margin-bottom: 12px;">HEXAGONS · 6 NEIGHBOURS</div>
+              <svg viewBox="0 0 280 280" style="width: 100%; height: auto; display: block;">
+                <defs>
+                  <g id="hexS">
+                    <polygon points="24,0 48,14 48,42 24,56 0,42 0,14" fill="none" stroke="#0c4f8d" stroke-width="1.4"/>
+                  </g>
+                  <g id="hexF">
+                    <polygon points="24,0 48,14 48,42 24,56 0,42 0,14" fill="#0c4f8d"/>
+                  </g>
+                  <g id="hexR">
+                    <polygon points="24,0 48,14 48,42 24,56 0,42 0,14" fill="#d11a1a"/>
+                  </g>
+                  <g id="hexK">
+                    <polygon points="24,0 48,14 48,42 24,56 0,42 0,14" fill="#14161c"/>
+                  </g>
+                </defs>
+                <!-- 5 rows -->
+                <g transform="translate(20,12)">
+                  <use href="#hexS" x="0" y="0"/>
+                  <use href="#hexS" x="48" y="0"/>
+                  <use href="#hexS" x="96" y="0"/>
+                  <use href="#hexS" x="144" y="0"/>
+                  <use href="#hexS" x="192" y="0"/>
+
+                  <use href="#hexS" x="24" y="42"/>
+                  <use href="#hexS" x="72" y="42"/>
+                  <use href="#hexR" x="120" y="42"/>
+                  <use href="#hexS" x="168" y="42"/>
+                  <use href="#hexS" x="216" y="42"/>
+
+                  <use href="#hexS" x="0" y="84"/>
+                  <use href="#hexF" x="48" y="84"/>
+                  <use href="#hexK" x="96" y="84"/>
+                  <use href="#hexF" x="144" y="84"/>
+                  <use href="#hexS" x="192" y="84"/>
+
+                  <use href="#hexS" x="24" y="126"/>
+                  <use href="#hexS" x="72" y="126"/>
+                  <use href="#hexF" x="120" y="126"/>
+                  <use href="#hexS" x="168" y="126"/>
+                  <use href="#hexS" x="216" y="126"/>
+
+                  <use href="#hexS" x="0" y="168"/>
+                  <use href="#hexS" x="48" y="168"/>
+                  <use href="#hexS" x="96" y="168"/>
+                  <use href="#hexS" x="144" y="168"/>
+                  <use href="#hexS" x="192" y="168"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <p class="body" style="color: var(--mg-charcoal); max-width: 600px;">
+            <em>Why now:</em> we're building our own online engine for hosting hex-based
+            games, so any tabletop designer can ship a hex variant without rolling
+            their own infrastructure.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark" style="color: var(--mg-blue);"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span>04 / 20</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 5 — ONLINE ENGINE
+       ============================================================ -->
+  <section class="slide cosmic" data-screen-label="05 Online engine">
+    <div class="bg-cosmic"></div>
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> The online engine</span>
+        <span class="pagenum">05 / 20</span>
+      </div>
+
+      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+        <h1 class="title" style="font-size: 152px; text-shadow: 0 4px 40px rgba(0,0,0,0.6);">
+          Play anywhere.<br/>Continue <em class="hl-amber">everywhere</em>.
+        </h1>
+        <p class="lede" style="margin-top: 56px; max-width: 1100px; text-shadow: 0 2px 16px rgba(0,0,0,0.6);">
+          Create private sessions. Hand off mid-game between phone, tablet and
+          laptop. Pause a session in May, finish it in October. The board waits.
+        </p>
+
+        <div style="margin-top: 80px; display: flex; gap: 16px; flex-wrap: wrap;">
+          <span class="pill live"><span class="dot"></span>Open alpha&nbsp;·&nbsp;<span class="mono">nukes.moddable.games</span></span>
+          <span class="pill"><span class="mono">private sessions · cross-device · async</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="mono">v0.4-alpha · live</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 6 — BOTS
+       ============================================================ -->
+  <section class="slide ivory" data-screen-label="06 Bots">
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Practice partners</span>
+        <span class="pagenum">06 / 20</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 96px; align-items: center; flex: 1;">
+        <div>
+          <h1 class="title">
+            Play with<br/>friends — or<br/><em class="hl-blue">instructive bots.</em>
+          </h1>
+          <p class="lede" style="margin-top: 40px;">
+            Every game played online — human-vs-human or human-vs-bot —
+            improves the next bot you'll face. The engine is a teaching engine
+            first, an opponent second.
+          </p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <div class="card" style="display: flex; align-items: center; gap: 32px;">
+            <div class="stat-num" style="font-size: 110px; color: var(--mg-blue);">3</div>
+            <div>
+              <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-stone);">DIFFICULTY TIERS</div>
+              <div class="sub" style="font-size: 30px; margin-top: 4px;">Apprentice · Tactician · Grandmaster</div>
+              <p class="body" style="color: var(--mg-charcoal); margin-top: 8px;">Each tier annotates its moves — learn by watching the AI think.</p>
+            </div>
+          </div>
+
+          <div class="card" style="display: flex; align-items: center; gap: 32px;">
+            <div class="stat-num" style="font-size: 110px; color: var(--mg-green);">∞</div>
+            <div>
+              <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-stone);">TRAINING DATA</div>
+              <div class="sub" style="font-size: 30px; margin-top: 4px;">Every match feeds the next bot.</div>
+              <p class="body" style="color: var(--mg-charcoal); margin-top: 8px;">Anonymised game logs, opt-out by default for private sessions.</p>
+            </div>
+          </div>
+
+          <div class="card" style="display: flex; align-items: center; gap: 32px; background: var(--mg-ink); color: #fff; border-color: transparent;">
+            <div class="stat-num" style="font-size: 110px; color: var(--mg-cosmic-bright);">∅</div>
+            <div>
+              <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: rgba(255,255,255,0.6);">LATENCY MODE</div>
+              <div class="sub" style="font-size: 30px; margin-top: 4px; color: #fff;">Async-by-default.</div>
+              <p class="body" style="color: rgba(255,255,255,0.7); margin-top: 8px;">No live-server requirement. Notify on opponent's move.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark" style="color: var(--mg-blue);"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span>06 / 20</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 7 — PIPELINE + PROGRESS
+       ============================================================ -->
+  <section class="slide ivory" data-screen-label="07 Pipeline">
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Original games in active development</span>
+        <span class="pagenum">07 / 20</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr auto; gap: 80px; align-items: end;">
+        <h1 class="title" style="font-size: 88px;">
+          More original games<br/>on the table.
+        </h1>
+        <p class="body-lg" style="max-width: 520px; color: var(--mg-charcoal); margin-bottom: 8px;">
+          All three share the same modular hex board and the same online engine —
+          every shipped game makes the next one cheaper.
+        </p>
+      </div>
+
+      <div style="margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; flex: 1;">
+        <!-- Nukes -->
+        <div class="card" style="display: flex; flex-direction: column;">
+          <div class="stripe red"></div>
+          <div class="pixel" style="font-size: 48px; color: var(--mg-red); letter-spacing: 2px;">NUKES</div>
+          <div class="mono" style="font-size: 14px; letter-spacing: 0.1em; color: var(--mg-stone); margin-top: 12px;">DETERMINISTIC · 2P · 30 MIN</div>
+          <p class="body" style="margin-top: 20px; flex: 1;">
+            Wartime token strategy on a modular hex board.
+            Chess × Checkers × Go on Catan hexes you already own.
+          </p>
+          <div style="margin-top: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+              <span class="mono" style="font-size: 13px; color: var(--mg-stone); letter-spacing: 0.1em;">PROGRESS</span>
+              <span class="mono" style="font-size: 22px; color: var(--mg-red); font-weight: 600;">95%</span>
+            </div>
+            <div class="progress red"><span style="width: 95%;"></span></div>
+            <div class="mono" style="font-size: 12px; color: var(--mg-stone); margin-top: 10px; letter-spacing: 0.06em;">OPEN ALPHA · LIVE</div>
+          </div>
+        </div>
+
+        <!-- Mongo -->
+        <div class="card" style="display: flex; flex-direction: column;">
+          <div class="stripe"></div>
+          <div class="pixel" style="font-size: 48px; color: var(--mg-blue); letter-spacing: 2px;">MONGO</div>
+          <div class="mono" style="font-size: 14px; letter-spacing: 0.1em; color: var(--mg-stone); margin-top: 12px;">CONQUEST · 3–6P · 90 MIN</div>
+          <p class="body" style="margin-top: 20px; flex: 1;">
+            Global conquest in the <em>Flash Gordon</em> universe — Risk × Catan
+            in a public-domain setting we don't have to license.
+          </p>
+          <div style="margin-top: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+              <span class="mono" style="font-size: 13px; color: var(--mg-stone); letter-spacing: 0.1em;">PROGRESS</span>
+              <span class="mono" style="font-size: 22px; color: var(--mg-blue); font-weight: 600;">50%</span>
+            </div>
+            <div class="progress blue"><span style="width: 50%;"></span></div>
+            <div class="mono" style="font-size: 12px; color: var(--mg-stone); margin-top: 10px; letter-spacing: 0.06em;">PLAYTEST · Q3 2026</div>
+          </div>
+        </div>
+
+        <!-- Endless Skies -->
+        <div class="card" style="display: flex; flex-direction: column;">
+          <div class="stripe green"></div>
+          <div class="pixel" style="font-size: 34px; color: var(--mg-green); letter-spacing: 2px;">ENDLESS<br/>SKIES</div>
+          <div class="mono" style="font-size: 14px; letter-spacing: 0.1em; color: var(--mg-stone); margin-top: 12px;">EXPLORATION · 1–4P · 60 MIN</div>
+          <p class="body" style="margin-top: 20px; flex: 1;">
+            Worker-placement exploration, trading and combat —
+            based on the popular open-source video game of the same name.
+          </p>
+          <div style="margin-top: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+              <span class="mono" style="font-size: 13px; color: var(--mg-stone); letter-spacing: 0.1em;">PROGRESS</span>
+              <span class="mono" style="font-size: 22px; color: var(--mg-green); font-weight: 600;">25%</span>
+            </div>
+            <div class="progress green"><span style="width: 25%;"></span></div>
+            <div class="mono" style="font-size: 12px; color: var(--mg-stone); margin-top: 10px; letter-spacing: 0.06em;">DESIGN · Q1 2027</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark" style="color: var(--mg-blue);"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span>07 / 20</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 8 — VISION
+       ============================================================ -->
+  <section class="slide cosmic" data-screen-label="08 Vision">
+    <div class="bg-cosmic"></div>
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Our vision for the future</span>
+        <span class="pagenum">08 / 20</span>
+      </div>
+
+      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+        <h1 class="display" style="font-size: 144px; max-width: 1700px; text-shadow: 0 4px 40px rgba(0,0,0,0.5);">
+          Become the<br/>ecosystem tabletop<br/>is still <em class="hl-amber">missing</em>.
+        </h1>
+        <p class="lede" style="margin-top: 48px; max-width: 1100px;">
+          A place where physical and online play converge under community ownership —
+          and an online engine and marketplace where anyone can monetise their creations.
+        </p>
+
+        <div style="margin-top: 72px; display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: 1400px;">
+          <div class="card" style="background: rgba(8,10,30,0.6); border-color: rgba(111,181,255,0.2); backdrop-filter: blur(8px);">
+            <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-cosmic-glow);">01 · ENGINE</div>
+            <div class="sub" style="font-size: 28px; margin-top: 10px;">Host any hex-based game online.</div>
+          </div>
+          <div class="card" style="background: rgba(8,10,30,0.6); border-color: rgba(111,181,255,0.2); backdrop-filter: blur(8px);">
+            <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-cosmic-glow);">02 · MARKETPLACE</div>
+            <div class="sub" style="font-size: 28px; margin-top: 10px;">Designers sell mods, art and expansions.</div>
+          </div>
+          <div class="card" style="background: rgba(8,10,30,0.6); border-color: rgba(111,181,255,0.2); backdrop-filter: blur(8px);">
+            <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-cosmic-glow);">03 · COMMUNITY</div>
+            <div class="sub" style="font-size: 28px; margin-top: 10px;">Modders own the catalogue.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="mono">physical + online + community-owned</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 9 — MARKET SIZE
+       ============================================================ -->
+  <section class="slide ivory" data-screen-label="09 Market size">
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Market size and opportunity</span>
+        <span class="pagenum">09 / 20</span>
+      </div>
+
+      <h1 class="title" style="max-width: 1400px;">
+        Why now? The boards<br/>are already on the shelves.
+      </h1>
+
+      <div style="margin-top: 88px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 64px; flex: 1;">
+        <!-- Catan -->
+        <div style="display: flex; gap: 32px; align-items: flex-end; padding-bottom: 20px; border-bottom: 1px solid var(--mg-hairline-light);">
+          <div class="stat-num" style="color: var(--mg-red); flex-shrink: 0; min-width: 280px; text-align: right; line-height: 0.95;">45M</div>
+          <div style="padding-bottom: 14px;">
+            <div class="sub" style="font-size: 30px;">Catan sets sold</div>
+            <p class="body" style="color: var(--mg-charcoal); margin-top: 6px;">Every one of them a hex board for Nukes — no new components required.</p>
+          </div>
+        </div>
+
+        <!-- Monopoly -->
+        <div style="display: flex; gap: 32px; align-items: flex-end; padding-bottom: 20px; border-bottom: 1px solid var(--mg-hairline-light);">
+          <div class="stat-num" style="color: var(--mg-blue); flex-shrink: 0; min-width: 280px; text-align: right; line-height: 0.95;">275M</div>
+          <div style="padding-bottom: 14px;">
+            <div class="sub" style="font-size: 30px;">Monopoly sets sold</div>
+            <p class="body" style="color: var(--mg-charcoal); margin-top: 6px;">500M people have played. <em>Econopoly</em> ships a fairer rulebook.</p>
+          </div>
+        </div>
+
+        <!-- Chess -->
+        <div style="display: flex; gap: 32px; align-items: flex-end;">
+          <div class="stat-num" style="color: var(--mg-green); flex-shrink: 0; min-width: 280px; text-align: right; line-height: 0.95;">$3B</div>
+          <div style="padding-bottom: 14px;">
+            <div class="sub" style="font-size: 30px;">Online chess by 2032</div>
+            <p class="body" style="color: var(--mg-charcoal); margin-top: 6px;">Public-domain. Never been more popular. No moddable compendium yet.</p>
+          </div>
+        </div>
+
+        <!-- Checkers -->
+        <div style="display: flex; gap: 32px; align-items: flex-end;">
+          <div class="stat-num" style="color: var(--mg-ink); flex-shrink: 0; min-width: 280px; text-align: right; line-height: 0.95;">30B</div>
+          <div style="padding-bottom: 14px;">
+            <div class="sub" style="font-size: 30px;">Checker sets ever sold</div>
+            <p class="body" style="color: var(--mg-charcoal); margin-top: 6px;">Since 1000 BCE. The oldest installed base on the planet.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="mono" style="margin-top: 32px; font-size: 13px; color: var(--mg-stone); letter-spacing: 0.06em;">
+        Reference · Cyberpunk TCG Kickstarter — US$25M raised · ign.com/articles/cyberpunk-tcg-kickstarter-record-25-million
+      </p>
+    </div>
+    <div class="footer">
+      <span class="brand-mark" style="color: var(--mg-blue);"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span>09 / 20</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 10 — BUSINESS MODELS
+       ============================================================ -->
+  <section class="slide ivory" data-screen-label="10 Business models">
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Open-source, still profitable</span>
+        <span class="pagenum">10 / 20</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr auto; gap: 80px; align-items: end;">
+        <h1 class="title" style="font-size: 88px;">
+          How we make money<br/>without fearing the copycats.
+        </h1>
+        <p class="body-lg" style="max-width: 540px; color: var(--mg-charcoal); margin-bottom: 8px;">
+          Two tracks, run in parallel. One bootstraps slowly with revenue.
+          The other unlocks with funding — and shortens the timeline.
+        </p>
+      </div>
+
+      <div style="margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; flex: 1;">
+        <!-- Organic -->
+        <div class="card" style="padding: 40px; display: flex; flex-direction: column;">
+          <div class="stripe green"></div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
+            <span class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-stone);">TRACK A</span>
+            <span class="chip green" style="height: 36px; font-size: 14px;">Bootstrap · slow</span>
+          </div>
+          <h3 class="sub" style="font-size: 36px;">Organic growth.</h3>
+          <p class="body" style="color: var(--mg-charcoal); margin-top: 10px; margin-bottom: 18px; font-size: 18px;">
+            Revenue funds the next print run. No outside cheque required.
+          </p>
+          <ul class="clean" style="font-size: 18px;">
+            <li style="padding: 9px 0;"><span class="num" style="padding-top: 4px;">01</span><span><em>Print-on-demand</em> for first runs — no inventory risk</span></li>
+            <li style="padding: 9px 0;"><span class="num" style="padding-top: 4px;">02</span><span>Online store for <em>generic components</em> — hexes, tokens, dice</span></li>
+            <li style="padding: 9px 0;"><span class="num" style="padding-top: 4px;">03</span><span>Branded merchandise and tabletop tools</span></li>
+            <li style="padding: 9px 0;"><span class="num" style="padding-top: 4px;">04</span><span>Licensing agreements with adjacent IP holders</span></li>
+            <li style="padding: 9px 0;"><span class="num" style="padding-top: 4px;">05</span><span>Original games commissioned for specific brands</span></li>
+          </ul>
+        </div>
+
+        <!-- Funded -->
+        <div class="card" style="padding: 40px; background: var(--mg-ink); color: #fff; border-color: transparent; display: flex; flex-direction: column;">
+          <div class="stripe" style="background: var(--mg-cosmic-bright);"></div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
+            <span class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: rgba(255,255,255,0.6);">TRACK B</span>
+            <span class="chip" style="background: var(--mg-cosmic-bright); border-color: transparent; height: 36px; font-size: 14px;">Funded · fast</span>
+          </div>
+          <h3 class="sub" style="font-size: 36px; color: #fff;">Engineered growth.</h3>
+          <p class="body" style="color: rgba(255,255,255,0.78); margin-top: 10px; margin-bottom: 18px; font-size: 18px;">
+            Outside capital builds the engine, the marketplace, and the team.
+          </p>
+          <ul class="clean" style="font-size: 18px;">
+            <li style="padding: 9px 0;"><span class="num" style="padding-top: 4px;">01</span><span>Build the online engine for hex-based games <em>at scale</em></span></li>
+            <li style="padding: 9px 0;"><span class="num" style="padding-top: 4px;">02</span><span>Self-publishing tools for designers — drag-and-drop rulebooks</span></li>
+            <li style="padding: 9px 0;"><span class="num" style="padding-top: 4px;">03</span><span>Marketplace for games, expansions and printable components</span></li>
+            <li style="padding: 9px 0;"><span class="num" style="padding-top: 4px;">04</span><span>Collect training data for stronger in-game bots</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark" style="color: var(--mg-blue);"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span>10 / 20</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 11 — BEYOND HEXES
+       ============================================================ -->
+  <section class="slide dark" data-screen-label="11 Beyond hexes">
+    <div class="bg-cosmic"></div>
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Beyond hexes</span>
+        <span class="pagenum">11 / 20</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1.15fr; gap: 72px; flex: 1; align-items: center;">
+
+        <!-- LEFT pitch -->
+        <div>
+          <h1 class="title">
+            The engine doesn't<br/>stop at <em class="hl-amber">hexes</em>.
+          </h1>
+          <p class="lede" style="margin-top: 32px;">
+            Live in alpha today: a card deck tool and a modular chess board.
+            Both running on the same backbone that powers Nukes — proof that one
+            engine hosts wildly different tabletop families.
+          </p>
+
+          <!-- Traction callout -->
+          <div style="margin-top: 36px; padding: 22px 26px; border-radius: 16px; background: rgba(0,0,0,0.45); border: 1px solid rgba(174,212,255,0.25); max-width: 560px;">
+            <div class="mono" style="font-size: 12px; color: var(--mg-cosmic-glow); letter-spacing: 0.14em; margin-bottom: 6px;">▲ TRACTION · OPEN ALPHA</div>
+            <p class="body" style="font-size: 19px; margin: 0; line-height: 1.45;">
+              <em class="hl-amber">2,400+ sessions</em> played across both tools —
+              entirely organic, zero ad spend.
+            </p>
+          </div>
+
+          <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <span class="pill" style="height: 44px;"><span class="mono" style="font-size: 14px;">moddable.games/tool/decks</span></span>
+            <span class="pill" style="height: 44px;"><span class="mono" style="font-size: 14px;">moddable.games/tool/chess</span></span>
+          </div>
+        </div>
+
+        <!-- RIGHT: two UI mocks stacked -->
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+
+          <!-- =================== DECKS MOCK =================== -->
+          <div class="ui-mock">
+            <div class="ui-chrome">
+              <div class="ui-dots"><span></span><span></span><span></span></div>
+              <div class="ui-url">moddable.games/tool/decks</div>
+              <div class="ui-badge">● ALPHA</div>
+            </div>
+            <div class="ui-body" style="display: grid; grid-template-columns: 220px 1fr; gap: 28px; align-items: center;">
+              <!-- Card stack visual -->
+              <div style="position: relative; height: 150px;">
+                <svg viewBox="0 0 220 150" style="width: 100%; height: 100%; display: block; overflow: visible;">
+                  <!-- Back card 3 -->
+                  <g transform="translate(78 38) rotate(-14 36 50)">
+                    <rect width="72" height="100" rx="7" fill="#0a0d2a" stroke="#3a7be8" stroke-width="1.5"/>
+                    <polygon points="36,20 56,32 56,56 36,68 16,56 16,32" fill="none" stroke="#3a7be8" stroke-width="1.2" opacity="0.6"/>
+                  </g>
+                  <!-- Middle card 2 -->
+                  <g transform="translate(74 26) rotate(-4 36 50)">
+                    <rect width="72" height="100" rx="7" fill="#0c4f8d" stroke="#6fb5ff" stroke-width="1.5"/>
+                    <polygon points="36,22 58,34 58,62 36,74 14,62 14,34" fill="none" stroke="#aed4ff" stroke-width="1.3" opacity="0.7"/>
+                  </g>
+                  <!-- Front card 1 -->
+                  <g transform="translate(72 16) rotate(6 36 50)">
+                    <rect width="76" height="104" rx="8" fill="#fff" stroke="#aed4ff" stroke-width="0"/>
+                    <text x="10" y="22" font-family="JetBrains Mono" font-size="10" fill="#0c4f8d" font-weight="600">XVII</text>
+                    <text x="66" y="96" font-family="JetBrains Mono" font-size="10" fill="#0c4f8d" font-weight="600" text-anchor="end">XVII</text>
+                    <polygon points="38,38 56,48 56,68 38,78 20,68 20,48" fill="#0c4f8d"/>
+                    <polygon points="38,46 50,53 50,65 38,72 26,65 26,53" fill="#fff"/>
+                    <circle cx="38" cy="58" r="3" fill="#d11a1a"/>
+                  </g>
+                </svg>
+              </div>
+              <!-- Right side -->
+              <div>
+                <div style="font-family: var(--mg-font-display); font-weight: 600; font-size: 22px; color: #fff; letter-spacing: -0.3px;">Tarot Hex deck</div>
+                <div class="mono" style="font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 4px; letter-spacing: 0.12em;">52 CARDS · v2.1 · OPEN SOURCE</div>
+                <div style="display: flex; align-items: baseline; gap: 6px; margin-top: 14px;">
+                  <span class="mono" style="font-size: 28px; color: var(--mg-cosmic-glow); font-weight: 600;">847</span>
+                  <span class="mono" style="font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 0.1em;">SESSIONS / WK</span>
+                </div>
+                <div style="display: flex; gap: 8px; margin-top: 16px;">
+                  <span class="ui-pill ui-pill-primary">Draw 1</span>
+                  <span class="ui-pill">Shuffle</span>
+                  <span class="ui-pill">Save</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- =================== CHESS MOCK =================== -->
+          <div class="ui-mock">
+            <div class="ui-chrome">
+              <div class="ui-dots"><span></span><span></span><span></span></div>
+              <div class="ui-url">moddable.games/tool/chess</div>
+              <div class="ui-badge">● ALPHA</div>
+            </div>
+            <div class="ui-body" style="display: grid; grid-template-columns: 150px 1fr; gap: 24px; align-items: center;">
+              <!-- Mini chess board -->
+              <svg viewBox="0 0 144 144" style="width: 100%; display: block; border-radius: 6px;">
+                <!-- 8x8 board, each cell 16x16, offset 8 -->
+                <g>
+                  <!-- row 0 -->
+                  <rect x="8" y="8" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="24" y="8" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="40" y="8" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="56" y="8" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="72" y="8" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="88" y="8" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="104" y="8" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="120" y="8" width="16" height="16" fill="#3a3d44"/>
+                  <!-- row 1 -->
+                  <rect x="8" y="24" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="24" y="24" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="40" y="24" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="56" y="24" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="72" y="24" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="88" y="24" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="104" y="24" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="120" y="24" width="16" height="16" fill="#f5f4ef"/>
+                  <!-- row 2 -->
+                  <rect x="8" y="40" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="24" y="40" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="40" y="40" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="56" y="40" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="72" y="40" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="88" y="40" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="104" y="40" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="120" y="40" width="16" height="16" fill="#3a3d44"/>
+                  <!-- row 3 -->
+                  <rect x="8" y="56" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="24" y="56" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="40" y="56" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="56" y="56" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="72" y="56" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="88" y="56" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="104" y="56" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="120" y="56" width="16" height="16" fill="#f5f4ef"/>
+                  <!-- row 4 -->
+                  <rect x="8" y="72" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="24" y="72" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="40" y="72" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="56" y="72" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="72" y="72" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="88" y="72" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="104" y="72" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="120" y="72" width="16" height="16" fill="#3a3d44"/>
+                  <!-- row 5 -->
+                  <rect x="8" y="88" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="24" y="88" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="40" y="88" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="56" y="88" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="72" y="88" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="88" y="88" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="104" y="88" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="120" y="88" width="16" height="16" fill="#f5f4ef"/>
+                  <!-- row 6 -->
+                  <rect x="8" y="104" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="24" y="104" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="40" y="104" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="56" y="104" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="72" y="104" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="88" y="104" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="104" y="104" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="120" y="104" width="16" height="16" fill="#3a3d44"/>
+                  <!-- row 7 -->
+                  <rect x="8" y="120" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="24" y="120" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="40" y="120" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="56" y="120" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="72" y="120" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="88" y="120" width="16" height="16" fill="#f5f4ef"/>
+                  <rect x="104" y="120" width="16" height="16" fill="#3a3d44"/>
+                  <rect x="120" y="120" width="16" height="16" fill="#f5f4ef"/>
+                </g>
+                <!-- Quadrant section dividers -->
+                <line x1="72" y1="8" x2="72" y2="136" stroke="#aed4ff" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.8"/>
+                <line x1="8" y1="72" x2="136" y2="72" stroke="#aed4ff" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.8"/>
+                <!-- 4 starting pieces (just dots) -->
+                <circle cx="32" cy="32" r="4" fill="#d11a1a"/>
+                <circle cx="48" cy="32" r="4" fill="#d11a1a"/>
+                <circle cx="96" cy="32" r="4" fill="#14161c" stroke="#fff" stroke-width="0.7"/>
+                <circle cx="112" cy="32" r="4" fill="#14161c" stroke="#fff" stroke-width="0.7"/>
+                <circle cx="32" cy="112" r="4" fill="#fff" stroke="#14161c" stroke-width="0.7"/>
+                <circle cx="48" cy="112" r="4" fill="#fff" stroke="#14161c" stroke-width="0.7"/>
+                <circle cx="96" cy="112" r="4" fill="#3a9928"/>
+                <circle cx="112" cy="112" r="4" fill="#3a9928"/>
+              </svg>
+              <!-- Right info -->
+              <div>
+                <div style="font-family: var(--mg-font-display); font-weight: 600; font-size: 22px; color: #fff; letter-spacing: -0.3px;">Variant loader</div>
+                <div class="mono" style="font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 4px; letter-spacing: 0.12em;">8×8 BASE · 4 BOARD SECTIONS</div>
+                <div style="display: flex; align-items: baseline; gap: 6px; margin-top: 14px;">
+                  <span class="mono" style="font-size: 28px; color: var(--mg-cosmic-glow); font-weight: 600;">1,560</span>
+                  <span class="mono" style="font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 0.1em;">GAMES / WK</span>
+                </div>
+                <div style="display: flex; gap: 6px; margin-top: 16px; flex-wrap: wrap;">
+                  <span class="ui-chip-sm active">Standard ✓</span>
+                  <span class="ui-chip-sm">XiangQi</span>
+                  <span class="ui-chip-sm">4-Player</span>
+                  <span class="ui-chip-sm">Dungeon</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="mono">cards · chess · hexes — one engine</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 12 — GO TO MARKET (MODS)
+       ============================================================ -->
+  <section class="slide ivory" data-screen-label="12 Go-to-market mods">
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Go-to-market</span>
+        <span class="pagenum">12 / 20</span>
+      </div>
+
+      <h1 class="title" style="max-width: 1500px;">
+        Mod the games<br/>people already love.
+      </h1>
+      <p class="lede" style="margin-top: 28px; max-width: 1100px;">
+        Three rulebook mods in active development — each targeting a game with
+        a built-in audience and a known itch the original rules don't scratch.
+      </p>
+
+      <div style="margin-top: 72px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; flex: 1;">
+        <!-- Econopoly -->
+        <div class="card" style="display: flex; flex-direction: column;">
+          <div class="stripe red"></div>
+          <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-stone);">MOD · MONOPOLY</div>
+          <h3 class="sub" style="font-size: 36px; margin-top: 8px;">Econopoly</h3>
+          <p class="body" style="margin-top: 16px; color: var(--mg-charcoal); flex: 1;">
+            Monopoly with a working economy. Anti-monopoly rules, dynamic
+            property pricing, and a tax band that actually does something.
+          </p>
+          <div style="margin-top: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+              <span class="mono" style="font-size: 13px; color: var(--mg-stone);">PROGRESS</span>
+              <span class="mono" style="font-size: 22px; color: var(--mg-red); font-weight: 600;">95%</span>
+            </div>
+            <div class="progress red"><span style="width: 95%;"></span></div>
+            <div class="mono" style="font-size: 12px; color: var(--mg-stone); margin-top: 10px;">LAUNCH READY</div>
+          </div>
+        </div>
+
+        <!-- Talisman: Hexed -->
+        <div class="card" style="display: flex; flex-direction: column;">
+          <div class="stripe"></div>
+          <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-stone);">MOD · TALISMAN 4TH ED.</div>
+          <h3 class="sub" style="font-size: 36px; margin-top: 8px;">Talisman: Hexed</h3>
+          <p class="body" style="margin-top: 16px; color: var(--mg-charcoal); flex: 1;">
+            Talisman's adventure on a modular hex board. Shorter loop,
+            tighter encounters, four new tile types and 12 reshuffled cards.
+          </p>
+          <div style="margin-top: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+              <span class="mono" style="font-size: 13px; color: var(--mg-stone);">PROGRESS</span>
+              <span class="mono" style="font-size: 22px; color: var(--mg-blue); font-weight: 600;">50%</span>
+            </div>
+            <div class="progress blue"><span style="width: 50%;"></span></div>
+            <div class="mono" style="font-size: 12px; color: var(--mg-stone); margin-top: 10px;">PLAYTEST</div>
+          </div>
+        </div>
+
+        <!-- Hyper Imperium -->
+        <div class="card" style="display: flex; flex-direction: column;">
+          <div class="stripe green"></div>
+          <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-stone);">MOD · TWILIGHT IMPERIUM 4TH ED.</div>
+          <h3 class="sub" style="font-size: 36px; margin-top: 8px;">Hyper Imperium</h3>
+          <p class="body" style="margin-top: 16px; color: var(--mg-charcoal); flex: 1;">
+            Twilight Imperium in <em>under three hours</em>. Streamlined economy,
+            simultaneous turns and a sharper political phase.
+          </p>
+          <div style="margin-top: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+              <span class="mono" style="font-size: 13px; color: var(--mg-stone);">PROGRESS</span>
+              <span class="mono" style="font-size: 22px; color: var(--mg-green); font-weight: 600;">25%</span>
+            </div>
+            <div class="progress green"><span style="width: 25%;"></span></div>
+            <div class="mono" style="font-size: 12px; color: var(--mg-stone); margin-top: 10px;">DESIGN</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark" style="color: var(--mg-blue);"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span>12 / 20</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 13 — CHESS
+       ============================================================ -->
+  <section class="slide ivory" data-screen-label="13 Chess">
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Chess</span>
+        <span class="pagenum">13 / 20</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 72px; align-items: center; flex: 1;">
+
+        <!-- LEFT: pitch + stats -->
+        <div>
+          <h1 class="title" style="font-size: 104px;">
+            Chess — the<br/>most modded<br/>game in <em class="hl-blue">history</em>?
+          </h1>
+          <p class="lede" style="margin-top: 32px;">
+            Hundreds of variations exist. Most are buried in forum threads and PDFs.
+            None have a playable, modular compendium online — <em>until now</em>.
+          </p>
+
+          <!-- 3 stats -->
+          <div style="margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+            <div>
+              <div class="stat-num" style="font-size: 80px; color: var(--mg-blue);">2000+</div>
+              <div class="stat-label">documented chess variants in the wild</div>
+            </div>
+            <div>
+              <div class="stat-num" style="font-size: 80px; color: var(--mg-red);">∅</div>
+              <div class="stat-label">unified online compendium today</div>
+            </div>
+            <div>
+              <div class="stat-num" style="font-size: 80px; color: var(--mg-green);">1</div>
+              <div class="stat-label">moddable engine — ours</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: custom variant diagram (transparent, brand-native) -->
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px;">
+            <div class="mono" style="font-size: 12px; color: var(--mg-blue); letter-spacing: 0.14em;">SUPPORTED VARIANTS</div>
+            <div class="mono" style="font-size: 12px; color: var(--mg-stone); letter-spacing: 0.1em;">FROM ONE MODULAR KIT</div>
+          </div>
+
+          <svg viewBox="0 0 1600 540" style="width: 100%; display: block; color: var(--mg-ink);" xmlns="http://www.w3.org/2000/svg" aria-label="Supported chess variants">
+            <defs>
+              <style>
+                .v { fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linejoin: round; }
+                .v-accent { fill: rgba(12,79,141,0.12); stroke: #0c4f8d; stroke-width: 2.5; stroke-linejoin: round; }
+                .grid-l { stroke: currentColor; stroke-width: 0.5; opacity: 0.18; }
+                .lbl { font-family: 'JetBrains Mono', monospace; font-size: 16px; fill: currentColor; letter-spacing: 0.12em; text-anchor: middle; font-weight: 500; }
+                .meta { font-family: 'JetBrains Mono', monospace; font-size: 12px; fill: #7a8290; letter-spacing: 0.08em; text-anchor: middle; }
+              </style>
+            </defs>
+
+            <!-- ROW 1 -->
+            <!-- Regular -->
+            <g transform="translate(120 40)">
+              <rect class="v" x="0" y="0" width="160" height="160" rx="3"/>
+              <g class="grid-l">
+                <line x1="0" y1="20" x2="160" y2="20"/><line x1="0" y1="40" x2="160" y2="40"/>
+                <line x1="0" y1="60" x2="160" y2="60"/><line x1="0" y1="80" x2="160" y2="80"/>
+                <line x1="0" y1="100" x2="160" y2="100"/><line x1="0" y1="120" x2="160" y2="120"/>
+                <line x1="0" y1="140" x2="160" y2="140"/>
+                <line x1="20" y1="0" x2="20" y2="160"/><line x1="40" y1="0" x2="40" y2="160"/>
+                <line x1="60" y1="0" x2="60" y2="160"/><line x1="80" y1="0" x2="80" y2="160"/>
+                <line x1="100" y1="0" x2="100" y2="160"/><line x1="120" y1="0" x2="120" y2="160"/>
+                <line x1="140" y1="0" x2="140" y2="160"/>
+              </g>
+              <text class="lbl" x="80" y="200">REGULAR</text>
+              <text class="meta" x="80" y="222">1 section · 8×8</text>
+            </g>
+
+            <!-- 4-Player -->
+            <g transform="translate(460 20)">
+              <rect class="v" x="80" y="0" width="80" height="60" rx="3"/>
+              <rect class="v" x="0" y="60" width="80" height="80" rx="3"/>
+              <rect class="v" x="80" y="60" width="80" height="80" rx="3"/>
+              <rect class="v" x="160" y="60" width="80" height="80" rx="3"/>
+              <rect class="v" x="80" y="140" width="80" height="60" rx="3"/>
+              <text class="lbl" x="120" y="235">4 PLAYER</text>
+              <text class="meta" x="120" y="257">5 sections · + shape</text>
+            </g>
+
+            <!-- 4-Board (accent) -->
+            <g transform="translate(880 40)">
+              <rect class="v-accent" x="0" y="0" width="80" height="80" rx="3"/>
+              <rect class="v-accent" x="84" y="0" width="80" height="80" rx="3"/>
+              <rect class="v-accent" x="0" y="84" width="80" height="80" rx="3"/>
+              <rect class="v-accent" x="84" y="84" width="80" height="80" rx="3"/>
+              <text class="lbl" x="82" y="200" style="fill: #0c4f8d;">4 BOARD</text>
+              <text class="meta" x="82" y="222">4 sections · 2×2 grid</text>
+            </g>
+
+            <!-- 3-Board -->
+            <g transform="translate(1280 40)">
+              <rect class="v" x="0" y="0" width="80" height="80" rx="3"/>
+              <rect class="v" x="0" y="84" width="80" height="80" rx="3"/>
+              <rect class="v" x="84" y="84" width="80" height="80" rx="3"/>
+              <text class="lbl" x="82" y="200">3 BOARD</text>
+              <text class="meta" x="82" y="222">3 sections · L shape</text>
+            </g>
+
+            <!-- ROW 2 — 3 variants centered -->
+            <!-- Alice -->
+            <g transform="translate(280 320)">
+              <rect class="v" x="0" y="0" width="100" height="100" rx="3"/>
+              <rect class="v" x="130" y="0" width="100" height="100" rx="3"/>
+              <text class="lbl" x="115" y="140">ALICE</text>
+              <text class="meta" x="115" y="162">2 boards · parallel</text>
+            </g>
+
+            <!-- Courier -->
+            <g transform="translate(660 340)">
+              <rect class="v" x="0" y="0" width="240" height="100" rx="3"/>
+              <text class="lbl" x="120" y="140">COURIER</text>
+              <text class="meta" x="120" y="162">1 section · 12×8</text>
+            </g>
+
+            <!-- Omega / Grand -->
+            <g transform="translate(1100 310)">
+              <rect class="v" x="0" y="0" width="20" height="20" rx="2"/>
+              <rect class="v" x="180" y="0" width="20" height="20" rx="2"/>
+              <rect class="v" x="0" y="120" width="20" height="20" rx="2"/>
+              <rect class="v" x="180" y="120" width="20" height="20" rx="2"/>
+              <rect class="v" x="20" y="20" width="160" height="100" rx="3"/>
+              <text class="lbl" x="100" y="170">OMEGA / GRAND</text>
+              <text class="meta" x="100" y="192">5 sections · with corners</text>
+            </g>
+          </svg>
+
+          <!-- variant labels row -->
+          <div style="margin-top: 28px; display: flex; gap: 8px; flex-wrap: wrap;">
+            <span class="chip" style="background: #fff; border-color: var(--mg-hairline-light); color: var(--mg-ink);">Regular</span>
+            <span class="chip" style="background: #fff; border-color: var(--mg-hairline-light); color: var(--mg-ink);">4-Player</span>
+            <span class="chip blue">4-Board</span>
+            <span class="chip" style="background: #fff; border-color: var(--mg-hairline-light); color: var(--mg-ink);">3-Board</span>
+            <span class="chip" style="background: #fff; border-color: var(--mg-hairline-light); color: var(--mg-ink);">Alice</span>
+            <span class="chip" style="background: #fff; border-color: var(--mg-hairline-light); color: var(--mg-ink);">Courier</span>
+            <span class="chip" style="background: #fff; border-color: var(--mg-hairline-light); color: var(--mg-ink);">Omega&nbsp;/&nbsp;Grand</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark" style="color: var(--mg-blue);"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="mono">regular · 4-player · 4-board · 3-board · alice · courier · omega</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 14 — DUNGEON CHESS
+       ============================================================ -->
+  <section class="slide dark" data-screen-label="14 Dungeon Chess">
+    <div class="bg-hex-green"></div>
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Introducing</span>
+        <span class="pagenum">14 / 20</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: center; flex: 1;">
+
+        <!-- LEFT: pitch -->
+        <div>
+          <div class="pixel" style="font-size: 76px; color: #fff; letter-spacing: 3px; margin-bottom: 22px; line-height: 1; text-shadow: 0 0 36px rgba(184,240,168,0.45);">
+            DUNGEON<br/>CHESS
+          </div>
+
+          <h2 class="heading" style="font-size: 50px; max-width: 720px; line-height: 1.05;">
+            Chess as an asymmetrical<br/><em class="hl-mint">skirmish and dungeon crawler.</em>
+          </h2>
+
+          <p class="body-lg" style="margin-top: 22px; max-width: 700px; font-size: 22px; text-shadow: 0 2px 12px rgba(0,0,0,0.5);">
+            Our first original mod for Moddable Chess. Four races on a modular
+            board with spells, objects, XP and environmental hazards — our
+            catalyst for crowdfunding the catalogue.
+          </p>
+
+          <!-- mode cards -->
+          <div style="margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div style="padding: 18px 22px; border-radius: 16px; background: rgba(4,12,6,0.65); border: 1px solid rgba(184,240,168,0.25);">
+              <div class="mono" style="font-size: 11px; color: #b8f0a8; letter-spacing: 0.14em;">BATTLES</div>
+              <div style="font-family: var(--mg-font-display); font-weight: 600; font-size: 22px; color: #fff; margin-top: 4px; letter-spacing: -0.3px;">2–4P skirmish</div>
+              <div class="mono" style="font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px;">Drafted · 30 min</div>
+            </div>
+            <div style="padding: 18px 22px; border-radius: 16px; background: rgba(4,12,6,0.65); border: 1px solid rgba(184,240,168,0.25);">
+              <div class="mono" style="font-size: 11px; color: #b8f0a8; letter-spacing: 0.14em;">ADVENTURES</div>
+              <div style="font-family: var(--mg-font-display); font-weight: 600; font-size: 22px; color: #fff; margin-top: 4px; letter-spacing: -0.3px;">1–6P legacy</div>
+              <div class="mono" style="font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px;">Persistent campaign</div>
+            </div>
+          </div>
+
+          <!-- races -->
+          <div style="margin-top: 22px;">
+            <div class="mono" style="font-size: 11px; color: #b8f0a8; letter-spacing: 0.14em; margin-bottom: 10px;">FOUR ASYMMETRICAL RACES</div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <span class="chip" style="background: rgba(230,50,50,0.85); border-color: transparent; height: 38px; font-size: 15px;">⦾ Demonics</span>
+              <span class="chip" style="background: rgba(20,22,28,0.85); border-color: rgba(255,255,255,0.3); color: #fff; height: 38px; font-size: 15px;">⦾ Wraiths</span>
+              <span class="chip" style="background: rgba(255,255,255,0.92); border-color: transparent; color: #14161c; height: 38px; font-size: 15px;">⦾ Knights</span>
+              <span class="chip" style="background: rgba(78,183,53,0.85); border-color: transparent; height: 38px; font-size: 15px;">⦾ Verdants</span>
+            </div>
+            <p class="mono" style="font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 8px; letter-spacing: 0.05em;">* Demonics confirmed; other names provisional pending playtest</p>
+          </div>
+        </div>
+
+        <!-- RIGHT: live screenshot + mechanic callouts -->
+        <div>
+          <div style="position: relative; border-radius: 18px; overflow: hidden; border: 1px solid rgba(184,240,168,0.3); box-shadow: 0 12px 50px rgba(0,0,0,0.55);">
+            <img src="../assets/dungeon-chess-board.png" style="width: 100%; display: block;" alt="Dungeon Chess in-engine screenshot — four-army cross board"/>
+            <div style="position: absolute; left: 16px; top: 16px; padding: 6px 14px; border-radius: 9999px; background: rgba(0,0,0,0.7); border: 1px solid rgba(184,240,168,0.3); font-family: var(--mg-font-mono); font-size: 11px; color: #b8f0a8; letter-spacing: 0.14em;">
+              <span style="color: #b8f0a8;">●</span>&nbsp; LIVE PROTOTYPE · IN ENGINE
+            </div>
+          </div>
+
+          <!-- mechanic callouts -->
+          <div style="margin-top: 14px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+            <div style="padding: 16px 14px; border-radius: 14px; background: rgba(4,12,6,0.65); border: 1px solid rgba(184,240,168,0.22);">
+              <div class="mono" style="font-size: 10px; color: #b8f0a8; letter-spacing: 0.14em;">XP</div>
+              <div style="font-family: var(--mg-font-display); font-weight: 600; font-size: 16px; color: #fff; margin-top: 4px; line-height: 1.15;">Pieces<br/>level up</div>
+            </div>
+            <div style="padding: 16px 14px; border-radius: 14px; background: rgba(4,12,6,0.65); border: 1px solid rgba(184,240,168,0.22);">
+              <div class="mono" style="font-size: 10px; color: #b8f0a8; letter-spacing: 0.14em;">SPELLS</div>
+              <div style="font-family: var(--mg-font-display); font-weight: 600; font-size: 16px; color: #fff; margin-top: 4px; line-height: 1.15;">Magic +<br/>objects</div>
+            </div>
+            <div style="padding: 16px 14px; border-radius: 14px; background: rgba(4,12,6,0.65); border: 1px solid rgba(184,240,168,0.22);">
+              <div class="mono" style="font-size: 10px; color: #b8f0a8; letter-spacing: 0.14em;">TERRAIN</div>
+              <div style="font-family: var(--mg-font-display); font-weight: 600; font-size: 16px; color: #fff; margin-top: 4px; line-height: 1.15;">Hazards &amp;<br/>obstacles</div>
+            </div>
+            <div style="padding: 16px 14px; border-radius: 14px; background: rgba(4,12,6,0.65); border: 1px solid rgba(184,240,168,0.22);">
+              <div class="mono" style="font-size: 10px; color: #b8f0a8; letter-spacing: 0.14em;">OBJECTIVES</div>
+              <div style="font-family: var(--mg-font-display); font-weight: 600; font-size: 16px; color: #fff; margin-top: 4px; line-height: 1.15;">Beyond<br/>check-mate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="mono">four races · spells · objects · objectives</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 15 — STRETCH GOALS
+       ============================================================ -->
+  <section class="slide ivory" data-screen-label="15 Stretch goals">
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Moddable Chess — crowdfunding</span>
+        <span class="pagenum">15 / 20</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr auto; gap: 64px; align-items: end;">
+        <h1 class="title" style="font-size: 96px;">A ladder of<br/>stretch goals.</h1>
+        <p class="body-lg" style="max-width: 520px; color: var(--mg-charcoal);">
+          Each tier adds more sections to the board — and unlocks the next
+          family of variants the engine already supports.
+        </p>
+      </div>
+
+      <div style="margin-top: 48px; display: flex; flex-direction: column; gap: 12px; flex: 1;">
+        <!-- Level 01 -->
+        <div class="card" style="display: grid; grid-template-columns: 110px 1fr auto; gap: 28px; align-items: center; padding: 20px 32px;">
+          <div class="mono" style="font-size: 24px; font-weight: 600; color: var(--mg-blue);">LV·01</div>
+          <div>
+            <div class="sub" style="font-size: 26px;">Regular 2-player Chess</div>
+            <p class="body" style="color: var(--mg-charcoal); margin-top: 2px; font-size: 18px;">4 board sections · 100 squares · 60 chess pieces</p>
+          </div>
+          <span class="chip blue">Base goal</span>
+        </div>
+
+        <!-- Level 02 -->
+        <div class="card" style="display: grid; grid-template-columns: 110px 1fr auto; gap: 28px; align-items: center; padding: 20px 32px;">
+          <div class="mono" style="font-size: 24px; font-weight: 600; color: var(--mg-blue);">LV·02</div>
+          <div>
+            <div class="sub" style="font-size: 26px;">4-player Chess</div>
+            <p class="body" style="color: var(--mg-charcoal); margin-top: 2px; font-size: 18px;">15 board sections · 192 squares · 100+ pieces</p>
+          </div>
+          <span class="chip" style="background: #fff; color: var(--mg-ink); border-color: var(--mg-hairline-light);">Stretch</span>
+        </div>
+
+        <!-- Level 03 -->
+        <div class="card" style="display: grid; grid-template-columns: 110px 1fr auto; gap: 28px; align-items: center; padding: 20px 32px;">
+          <div class="mono" style="font-size: 24px; font-weight: 600; color: var(--mg-blue);">LV·03</div>
+          <div>
+            <div class="sub" style="font-size: 26px;">XiangQi + 4 board variants</div>
+            <p class="body" style="color: var(--mg-charcoal); margin-top: 2px; font-size: 18px;">26 board sections · 256 squares · regional rule sets</p>
+          </div>
+          <span class="chip" style="background: #fff; color: var(--mg-ink); border-color: var(--mg-hairline-light);">Stretch</span>
+        </div>
+
+        <!-- Level 04 -->
+        <div class="card" style="display: grid; grid-template-columns: 110px 1fr auto; gap: 28px; align-items: center; padding: 20px 32px; background: var(--mg-ink); color: #fff; border-color: transparent;">
+          <div class="mono" style="font-size: 24px; font-weight: 600; color: var(--mg-cosmic-bright);">LV·04</div>
+          <div>
+            <div class="sub" style="font-size: 26px; color: #fff;">Dungeon Chess</div>
+            <p class="body" style="color: rgba(255,255,255,0.75); margin-top: 2px; font-size: 18px;">Asymmetrical races · spells · objects · objectives</p>
+          </div>
+          <span class="chip" style="background: var(--mg-cosmic-bright); border-color: transparent;">Headline</span>
+        </div>
+
+        <!-- Level 05 — condensed footnote row -->
+        <div style="display: grid; grid-template-columns: 110px 1fr auto; gap: 28px; align-items: center; padding: 16px 32px; border-top: 1px dashed var(--mg-hairline-light); margin-top: 4px;">
+          <div class="mono" style="font-size: 18px; font-weight: 600; color: var(--mg-stone);">LV·05+</div>
+          <p class="body" style="color: var(--mg-charcoal); margin: 0; font-size: 19px;">
+            Extra races · upgraded boards · custom components — open-ended,
+            set by community votes at launch.
+          </p>
+          <span class="chip green">Community</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark" style="color: var(--mg-blue);"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="mono">crowdfund · bootstrap · 2026</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 16 — END GOAL
+       ============================================================ -->
+  <section class="slide cosmic" data-screen-label="16 End goal">
+    <div class="bg-cosmic"></div>
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Our end goal</span>
+        <span class="pagenum">16 / 20</span>
+      </div>
+
+      <h1 class="display" style="font-size: 124px; max-width: 1700px; text-shadow: 0 4px 40px rgba(0,0,0,0.55);">
+        An ecosystem where<br/>creators <em class="hl-amber">monetise</em><br/>their own work.
+      </h1>
+
+      <div style="margin-top: 80px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; flex: 1;">
+        <div class="card" style="background: rgba(8,10,30,0.6); border-color: rgba(111,181,255,0.25); backdrop-filter: blur(8px); display: flex; flex-direction: column;">
+          <div class="stripe red"></div>
+          <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-cosmic-glow);">01 · PRINT-ON-DEMAND</div>
+          <h3 class="sub" style="font-size: 32px; margin-top: 10px;">Moddable prints on demand.</h3>
+          <p class="body" style="color: rgba(255,255,255,0.78); margin-top: 16px; flex: 1;">
+            Moddable Chess pieces, miniatures, build-your-own hex tiles —
+            printed only when ordered, no inventory drag.
+          </p>
+        </div>
+        <div class="card" style="background: rgba(8,10,30,0.6); border-color: rgba(111,181,255,0.25); backdrop-filter: blur(8px); display: flex; flex-direction: column;">
+          <div class="stripe"></div>
+          <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-cosmic-glow);">02 · COMMUNITY</div>
+          <h3 class="sub" style="font-size: 32px; margin-top: 10px;">Community contributions.</h3>
+          <p class="body" style="color: rgba(255,255,255,0.78); margin-top: 16px; flex: 1;">
+            Artists sell themes for existing games. Designers publish
+            their own expansions. We take a cut, they keep the rest.
+          </p>
+        </div>
+        <div class="card" style="background: rgba(8,10,30,0.6); border-color: rgba(111,181,255,0.25); backdrop-filter: blur(8px); display: flex; flex-direction: column;">
+          <div class="stripe green"></div>
+          <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-cosmic-glow);">03 · SELF-PUBLISHING</div>
+          <h3 class="sub" style="font-size: 32px; margin-top: 10px;">Self-publishing.</h3>
+          <p class="body" style="color: rgba(255,255,255,0.78); margin-top: 16px; flex: 1;">
+            Creators validate ideas online first — then monetise
+            their community by shipping through our marketplace.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="mono">creators own the catalogue</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 17 — TEAM
+       ============================================================ -->
+  <section class="slide ivory" data-screen-label="17 Team">
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> The team</span>
+        <span class="pagenum">17 / 20</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr auto; gap: 80px; align-items: end;">
+        <h1 class="title" style="font-size: 88px;">Who's making<br/>this happen.</h1>
+        <p class="body-lg" style="max-width: 520px; color: var(--mg-charcoal); margin-bottom: 8px;">
+          A modder-founder, a systems-thinker playtester, a board-game evangelist
+          who builds the engine, and a game artist with TV credits.
+        </p>
+      </div>
+
+      <div style="margin-top: 64px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; flex: 1;">
+        <!-- Mark -->
+        <div class="card" style="display: flex; flex-direction: column; padding: 28px; padding-top: 36px; overflow: visible;">
+          <div style="aspect-ratio: 1; margin: -52px 0 18px; border-radius: 14px; overflow: hidden; background: var(--mg-surface-soft); border: 1px solid var(--mg-hairline-light); box-shadow: 0 22px 44px -12px rgba(0,0,0,0.24), 0 4px 12px rgba(0,0,0,0.08);">
+            <img src="https://moddable.games/wp-content/uploads/sites/17/2025/10/ms-022.png" alt="Mark Smalley" style="width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block;"/>
+          </div>
+          <div class="stripe" style="margin-bottom: 12px;"></div>
+          <h3 class="sub" style="font-size: 22px;">Mark Smalley</h3>
+          <div class="mono" style="font-size: 11px; color: var(--mg-stone); letter-spacing: 0.08em; margin-top: 4px;">FOUNDER · DM · BUILDER</div>
+          <p class="body" style="color: var(--mg-charcoal); margin-top: 12px; font-size: 14px; line-height: 1.45;">
+            Modder since forever. Built the world's first NoSQL CMS and a
+            <em>500 Startups</em>-backed Bitcoin wallet.
+          </p>
+        </div>
+
+        <!-- Kevin -->
+        <div class="card" style="display: flex; flex-direction: column; padding: 28px; padding-top: 36px; overflow: visible;">
+          <div style="aspect-ratio: 1; margin: -52px 0 18px; border-radius: 14px; overflow: hidden; background: var(--mg-surface-soft); border: 1px solid var(--mg-hairline-light); box-shadow: 0 22px 44px -12px rgba(0,0,0,0.24), 0 4px 12px rgba(0,0,0,0.08);">
+            <img src="https://moddable.games/wp-content/uploads/sites/17/2025/10/kevin2.png" alt="Kevin Chand" style="width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block;"/>
+          </div>
+          <div class="stripe green" style="margin-bottom: 12px;"></div>
+          <h3 class="sub" style="font-size: 22px;">Kevin Chand</h3>
+          <div class="mono" style="font-size: 11px; color: var(--mg-stone); letter-spacing: 0.08em; margin-top: 4px;">PLAYTEST · GROWTH · OPS</div>
+          <p class="body" style="color: var(--mg-charcoal); margin-top: 12px; font-size: 14px; line-height: 1.45;">
+            Systems thinker. Chief playtester and social engineer leading online growth, marketing and manufacturing.
+          </p>
+        </div>
+
+        <!-- Akmal -->
+        <div class="card" style="display: flex; flex-direction: column; padding: 28px; padding-top: 36px; overflow: visible;">
+          <div style="aspect-ratio: 1; margin: -52px 0 18px; border-radius: 14px; overflow: hidden; background: var(--mg-surface-soft); border: 1px solid var(--mg-hairline-light); box-shadow: 0 22px 44px -12px rgba(0,0,0,0.24), 0 4px 12px rgba(0,0,0,0.08);">
+            <img src="https://moddable.games/wp-content/uploads/sites/17/2025/11/Akmal.png" alt="Akmal Fikri" style="width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block;"/>
+          </div>
+          <div class="stripe" style="margin-bottom: 12px;"></div>
+          <h3 class="sub" style="font-size: 22px;">Akmal Fikri</h3>
+          <div class="mono" style="font-size: 11px; color: var(--mg-stone); letter-spacing: 0.08em; margin-top: 4px;">ENGINE · COMMUNITY</div>
+          <p class="body" style="color: var(--mg-charcoal); margin-top: 12px; font-size: 14px; line-height: 1.45;">
+            Web developer and board-game evangelist. Builds the online engine — grey hair earned the hard way.
+          </p>
+        </div>
+
+        <!-- Iqbal -->
+        <div class="card" style="display: flex; flex-direction: column; padding: 28px; padding-top: 36px; overflow: visible;">
+          <div style="aspect-ratio: 1; margin: -52px 0 18px; border-radius: 14px; overflow: hidden; background: var(--mg-surface-soft); border: 1px solid var(--mg-hairline-light); box-shadow: 0 22px 44px -12px rgba(0,0,0,0.24), 0 4px 12px rgba(0,0,0,0.08);">
+            <img src="https://moddable.games/wp-content/uploads/sites/17/2026/05/IQBAL03.png" alt="Iqbal Ridzuan" style="width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block;"/>
+          </div>
+          <div class="stripe red" style="margin-bottom: 12px;"></div>
+          <h3 class="sub" style="font-size: 22px;">Iqbal Ridzuan</h3>
+          <div class="mono" style="font-size: 11px; color: var(--mg-stone); letter-spacing: 0.08em; margin-top: 4px;">LEAD ARTIST · CREATIVE</div>
+          <p class="body" style="color: var(--mg-charcoal); margin-top: 12px; font-size: 14px; line-height: 1.45;">
+            Head of creative. <em>BioHack</em> and <em>Mechamato</em> — featured on BoardGameGeek and IMDB.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark" style="color: var(--mg-blue);"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span>17 / 20</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 18 — WHAT IT TAKES
+       ============================================================ -->
+  <section class="slide dark" data-screen-label="18 What it takes">
+    <div class="bg-ink"></div>
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> What it'll take to make this happen</span>
+        <span class="pagenum">18 / 20</span>
+      </div>
+
+      <h1 class="title" style="max-width: 1500px;">
+        Resources,<br/>timing, phases.
+      </h1>
+      <p class="mono" style="margin-top: 20px; font-size: 14px; color: var(--mg-stone); letter-spacing: 0.06em; max-width: 900px;">
+        // working list — to be replaced with facts, figures, timelines and sheets.
+      </p>
+
+      <div style="margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; flex: 1;">
+        <!-- Resources -->
+        <div class="card" style="display: flex; flex-direction: column;">
+          <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-cosmic-glow);">01 · REQUIRED RESOURCES</div>
+          <h3 class="sub" style="font-size: 32px; margin-top: 12px;">What we need.</h3>
+          <ul class="clean" style="margin-top: 24px; font-size: 19px;">
+            <li><span class="num">▲</span><span>Full-time developers and designers</span></li>
+            <li><span class="num">▲</span><span>Capital for the first print run</span></li>
+            <li><span class="num">▲</span><span>In-house manufacturing capability</span></li>
+          </ul>
+        </div>
+
+        <!-- Timing -->
+        <div class="card" style="display: flex; flex-direction: column;">
+          <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-cosmic-glow);">02 · TIMING</div>
+          <h3 class="sub" style="font-size: 32px; margin-top: 12px;">Why now.</h3>
+          <ul class="clean" style="margin-top: 24px; font-size: 19px;">
+            <li><span class="num">▲</span><span>Who becomes the next <em>chess.com</em>?</span></li>
+            <li><span class="num">▲</span><span>Can we ship Moddable Chess before someone else does?</span></li>
+            <li><span class="num">▲</span><span>Tabletop's online infra is still a green field</span></li>
+          </ul>
+        </div>
+
+        <!-- Phases -->
+        <div class="card" style="display: flex; flex-direction: column;">
+          <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-cosmic-glow);">03 · PHASES</div>
+          <h3 class="sub" style="font-size: 32px; margin-top: 12px;">In what order.</h3>
+          <ul class="clean" style="margin-top: 24px; font-size: 19px;">
+            <li><span class="num">P1</span><span>Launch Moddable.Games</span></li>
+            <li><span class="num">P2</span><span>Bootstrap mods + Nukes production</span></li>
+            <li><span class="num">P3</span><span>Crowdfund Moddable Chess <em>or</em> Mongo</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="mono">phase 1 of 3 — live</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 19 — NEXT STEPS
+       ============================================================ -->
+  <section class="slide ivory" data-screen-label="19 Next steps">
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Next steps — what we have to offer</span>
+        <span class="pagenum">19 / 20</span>
+      </div>
+
+      <h1 class="title">
+        Two ways<br/>to work with us.
+      </h1>
+
+      <div style="margin-top: 72px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; flex: 1;">
+        <!-- Investment -->
+        <div class="card" style="padding: 56px; display: flex; flex-direction: column;">
+          <div class="stripe red"></div>
+          <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: var(--mg-stone);">A · INVESTMENT OPPORTUNITIES</div>
+          <h3 class="sub" style="font-size: 40px; margin-top: 12px;">Back the catalogue.</h3>
+          <ul class="clean" style="margin-top: 32px; font-size: 22px; flex: 1;">
+            <li><span class="num">01</span><span><em>Purchase royalties</em> on specific upcoming games</span></li>
+            <li><span class="num">02</span><span>Fund accelerated growth — <em>equity</em> in Moddable.Games</span></li>
+            <li><span class="num">03</span><span>Sponsor our crowdfunding campaign kick-off</span></li>
+          </ul>
+        </div>
+
+        <!-- Partnership -->
+        <div class="card" style="padding: 56px; background: var(--mg-blue); color: #fff; border-color: transparent; display: flex; flex-direction: column;">
+          <div class="stripe" style="background: var(--mg-cosmic-glow);"></div>
+          <div class="mono" style="font-size: 13px; letter-spacing: 0.1em; color: rgba(255,255,255,0.6);">B · PARTNERSHIPS</div>
+          <h3 class="sub" style="font-size: 40px; margin-top: 12px; color: #fff;">Build with us.</h3>
+          <ul class="clean" style="margin-top: 32px; font-size: 22px; flex: 1;">
+            <li><span class="num">01</span><span><em>Custom development</em> of branded games</span></li>
+            <li><span class="num">02</span><span>Licensing agreements to use other brands</span></li>
+            <li><span class="num">03</span><span>Educational games designed for specific courses</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark" style="color: var(--mg-blue);"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="mono">team@moddable.games</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 20 — CONTACT
+       ============================================================ -->
+  <section class="slide cosmic" data-screen-label="20 Contact">
+    <div class="hex-bg"></div>
+    <div class="pad" style="justify-content: center; align-items: center; text-align: center;">
+      <div class="eyebrow" style="margin-bottom: 40px;">
+        <span class="arrow">▲</span> Any questions?
+      </div>
+      <h1 class="display" style="font-size: 156px; max-width: 1600px; text-shadow: 0 8px 50px rgba(0,0,0,0.6);">
+        Get in touch<br/>with the table.
+      </h1>
+      <div style="margin-top: 80px; display: flex; flex-direction: column; align-items: center; gap: 24px;">
+        <a href="mailto:team@moddable.games" style="color: #fff; text-decoration: none;">
+          <span class="pill live" style="height: 88px; padding: 0 56px; font-size: 32px;">
+            <span class="dot"></span>team@moddable.games
+          </span>
+        </a>
+        <div style="display: flex; gap: 16px;">
+          <span class="pill"><span class="mono">moddable.games</span></span>
+          <span class="pill"><span class="mono">nukes.moddable.games</span></span>
+        </div>
+      </div>
+      <p class="mono" style="margin-top: 88px; font-size: 14px; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase;">
+        Moddable.Games is fan-made and not affiliated with any rights-holder
+      </p>
+    </div>
+    <div class="footer">
+      <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES · MASTER PLAN · 2026</span>
+      <span>20 / 20</span>
+    </div>
+  </section>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+
+</body>
+</html>

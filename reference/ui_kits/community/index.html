@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Community — Moddable.Games</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="icon" type="image/png" href="../../assets/moddable-logo.png">
+<style>
+  html, body { margin: 0; padding: 0; background: #f5f4ef; }
+  body { font-family: var(--mg-font-body); color: var(--mg-ink); }
+  * { box-sizing: border-box; }
+  em { font-style: italic; }
+  button:focus-visible, a:focus-visible { outline: 2px solid #6fb5ff; outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="../marketing/Buttons.jsx"></script>
+<script type="text/babel" src="../marketing/NavBar.jsx"></script>
+<script type="text/babel" src="../marketing/Footer.jsx"></script>
+<script type="text/babel" src="../about/PageHero.jsx"></script>
+
+<script type="text/babel">
+
+function StatTile({ n, label }) {
+  return (
+    <div style={{ background: "#fff", border: "1px solid #e6e3d8", borderRadius: 16, padding: 24, textAlign: "center" }}>
+      <div style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: 56, lineHeight: 1, color: "#14161c", letterSpacing: "-1px" }}>{n}</div>
+      <div style={{ fontFamily: "var(--mg-font-mono)", fontSize: 12, color: "#7a8290", textTransform: "uppercase", letterSpacing: "0.8px", marginTop: 8 }}>{label}</div>
+    </div>
+  );
+}
+
+function ChannelRow({ name, desc, members, accent }) {
+  return (
+    <a href="#" style={{
+      display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 16, alignItems: "center",
+      padding: "18px 20px", background: "#fff", border: "1px solid #e6e3d8", borderRadius: 12,
+      textDecoration: "none", color: "inherit",
+    }}>
+      <div style={{ width: 8, height: 32, background: accent, borderRadius: 4 }} />
+      <div>
+        <div style={{ fontFamily: "var(--mg-font-mono)", fontWeight: 600, fontSize: 15, color: "#14161c" }}>#{name}</div>
+        <div style={{ fontFamily: "var(--mg-font-body)", fontSize: 13, color: "#4f5764", marginTop: 2 }}>{desc}</div>
+      </div>
+      <div style={{ fontFamily: "var(--mg-font-mono)", fontSize: 12, color: "#7a8290", textAlign: "right" }}>{members} online</div>
+    </a>
+  );
+}
+
+function CommunityBody() {
+  return (
+    <section style={{ background: "#f5f4ef", padding: "72px 32px 96px" }}>
+      <div style={{ maxWidth: 960, margin: "0 auto" }}>
+
+        {/* Stats */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 48 }}>
+          <StatTile n="2,418" label="Discord members" />
+          <StatTile n="14" label="Public channels" />
+          <StatTile n="12" label="Mods published" />
+          <StatTile n="3" label="Mod jams hosted" />
+        </div>
+
+        {/* Discord channels */}
+        <h2 style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: 36, lineHeight: 1.15, letterSpacing: "-0.5px", color: "#14161c", margin: "0 0 24px" }}>The Discord.</h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 48 }}>
+          <ChannelRow name="general"            desc="The lobby. Say hello, share your shelves."                                 members="48" accent="#0c4f8d" />
+          <ChannelRow name="mod-pitches"        desc="Pitch a rule change. Get torn apart by people who love you."             members="22" accent="#d11a1a" />
+          <ChannelRow name="playtest-tonight"   desc="Voice chat-only. Find a group, run a mod, report back."                   members="11" accent="#3a9928" />
+          <ChannelRow name="rules-lawyering"    desc="The vibe is constructive. We promise."                                    members="17" accent="#e89a1a" />
+          <ChannelRow name="hex-tiles"          desc="For the Talisman: Hexed crowd. Print-and-play threads, errata, swaps."   members="9"  accent="#6fb5ff" />
+        </div>
+
+        {/* Mod jams */}
+        <h2 style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: 36, lineHeight: 1.15, letterSpacing: "-0.5px", color: "#14161c", margin: "0 0 12px" }}>Mod Jams.</h2>
+        <p style={{ fontFamily: "var(--mg-font-body)", fontSize: 17, lineHeight: 1.55, color: "#3a3d44", margin: "0 0 24px", maxWidth: 600 }}>
+          Two weeks. One base game. The whole community ships a mod. Winners get a literal trophy made of meeples.
+        </p>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginBottom: 48 }}>
+          {[
+            { n: "Jam #1", game: "Carcassonne", winner: "Carcassonne: Underworld" },
+            { n: "Jam #2", game: "Risk", winner: "Beyond the Box" },
+            { n: "Jam #3", game: "Catan", winner: "Cattle Drives" },
+          ].map(j => (
+            <div key={j.n} style={{ background: "#fff", border: "1px solid #e6e3d8", borderRadius: 12, padding: 18 }}>
+              <div style={{ fontFamily: "var(--mg-font-pixel)", fontSize: 9, color: "#0c4f8d", letterSpacing: "1.5px", marginBottom: 8 }}>▲ {j.n}</div>
+              <div style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: 16, color: "#14161c", marginBottom: 4 }}>{j.game}</div>
+              <div style={{ fontFamily: "var(--mg-font-mono)", fontSize: 12, color: "#4f5764" }}>winner · {j.winner}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Code of conduct */}
+        <h2 style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: 36, lineHeight: 1.15, letterSpacing: "-0.5px", color: "#14161c", margin: "0 0 12px" }}>Code of conduct.</h2>
+        <p style={{ fontFamily: "var(--mg-font-body)", fontSize: 17, lineHeight: 1.55, color: "#3a3d44", margin: "0 0 16px", maxWidth: 600 }}>
+          We're a small community of rule-tinkerers. Be generous with feedback, brutal with playtest data, and patient with people who haven't read the same rulebooks you have.
+        </p>
+        <ul style={{ fontFamily: "var(--mg-font-body)", fontSize: 16, lineHeight: 1.65, color: "#1f2228", margin: 0, paddingLeft: 22 }}>
+          <li>Critique the mod, not the modder.</li>
+          <li>Cite the rulebook page when you disagree.</li>
+          <li>No screenshots from Discord without consent.</li>
+          <li>No AI-generated rules submissions. We're <em>strictly written by humans</em>, and we mean it.</li>
+        </ul>
+
+        <div style={{ display: "flex", gap: 12, marginTop: 40 }}>
+          <Btn variant="dark">Open the Discord</Btn>
+          <Btn variant="outline-light">Read the full CoC</Btn>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  return (
+    <div data-screen-label="Community">
+      <NavBar />
+      <PageHero eyebrow="▲ COMMUNITY" title="Mod a game with us." lede="Two thousand rule-tinkerers, designers and PnP enthusiasts arguing about Catan's longest road rule." accent="#e89a1a" />
+      <CommunityBody />
+      <Footer />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+
+</body>
+</html>

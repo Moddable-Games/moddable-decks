@@ -1,0 +1,329 @@
+/* =========================================================================
+   Moddable.Games — Colors & Type
+   A derivative of Revolut's structural system, re-skinned for a tabletop
+   modding community. Two-mode canvas, pill CTAs, flat elevation kept.
+   ========================================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=Press+Start+2P&family=Silkscreen:wght@400;700&family=Pixelify+Sans:wght@400;500;600;700&family=DotGothic16&family=Jersey+10&family=Workbench&family=VT323&family=Tiny5&family=Rubik+Pixels&family=Sixtyfour&family=Major+Mono+Display&family=Bungee&family=Bungee+Inline&family=Bungee+Shade&family=Honk&family=Doto:wght@500;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+/* Daggersquare — Iconian Fonts. Free for personal use (see fonts/Daggersquare-EULA.txt).
+   THIS IS THE BRAND PIXEL FONT. Closest match to the Moddable.Games wordmark. */
+@font-face {
+  font-family: "Daggersquare";
+  src: url("fonts/Daggersquare.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Daggersquare";
+  src: url("fonts/Daggersquare-Oblique.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* ============================== COLORS ==============================
+     Three brand primaries derived from the logo cube faces (RGB).
+     Use ONE per surface — never combine all three in the same viewport.
+     ================================================================== */
+
+  --mg-red:        #d11a1a;   /* Cube top face — destructive / "Nuke" / featured tag */
+  --mg-red-bright: #e63232;
+  --mg-red-deep:   #a31212;
+
+  --mg-green:      #3a9928;   /* Cube left face — go / new / active state */
+  --mg-green-bright:#4eb735;
+  --mg-green-deep: #2c7320;
+
+  --mg-blue:       #0c4f8d;   /* Cube right face — primary brand accent */
+  --mg-blue-bright:#1a6dc4;
+  --mg-blue-deep:  #07335c;
+
+  /* Cosmic palette — for hero gradients + hex-grid horizon.
+     Sampled from the brand reference image (deep galaxy → electric blue → black). */
+  --mg-cosmic-deep:    #0a0d2a;   /* far horizon / vignette top */
+  --mg-cosmic-mid:     #1a3680;   /* mid horizon */
+  --mg-cosmic-bright:  #3a7be8;   /* electric horizon line */
+  --mg-cosmic-glow:    #6fb5ff;   /* hex grid highlight */
+
+  /* Canvas & Surface (Revolut backbone, kept) */
+  --mg-canvas-light:   #ffffff;
+  --mg-canvas-dark:    #000000;
+  --mg-surface-soft:   #f5f4ef;   /* warmer than Revolut's #f4f4f4 — parchment tilt */
+  --mg-surface-card:   #ffffff;
+  --mg-surface-deep:   #0a0a0a;
+  --mg-surface-elevated:#161721;  /* dark card lift, tinted toward cosmic blue */
+  --mg-hairline-light: #e6e3d8;   /* warm-ivory hairline */
+  --mg-hairline-dark:  rgba(255,255,255,0.10);
+  --mg-hairline-strong:#1a1c24;
+
+  /* Text */
+  --mg-ink:        #14161c;
+  --mg-body:       #1f2228;
+  --mg-charcoal:   #3a3d44;
+  --mg-mute:       #4f5764;
+  --mg-stone:      #7a8290;
+  --mg-faint:      #c3c5cc;
+  --mg-on-dark:    #ffffff;
+  --mg-on-dark-mute: rgba(255,255,255,0.72);
+
+  /* Functional */
+  --mg-success:    var(--mg-green);
+  --mg-warning:    #e89a1a;
+  --mg-danger:     var(--mg-red);
+  --mg-link:       var(--mg-blue-bright);
+
+  /* ============================ TYPOGRAPHY ============================
+     Three families:
+       display  → Inter Tight 500–700, tight tracking, for headlines + body heads
+       pixel    → Press Start 2P, the brand voice — for hero/wordmark moments ONLY
+       body     → Inter 400/600, default UI + prose
+       mono     → JetBrains Mono — stats, rules text, dice notation, mod versions
+     ================================================================== */
+
+  --mg-font-display: "Inter Tight", "Aeonik Pro", system-ui, sans-serif;
+  --mg-font-pixel:   "Daggersquare", "Press Start 2P", "Courier New", monospace;
+  /* Alternate pixel candidates — swap into --mg-font-pixel to compare. */
+  --mg-font-pixel-press-start: "Press Start 2P", monospace;
+  --mg-font-pixel-silkscreen:  "Silkscreen", monospace;
+  --mg-font-pixel-pixelify:    "Pixelify Sans", monospace;
+  --mg-font-pixel-dotgothic:   "DotGothic16", monospace;
+  --mg-font-body:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mg-font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* ============================== SPACING ============================= */
+  --mg-space-xxs:    4px;
+  --mg-space-xs:     6px;
+  --mg-space-sm:     8px;
+  --mg-space-md:     14px;
+  --mg-space-lg:     16px;
+  --mg-space-xl:     24px;
+  --mg-space-xxl:    32px;
+  --mg-space-xxxl:   48px;
+  --mg-space-block:  80px;
+  --mg-space-section:88px;
+  --mg-space-band:   120px;
+
+  /* ============================== RADIUS ============================== */
+  --mg-radius-none: 0px;
+  --mg-radius-sm:   6px;     /* slightly tighter than Revolut — fits the pixel motif */
+  --mg-radius-md:   12px;
+  --mg-radius-lg:   20px;
+  --mg-radius-xl:   28px;
+  --mg-radius-full: 9999px;
+
+  /* ============================== LAYOUT ============================== */
+  --mg-container-max: 1200px;
+  --mg-nav-height:    64px;
+
+  /* HEX-GRID motif — used as a CSS background-image on dark hero bands.
+     Drop on any element: background-image: var(--mg-hex-grid); */
+  --mg-hex-grid:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='64' viewBox='0 0 56 64'><path d='M28 1 54 16v32L28 63 2 48V16z' fill='none' stroke='%233a7be8' stroke-opacity='0.18' stroke-width='1'/></svg>");
+}
+
+/* =========================================================================
+   Semantic type classes
+   ========================================================================= */
+
+.mg-display-xxl {
+  font-family: var(--mg-font-display);
+  font-weight: 600;
+  font-size: 136px;
+  line-height: 1.0;
+  letter-spacing: -2.72px;
+}
+
+.mg-display-xl {
+  font-family: var(--mg-font-display);
+  font-weight: 600;
+  font-size: 80px;
+  line-height: 1.0;
+  letter-spacing: -1.4px;
+}
+
+.mg-display-lg {
+  font-family: var(--mg-font-display);
+  font-weight: 600;
+  font-size: 56px;
+  line-height: 1.05;
+  letter-spacing: -1px;
+}
+
+.mg-display-md {
+  font-family: var(--mg-font-display);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.15;
+  letter-spacing: -0.6px;
+}
+
+.mg-heading-lg {
+  font-family: var(--mg-font-display);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+}
+
+.mg-heading-md {
+  font-family: var(--mg-font-display);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+}
+
+.mg-heading-sm {
+  font-family: var(--mg-font-display);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+/* The brand voice — pixel display. Use SPARINGLY.
+   Reserved for: hero wordmarks, section eyebrows, button labels on the
+   bottom-of-hero CTA. Never for prose. */
+.mg-pixel-xl {
+  font-family: var(--mg-font-pixel);
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+.mg-pixel-md {
+  font-family: var(--mg-font-pixel);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+.mg-pixel-sm {
+  font-family: var(--mg-font-pixel);
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+.mg-body-lg {
+  font-family: var(--mg-font-body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: -0.09px;
+}
+
+.mg-body-md {
+  font-family: var(--mg-font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.55;
+  letter-spacing: 0.16px;
+}
+
+.mg-body-md-bold {
+  font-family: var(--mg-font-body);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.55;
+  letter-spacing: 0.1px;
+}
+
+.mg-body-sm {
+  font-family: var(--mg-font-body);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.mg-button-lg {
+  font-family: var(--mg-font-body);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+}
+
+.mg-button-md {
+  font-family: var(--mg-font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+}
+
+.mg-mono-md {
+  font-family: var(--mg-font-mono);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.mg-mono-sm {
+  font-family: var(--mg-font-mono);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.mg-caption {
+  font-family: var(--mg-font-body);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--mg-stone);
+}
+
+/* =========================================================================
+   Scoped defaults
+   ========================================================================= */
+
+.mg-scope {
+  font-family: var(--mg-font-body);
+  color: var(--mg-ink);
+  background: var(--mg-canvas-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mg-scope.mg-dark {
+  background: var(--mg-canvas-dark);
+  color: var(--mg-on-dark);
+}
+
+.mg-scope h1 { font-family: var(--mg-font-display); font-weight: 600; font-size: 80px; line-height: 1.0; letter-spacing: -1.4px; margin: 0; }
+.mg-scope h2 { font-family: var(--mg-font-display); font-weight: 600; font-size: 56px; line-height: 1.05; letter-spacing: -1px; margin: 0; }
+.mg-scope h3 { font-family: var(--mg-font-display); font-weight: 600; font-size: 32px; line-height: 1.2; letter-spacing: -0.4px; margin: 0; }
+.mg-scope h4 { font-family: var(--mg-font-display); font-weight: 600; font-size: 24px; line-height: 1.3; margin: 0; }
+.mg-scope p  { font-family: var(--mg-font-body); font-weight: 400; font-size: 16px; line-height: 1.55; margin: 0; }
+.mg-scope a  { color: var(--mg-link); text-decoration: none; }
+.mg-scope a:hover { text-decoration: underline; }
+.mg-scope code { font-family: var(--mg-font-mono); font-size: 14px; background: var(--mg-surface-soft); padding: 1px 6px; border-radius: 4px; }
+
+/* =========================================================================
+   Responsive helpers
+   ========================================================================= */
+
+/* Hero / display type clamps at mobile */
+@media (max-width: 768px) {
+  .mg-display-xxl { font-size: 56px; letter-spacing: -1.2px; }
+  .mg-display-xl  { font-size: 44px; letter-spacing: -0.8px; }
+  .mg-display-lg  { font-size: 36px; letter-spacing: -0.6px; }
+  .mg-display-md  { font-size: 30px; letter-spacing: -0.4px; }
+  .mg-heading-lg  { font-size: 26px; }
+  .mg-heading-md  { font-size: 20px; }
+}
+
+/* Common grid → 1 col below 768px (apply via class on grid parents) */
+.mg-auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  /* Reduce section padding on small screens */
+  section { padding-left: 20px !important; padding-right: 20px !important; }
+}

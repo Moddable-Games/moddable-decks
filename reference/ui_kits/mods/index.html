@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>All mods — Moddable.Games</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="icon" type="image/png" href="../../assets/moddable-logo.png">
+<style>
+  html, body { margin: 0; padding: 0; background: #f5f4ef; }
+  body { font-family: var(--mg-font-body); color: var(--mg-ink); }
+  * { box-sizing: border-box; }
+  em { font-style: italic; }
+  button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid #6fb5ff; outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="../marketing/Buttons.jsx"></script>
+<script type="text/babel" src="../marketing/NavBar.jsx"></script>
+<script type="text/babel" src="../marketing/ModCard.jsx"></script>
+<script type="text/babel" src="../marketing/Footer.jsx"></script>
+<script type="text/babel" src="../marketing/registry.jsx"></script>
+
+<script type="text/babel">
+
+function ModsIndex() {
+  const [cat, setCat] = React.useState("All");
+  const [search, setSearch] = React.useState("");
+  const cats = ["All", "Total conversion", "Rebalance", "Reskin"];
+  const filtered = MODS.filter(m =>
+    (cat === "All" || m.category === cat) &&
+    (search === "" || m.title.toLowerCase().includes(search.toLowerCase()) || m.baseGame.toLowerCase().includes(search.toLowerCase()))
+  );
+
+  return (
+    <div data-screen-label="Mods Index">
+      <NavBar />
+
+      <section style={{ background: "#000", color: "#fff", padding: "56px 32px 88px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", right: -150, top: "10%", width: 700, height: 700, background: "radial-gradient(circle, rgba(58,123,232,0.28) 0%, transparent 65%)", pointerEvents: "none" }} />
+        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
+          <div style={{ fontFamily: "var(--mg-font-pixel)", fontSize: 11, color: "#6fb5ff", letterSpacing: "2px", marginBottom: 22 }}>▲ THE LIBRARY</div>
+          <h1 style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: "clamp(48px, 7vw, 96px)", lineHeight: 0.95, letterSpacing: "-0.025em", margin: 0 }}>
+            All mods. One library.
+          </h1>
+          <p style={{ fontFamily: "var(--mg-font-body)", fontSize: 18, lineHeight: 1.55, color: "rgba(255,255,255,0.82)", maxWidth: 600, margin: "20px 0 0" }}>
+            {MODS.length} rulebook mods across {Array.from(new Set(MODS.map(m => m.baseGame))).length} base games. Filter by mod-type, or search for the one you already own.
+          </p>
+        </div>
+      </section>
+
+      <section style={{ background: "#f5f4ef", padding: "40px 32px 96px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+
+          {/* Filter bar */}
+          <div style={{ display: "flex", gap: 16, marginBottom: 32, flexWrap: "wrap", alignItems: "center" }}>
+            <div style={{ position: "relative", flex: "1 1 280px", maxWidth: 360 }}>
+              <input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search 12 mods or a base game..."
+                style={{
+                  width: "100%", height: 44, padding: "0 16px 0 40px",
+                  border: "1px solid #e6e3d8", borderRadius: 9999,
+                  fontFamily: "var(--mg-font-body)", fontSize: 14,
+                  background: "#fff", outline: "none",
+                }}
+              />
+              <img src="../../assets/icons/search.svg" width="16" height="16" alt=""
+                style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", opacity: 0.5 }} />
+            </div>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginLeft: "auto" }}>
+              {cats.map(c => (
+                <button key={c} onClick={() => setCat(c)} style={{
+                  fontFamily: "var(--mg-font-body)", fontWeight: 600, fontSize: 13,
+                  height: 36, padding: "0 14px", borderRadius: 9999,
+                  border: cat === c ? "none" : "1px solid #c3c5cc",
+                  background: cat === c ? "#000" : "transparent",
+                  color: cat === c ? "#fff" : "#14161c",
+                  cursor: "pointer",
+                }}>{c}</button>
+              ))}
+            </div>
+          </div>
+
+          {/* Count + sort */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
+            <div style={{ fontFamily: "var(--mg-font-pixel)", fontSize: 9, color: "#14161c", letterSpacing: "1.5px" }}>▲ {filtered.length} OF {MODS.length} MODS</div>
+            <div style={{ fontFamily: "var(--mg-font-mono)", fontSize: 12, color: "#7a8290" }}>Sorted by base game</div>
+          </div>
+
+          {/* Grid */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
+            {filtered.map(m => <ModCard key={m.slug} {...m} />)}
+          </div>
+
+          {filtered.length === 0 && (
+            <div style={{ background: "#fff", border: "1px solid #e6e3d8", borderRadius: 16, padding: 48, textAlign: "center", marginTop: 16 }}>
+              <div style={{ fontFamily: "var(--mg-font-pixel)", fontSize: 11, color: "#d11a1a", letterSpacing: "1.5px", marginBottom: 12 }}>▲ NO MATCH</div>
+              <h3 style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: 24, color: "#14161c", margin: "0 0 8px" }}>Nothing in the library matches.</h3>
+              <p style={{ fontFamily: "var(--mg-font-body)", fontSize: 15, color: "#4f5764", margin: "0 0 16px" }}>Want to write the mod yourself?</p>
+              <Btn variant="dark" onClick={() => location.href = "../submit/index.html"}>Submit a mod</Btn>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<ModsIndex />);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: transparent; }
+  body { font-family: var(--mg-font-body); color: var(--mg-ink); }
+  * { box-sizing: border-box; }
+  .card { padding: 22px 26px; }
+  .row { display: flex; gap: 14px; align-items: center; }
+  .col { display: flex; flex-direction: column; gap: 10px; }
+  .swatch { width: 88px; height: 56px; border-radius: 10px; flex: none; }
+  .lbl { font-family: var(--mg-font-body); font-weight: 600; font-size: 13px; color: var(--mg-ink); letter-spacing: 0.1px; }
+  .meta { font-family: var(--mg-font-mono); font-size: 11px; color: var(--mg-mute); }
+  .tag { font-family: var(--mg-font-pixel); font-size: 9px; color: var(--mg-stone); letter-spacing: 0.5px; text-transform: uppercase; }
+  
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="tag" style="margin-bottom: 12px;">Radius scale</div>
+  <div style="display:grid; grid-template-columns: repeat(6, 1fr); gap: 10px;">
+    
+      <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+        <div style="width:68px; height:68px; background:#0c4f8d; border-radius:0px;"></div>
+        <span class="lbl">none</span><span class="meta">0px</span>
+      </div>
+    
+      <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+        <div style="width:68px; height:68px; background:#0c4f8d; border-radius:6px;"></div>
+        <span class="lbl">sm</span><span class="meta">6px</span>
+      </div>
+    
+      <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+        <div style="width:68px; height:68px; background:#0c4f8d; border-radius:12px;"></div>
+        <span class="lbl">md</span><span class="meta">12px</span>
+      </div>
+    
+      <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+        <div style="width:68px; height:68px; background:#0c4f8d; border-radius:20px;"></div>
+        <span class="lbl">lg</span><span class="meta">20px</span>
+      </div>
+    
+      <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+        <div style="width:68px; height:68px; background:#0c4f8d; border-radius:28px;"></div>
+        <span class="lbl">xl</span><span class="meta">28px</span>
+      </div>
+    
+      <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+        <div style="width:68px; height:68px; background:#0c4f8d; border-radius:9999px;"></div>
+        <span class="lbl">full</span><span class="meta">∞</span>
+      </div>
+    
+  </div>
+</div>
+</body></html>

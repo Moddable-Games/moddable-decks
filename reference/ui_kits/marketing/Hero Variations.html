@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moddable.Games — Hero Variations</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1c20; height: 100%; }
+  body { font-family: var(--mg-font-body); color: var(--mg-ink); }
+  * { box-sizing: border-box; }
+  em { font-style: italic; }
+  button:focus-visible, a:focus-visible { outline: 2px solid #6fb5ff; outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="Buttons.jsx"></script>
+<script type="text/babel" src="NavBar.jsx"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+
+<script type="text/babel">
+
+// =============================================================================
+// Hero A — "Cosmic Horizon" (RECOMMENDED)
+// Uses the brand hex-horizon imagery directly as the backdrop. Pixel eyebrow,
+// Inter Tight headline, dual CTA. The bright horizon line gives the hero its
+// natural attention anchor.
+// =============================================================================
+function HeroA() {
+  return (
+    <div style={{ background: "#000", minHeight: "100%" }}>
+      <NavBar activeSection="Mods" />
+      <section style={{
+        position: "relative",
+        color: "#fff",
+        overflow: "hidden",
+        isolation: "isolate",
+        background: "#000",
+        minHeight: 720,
+      }}>
+        <div style={{
+          position: "absolute", inset: 0,
+          backgroundImage: "url('../../assets/hex-horizon.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center bottom",
+        }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(8,10,30,0.55) 0%, rgba(8,10,30,0.15) 40%, transparent 60%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 65%, rgba(0,0,0,0.4) 85%, #000 100%)" }} />
+
+        <div style={{ position: "relative", padding: "120px 32px 200px", maxWidth: 1200, margin: "0 auto", textAlign: "center" }}>
+          <div style={{ fontFamily: "var(--mg-font-pixel)", fontSize: 11, color: "#6fb5ff", letterSpacing: "2px", marginBottom: 28, textShadow: "0 0 12px rgba(111,181,255,0.5)" }}>▲ MODDABLE.GAMES</div>
+          <h1 style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: 120, lineHeight: 1.0, letterSpacing: "-3px", margin: 0, textShadow: "0 4px 30px rgba(0,0,0,0.5)" }}>
+            Creating games<br/>you already own.
+          </h1>
+          <p style={{ fontFamily: "var(--mg-font-body)", fontSize: 18, lineHeight: 1.6, color: "rgba(255,255,255,0.86)", maxWidth: 580, margin: "32px auto 40px", textShadow: "0 2px 16px rgba(0,0,0,0.7)" }}>
+            Twelve community-built rulebook mods for the boards collecting dust on your shelf —
+            plus three original games built to be modded from day one.
+          </p>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
+            <Btn variant="primary">Browse the mods</Btn>
+            <Btn variant="outline-dark">Read the manifesto</Btn>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+// =============================================================================
+// Hero B — "Mark Anchor"
+// Bigger commitment to the cube glyph. Asymmetric layout: massive cube on the
+// right, headline+copy on the left. Solid dark — no cosmic gradient. Lets the
+// brand mark do the heavy lifting. Press Start 2P used as the actual headline
+// font for the wordmark line.
+// =============================================================================
+function CubeXL({ size = 360 }) {
+  return (
+    <svg width={size} height={size * 1.1} viewBox="0 0 100 110" aria-hidden="true">
+      <polygon points="50,5 92,30 50,55 8,30" fill="#d11a1a" stroke="#000" strokeWidth="2"/>
+      <polygon points="8,30 50,55 50,105 8,80" fill="#3a9928" stroke="#000" strokeWidth="2"/>
+      <polygon points="92,30 50,55 50,105 92,80" fill="#0c4f8d" stroke="#000" strokeWidth="2"/>
+    </svg>
+  );
+}
+function HeroB() {
+  return (
+    <div style={{ background: "#000", minHeight: "100%" }}>
+      <NavBar activeSection="Mods" />
+      <section style={{ background: "#000", color: "#fff", padding: "120px 32px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 64, alignItems: "center" }}>
+          <div>
+            <div style={{ fontFamily: "var(--mg-font-pixel)", fontSize: 11, color: "#7a8290", letterSpacing: "2px", marginBottom: 28 }}>EST. 2023 · DUBLIN</div>
+            <div style={{ fontFamily: "var(--mg-font-pixel)", fontSize: 48, color: "#fff", lineHeight: 1.3, marginBottom: 8 }}>MODDABLE</div>
+            <div style={{ fontFamily: "var(--mg-font-pixel)", fontSize: 48, color: "#6fb5ff", lineHeight: 1.3, marginBottom: 32 }}>.GAMES</div>
+            <p style={{ fontFamily: "var(--mg-font-body)", fontSize: 20, lineHeight: 1.55, color: "rgba(255,255,255,0.78)", maxWidth: 480, margin: "0 0 36px" }}>
+              We write open-source rules patches for the board games already on your shelf —
+              and design new games that ship with the modding hooks built in.
+            </p>
+            <div style={{ display: "flex", gap: 12 }}>
+              <Btn variant="primary">Browse the mods</Btn>
+              <Btn variant="outline-dark">Our manifesto</Btn>
+            </div>
+            <div style={{
+              display: "flex", gap: 24, marginTop: 48,
+              paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.12)",
+            }}>
+              {[["12","mods published"],["3","original games"],["2.4k","Discord members"]].map(([n,l]) => (
+                <div key={l}>
+                  <div style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: 32, lineHeight: 1, color: "#fff" }}>{n}</div>
+                  <div style={{ fontFamily: "var(--mg-font-mono)", fontSize: 11, color: "#7a8290", marginTop: 6, letterSpacing: "0.5px", textTransform: "uppercase" }}>{l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", position: "relative" }}>
+            <CubeXL size={380} />
+            {/* Faint rotation guides */}
+            <div style={{ position: "absolute", inset: 0, border: "1px dashed rgba(255,255,255,0.06)", borderRadius: "50%", margin: 40 }} />
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+// =============================================================================
+// Hero C — "Tabletop Zine"
+// Editorial / rulebook direction. Warm-ivory canvas (catalogue mode), with the
+// dark hero treatment moved to a single inset banner. Pulls hard on the
+// parchment vibe — serif italic for emphasis, mono-rule strap line above
+// headline, two-column layout right out the gate. Closest to a board-game
+// catalogue cover.
+// =============================================================================
+function HeroC() {
+  return (
+    <div style={{ background: "#f5f4ef", minHeight: "100%" }}>
+      <NavBar activeSection="Mods" />
+      <section style={{ background: "#f5f4ef", padding: "80px 32px 120px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          {/* Mono rule strap */}
+          <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 32 }}>
+            <span style={{ fontFamily: "var(--mg-font-mono)", fontSize: 12, color: "#4f5764", letterSpacing: "0.5px" }}>ISSUE 014 · MAY 2026</span>
+            <span style={{ flex: 1, height: 1, background: "#14161c" }} />
+            <span style={{ fontFamily: "var(--mg-font-mono)", fontSize: 12, color: "#4f5764", letterSpacing: "0.5px" }}>12 MODS · 3 GAMES · OPEN-SOURCE</span>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 64, alignItems: "end" }}>
+            <h1 style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: 124, lineHeight: 0.95, letterSpacing: "-3px", color: "#14161c", margin: 0 }}>
+              Creating games you <em style={{ color: "#0c4f8d" }}>already own</em>.
+            </h1>
+            <div>
+              <p style={{ fontFamily: "var(--mg-font-body)", fontSize: 17, lineHeight: 1.6, color: "#4f5764", margin: "0 0 24px" }}>
+                A small workshop publishing open-source rulebook mods —
+                ways to remix the boards already gathering dust under your stairs.
+                <br/><br/>
+                Plus three original games designed to be modded from day one.
+              </p>
+              <div style={{ display: "flex", gap: 12 }}>
+                <Btn variant="dark">Browse the mods</Btn>
+                <Btn variant="outline-light">The manifesto</Btn>
+              </div>
+            </div>
+          </div>
+
+          {/* Dark inset banner — featured tease */}
+          <div style={{ marginTop: 64, background: "#000", color: "#fff", borderRadius: 20, padding: 32, display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 28, alignItems: "center", position: "relative", overflow: "hidden", isolation: "isolate" }}>
+            <div style={{ position: "absolute", inset: 0, opacity: 0.18, backgroundImage: `url("data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='44' height='50' viewBox='0 0 56 64'><path d='M28 1 54 16v32L28 63 2 48V16z' fill='none' stroke='#6fb5ff' stroke-width='1'/></svg>`)}")`, backgroundSize: "44px 50px" }} />
+            <CubeXL size={72} />
+            <div style={{ position: "relative" }}>
+              <div style={{ fontFamily: "var(--mg-font-pixel)", fontSize: 9, color: "#6fb5ff", letterSpacing: "1.5px", marginBottom: 8 }}>▲ MOD OF THE MONTH</div>
+              <div style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: 28, lineHeight: 1.1, letterSpacing: "-0.4px" }}>Hyper Imperium</div>
+              <div style={{ fontFamily: "var(--mg-font-mono)", fontSize: 12, color: "rgba(255,255,255,0.6)", marginTop: 6 }}>v2.0.1 · Twilight Imperium · 240 min</div>
+            </div>
+            <Btn variant="primary" style={{ position: "relative" }}>Download</Btn>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+window.HeroA = HeroA;
+window.HeroB = HeroB;
+window.HeroC = HeroC;
+
+// =============================================================================
+// CANVAS
+// =============================================================================
+function App() {
+  return (
+    <DesignCanvas title="Moddable.Games — Hero Variations" defaultZoom={0.62}>
+      <DCSection id="heroes" title="Three hero directions">
+        <DCArtboard id="hero-a" label="A — Cosmic Horizon (recommended)" width={1280} height={820}>
+          <HeroA />
+        </DCArtboard>
+        <DCArtboard id="hero-b" label="B — Mark Anchor" width={1280} height={820}>
+          <HeroB />
+        </DCArtboard>
+        <DCArtboard id="hero-c" label="C — Tabletop Zine" width={1280} height={820}>
+          <HeroC />
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+
+</body>
+</html>

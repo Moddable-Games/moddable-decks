@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twilight Imperium tools — Moddable.Games</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="icon" type="image/png" href="../../assets/moddable-logo.png">
+<style>
+  html, body { margin: 0; padding: 0; background: #f5f4ef; }
+  body { font-family: var(--mg-font-body); color: var(--mg-ink); }
+  * { box-sizing: border-box; }
+  em { font-style: italic; }
+  button:focus-visible, a:focus-visible { outline: 2px solid #6fb5ff; outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="../../marketing/Buttons.jsx"></script>
+<script type="text/babel" src="../../marketing/NavBar.jsx"></script>
+<script type="text/babel" src="../../marketing/Footer.jsx"></script>
+
+<script type="text/babel">
+
+// =========================================================================
+// Twilight Imperium tools — faction picker, objective tracker, agenda voter.
+// Tuned for Hyper Imperium (TI4 + Prophecy of Kings + speed ruleset).
+// =========================================================================
+
+function ToolCard({ accent = "#0c4f8d", eyebrow, title, desc, children }) {
+  return (
+    <section style={{ background: "#fff", border: "1px solid #e6e3d8", borderRadius: 20, padding: 32, marginBottom: 24 }}>
+      <div style={{ display: "flex", alignItems: "flex-start", gap: 16, marginBottom: 22, paddingBottom: 22, borderBottom: "1px solid #e6e3d8" }}>
+        <div style={{ width: 6, height: 48, background: accent, borderRadius: 3, flex: "none" }} />
+        <div style={{ flex: 1 }}>
+          <div style={{ fontFamily: "var(--mg-font-pixel)", fontSize: 9, color: accent, letterSpacing: "1.5px", marginBottom: 6 }}>{eyebrow}</div>
+          <h3 style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: 24, color: "#14161c", margin: 0, letterSpacing: "-0.3px" }}>{title}</h3>
+          <p style={{ fontFamily: "var(--mg-font-body)", fontSize: 14, color: "#4f5764", margin: "4px 0 0" }}>{desc}</p>
+        </div>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+// Faction picker — covers TI4 base + PoK factions (selection)
+const FACTIONS = [
+  { name: "Federation of Sol",      color: "#d8e600", flag: "FoS" },
+  { name: "Mentak Coalition",       color: "#e89a1a", flag: "MC"  },
+  { name: "Yin Brotherhood",        color: "#a4a4a4", flag: "YB"  },
+  { name: "Embers of Muaat",        color: "#d11a1a", flag: "EM"  },
+  { name: "Arborec",                color: "#3a9928", flag: "AR"  },
+  { name: "L1Z1X Mindnet",          color: "#0a0d2a", flag: "L1"  },
+  { name: "Winnu",                  color: "#c97afb", flag: "WN"  },
+  { name: "Naalu Collective",       color: "#3a7be8", flag: "NA"  },
+  { name: "Barony of Letnev",       color: "#5d2a8a", flag: "BL"  },
+  { name: "Xxcha Kingdom",          color: "#0c4f8d", flag: "XX"  },
+  { name: "Empyrean",               color: "#e63232", flag: "EP"  },
+  { name: "Argent Flight",          color: "#6fb5ff", flag: "AF"  },
+  { name: "Vuil'raith Cabal",       color: "#7a8290", flag: "VR"  },
+  { name: "Naaz-Rokha Alliance",    color: "#428619", flag: "NR"  },
+  { name: "Titans of Ul",           color: "#936d62", flag: "TU"  },
+];
+
+function FactionPicker() {
+  const [players, setPlayers] = React.useState(4);
+  const [picks, setPicks] = React.useState(3);
+  const [hand, setHand] = React.useState([]);
+
+  function draw() {
+    const shuffled = [...FACTIONS].sort(() => Math.random() - 0.5);
+    const out = [];
+    for (let p = 0; p < players; p++) {
+      out.push(shuffled.slice(p * picks, p * picks + picks));
+    }
+    setHand(out);
+  }
+  React.useEffect(draw, []);
+
+  return (
+    <ToolCard accent="#0c4f8d" eyebrow="▲ HYPER IMPERIUM" title="Faction picker" desc="Deal each player a hand of factions. They pick one — banker's-draft style.">
+      <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 20, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <span style={{ fontFamily: "var(--mg-font-mono)", fontSize: 12, color: "#7a8290", textTransform: "uppercase", letterSpacing: "0.5px" }}>Players:</span>
+          {[3,4,5,6].map(n => (
+            <button key={n} onClick={() => setPlayers(n)} style={{
+              width: 36, height: 36, borderRadius: 9999, cursor: "pointer",
+              background: players === n ? "#14161c" : "#f5f4ef",
+              color: players === n ? "#fff" : "#14161c",
+              border: `1px solid ${players === n ? "#14161c" : "#e6e3d8"}`,
+              fontFamily: "var(--mg-font-mono)", fontWeight: 600, fontSize: 13,
+            }}>{n}</button>
+          ))}
+        </div>
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <span style={{ fontFamily: "var(--mg-font-mono)", fontSize: 12, color: "#7a8290", textTransform: "uppercase", letterSpacing: "0.5px" }}>Per hand:</span>
+          {[2,3,4].map(n => (
+            <button key={n} onClick={() => setPicks(n)} style={{
+              width: 36, height: 36, borderRadius: 9999, cursor: "pointer",
+              background: picks === n ? "#14161c" : "#f5f4ef",
+              color: picks === n ? "#fff" : "#14161c",
+              border: `1px solid ${picks === n ? "#14161c" : "#e6e3d8"}`,
+              fontFamily: "var(--mg-font-mono)", fontWeight: 600, fontSize: 13,
+            }}>{n}</button>
+          ))}
+        </div>
+        <Btn variant="dark" onClick={draw} style={{ marginLeft: "auto" }}>
+          <img src="../../../assets/icons/roll.svg" width="16" height="16" alt="" style={{ filter: "invert(1)" }} />
+          Deal
+        </Btn>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        {hand.map((row, p) => (
+          <div key={p} style={{ background: "#f5f4ef", borderRadius: 12, padding: 14 }}>
+            <div style={{ fontFamily: "var(--mg-font-pixel)", fontSize: 9, color: "#0c4f8d", letterSpacing: "1.5px", marginBottom: 10 }}>▲ PLAYER {p+1}</div>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              {row.map((f, i) => (
+                <div key={i} style={{
+                  flex: "1 1 0",
+                  minWidth: 120,
+                  padding: "12px 14px",
+                  background: "#fff",
+                  border: `2px solid ${f.color}`,
+                  borderRadius: 10,
+                  display: "flex", alignItems: "center", gap: 10,
+                }}>
+                  <div style={{ width: 26, height: 26, background: f.color, borderRadius: 6, color: f.name === "L1Z1X Mindnet" ? "#fff" : "#000", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--mg-font-pixel)", fontSize: 8, flex: "none" }}>{f.flag}</div>
+                  <div style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: 13, color: "#14161c", lineHeight: 1.2 }}>{f.name}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </ToolCard>
+  );
+}
+
+// Objective tracker — stage I/II + secret
+function ObjectiveTracker() {
+  const [stageI, setStageI]   = React.useState([true, true, false, false, false]);
+  const [stageII, setStageII] = React.useState([false, false, false, false, false]);
+
+  function toggle(idx, isII) {
+    if (isII) setStageII(s => s.map((v, i) => i === idx ? !v : v));
+    else      setStageI(s  => s.map((v, i) => i === idx ? !v : v));
+  }
+  const revealed = stageI.filter(Boolean).length + stageII.filter(Boolean).length;
+
+  return (
+    <ToolCard accent="#3a9928" eyebrow="▲ HYPER IMPERIUM" title="Objective tracker" desc="Mark which Stage I and Stage II public objectives have been revealed. Speedup-friendly.">
+      <div style={{ marginBottom: 16, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ fontFamily: "var(--mg-font-mono)", fontSize: 13, color: "#4f5764" }}>{revealed} of 10 revealed</div>
+        <button onClick={() => { setStageI([false,false,false,false,false]); setStageII([false,false,false,false,false]); }} style={{
+          fontFamily: "var(--mg-font-body)", fontSize: 13, fontWeight: 600,
+          padding: "8px 14px", border: "1px solid #c3c5cc", background: "#fff",
+          borderRadius: 9999, cursor: "pointer", color: "#14161c",
+        }}>Reset</button>
+      </div>
+      {[
+        { label: "Stage I", color: "#3a9928", row: stageI, isII: false },
+        { label: "Stage II", color: "#d11a1a", row: stageII, isII: true  },
+      ].map(s => (
+        <div key={s.label} style={{ marginBottom: 12 }}>
+          <div style={{ fontFamily: "var(--mg-font-pixel)", fontSize: 9, color: s.color, letterSpacing: "1.5px", marginBottom: 8 }}>▲ {s.label.toUpperCase()}</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 8 }}>
+            {s.row.map((on, i) => (
+              <button key={i} onClick={() => toggle(i, s.isII)} style={{
+                height: 64, borderRadius: 12,
+                background: on ? s.color : "#f5f4ef",
+                color: on ? "#fff" : "#7a8290",
+                border: `2px solid ${on ? s.color : "#e6e3d8"}`,
+                cursor: "pointer", padding: 0,
+                display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4,
+              }}>
+                <span style={{ fontFamily: "var(--mg-font-mono)", fontSize: 11, opacity: 0.8 }}>obj {i+1}</span>
+                <span style={{ fontFamily: "var(--mg-font-pixel)", fontSize: 12 }}>{on ? "✓" : "—"}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
+    </ToolCard>
+  );
+}
+
+// Agenda voter
+function AgendaVoter() {
+  const [votes, setVotes] = React.useState({
+    "FoS": { for: 0, against: 0 },
+    "MC":  { for: 0, against: 0 },
+    "EM":  { for: 0, against: 0 },
+    "L1":  { for: 0, against: 0 },
+  });
+  function adjust(p, side, delta) {
+    setVotes(v => ({
+      ...v,
+      [p]: { ...v[p], [side]: Math.max(0, v[p][side] + delta) },
+    }));
+  }
+  const tally = Object.values(votes).reduce((a, v) => ({ for: a.for + v.for, against: a.against + v.against }), { for: 0, against: 0 });
+
+  return (
+    <ToolCard accent="#d11a1a" eyebrow="▲ HYPER IMPERIUM" title="Agenda voter" desc="Tally trade-good and influence votes through an agenda phase. The speaker can veto one deal per round.">
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        {Object.entries(votes).map(([p, v]) => (
+          <div key={p} style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 12, padding: "10px 14px", background: "#f5f4ef", borderRadius: 10, alignItems: "center" }}>
+            <div style={{ fontFamily: "var(--mg-font-pixel)", fontSize: 10, color: "#14161c", width: 36 }}>{p}</div>
+            <div style={{ display: "flex", gap: 12, justifyContent: "space-between" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                <button onClick={() => adjust(p, "for", -1)}  style={{ width: 28, height: 28, borderRadius: 9999, border: "1px solid #c3c5cc", background: "#fff", cursor: "pointer", padding: 0 }}>−</button>
+                <span style={{ fontFamily: "var(--mg-font-mono)", fontWeight: 600, fontSize: 16, color: "#3a9928", width: 24, textAlign: "center" }}>{v.for}</span>
+                <button onClick={() => adjust(p, "for",  1)}  style={{ width: 28, height: 28, borderRadius: 9999, border: "1px solid #c3c5cc", background: "#fff", cursor: "pointer", padding: 0 }}>+</button>
+                <span style={{ fontFamily: "var(--mg-font-mono)", fontSize: 10, color: "#7a8290", marginLeft: 4 }}>FOR</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                <span style={{ fontFamily: "var(--mg-font-mono)", fontSize: 10, color: "#7a8290", marginRight: 4 }}>AGAINST</span>
+                <button onClick={() => adjust(p, "against", -1)} style={{ width: 28, height: 28, borderRadius: 9999, border: "1px solid #c3c5cc", background: "#fff", cursor: "pointer", padding: 0 }}>−</button>
+                <span style={{ fontFamily: "var(--mg-font-mono)", fontWeight: 600, fontSize: 16, color: "#d11a1a", width: 24, textAlign: "center" }}>{v.against}</span>
+                <button onClick={() => adjust(p, "against",  1)} style={{ width: 28, height: 28, borderRadius: 9999, border: "1px solid #c3c5cc", background: "#fff", cursor: "pointer", padding: 0 }}>+</button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{ marginTop: 18, padding: 18, background: "#000", color: "#fff", borderRadius: 12, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+        <div style={{ textAlign: "center" }}>
+          <div style={{ fontFamily: "var(--mg-font-mono)", fontSize: 10, opacity: 0.6, letterSpacing: "1px", textTransform: "uppercase" }}>For</div>
+          <div style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: 40, lineHeight: 1, color: "#4eb735" }}>{tally.for}</div>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <div style={{ fontFamily: "var(--mg-font-mono)", fontSize: 10, opacity: 0.6, letterSpacing: "1px", textTransform: "uppercase" }}>Against</div>
+          <div style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: 40, lineHeight: 1, color: "#e63232" }}>{tally.against}</div>
+        </div>
+      </div>
+    </ToolCard>
+  );
+}
+
+function App() {
+  return (
+    <div data-screen-label="Twilight Imperium Tools">
+      <NavBar />
+      <section style={{ background: "#000", color: "#fff", padding: "56px 32px 80px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", right: -100, top: "20%", width: 600, height: 600, background: "radial-gradient(circle, rgba(58,123,232,0.32) 0%, transparent 65%)", pointerEvents: "none" }} />
+        <div style={{ maxWidth: 960, margin: "0 auto", position: "relative" }}>
+          <a href="../index.html" style={{ fontFamily: "var(--mg-font-mono)", fontSize: 12, color: "rgba(255,255,255,0.7)", textDecoration: "none" }}>← All tools</a>
+          <div style={{ fontFamily: "var(--mg-font-pixel)", fontSize: 10, color: "#6fb5ff", letterSpacing: "1.5px", marginTop: 22, marginBottom: 16, textShadow: "0 0 14px rgba(111,181,255,0.6)" }}>▲ TWILIGHT IMPERIUM TOOLS</div>
+          <h1 style={{ fontFamily: "var(--mg-font-display)", fontWeight: 600, fontSize: "clamp(48px, 6vw, 84px)", lineHeight: 1.0, letterSpacing: "-0.025em", margin: 0 }}>
+            <em style={{ color: "#6fb5ff" }}>Hyper</em> tools for hyper games.
+          </h1>
+          <p style={{ fontFamily: "var(--mg-font-body)", fontSize: 17, color: "rgba(255,255,255,0.78)", margin: "18px 0 0", maxWidth: 580, lineHeight: 1.55 }}>
+            Faction draft, public-objective tracker, agenda voter. Built for TI4 + Prophecy of Kings + Hyper Imperium ruleset.
+          </p>
+        </div>
+      </section>
+      <section style={{ background: "#f5f4ef", padding: "56px 32px 96px" }}>
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
+          <FactionPicker />
+          <ObjectiveTracker />
+          <AgendaVoter />
+        </div>
+      </section>
+      <Footer />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+
+</body>
+</html>
