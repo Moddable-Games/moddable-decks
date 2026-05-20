@@ -14,25 +14,13 @@
       var stage = document.querySelector('deck-stage');
       if (stage) stage.style.display = 'none';
       if (window.location.hash) history.replaceState(null, '', window.location.pathname);
-
-      var splash = document.createElement('div');
-      splash.innerHTML = ''
-        + '<div style="position:fixed;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--mg-font-body);color:#fff;z-index:9999;">'
-        + '  <img src="assets/moddable-logo-white.png" alt="Moddable.Games" style="height:48px;margin-bottom:48px;opacity:0.9;"/>'
-        + '  <h1 style="font-family:var(--mg-font-display);font-size:64px;font-weight:600;letter-spacing:-1.5px;margin:0;text-align:center;line-height:1.1;">Making games<br/>you already own.</h1>'
-        + '  <p style="font-size:22px;color:rgba(255,255,255,0.6);margin-top:24px;text-align:center;max-width:600px;">Moddable.Games is a tabletop ecosystem — open-source rulebooks, a hex-grid online engine, and a marketplace for modders.</p>'
-        + '  <div style="margin-top:56px;display:flex;gap:16px;">'
-        + '    <a href="https://moddable.games" style="display:inline-flex;align-items:center;height:56px;padding:0 32px;border-radius:9999px;background:var(--mg-blue);color:#fff;font-size:18px;font-weight:600;text-decoration:none;">Visit moddable.games</a>'
-        + '    <a href="https://nukes.moddable.games" style="display:inline-flex;align-items:center;height:56px;padding:0 32px;border-radius:9999px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);color:#fff;font-size:18px;text-decoration:none;">Play Nukes</a>'
-        + '  </div>'
-        + '  <p style="margin-top:80px;font-family:var(--mg-font-mono);font-size:12px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;">MODDABLE.GAMES IS FAN-MADE AND NOT AFFILIATED WITH ANY RIGHTS-HOLDER</p>'
-        + '</div>';
-      document.body.appendChild(splash);
+      var splash = document.getElementById('splash');
+      if (splash) splash.removeAttribute('hidden');
     });
     return;
   }
 
-  // Clamp hash to visible slide count — defer until after filtering
+  // Clamp hash to visible slide count
   var _clampHash = true;
 
   // SYNCHRONOUS — runs before deck-stage.js registers the custom element
@@ -46,7 +34,7 @@
     });
   }
 
-  // Deferred UI updates (need DOM fully ready)
+  // Deferred UI updates
   document.addEventListener('DOMContentLoaded', function () {
     // Update title slide eyebrow
     var titleEyebrow = document.querySelector('section[data-screen-label="01 Title"] .eyebrow');
@@ -54,12 +42,11 @@
       titleEyebrow.innerHTML = '<span class="arrow">▲</span> MODDABLE.GAMES · ' + DECKS[activeDeck].label.toUpperCase() + ' · 2026';
     }
 
-    // Badge (not for internal — internal gets per-slide pills instead)
-    var badge = null;
+    // Badge (not for internal)
     if (activeDeck !== 'internal') {
-      badge = document.createElement('div');
+      var badge = document.createElement('div');
+      badge.className = 'deck-badge deck-badge-' + activeDeck;
       badge.textContent = DECKS[activeDeck].label;
-      badge.style.cssText = 'position:fixed;top:12px;right:12px;z-index:9999;padding:6px 16px;border-radius:9999px;font-family:var(--mg-font-mono);font-size:12px;letter-spacing:0.1em;color:#fff;background:' + DECKS[activeDeck].color + ';opacity:0.85;pointer-events:none;';
       document.body.appendChild(badge);
     }
 
@@ -79,14 +66,30 @@
       }
     });
 
-    // Patch shadow DOM: hide skipped thumbs + fix total counter
+    // Per-slide deck-membership pills (internal only)
+    if (activeDeck === 'internal') {
+      document.querySelectorAll('deck-stage section[data-decks]').forEach(function (slide) {
+        var tags = slide.getAttribute('data-decks').split(' ');
+        var container = document.createElement('div');
+        container.className = 'deck-pills';
+        tags.forEach(function (tag) {
+          if (tag === 'internal') return;
+          var pill = document.createElement('span');
+          pill.className = 'deck-pill deck-pill-' + tag;
+          pill.textContent = tag.charAt(0).toUpperCase() + tag.slice(1);
+          container.appendChild(pill);
+        });
+        slide.appendChild(container);
+      });
+    }
+
+    // Hide skipped thumbnails in shadow DOM
     function patchShadowDOM() {
       var stage = document.querySelector('deck-stage');
       if (stage && stage.shadowRoot) {
         var s = document.createElement('style');
         s.textContent = '.thumb[data-skip] { display: none !important; }';
         stage.shadowRoot.appendChild(s);
-
         var totalEl = stage.shadowRoot.querySelector('.total');
         if (totalEl) totalEl.textContent = String(visibleCount);
       } else {
@@ -94,25 +97,6 @@
       }
     }
     setTimeout(patchShadowDOM, 100);
-
-    // Per-slide deck membership pills (internal only)
-    if (activeDeck === 'internal') {
-      var TAG_COLORS = { opportunities: '#d11a1a', crowdfunding: '#3a9928' };
-      document.querySelectorAll('deck-stage section[data-decks]').forEach(function (slide) {
-        var tags = slide.getAttribute('data-decks').split(' ');
-        var container = document.createElement('div');
-        container.style.cssText = 'position:absolute;top:12px;right:12px;z-index:10;display:flex;gap:6px;';
-        tags.forEach(function (tag) {
-          if (tag === 'internal') return;
-          if (!TAG_COLORS[tag]) return;
-          var pill = document.createElement('span');
-          pill.textContent = tag.charAt(0).toUpperCase() + tag.slice(1);
-          pill.style.cssText = 'display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:9999px;font-family:var(--mg-font-mono);font-size:12px;letter-spacing:0.1em;color:#fff;background:' + TAG_COLORS[tag] + ';opacity:0.85;pointer-events:none;';
-          container.appendChild(pill);
-        });
-        slide.appendChild(container);
-      });
-    }
 
     // Clamp hash if it exceeds visible slide count
     if (_clampHash && window.location.hash) {

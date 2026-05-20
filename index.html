@@ -6,8 +6,20 @@
 <title>Moddable.Games — Master Plan</title>
 <link rel="stylesheet" href="css/colors_and_type.css">
 <link rel="icon" type="image/png" href="assets/moddable-logo.png">
-<link rel="stylesheet" href="css/deck.css"></head>
+<link rel="stylesheet" href="css/deck.css">
+</head>
 <body>
+
+<div id="splash" class="splash" hidden>
+  <img src="assets/moddable-logo-white.png" alt="Moddable.Games" class="splash-logo"/>
+  <h1 class="splash-title">Making games<br/>you already own.</h1>
+  <p class="splash-lede">Moddable.Games is a tabletop ecosystem — open-source rulebooks, a hex-grid online engine, and a marketplace for modders.</p>
+  <div class="splash-actions">
+    <a href="https://moddable.games" class="splash-btn splash-btn-primary">Visit moddable.games</a>
+    <a href="https://nukes.moddable.games" class="splash-btn splash-btn-secondary">Play Nukes</a>
+  </div>
+  <p class="splash-disclaimer">MODDABLE.GAMES IS FAN-MADE AND NOT AFFILIATED WITH ANY RIGHTS-HOLDER</p>
+</div>
 
 <template id="__bundler_thumbnail" data-bg-color="#0a0d2a">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
@@ -36,18 +48,18 @@
        ============================================================ -->
   <section class="slide cosmic" data-screen-label="01 Title" data-decks="opportunities internal crowdfunding">
     <div class="hex-bg"></div>
-    <div class="pad x32">
-      <div class="eyebrow x238">
+    <div class="pad is-32">
+      <div class="eyebrow is-238">
         <span class="arrow">▲</span> MODDABLE.GAMES · MASTER PLAN · 2026
       </div>
-      <h1 class="display x237">
+      <h1 class="display is-237">
         Making games<br/>you already own.
       </h1>
-      <p class="lede x236">
+      <p class="lede is-236">
         A plan for the tabletop ecosystem we're building — open-source rulebooks,
         a hex-grid online engine, and a marketplace for the modders who'll fill it.
       </p>
-      <div class="x235">
+      <div class="pills-row-top">
         <span class="pill live"><span class="dot"></span>Open alpha&nbsp;·&nbsp;nukes.moddable.games</span>
         <span class="pill">team@moddable.games</span>
       </div>
@@ -69,14 +81,14 @@
         <span class="pagenum">02 / 20</span>
       </div>
 
-      <h1 class="title x131">
+      <h1 class="title max-w-1500">
         Publish moddable tabletop games — and turn <em class="hl-cosmic">players, artists
         and designers</em> into co-creators.
       </h1>
 
-      <div class="x234">
+      <div class="split-wide">
         <div>
-          <h3 class="sub x233">An open-source ethos.</h3>
+          <h3 class="sub mb-24">An open-source ethos.</h3>
           <p class="body-lg">
             Every rulebook is forkable. Every component is replaceable. Every variant
             is a pull request waiting to happen. Modders aren't a side channel —
@@ -84,7 +96,7 @@
           </p>
         </div>
         <div>
-          <h3 class="sub x233">Why we're called <em>Moddable</em>.</h3>
+          <h3 class="sub mb-24">Why we're called <em>Moddable</em>.</h3>
           <p class="body-lg">
             Not a publisher. Not a platform. A toolkit — a hex-grid engine,
             a print-on-demand pipeline, and a marketplace — that turns the boards
@@ -110,45 +122,45 @@
         <span class="pagenum">03 / 20</span>
       </div>
 
-      <div class="x232">
+      <div class="split-left-narrow-232">
 
         <!-- LEFT: hero pitch -->
         <div>
-          <div class="x231">
-            <span class="x230">☢</span>
-            <span class="pixel x229">NUKES</span>
+          <div class="flex-row-231">
+            <span class="is-230">☢</span>
+            <span class="pixel is-229">NUKES</span>
           </div>
 
-          <h2 class="heading x228">
+          <h2 class="heading is-228">
             Territory. Attrition.<br/><em class="hl-rose">Nuclear brinkmanship.</em>
           </h2>
 
-          <p class="body-lg x227">
+          <p class="body-lg is-227">
             A hex-tile board game where every token is a unit, a hostage,
             and a countdown timer — all at once. Plays on a board you
             already own.
           </p>
 
           <!-- stats row -->
-          <div class="x226">
-            <div class="pill x225">
-              <span class="mono x224">PLAYERS</span>
-              <span class="mono x223">2–3</span>
+          <div class="flex-wrap-226">
+            <div class="pill is-225">
+              <span class="mono is-224">PLAYERS</span>
+              <span class="mono is-223">2–3</span>
             </div>
-            <div class="pill x225">
-              <span class="mono x224">TIME</span>
-              <span class="mono x223">45+ MIN</span>
+            <div class="pill is-225">
+              <span class="mono is-224">TIME</span>
+              <span class="mono is-223">45+ MIN</span>
             </div>
-            <div class="pill x225">
-              <span class="mono x224">AGE</span>
-              <span class="mono x223">12+</span>
+            <div class="pill is-225">
+              <span class="mono is-224">AGE</span>
+              <span class="mono is-223">12+</span>
             </div>
           </div>
 
           <!-- installed-base callout -->
-          <div class="x222">
-            <div class="mono x221">▲ THE INSTALLED-BASE PLAY</div>
-            <p class="body x220">
+          <div class="is-222">
+            <div class="mono is-221">▲ THE INSTALLED-BASE PLAY</div>
+            <p class="body is-220">
               Catan's hex tiles are a Nukes board out of the box. <em class="hl-amber">45 million homes</em> are already set up.
             </p>
           </div>
@@ -160,21 +172,21 @@
             <div class="ui-chrome">
               <div class="ui-dots"><span></span><span></span><span></span></div>
               <div class="ui-url">moddable.games/tool/nukes</div>
-              <div class="ui-badge x219">● ALPHA · v0.9.2</div>
+              <div class="ui-badge is-219">● ALPHA · v0.9.2</div>
             </div>
-            <div class="x218">
-              <img src="assets/nukes-online-cropped.png" alt="Nukes Online — live hex-board prototype" class="x48"/>
+            <div class="is-218">
+              <img src="assets/nukes-online-cropped.png" alt="Nukes Online — live hex-board prototype" class="is-48"/>
             </div>
           </div>
 
           <!-- mechanic chip row -->
-          <div class="x14">
-            <div class="mono x217">CORE MECHANIC · TOKEN COUNT = UNIT TYPE</div>
-            <div class="x95">
-              <span class="chip x216"><span class="x215">1</span> Infantry</span>
-              <span class="chip x216"><span class="x215">2</span> Artillery</span>
-              <span class="chip x216"><span class="x215">3</span> Airborne</span>
-              <span class="chip x214"><span class="x213">4+</span> Base ☢</span>
+          <div class="mt-16">
+            <div class="mono is-217">CORE MECHANIC · TOKEN COUNT = UNIT TYPE</div>
+            <div class="flex-wrap">
+              <span class="chip is-216"><span class="is-215">1</span> Infantry</span>
+              <span class="chip is-216"><span class="is-215">2</span> Artillery</span>
+              <span class="chip is-216"><span class="is-215">3</span> Airborne</span>
+              <span class="chip is-214"><span class="is-213">4+</span> Base ☢</span>
             </div>
           </div>
         </div>
@@ -196,28 +208,28 @@
         <span class="pagenum">04 / 20</span>
       </div>
 
-      <div class="x212">
+      <div class="grid-2col-212">
         <div>
-          <h1 class="title x116">
+          <h1 class="title fs-104">
             Replacing<br/>squares with<br/><em class="hl-blue">hexagons.</em>
           </h1>
-          <p class="lede x201">
+          <p class="lede mt-40">
             Six neighbours instead of four. No diagonal exceptions. No edge-case
             rules. The math of strategy gets cleaner the moment the grid does.
           </p>
-          <div class="x211">
+          <div class="flex-row-gap-12">
             <span class="chip blue">6 adjacencies</span>
-            <span class="chip x73">0 diagonals</span>
-            <span class="chip x73">∞ variants</span>
+            <span class="chip is-73">0 diagonals</span>
+            <span class="chip is-73">∞ variants</span>
           </div>
         </div>
 
         <!-- Visual: squares vs hexes -->
-        <div class="x210">
-          <div class="x209">
+        <div class="is-210">
+          <div class="grid-2col-209">
             <!-- Square grid -->
             <div>
-              <div class="mono x208">SQUARES · 4 NEIGHBOURS</div>
+              <div class="mono is-208">SQUARES · 4 NEIGHBOURS</div>
               <svg viewBox="0 0 280 280" style="width: 100%; height: auto; display: block;">
                 <g fill="none" stroke="#7a8290" stroke-width="1.4">
                   <!-- 5x5 grid -->
@@ -253,7 +265,7 @@
             </div>
             <!-- Hex grid -->
             <div>
-              <div class="mono x207">HEXAGONS · 6 NEIGHBOURS</div>
+              <div class="mono is-207">HEXAGONS · 6 NEIGHBOURS</div>
               <svg viewBox="0 0 280 280" style="width: 100%; height: auto; display: block;">
                 <defs>
                   <g id="hexS">
@@ -304,7 +316,7 @@
               </svg>
             </div>
           </div>
-          <p class="body x206">
+          <p class="body is-206">
             <em>Why now:</em> we're building our own online engine for hosting hex-based
             games, so any tabletop designer can ship a hex variant without rolling
             their own infrastructure.
@@ -313,7 +325,7 @@
       </div>
     </div>
     <div class="footer">
-      <span class="brand-mark x1"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
       <span>04 / 20</span>
     </div>
   </section>
@@ -329,16 +341,16 @@
         <span class="pagenum">05 / 20</span>
       </div>
 
-      <div class="x182">
-        <h1 class="title x205">
+      <div class="flex-col-center">
+        <h1 class="title is-205">
           Play anywhere.<br/>Continue <em class="hl-amber">everywhere</em>.
         </h1>
-        <p class="lede x204">
+        <p class="lede is-204">
           Create private sessions. Hand off mid-game between phone, tablet and
           laptop. Pause a session in May, finish it in October. The board waits.
         </p>
 
-        <div class="x203">
+        <div class="flex-wrap-203">
           <span class="pill live"><span class="dot"></span>Open alpha&nbsp;·&nbsp;<span class="mono">nukes.moddable.games</span></span>
           <span class="pill"><span class="mono">private sessions · cross-device · async</span></span>
         </div>
@@ -360,50 +372,50 @@
         <span class="pagenum">06 / 20</span>
       </div>
 
-      <div class="x202">
+      <div class="split-right-narrow">
         <div>
           <h1 class="title">
             Play with<br/>friends — or<br/><em class="hl-blue">instructive bots.</em>
           </h1>
-          <p class="lede x201">
+          <p class="lede mt-40">
             Every game played online — human-vs-human or human-vs-bot —
             improves the next bot you'll face. The engine is a teaching engine
             first, an opponent second.
           </p>
         </div>
 
-        <div class="x200">
-          <div class="card x198">
-            <div class="stat-num x199">3</div>
+        <div class="flex-col-gap-24-200">
+          <div class="card flex-row-gap-32-198">
+            <div class="stat-num is-199">3</div>
             <div>
-              <div class="mono x12">DIFFICULTY TIERS</div>
-              <div class="sub x196">Apprentice · Tactician · Grandmaster</div>
-              <p class="body x195">Each tier annotates its moves — learn by watching the AI think.</p>
+              <div class="mono is-12">DIFFICULTY TIERS</div>
+              <div class="sub is-196">Apprentice · Tactician · Grandmaster</div>
+              <p class="body is-195">Each tier annotates its moves — learn by watching the AI think.</p>
             </div>
           </div>
 
-          <div class="card x198">
-            <div class="stat-num x197">∞</div>
+          <div class="card flex-row-gap-32-198">
+            <div class="stat-num is-197">∞</div>
             <div>
-              <div class="mono x12">TRAINING DATA</div>
-              <div class="sub x196">Every match feeds the next bot.</div>
-              <p class="body x195">Anonymised game logs, opt-out by default for private sessions.</p>
+              <div class="mono is-12">TRAINING DATA</div>
+              <div class="sub is-196">Every match feeds the next bot.</div>
+              <p class="body is-195">Anonymised game logs, opt-out by default for private sessions.</p>
             </div>
           </div>
 
-          <div class="card x194">
-            <div class="stat-num x193">∅</div>
+          <div class="card flex-row-gap-32">
+            <div class="stat-num is-193">∅</div>
             <div>
-              <div class="mono x36">LATENCY MODE</div>
-              <div class="sub x192">Async-by-default.</div>
-              <p class="body x191">No live-server requirement. Notify on opponent's move.</p>
+              <div class="mono is-36">LATENCY MODE</div>
+              <div class="sub is-192">Async-by-default.</div>
+              <p class="body is-191">No live-server requirement. Notify on opponent's move.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="footer">
-      <span class="brand-mark x1"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
       <span>06 / 20</span>
     </div>
   </section>
@@ -418,77 +430,77 @@
         <span class="pagenum">07 / 20</span>
       </div>
 
-      <div class="x45">
-        <h1 class="title x7">
+      <div class="grid-title-aside">
+        <h1 class="title fs-88">
           More original games<br/>on the table.
         </h1>
-        <p class="body-lg x52">
+        <p class="body-lg is-52">
           All three share the same modular hex board and the same online engine —
           every shipped game makes the next one cheaper.
         </p>
       </div>
 
-      <div class="x190">
+      <div class="grid-2col-190">
         <!-- Nukes -->
-        <div class="card x5">
+        <div class="card flex-col">
           <div class="stripe red"></div>
-          <div class="pixel x189">NUKES</div>
-          <div class="mono x186">DETERMINISTIC · 2P · 30 MIN</div>
-          <p class="body x185">
+          <div class="pixel is-189">NUKES</div>
+          <div class="mono is-186">DETERMINISTIC · 2P · 30 MIN</div>
+          <p class="body is-185">
             Wartime token strategy on a modular hex board.
             Chess × Checkers × Go on Catan hexes you already own.
           </p>
-          <div class="x8">
-            <div class="x122">
-              <span class="mono x184">PROGRESS</span>
-              <span class="mono x128">95%</span>
+          <div class="mt-24">
+            <div class="flex-between-122">
+              <span class="mono is-184">PROGRESS</span>
+              <span class="mono is-128">95%</span>
             </div>
-            <div class="progress red"><span class="x127"></span></div>
-            <div class="mono x183">OPEN ALPHA · LIVE</div>
+            <div class="progress red"><span class="w-95"></span></div>
+            <div class="mono is-183">OPEN ALPHA · LIVE</div>
           </div>
         </div>
 
         <!-- Mongo -->
-        <div class="card x5">
+        <div class="card flex-col">
           <div class="stripe"></div>
-          <div class="pixel x188">MONGO</div>
-          <div class="mono x186">CONQUEST · 3–6P · 90 MIN</div>
-          <p class="body x185">
+          <div class="pixel is-188">MONGO</div>
+          <div class="mono is-186">CONQUEST · 3–6P · 90 MIN</div>
+          <p class="body is-185">
             Global conquest in the <em>Flash Gordon</em> universe — Risk × Catan
             in a public-domain setting we don't have to license.
           </p>
-          <div class="x8">
-            <div class="x122">
-              <span class="mono x184">PROGRESS</span>
-              <span class="mono x126">50%</span>
+          <div class="mt-24">
+            <div class="flex-between-122">
+              <span class="mono is-184">PROGRESS</span>
+              <span class="mono is-126">50%</span>
             </div>
-            <div class="progress blue"><span class="x125"></span></div>
-            <div class="mono x183">PLAYTEST · Q3 2026</div>
+            <div class="progress blue"><span class="w-50"></span></div>
+            <div class="mono is-183">PLAYTEST · Q3 2026</div>
           </div>
         </div>
 
         <!-- Endless Skies -->
-        <div class="card x5">
+        <div class="card flex-col">
           <div class="stripe green"></div>
-          <div class="pixel x187">ENDLESS<br/>SKIES</div>
-          <div class="mono x186">EXPLORATION · 1–4P · 60 MIN</div>
-          <p class="body x185">
+          <div class="pixel is-187">ENDLESS<br/>SKIES</div>
+          <div class="mono is-186">EXPLORATION · 1–4P · 60 MIN</div>
+          <p class="body is-185">
             Worker-placement exploration, trading and combat —
             based on the popular open-source video game of the same name.
           </p>
-          <div class="x8">
-            <div class="x122">
-              <span class="mono x184">PROGRESS</span>
-              <span class="mono x120">25%</span>
+          <div class="mt-24">
+            <div class="flex-between-122">
+              <span class="mono is-184">PROGRESS</span>
+              <span class="mono is-120">25%</span>
             </div>
-            <div class="progress green"><span class="x119"></span></div>
-            <div class="mono x183">DESIGN · Q1 2027</div>
+            <div class="progress green"><span class="w-25"></span></div>
+            <div class="mono is-183">DESIGN · Q1 2027</div>
           </div>
         </div>
       </div>
     </div>
     <div class="footer">
-      <span class="brand-mark x1"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
       <span>07 / 20</span>
     </div>
   </section>
@@ -504,27 +516,27 @@
         <span class="pagenum">08 / 20</span>
       </div>
 
-      <div class="x182">
-        <h1 class="display x181">
+      <div class="flex-col-center">
+        <h1 class="display is-181">
           Become the<br/>ecosystem tabletop<br/>is still <em class="hl-amber">missing</em>.
         </h1>
-        <p class="lede x180">
+        <p class="lede is-180">
           A place where physical and online play converge under community ownership —
           and an online engine and marketplace where anyone can monetise their creations.
         </p>
 
-        <div class="x179">
-          <div class="card x178">
-            <div class="mono x9">01 · ENGINE</div>
-            <div class="sub x177">Host any hex-based game online.</div>
+        <div class="grid-3col-179">
+          <div class="card card-glass">
+            <div class="mono is-9">01 · ENGINE</div>
+            <div class="sub is-177">Host any hex-based game online.</div>
           </div>
-          <div class="card x178">
-            <div class="mono x9">02 · MARKETPLACE</div>
-            <div class="sub x177">Designers sell mods, art and expansions.</div>
+          <div class="card card-glass">
+            <div class="mono is-9">02 · MARKETPLACE</div>
+            <div class="sub is-177">Designers sell mods, art and expansions.</div>
           </div>
-          <div class="card x178">
-            <div class="mono x9">03 · COMMUNITY</div>
-            <div class="sub x177">Modders own the catalogue.</div>
+          <div class="card card-glass">
+            <div class="mono is-9">03 · COMMUNITY</div>
+            <div class="sub is-177">Modders own the catalogue.</div>
           </div>
         </div>
       </div>
@@ -545,54 +557,54 @@
         <span class="pagenum">09 / 20</span>
       </div>
 
-      <h1 class="title x176">
+      <h1 class="title max-w-1400">
         Why now? The boards<br/>are already on the shelves.
       </h1>
 
-      <div class="x175">
+      <div class="grid-2col-175">
         <!-- Catan -->
-        <div class="x173">
-          <div class="stat-num x174">45M</div>
-          <div class="x168">
-            <div class="sub x167">Catan sets sold</div>
-            <p class="body x166">Every one of them a hex board for Nukes — no new components required.</p>
+        <div class="flex-row-173">
+          <div class="stat-num is-174">45M</div>
+          <div class="is-168">
+            <div class="sub fs-30">Catan sets sold</div>
+            <p class="body is-166">Every one of them a hex board for Nukes — no new components required.</p>
           </div>
         </div>
 
         <!-- Monopoly -->
-        <div class="x173">
-          <div class="stat-num x172">275M</div>
-          <div class="x168">
-            <div class="sub x167">Monopoly sets sold</div>
-            <p class="body x166">500M people have played. <em>Econopoly</em> ships a fairer rulebook.</p>
+        <div class="flex-row-173">
+          <div class="stat-num is-172">275M</div>
+          <div class="is-168">
+            <div class="sub fs-30">Monopoly sets sold</div>
+            <p class="body is-166">500M people have played. <em>Econopoly</em> ships a fairer rulebook.</p>
           </div>
         </div>
 
         <!-- Chess -->
-        <div class="x170">
-          <div class="stat-num x171">$3B</div>
-          <div class="x168">
-            <div class="sub x167">Online chess by 2032</div>
-            <p class="body x166">Public-domain. Never been more popular. No moddable compendium yet.</p>
+        <div class="flex-row-170">
+          <div class="stat-num is-171">$3B</div>
+          <div class="is-168">
+            <div class="sub fs-30">Online chess by 2032</div>
+            <p class="body is-166">Public-domain. Never been more popular. No moddable compendium yet.</p>
           </div>
         </div>
 
         <!-- Checkers -->
-        <div class="x170">
-          <div class="stat-num x169">30B</div>
-          <div class="x168">
-            <div class="sub x167">Checker sets ever sold</div>
-            <p class="body x166">Since 1000 BCE. The oldest installed base on the planet.</p>
+        <div class="flex-row-170">
+          <div class="stat-num is-169">30B</div>
+          <div class="is-168">
+            <div class="sub fs-30">Checker sets ever sold</div>
+            <p class="body is-166">Since 1000 BCE. The oldest installed base on the planet.</p>
           </div>
         </div>
       </div>
 
-      <p class="mono x165">
+      <p class="mono is-165">
         Reference · Cyberpunk TCG Kickstarter — US$25M raised · ign.com/articles/cyberpunk-tcg-crowdfunding-record-25-million
       </p>
     </div>
     <div class="footer">
-      <span class="brand-mark x1"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
       <span>09 / 20</span>
     </div>
   </section>
@@ -607,59 +619,59 @@
         <span class="pagenum">10 / 20</span>
       </div>
 
-      <div class="x45">
-        <h1 class="title x7">
+      <div class="grid-title-aside">
+        <h1 class="title fs-88">
           How we make money<br/>without fearing the copycats.
         </h1>
-        <p class="body-lg x164">
+        <p class="body-lg is-164">
           Two tracks, run in parallel. One bootstraps slowly with revenue.
           The other unlocks with funding — and shortens the timeline.
         </p>
       </div>
 
-      <div class="x163">
+      <div class="grid-2col-163">
         <!-- Organic -->
-        <div class="card x162">
+        <div class="card flex-col-162">
           <div class="stripe green"></div>
-          <div class="x156">
-            <span class="mono x12">TRACK A</span>
-            <span class="chip green x161">Bootstrap · slow</span>
+          <div class="flex-between-156">
+            <span class="mono is-12">TRACK A</span>
+            <span class="chip green is-161">Bootstrap · slow</span>
           </div>
-          <h3 class="sub x160">Organic growth.</h3>
-          <p class="body x159">
+          <h3 class="sub fs-36">Organic growth.</h3>
+          <p class="body is-159">
             Revenue funds the next print run. No outside cheque required.
           </p>
-          <ul class="clean x152">
-            <li class="x151"><span class="num x150">01</span><span><em>Print-on-demand</em> for first runs — no inventory risk</span></li>
-            <li class="x151"><span class="num x150">02</span><span>Online store for <em>generic components</em> — hexes, tokens, dice</span></li>
-            <li class="x151"><span class="num x150">03</span><span>Branded merchandise and tabletop tools</span></li>
-            <li class="x151"><span class="num x150">04</span><span>Licensing agreements with adjacent IP holders</span></li>
-            <li class="x151"><span class="num x150">05</span><span>Original games commissioned for specific brands</span></li>
+          <ul class="clean fs-18">
+            <li class="is-151"><span class="num is-150">01</span><span><em>Print-on-demand</em> for first runs — no inventory risk</span></li>
+            <li class="is-151"><span class="num is-150">02</span><span>Online store for <em>generic components</em> — hexes, tokens, dice</span></li>
+            <li class="is-151"><span class="num is-150">03</span><span>Branded merchandise and tabletop tools</span></li>
+            <li class="is-151"><span class="num is-150">04</span><span>Licensing agreements with adjacent IP holders</span></li>
+            <li class="is-151"><span class="num is-150">05</span><span>Original games commissioned for specific brands</span></li>
           </ul>
         </div>
 
         <!-- Funded -->
-        <div class="card x158">
-          <div class="stripe x157"></div>
-          <div class="x156">
-            <span class="mono x36">TRACK B</span>
-            <span class="chip x155">Funded · fast</span>
+        <div class="card flex-col-158">
+          <div class="stripe is-157"></div>
+          <div class="flex-between-156">
+            <span class="mono is-36">TRACK B</span>
+            <span class="chip is-155">Funded · fast</span>
           </div>
-          <h3 class="sub x154">Engineered growth.</h3>
-          <p class="body x153">
+          <h3 class="sub is-154">Engineered growth.</h3>
+          <p class="body is-153">
             Outside capital builds the engine, the marketplace, and the team.
           </p>
-          <ul class="clean x152">
-            <li class="x151"><span class="num x150">01</span><span>Build the online engine for hex-based games <em>at scale</em></span></li>
-            <li class="x151"><span class="num x150">02</span><span>Self-publishing tools for designers — drag-and-drop rulebooks</span></li>
-            <li class="x151"><span class="num x150">03</span><span>Marketplace for games, expansions and printable components</span></li>
-            <li class="x151"><span class="num x150">04</span><span>Collect training data for stronger in-game bots</span></li>
+          <ul class="clean fs-18">
+            <li class="is-151"><span class="num is-150">01</span><span>Build the online engine for hex-based games <em>at scale</em></span></li>
+            <li class="is-151"><span class="num is-150">02</span><span>Self-publishing tools for designers — drag-and-drop rulebooks</span></li>
+            <li class="is-151"><span class="num is-150">03</span><span>Marketplace for games, expansions and printable components</span></li>
+            <li class="is-151"><span class="num is-150">04</span><span>Collect training data for stronger in-game bots</span></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer">
-      <span class="brand-mark x1"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
       <span>10 / 20</span>
     </div>
   </section>
@@ -675,36 +687,36 @@
         <span class="pagenum">11 / 20</span>
       </div>
 
-      <div class="x149">
+      <div class="split-engine">
 
         <!-- LEFT pitch -->
         <div>
           <h1 class="title">
             The engine doesn't<br/>stop at <em class="hl-amber">hexes</em>.
           </h1>
-          <p class="lede x17">
+          <p class="lede mt-32">
             Live in alpha today: a card deck tool and a modular chess board.
             Both running on the same backbone that powers Nukes — proof that one
             engine hosts wildly different tabletop families.
           </p>
 
           <!-- Traction callout -->
-          <div class="x148">
-            <div class="mono x147">▲ TRACTION · OPEN ALPHA</div>
-            <p class="body x146">
+          <div class="is-148">
+            <div class="mono is-147">▲ TRACTION · OPEN ALPHA</div>
+            <p class="body is-146">
               <em class="hl-amber">2,400+ sessions</em> played across both tools —
               entirely organic, zero ad spend.
             </p>
           </div>
 
-          <div class="x145">
-            <span class="pill x144"><span class="mono x143">moddable.games/tool/decks</span></span>
-            <span class="pill x144"><span class="mono x143">moddable.games/tool/chess</span></span>
+          <div class="flex-wrap-145">
+            <span class="pill is-144"><span class="mono fs-14">moddable.games/tool/decks</span></span>
+            <span class="pill is-144"><span class="mono fs-14">moddable.games/tool/chess</span></span>
           </div>
         </div>
 
         <!-- RIGHT: two UI mocks stacked -->
-        <div class="x142">
+        <div class="flex-col-gap-20">
 
           <!-- =================== DECKS MOCK =================== -->
           <div class="ui-mock">
@@ -713,9 +725,9 @@
               <div class="ui-url">moddable.games/tool/decks</div>
               <div class="ui-badge">● ALPHA</div>
             </div>
-            <div class="ui-body x141">
+            <div class="ui-body mock-layout-wide">
               <!-- Card stack visual -->
-              <div class="x140">
+              <div class="is-140">
                 <svg viewBox="0 0 220 150" style="width: 100%; height: 100%; display: block; overflow: visible;">
                   <!-- Back card 3 -->
                   <g transform="translate(78 38) rotate(-14 36 50)">
@@ -740,13 +752,13 @@
               </div>
               <!-- Right side -->
               <div>
-                <div class="x137">Tarot Hex deck</div>
-                <div class="mono x136">52 CARDS · v2.1 · OPEN SOURCE</div>
-                <div class="x135">
-                  <span class="mono x134">847</span>
-                  <span class="mono x133">SESSIONS / WK</span>
+                <div class="is-137">Tarot Hex deck</div>
+                <div class="mono is-136">52 CARDS · v2.1 · OPEN SOURCE</div>
+                <div class="flex-row-gap-6">
+                  <span class="mono is-134">847</span>
+                  <span class="mono is-133">SESSIONS / WK</span>
                 </div>
-                <div class="x139">
+                <div class="flex-row-gap-8">
                   <span class="ui-pill ui-pill-primary">Draw 1</span>
                   <span class="ui-pill">Shuffle</span>
                   <span class="ui-pill">Save</span>
@@ -762,7 +774,7 @@
               <div class="ui-url">moddable.games/tool/chess</div>
               <div class="ui-badge">● ALPHA</div>
             </div>
-            <div class="ui-body x138">
+            <div class="ui-body mock-layout">
               <!-- Mini chess board -->
               <svg viewBox="0 0 144 144" style="width: 100%; display: block; border-radius: 6px;">
                 <!-- 8x8 board, each cell 16x16, offset 8 -->
@@ -841,8 +853,8 @@
                   <rect x="120" y="120" width="16" height="16" fill="#f5f4ef"/>
                 </g>
                 <!-- Quadrant section dividers -->
-                <line x1="72" y1="8" x2="72" y2="136" stroke="#aed4ff" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.8"/>
-                <line x1="8" y1="72" x2="136" y2="72" stroke="#aed4ff" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.8"/>
+                <line c-blue="72" y1="8" is-2="72" y2="136" stroke="#aed4ff" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.8"/>
+                <line c-blue="8" y1="72" is-2="136" y2="72" stroke="#aed4ff" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.8"/>
                 <!-- 4 starting pieces (just dots) -->
                 <circle cx="32" cy="32" r="4" fill="#d11a1a"/>
                 <circle cx="48" cy="32" r="4" fill="#d11a1a"/>
@@ -855,13 +867,13 @@
               </svg>
               <!-- Right info -->
               <div>
-                <div class="x137">Variant loader</div>
-                <div class="mono x136">8×8 BASE · 4 BOARD SECTIONS</div>
-                <div class="x135">
-                  <span class="mono x134">1,560</span>
-                  <span class="mono x133">GAMES / WK</span>
+                <div class="is-137">Variant loader</div>
+                <div class="mono is-136">8×8 BASE · 4 BOARD SECTIONS</div>
+                <div class="flex-row-gap-6">
+                  <span class="mono is-134">1,560</span>
+                  <span class="mono is-133">GAMES / WK</span>
                 </div>
-                <div class="x132">
+                <div class="flex-wrap-132">
                   <span class="ui-chip-sm active">Standard ✓</span>
                   <span class="ui-chip-sm">XiangQi</span>
                   <span class="ui-chip-sm">4-Player</span>
@@ -890,75 +902,75 @@
         <span class="pagenum">12 / 20</span>
       </div>
 
-      <h1 class="title x131">
+      <h1 class="title max-w-1500">
         Mod the games<br/>people already love.
       </h1>
-      <p class="lede x130">
+      <p class="lede is-130">
         Three rulebook mods in active development — each targeting a game with
         a built-in audience and a known itch the original rules don't scratch.
       </p>
 
-      <div class="x129">
+      <div class="grid-3col-129">
         <!-- Econopoly -->
-        <div class="card x5">
+        <div class="card flex-col">
           <div class="stripe red"></div>
-          <div class="mono x12">MOD · MONOPOLY</div>
-          <h3 class="sub x124">Econopoly</h3>
-          <p class="body x123">
+          <div class="mono is-12">MOD · MONOPOLY</div>
+          <h3 class="sub is-124">Econopoly</h3>
+          <p class="body is-123">
             Monopoly with a working economy. Anti-monopoly rules, dynamic
             property pricing, and a tax band that actually does something.
           </p>
-          <div class="x8">
-            <div class="x122">
-              <span class="mono x121">PROGRESS</span>
-              <span class="mono x128">95%</span>
+          <div class="mt-24">
+            <div class="flex-between-122">
+              <span class="mono is-121">PROGRESS</span>
+              <span class="mono is-128">95%</span>
             </div>
-            <div class="progress red"><span class="x127"></span></div>
-            <div class="mono x118">LAUNCH READY</div>
+            <div class="progress red"><span class="w-95"></span></div>
+            <div class="mono is-118">LAUNCH READY</div>
           </div>
         </div>
 
         <!-- Talisman: Hexed -->
-        <div class="card x5">
+        <div class="card flex-col">
           <div class="stripe"></div>
-          <div class="mono x12">MOD · TALISMAN 4TH ED.</div>
-          <h3 class="sub x124">Talisman: Hexed</h3>
-          <p class="body x123">
+          <div class="mono is-12">MOD · TALISMAN 4TH ED.</div>
+          <h3 class="sub is-124">Talisman: Hexed</h3>
+          <p class="body is-123">
             Talisman's adventure on a modular hex board. Shorter loop,
             tighter encounters, four new tile types and 12 reshuffled cards.
           </p>
-          <div class="x8">
-            <div class="x122">
-              <span class="mono x121">PROGRESS</span>
-              <span class="mono x126">50%</span>
+          <div class="mt-24">
+            <div class="flex-between-122">
+              <span class="mono is-121">PROGRESS</span>
+              <span class="mono is-126">50%</span>
             </div>
-            <div class="progress blue"><span class="x125"></span></div>
-            <div class="mono x118">PLAYTEST</div>
+            <div class="progress blue"><span class="w-50"></span></div>
+            <div class="mono is-118">PLAYTEST</div>
           </div>
         </div>
 
         <!-- Hyper Imperium -->
-        <div class="card x5">
+        <div class="card flex-col">
           <div class="stripe green"></div>
-          <div class="mono x12">MOD · TWILIGHT IMPERIUM 4TH ED.</div>
-          <h3 class="sub x124">Hyper Imperium</h3>
-          <p class="body x123">
+          <div class="mono is-12">MOD · TWILIGHT IMPERIUM 4TH ED.</div>
+          <h3 class="sub is-124">Hyper Imperium</h3>
+          <p class="body is-123">
             Twilight Imperium in <em>under three hours</em>. Streamlined economy,
             simultaneous turns and a sharper political phase.
           </p>
-          <div class="x8">
-            <div class="x122">
-              <span class="mono x121">PROGRESS</span>
-              <span class="mono x120">25%</span>
+          <div class="mt-24">
+            <div class="flex-between-122">
+              <span class="mono is-121">PROGRESS</span>
+              <span class="mono is-120">25%</span>
             </div>
-            <div class="progress green"><span class="x119"></span></div>
-            <div class="mono x118">DESIGN</div>
+            <div class="progress green"><span class="w-25"></span></div>
+            <div class="mono is-118">DESIGN</div>
           </div>
         </div>
       </div>
     </div>
     <div class="footer">
-      <span class="brand-mark x1"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
       <span>12 / 20</span>
     </div>
   </section>
@@ -973,30 +985,30 @@
         <span class="pagenum">13 / 20</span>
       </div>
 
-      <div class="x117">
+      <div class="split-left-narrow">
 
         <!-- LEFT: pitch + stats -->
         <div>
-          <h1 class="title x116">
+          <h1 class="title fs-104">
             Chess — the<br/>most modded<br/>game in <em class="hl-blue">history</em>?
           </h1>
-          <p class="lede x17">
+          <p class="lede mt-32">
             Hundreds of variations exist. Most are buried in forum threads and PDFs.
             None have a playable, modular compendium online — <em>until now</em>.
           </p>
 
           <!-- 3 stats -->
-          <div class="x115">
+          <div class="grid-2col-115">
             <div>
-              <div class="stat-num x114">2000+</div>
+              <div class="stat-num is-114">2000+</div>
               <div class="stat-label">documented chess variants in the wild</div>
             </div>
             <div>
-              <div class="stat-num x113">∅</div>
+              <div class="stat-num is-113">∅</div>
               <div class="stat-label">unified online compendium today</div>
             </div>
             <div>
-              <div class="stat-num x112">1</div>
+              <div class="stat-num is-112">1</div>
               <div class="stat-label">moddable engine — ours</div>
             </div>
           </div>
@@ -1004,9 +1016,9 @@
 
         <!-- RIGHT: custom variant diagram (transparent, brand-native) -->
         <div>
-          <div class="x111">
-            <div class="mono x110">SUPPORTED VARIANTS</div>
-            <div class="mono x109">FROM ONE MODULAR KIT</div>
+          <div class="flex-between">
+            <div class="mono is-110">SUPPORTED VARIANTS</div>
+            <div class="mono is-109">FROM ONE MODULAR KIT</div>
           </div>
 
           <svg viewBox="0 0 1600 540" style="width: 100%; display: block; color: var(--mg-ink);" xmlns="http://www.w3.org/2000/svg" aria-label="Supported chess variants">
@@ -1025,14 +1037,14 @@
             <g transform="translate(120 40)">
               <rect class="v" x="0" y="0" width="160" height="160" rx="3"/>
               <g class="grid-l">
-                <line x1="0" y1="20" x2="160" y2="20"/><line x1="0" y1="40" x2="160" y2="40"/>
-                <line x1="0" y1="60" x2="160" y2="60"/><line x1="0" y1="80" x2="160" y2="80"/>
-                <line x1="0" y1="100" x2="160" y2="100"/><line x1="0" y1="120" x2="160" y2="120"/>
-                <line x1="0" y1="140" x2="160" y2="140"/>
-                <line x1="20" y1="0" x2="20" y2="160"/><line x1="40" y1="0" x2="40" y2="160"/>
-                <line x1="60" y1="0" x2="60" y2="160"/><line x1="80" y1="0" x2="80" y2="160"/>
-                <line x1="100" y1="0" x2="100" y2="160"/><line x1="120" y1="0" x2="120" y2="160"/>
-                <line x1="140" y1="0" x2="140" y2="160"/>
+                <line c-blue="0" y1="20" is-2="160" y2="20"/><line c-blue="0" y1="40" is-2="160" y2="40"/>
+                <line c-blue="0" y1="60" is-2="160" y2="60"/><line c-blue="0" y1="80" is-2="160" y2="80"/>
+                <line c-blue="0" y1="100" is-2="160" y2="100"/><line c-blue="0" y1="120" is-2="160" y2="120"/>
+                <line c-blue="0" y1="140" is-2="160" y2="140"/>
+                <line c-blue="20" y1="0" is-2="20" y2="160"/><line c-blue="40" y1="0" is-2="40" y2="160"/>
+                <line c-blue="60" y1="0" is-2="60" y2="160"/><line c-blue="80" y1="0" is-2="80" y2="160"/>
+                <line c-blue="100" y1="0" is-2="100" y2="160"/><line c-blue="120" y1="0" is-2="120" y2="160"/>
+                <line c-blue="140" y1="0" is-2="140" y2="160"/>
               </g>
               <text class="lbl" x="80" y="200">REGULAR</text>
               <text class="meta" x="80" y="222">1 section · 8×8</text>
@@ -1097,20 +1109,20 @@
           </svg>
 
           <!-- variant labels row -->
-          <div class="x108">
-            <span class="chip x107">Regular</span>
-            <span class="chip x107">4-Player</span>
+          <div class="flex-wrap-108">
+            <span class="chip is-107">Regular</span>
+            <span class="chip is-107">4-Player</span>
             <span class="chip blue">4-Board</span>
-            <span class="chip x107">3-Board</span>
-            <span class="chip x107">Alice</span>
-            <span class="chip x107">Courier</span>
-            <span class="chip x107">Omega&nbsp;/&nbsp;Grand</span>
+            <span class="chip is-107">3-Board</span>
+            <span class="chip is-107">Alice</span>
+            <span class="chip is-107">Courier</span>
+            <span class="chip is-107">Omega&nbsp;/&nbsp;Grand</span>
           </div>
         </div>
       </div>
     </div>
     <div class="footer">
-      <span class="brand-mark x1"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
       <span class="mono">regular · 4-player · 4-board · 3-board · alice · courier · omega</span>
     </div>
   </section>
@@ -1126,77 +1138,77 @@
         <span class="pagenum">14 / 20</span>
       </div>
 
-      <div class="x106">
+      <div class="grid-layout-106">
 
         <!-- LEFT: pitch -->
         <div>
-          <div class="pixel x105">
+          <div class="pixel is-105">
             DUNGEON<br/>CHESS
           </div>
 
-          <h2 class="heading x104">
+          <h2 class="heading is-104">
             Chess as an asymmetrical<br/><em class="hl-mint">skirmish and dungeon crawler.</em>
           </h2>
 
-          <p class="body-lg x103">
+          <p class="body-lg is-103">
             Our first original mod for Moddable Chess. Four races on a modular
             board with spells, objects, XP and environmental hazards — our
             catalyst for crowdfunding the catalogue.
           </p>
 
           <!-- mode cards -->
-          <div class="x102">
-            <div class="x101">
-              <div class="mono x100">BATTLES</div>
-              <div class="x99">2–4P skirmish</div>
-              <div class="mono x98">Drafted · 30 min</div>
+          <div class="grid-2col-102">
+            <div class="is-101">
+              <div class="mono is-100">BATTLES</div>
+              <div class="is-99">2–4P skirmish</div>
+              <div class="mono is-98">Drafted · 30 min</div>
             </div>
-            <div class="x101">
-              <div class="mono x100">ADVENTURES</div>
-              <div class="x99">1–6P legacy</div>
-              <div class="mono x98">Persistent campaign</div>
+            <div class="is-101">
+              <div class="mono is-100">ADVENTURES</div>
+              <div class="is-99">1–6P legacy</div>
+              <div class="mono is-98">Persistent campaign</div>
             </div>
           </div>
 
           <!-- races -->
-          <div class="x97">
-            <div class="mono x96">FOUR ASYMMETRICAL RACES</div>
-            <div class="x95">
-              <span class="chip x94">⦾ Demonics</span>
-              <span class="chip x93">⦾ Wraiths</span>
-              <span class="chip x92">⦾ Knights</span>
-              <span class="chip x91">⦾ Verdants</span>
+          <div class="mt-22">
+            <div class="mono is-96">FOUR ASYMMETRICAL RACES</div>
+            <div class="flex-wrap">
+              <span class="chip is-94">⦾ Demonics</span>
+              <span class="chip is-93">⦾ Wraiths</span>
+              <span class="chip is-92">⦾ Knights</span>
+              <span class="chip is-91">⦾ Verdants</span>
             </div>
-            <p class="mono x90">* Demonics confirmed; other names provisional pending playtest</p>
+            <p class="mono is-90">* Demonics confirmed; other names provisional pending playtest</p>
           </div>
         </div>
 
         <!-- RIGHT: live screenshot + mechanic callouts -->
         <div>
-          <div class="x89">
-            <img src="assets/dungeon-chess-board.png" class="x88" alt="Dungeon Chess in-engine screenshot — four-army cross board"/>
-            <div class="x87">
-              <span class="x86">●</span>&nbsp; LIVE PROTOTYPE · IN ENGINE
+          <div class="is-89">
+            <img src="assets/dungeon-chess-board.png" class="is-88" alt="Dungeon Chess in-engine screenshot — four-army cross board"/>
+            <div class="is-87">
+              <span class="is-86">●</span>&nbsp; LIVE PROTOTYPE · IN ENGINE
             </div>
           </div>
 
           <!-- mechanic callouts -->
-          <div class="x85">
-            <div class="x84">
-              <div class="mono x83">XP</div>
-              <div class="x82">Pieces<br/>level up</div>
+          <div class="grid-4col-85">
+            <div class="is-84">
+              <div class="mono is-83">XP</div>
+              <div class="is-82">Pieces<br/>level up</div>
             </div>
-            <div class="x84">
-              <div class="mono x83">SPELLS</div>
-              <div class="x82">Magic +<br/>objects</div>
+            <div class="is-84">
+              <div class="mono is-83">SPELLS</div>
+              <div class="is-82">Magic +<br/>objects</div>
             </div>
-            <div class="x84">
-              <div class="mono x83">TERRAIN</div>
-              <div class="x82">Hazards &amp;<br/>obstacles</div>
+            <div class="is-84">
+              <div class="mono is-83">TERRAIN</div>
+              <div class="is-82">Hazards &amp;<br/>obstacles</div>
             </div>
-            <div class="x84">
-              <div class="mono x83">OBJECTIVES</div>
-              <div class="x82">Beyond<br/>check-mate</div>
+            <div class="is-84">
+              <div class="mono is-83">OBJECTIVES</div>
+              <div class="is-82">Beyond<br/>check-mate</div>
             </div>
           </div>
         </div>
@@ -1218,54 +1230,54 @@
         <span class="pagenum">15 / 20</span>
       </div>
 
-      <div class="x45">
-        <h1 class="title x7">What ships<br/>and when.</h1>
-        <p class="body-lg x52">
+      <div class="grid-title-aside">
+        <h1 class="title fs-88">What ships<br/>and when.</h1>
+        <p class="body-lg is-52">
           Every milestone either generates revenue or unlocks the next raise.
           Nothing is speculative — each line item is already in progress.
         </p>
       </div>
 
-      <div class="x81">
-        <div class="card x72">
-          <div class="mono x80">Q3 2026</div>
-          <div><div class="sub x70">Nukes: first 500-unit print run ships</div></div>
+      <div class="flex-col-gap-12">
+        <div class="card grid-title-aside-72">
+          <div class="mono is-80">Q3 2026</div>
+          <div><div class="sub fs-26">Nukes: first 500-unit print run ships</div></div>
           <span class="chip red">IN PRODUCTION</span>
         </div>
 
-        <div class="card x72">
-          <div class="mono x75">Q3 2026</div>
-          <div><div class="sub x70">Moddable Chess: 4 variants playable online</div></div>
+        <div class="card grid-title-aside-72">
+          <div class="mono is-75">Q3 2026</div>
+          <div><div class="sub fs-26">Moddable Chess: 4 variants playable online</div></div>
           <span class="chip blue">IN ALPHA</span>
         </div>
 
-        <div class="card x79">
-          <div class="mono x78">Q4 2026</div>
-          <div><div class="sub x77">Dungeon Chess: crowdfunding campaign live</div></div>
-          <span class="chip x76">PRE-LAUNCH</span>
+        <div class="card grid-title-aside-79">
+          <div class="mono is-78">Q4 2026</div>
+          <div><div class="sub is-77">Dungeon Chess: crowdfunding campaign live</div></div>
+          <span class="chip is-76">PRE-LAUNCH</span>
         </div>
 
-        <div class="card x72">
-          <div class="mono x75">Q1 2027</div>
-          <div><div class="sub x70">Marketplace beta: creators upload + sell mods</div></div>
-          <span class="chip x73">IN DEVELOPMENT</span>
+        <div class="card grid-title-aside-72">
+          <div class="mono is-75">Q1 2027</div>
+          <div><div class="sub fs-26">Marketplace beta: creators upload + sell mods</div></div>
+          <span class="chip is-73">IN DEVELOPMENT</span>
         </div>
 
-        <div class="card x72">
-          <div class="mono x74">Q2 2027</div>
-          <div><div class="sub x70">Mongo: multiplayer playtest online</div></div>
-          <span class="chip x73">DESIGN COMPLETE</span>
+        <div class="card grid-title-aside-72">
+          <div class="mono is-74">Q2 2027</div>
+          <div><div class="sub fs-26">Mongo: multiplayer playtest online</div></div>
+          <span class="chip is-73">DESIGN COMPLETE</span>
         </div>
 
-        <div class="card x72">
-          <div class="mono x71">Q3 2027</div>
-          <div><div class="sub x70">Print-on-demand pipeline live</div></div>
+        <div class="card grid-title-aside-72">
+          <div class="mono is-71">Q3 2027</div>
+          <div><div class="sub fs-26">Print-on-demand pipeline live</div></div>
           <span class="chip green">SCOPED</span>
         </div>
       </div>
     </div>
     <div class="footer">
-      <span class="brand-mark x1"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
       <span class="mono">every milestone revenue-generating or raise-enabling</span>
     </div>
   </section>
@@ -1280,70 +1292,70 @@
         <span class="pagenum">16 / 20</span>
       </div>
 
-      <div class="x45">
-        <h1 class="title x7">Why hasn't anyone<br/>done this yet?</h1>
-        <p class="body-lg x69">
+      <div class="grid-title-aside">
+        <h1 class="title fs-88">Why hasn't anyone<br/>done this yet?</h1>
+        <p class="body-lg is-69">
           Existing platforms digitise board games. We're building the infrastructure
           for people to <em>create and sell</em> them.
         </p>
       </div>
 
-      <div class="x68">
-        <div class="card x67">
-          <div class="mono x66">BOARD GAME ARENA</div>
-          <h3 class="sub x65">Play licensed games online.</h3>
-          <p class="body x64">
+      <div class="grid-4col-68">
+        <div class="card flex-col-67">
+          <div class="mono is-66">BOARD GAME ARENA</div>
+          <h3 class="sub is-65">Play licensed games online.</h3>
+          <p class="body is-64">
             Digital-only. Closed ecosystem. No modding, no creation tools, no physical bridge.
           </p>
-          <div class="mono x63">NO CREATION · NO PHYSICAL</div>
+          <div class="mono is-63">NO CREATION · NO PHYSICAL</div>
         </div>
-        <div class="card x67">
-          <div class="mono x66">TABLETOPIA</div>
-          <h3 class="sub x65">Sandbox simulator.</h3>
-          <p class="body x64">
+        <div class="card flex-col-67">
+          <div class="mono is-66">TABLETOPIA</div>
+          <h3 class="sub is-65">Sandbox simulator.</h3>
+          <p class="body is-64">
             Upload images, move them around. No rules enforcement, no AI, no print pipeline.
           </p>
-          <div class="mono x63">NO RULES ENGINE · NO BOTS</div>
+          <div class="mono is-63">NO RULES ENGINE · NO BOTS</div>
         </div>
-        <div class="card x67">
-          <div class="mono x66">TABLETOP SIMULATOR</div>
-          <h3 class="sub x65">Physics sandbox on Steam.</h3>
-          <p class="body x64">
+        <div class="card flex-col-67">
+          <div class="mono is-66">TABLETOP SIMULATOR</div>
+          <h3 class="sub is-65">Physics sandbox on Steam.</h3>
+          <p class="body is-64">
             Fun but zero structure. No marketplace, no mobile, no web, no physical bridge.
           </p>
-          <div class="mono x63">PC ONLY · NO MARKETPLACE</div>
+          <div class="mono is-63">PC ONLY · NO MARKETPLACE</div>
         </div>
-        <div class="card x62">
-          <div class="mono x61">MODDABLE.GAMES</div>
-          <h3 class="sub x60">Create, play, sell, print.</h3>
-          <p class="body x59">
+        <div class="card flex-col-62">
+          <div class="mono is-61">MODDABLE.GAMES</div>
+          <h3 class="sub is-60">Create, play, sell, print.</h3>
+          <p class="body is-59">
             Open-source engine + AI bots. Marketplace for creators. Print-on-demand. Web + mobile.
           </p>
-          <div class="mono x58">FULL STACK · OPEN SOURCE</div>
+          <div class="mono is-58">FULL STACK · OPEN SOURCE</div>
         </div>
       </div>
 
       <!-- Moat -->
-      <div class="card x57">
-        <div class="mono x56">▲ OUR MOAT — WHY THEY CAN'T CATCH US</div>
-        <div class="x55">
+      <div class="card card-dark">
+        <div class="mono is-56">▲ OUR MOAT — WHY THEY CAN'T CATCH US</div>
+        <div class="grid-3col-55">
           <div>
-            <h3 class="sub x54">Community catalogue</h3>
-            <p class="body x53">Every mod published is content lock-in. More creators → more players → more creators.</p>
+            <h3 class="sub fs-20">Community catalogue</h3>
+            <p class="body is-53">Every mod published is content lock-in. More creators → more players → more creators.</p>
           </div>
           <div>
-            <h3 class="sub x54">Bot training data</h3>
-            <p class="body x53">Every game played trains better AI. First to accumulate this data wins permanently.</p>
+            <h3 class="sub fs-20">Bot training data</h3>
+            <p class="body is-53">Every game played trains better AI. First to accumulate this data wins permanently.</p>
           </div>
           <div>
-            <h3 class="sub x54">Physical bridge</h3>
-            <p class="body x53">The only platform connecting digital play to physical production. BGA/TTS are screen-only.</p>
+            <h3 class="sub fs-20">Physical bridge</h3>
+            <p class="body is-53">The only platform connecting digital play to physical production. BGA/TTS are screen-only.</p>
           </div>
         </div>
       </div>
     </div>
     <div class="footer">
-      <span class="brand-mark x1"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
       <span class="mono">create · play · sell · print</span>
     </div>
   </section>
@@ -1358,71 +1370,71 @@
         <span class="pagenum">17 / 20</span>
       </div>
 
-      <div class="x45">
-        <h1 class="title x7">Who's making<br/>this happen.</h1>
-        <p class="body-lg x52">
+      <div class="grid-title-aside">
+        <h1 class="title fs-88">Who's making<br/>this happen.</h1>
+        <p class="body-lg is-52">
           A modder-founder, a systems-thinker playtester, a board-game evangelist
           who builds the engine, and a game artist with TV credits.
         </p>
       </div>
 
-      <div class="x51">
+      <div class="grid-4col-51">
         <!-- Mark -->
-        <div class="card x50">
-          <div class="x49">
-            <img src="https://moddable.games/wp-content/uploads/sites/17/2025/10/ms-022.png" alt="Mark Smalley" class="x48"/>
+        <div class="card flex-col-50">
+          <div class="is-49">
+            <img src="https://moddable.games/wp-content/uploads/sites/17/2025/10/ms-022.png" alt="Mark Smalley" class="is-48"/>
           </div>
-          <div class="stripe x47"></div>
-          <h3 class="sub x4">Mark Smalley</h3>
-          <div class="mono x3">FOUNDER · DM · BUILDER</div>
-          <p class="body x46">
+          <div class="stripe mb-12"></div>
+          <h3 class="sub fs-22">Mark Smalley</h3>
+          <div class="mono is-3">FOUNDER · DM · BUILDER</div>
+          <p class="body is-46">
             Modder since forever. Built the world's first NoSQL CMS and a
             <em>500 Startups</em>-backed Bitcoin wallet.
           </p>
         </div>
 
         <!-- Kevin -->
-        <div class="card x50">
-          <div class="x49">
-            <img src="https://moddable.games/wp-content/uploads/sites/17/2025/10/kevin2.png" alt="Kevin Chand" class="x48"/>
+        <div class="card flex-col-50">
+          <div class="is-49">
+            <img src="https://moddable.games/wp-content/uploads/sites/17/2025/10/kevin2.png" alt="Kevin Chand" class="is-48"/>
           </div>
-          <div class="stripe green x47"></div>
-          <h3 class="sub x4">Kevin Chand</h3>
-          <div class="mono x3">PLAYTEST · GROWTH · OPS</div>
-          <p class="body x46">
+          <div class="stripe green mb-12"></div>
+          <h3 class="sub fs-22">Kevin Chand</h3>
+          <div class="mono is-3">PLAYTEST · GROWTH · OPS</div>
+          <p class="body is-46">
             Systems thinker. Chief playtester and social engineer leading online growth, marketing and manufacturing.
           </p>
         </div>
 
         <!-- Akmal -->
-        <div class="card x50">
-          <div class="x49">
-            <img src="https://moddable.games/wp-content/uploads/sites/17/2025/11/Akmal.png" alt="Akmal Fikri" class="x48"/>
+        <div class="card flex-col-50">
+          <div class="is-49">
+            <img src="https://moddable.games/wp-content/uploads/sites/17/2025/11/Akmal.png" alt="Akmal Fikri" class="is-48"/>
           </div>
-          <div class="stripe x47"></div>
-          <h3 class="sub x4">Akmal Fikri</h3>
-          <div class="mono x3">ENGINE · COMMUNITY</div>
-          <p class="body x46">
+          <div class="stripe mb-12"></div>
+          <h3 class="sub fs-22">Akmal Fikri</h3>
+          <div class="mono is-3">ENGINE · COMMUNITY</div>
+          <p class="body is-46">
             Web developer and board-game evangelist. Builds the online engine — grey hair earned the hard way.
           </p>
         </div>
 
         <!-- Iqbal -->
-        <div class="card x50">
-          <div class="x49">
-            <img src="https://moddable.games/wp-content/uploads/sites/17/2026/05/IQBAL03.png" alt="Iqbal Ridzuan" class="x48"/>
+        <div class="card flex-col-50">
+          <div class="is-49">
+            <img src="https://moddable.games/wp-content/uploads/sites/17/2026/05/IQBAL03.png" alt="Iqbal Ridzuan" class="is-48"/>
           </div>
-          <div class="stripe red x47"></div>
-          <h3 class="sub x4">Iqbal Ridzuan</h3>
-          <div class="mono x3">LEAD ARTIST · CREATIVE</div>
-          <p class="body x46">
+          <div class="stripe red mb-12"></div>
+          <h3 class="sub fs-22">Iqbal Ridzuan</h3>
+          <div class="mono is-3">LEAD ARTIST · CREATIVE</div>
+          <p class="body is-46">
             Head of creative. <em>BioHack</em> and <em>Mechamato</em> — featured on BoardGameGeek and IMDB.
           </p>
         </div>
       </div>
     </div>
     <div class="footer">
-      <span class="brand-mark x1"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
       <span>17 / 20</span>
     </div>
   </section>
@@ -1438,22 +1450,22 @@
         <span class="pagenum">18 / 20</span>
       </div>
 
-      <div class="x45">
-        <h1 class="title x44">
+      <div class="grid-title-aside">
+        <h1 class="title max-w-1100">
           Where your<br/>money goes.
         </h1>
-        <p class="body-lg x43">
+        <p class="body-lg is-43">
           $250K–$500K funds 18 months of building, making and growing — then crowdfunding takes over.
         </p>
       </div>
 
-      <div class="x16">
+      <div class="grid-3col-16">
         <!-- Engineering -->
-        <div class="card x5">
-          <div class="stripe x42"></div>
-          <div class="mono x9">40% · ENGINEERING</div>
-          <h3 class="sub x15">Build the engine.</h3>
-          <ul class="clean x2">
+        <div class="card flex-col">
+          <div class="stripe mb-16"></div>
+          <div class="mono is-9">40% · ENGINEERING</div>
+          <h3 class="sub is-15">Build the engine.</h3>
+          <ul class="clean is-2">
             <li><span class="num">▲</span><span>Full-time engine developer (hex + chess)</span></li>
             <li><span class="num">▲</span><span>Bot AI training infrastructure</span></li>
             <li><span class="num">▲</span><span>Marketplace + self-publishing tools</span></li>
@@ -1462,11 +1474,11 @@
         </div>
 
         <!-- Production -->
-        <div class="card x5">
-          <div class="stripe red x42"></div>
-          <div class="mono x9">35% · PRODUCTION</div>
-          <h3 class="sub x15">Ship real games.</h3>
-          <ul class="clean x2">
+        <div class="card flex-col">
+          <div class="stripe red mb-16"></div>
+          <div class="mono is-9">35% · PRODUCTION</div>
+          <h3 class="sub is-15">Ship real games.</h3>
+          <ul class="clean is-2">
             <li><span class="num">▲</span><span>First Nukes print run (500 units)</span></li>
             <li><span class="num">▲</span><span>Moddable Chess prototype + crowdfunding prep</span></li>
             <li><span class="num">▲</span><span>Component manufacturing partnerships</span></li>
@@ -1475,11 +1487,11 @@
         </div>
 
         <!-- Marketing -->
-        <div class="card x5">
-          <div class="stripe green x42"></div>
-          <div class="mono x9">25% · MARKETING + COMMUNITY</div>
-          <h3 class="sub x15">Build the audience.</h3>
-          <ul class="clean x2">
+        <div class="card flex-col">
+          <div class="stripe green mb-16"></div>
+          <div class="mono is-9">25% · MARKETING + COMMUNITY</div>
+          <h3 class="sub is-15">Build the audience.</h3>
+          <ul class="clean is-2">
             <li><span class="num">▲</span><span>Crowdfunding campaign creative + launch</span></li>
             <li><span class="num">▲</span><span>Convention presence (Essen, GenCon, PAX)</span></li>
             <li><span class="num">▲</span><span>Content + community management</span></li>
@@ -1508,40 +1520,40 @@
         $250K–$500K<br/>to build the table.
       </h1>
 
-      <div class="x41">
+      <div class="grid-2col-41">
         <!-- Equity -->
-        <div class="card x40">
+        <div class="card flex-col-40">
           <div class="stripe red"></div>
-          <div class="mono x12">A · EQUITY</div>
-          <h3 class="sub x39">Own a piece of the ecosystem.</h3>
-          <ul class="clean x34">
+          <div class="mono is-12">A · EQUITY</div>
+          <h3 class="sub is-39">Own a piece of the ecosystem.</h3>
+          <ul class="clean is-34">
             <li><span class="num">▲</span><span>Pre-seed equity in Moddable.Games</span></li>
             <li><span class="num">▲</span><span>Upside across <em>all</em> games, engine, and marketplace</span></li>
             <li><span class="num">▲</span><span>Board advisory seat at $250K+</span></li>
           </ul>
-          <div class="mono x38">
+          <div class="mono is-38">
             VALUATION · NEGOTIABLE · PRE-REVENUE
           </div>
         </div>
 
         <!-- Royalties -->
-        <div class="card x37">
-          <div class="stripe x19"></div>
-          <div class="mono x36">B · GAME ROYALTIES</div>
-          <h3 class="sub x35">Back a specific title.</h3>
-          <ul class="clean x34">
+        <div class="card flex-col-37">
+          <div class="stripe is-19"></div>
+          <div class="mono is-36">B · GAME ROYALTIES</div>
+          <h3 class="sub is-35">Back a specific title.</h3>
+          <ul class="clean is-34">
             <li><span class="num">▲</span><span>5–15% net revenue share on a named game</span></li>
             <li><span class="num">▲</span><span>Capped at 3× return, then reverts to us</span></li>
             <li><span class="num">▲</span><span>Covers physical sales, digital, and licensing</span></li>
           </ul>
-          <div class="mono x33">
+          <div class="mono is-33">
             AVAILABLE · NUKES · MODDABLE CHESS · DUNGEON CHESS
           </div>
         </div>
       </div>
     </div>
     <div class="footer">
-      <span class="brand-mark x1"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
       <span class="mono">team@moddable.games</span>
     </div>
   </section>
@@ -1551,25 +1563,25 @@
        ============================================================ -->
   <section class="slide cosmic" data-screen-label="20 Contact" data-decks="opportunities internal crowdfunding">
     <div class="hex-bg"></div>
-    <div class="pad x32">
-      <div class="eyebrow x31">
+    <div class="pad is-32">
+      <div class="eyebrow mb-40">
         <span class="arrow">▲</span> Any questions?
       </div>
-      <h1 class="display x30">
+      <h1 class="display is-30">
         Get in touch<br/>with the table.
       </h1>
-      <div class="x29">
-        <a href="mailto:team@moddable.games" class="x28">
-          <span class="pill live x27">
+      <div class="flex-col-gap-24">
+        <a href="mailto:team@moddable.games" class="is-28">
+          <span class="pill live is-27">
             <span class="dot"></span>team@moddable.games
           </span>
         </a>
-        <div class="x26">
+        <div class="flex-row-gap-16">
           <span class="pill"><span class="mono">moddable.games</span></span>
           <span class="pill"><span class="mono">nukes.moddable.games</span></span>
         </div>
       </div>
-      <p class="mono x25">
+      <p class="mono is-25">
         Moddable.Games is fan-made and not affiliated with any rights-holder
       </p>
     </div>
@@ -1588,47 +1600,47 @@
         <span class="eyebrow"><span class="arrow">▲</span> Back this project</span>
         <span class="pagenum">21</span>
       </div>
-      <h1 class="title x7">Pick your<br/>pledge tier.</h1>
-      <div class="x24">
-        <div class="card x5">
+      <h1 class="title fs-88">Pick your<br/>pledge tier.</h1>
+      <div class="grid-4col-24">
+        <div class="card flex-col">
           <div class="stripe"></div>
-          <div class="mono x12">TIER 1</div>
-          <h3 class="sub x11">Digital Backer</h3>
-          <div class="stat-num x23">$15</div>
-          <ul class="clean x2">
+          <div class="mono is-12">TIER 1</div>
+          <h3 class="sub is-11">Digital Backer</h3>
+          <div class="stat-num is-23">$15</div>
+          <ul class="clean is-2">
             <li><span class="num">▲</span><span>Digital rulebook (PDF)</span></li>
             <li><span class="num">▲</span><span>Online engine access</span></li>
             <li><span class="num">▲</span><span>Backer Discord role</span></li>
           </ul>
         </div>
-        <div class="card x5">
+        <div class="card flex-col">
           <div class="stripe green"></div>
-          <div class="mono x12">TIER 2</div>
-          <h3 class="sub x11">Standard Edition</h3>
-          <div class="stat-num x22">$45</div>
-          <ul class="clean x2">
+          <div class="mono is-12">TIER 2</div>
+          <h3 class="sub is-11">Standard Edition</h3>
+          <div class="stat-num is-22">$45</div>
+          <ul class="clean is-2">
             <li><span class="num">▲</span><span>Physical game (4 board sections)</span></li>
             <li><span class="num">▲</span><span>60 chess pieces</span></li>
             <li><span class="num">▲</span><span>Everything in Tier 1</span></li>
           </ul>
         </div>
-        <div class="card x5">
+        <div class="card flex-col">
           <div class="stripe red"></div>
-          <div class="mono x12">TIER 3</div>
-          <h3 class="sub x11">Deluxe Edition</h3>
-          <div class="stat-num x21">$85</div>
-          <ul class="clean x2">
+          <div class="mono is-12">TIER 3</div>
+          <h3 class="sub is-11">Deluxe Edition</h3>
+          <div class="stat-num is-21">$85</div>
+          <ul class="clean is-2">
             <li><span class="num">▲</span><span>15 board sections (full 4-player)</span></li>
             <li><span class="num">▲</span><span>100+ premium pieces</span></li>
             <li><span class="num">▲</span><span>Name in the rulebook</span></li>
           </ul>
         </div>
-        <div class="card x20">
-          <div class="stripe x19"></div>
-          <div class="mono x9">TIER 4</div>
-          <h3 class="sub x11">Dungeon Edition</h3>
-          <div class="stat-num x18">$150</div>
-          <ul class="clean x2">
+        <div class="card flex-col-20">
+          <div class="stripe is-19"></div>
+          <div class="mono is-9">TIER 4</div>
+          <h3 class="sub is-11">Dungeon Edition</h3>
+          <div class="stat-num is-18">$150</div>
+          <ul class="clean is-2">
             <li><span class="num">▲</span><span>Dungeon Chess expansion</span></li>
             <li><span class="num">▲</span><span>4 asymmetric race sets</span></li>
             <li><span class="num">▲</span><span>Everything in Tiers 1–3</span></li>
@@ -1637,7 +1649,7 @@
       </div>
     </div>
     <div class="footer">
-      <span class="brand-mark x1"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
       <span class="mono">all tiers include free shipping</span>
     </div>
   </section>
@@ -1653,25 +1665,25 @@
         <span class="pagenum">22</span>
       </div>
       <h1 class="title">When you<br/>get your game.</h1>
-      <p class="lede x17">
+      <p class="lede mt-32">
         We manufacture in Southeast Asia with established partners.
         Fulfilment is handled regionally — US, EU, and APAC hubs.
       </p>
-      <div class="x16">
-        <div class="card x5">
-          <div class="mono x9">MONTH 1–2</div>
-          <h3 class="sub x15">Campaign + production prep</h3>
-          <p class="body x14">Finalise manufacturing specs, lock stretch goals, begin tooling.</p>
+      <div class="grid-3col-16">
+        <div class="card flex-col">
+          <div class="mono is-9">MONTH 1–2</div>
+          <h3 class="sub is-15">Campaign + production prep</h3>
+          <p class="body mt-16">Finalise manufacturing specs, lock stretch goals, begin tooling.</p>
         </div>
-        <div class="card x5">
-          <div class="mono x9">MONTH 3–6</div>
-          <h3 class="sub x15">Manufacturing</h3>
-          <p class="body x14">Print run, quality control, sea freight to regional hubs.</p>
+        <div class="card flex-col">
+          <div class="mono is-9">MONTH 3–6</div>
+          <h3 class="sub is-15">Manufacturing</h3>
+          <p class="body mt-16">Print run, quality control, sea freight to regional hubs.</p>
         </div>
-        <div class="card x5">
-          <div class="mono x9">MONTH 7–8</div>
-          <h3 class="sub x15">Delivery</h3>
-          <p class="body x14">Regional fulfilment ships to backers. Digital rewards on day one.</p>
+        <div class="card flex-col">
+          <div class="mono is-9">MONTH 7–8</div>
+          <h3 class="sub is-15">Delivery</h3>
+          <p class="body mt-16">Regional fulfilment ships to backers. Digital rewards on day one.</p>
         </div>
       </div>
     </div>
@@ -1690,35 +1702,35 @@
         <span class="eyebrow"><span class="arrow">▲</span> Current status</span>
         <span class="pagenum">23</span>
       </div>
-      <h1 class="title x7">Where we are<br/>right now.</h1>
-      <div class="x13">
-        <div class="card x5">
+      <h1 class="title fs-88">Where we are<br/>right now.</h1>
+      <div class="grid-3col">
+        <div class="card flex-col">
           <div class="stripe red"></div>
-          <div class="mono x12">NUKES</div>
-          <h3 class="sub x11">Production-ready</h3>
-          <ul class="clean x2">
+          <div class="mono is-12">NUKES</div>
+          <h3 class="sub is-11">Production-ready</h3>
+          <ul class="clean is-2">
             <li><span class="num">▲</span><span>Rulebook v0.9.2 finalised</span></li>
             <li><span class="num">▲</span><span>Online engine live in alpha</span></li>
             <li><span class="num">▲</span><span>Manufacturing quotes received</span></li>
             <li><span class="num">▲</span><span>Awaiting first print-run capital</span></li>
           </ul>
         </div>
-        <div class="card x5">
+        <div class="card flex-col">
           <div class="stripe"></div>
-          <div class="mono x12">MODDABLE CHESS</div>
-          <h3 class="sub x11">Engine in alpha</h3>
-          <ul class="clean x2">
+          <div class="mono is-12">MODDABLE CHESS</div>
+          <h3 class="sub is-11">Engine in alpha</h3>
+          <ul class="clean is-2">
             <li><span class="num">▲</span><span>4 variants playable online</span></li>
             <li><span class="num">▲</span><span>Dungeon Chess prototype live</span></li>
             <li><span class="num">▲</span><span>Crowdfunding page in draft</span></li>
             <li><span class="num">▲</span><span>Art pipeline: Iqbal leading</span></li>
           </ul>
         </div>
-        <div class="card x5">
+        <div class="card flex-col">
           <div class="stripe green"></div>
-          <div class="mono x12">PLATFORM</div>
-          <h3 class="sub x11">Foundation laid</h3>
-          <ul class="clean x2">
+          <div class="mono is-12">PLATFORM</div>
+          <h3 class="sub is-11">Foundation laid</h3>
+          <ul class="clean is-2">
             <li><span class="num">▲</span><span>moddable.games live (WordPress)</span></li>
             <li><span class="num">▲</span><span>Design system complete</span></li>
             <li><span class="num">▲</span><span>Marketplace: spec + wireframes</span></li>
@@ -1728,7 +1740,7 @@
       </div>
     </div>
     <div class="footer">
-      <span class="brand-mark x1"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
       <span class="mono">updated: May 2026</span>
     </div>
   </section>
@@ -1744,20 +1756,20 @@
         <span class="pagenum">24</span>
       </div>
       <h1 class="title">What needs<br/>resolving.</h1>
-      <div class="x10">
-        <div class="card x5">
+      <div class="grid-2col">
+        <div class="card flex-col">
           <div class="stripe red"></div>
-          <div class="mono x9">BLOCKERS</div>
-          <ul class="clean x8">
+          <div class="mono is-9">BLOCKERS</div>
+          <ul class="clean mt-24">
             <li><span class="num">⚠</span><span>Daggersquare font licence — commercial use unconfirmed</span></li>
             <li><span class="num">⚠</span><span>First print-run capital ($15K–$25K) not yet secured</span></li>
             <li><span class="num">⚠</span><span>Marketplace backend: build vs buy decision pending</span></li>
           </ul>
         </div>
-        <div class="card x5">
+        <div class="card flex-col">
           <div class="stripe"></div>
-          <div class="mono x9">DECISIONS NEEDED</div>
-          <ul class="clean x8">
+          <div class="mono is-9">DECISIONS NEEDED</div>
+          <ul class="clean mt-24">
             <li><span class="num">?</span><span>Kickstarter vs Gamefound for crowdfunding</span></li>
             <li><span class="num">?</span><span>Dungeon Chess: 2 races or 4 at launch?</span></li>
             <li><span class="num">?</span><span>Entity structure: Malaysia vs Singapore incorporation</span></li>
@@ -1780,46 +1792,46 @@
         <span class="eyebrow"><span class="arrow">▲</span> Who owns what</span>
         <span class="pagenum">25</span>
       </div>
-      <h1 class="title x7">Ownership<br/>map.</h1>
-      <div class="x6">
-        <div class="card x5">
+      <h1 class="title fs-88">Ownership<br/>map.</h1>
+      <div class="grid-4col">
+        <div class="card flex-col">
           <div class="stripe"></div>
-          <h3 class="sub x4">Mark</h3>
-          <div class="mono x3">FOUNDER · DM · BUILDER</div>
-          <ul class="clean x2">
+          <h3 class="sub fs-22">Mark</h3>
+          <div class="mono is-3">FOUNDER · DM · BUILDER</div>
+          <ul class="clean is-2">
             <li><span class="num">▲</span><span>Strategy + investor relations</span></li>
             <li><span class="num">▲</span><span>Game design (Nukes, Mongo)</span></li>
             <li><span class="num">▲</span><span>Platform architecture</span></li>
             <li><span class="num">▲</span><span>Brand + design system</span></li>
           </ul>
         </div>
-        <div class="card x5">
+        <div class="card flex-col">
           <div class="stripe green"></div>
-          <h3 class="sub x4">Kevin</h3>
-          <div class="mono x3">PLAYTEST · GROWTH · OPS</div>
-          <ul class="clean x2">
+          <h3 class="sub fs-22">Kevin</h3>
+          <div class="mono is-3">PLAYTEST · GROWTH · OPS</div>
+          <ul class="clean is-2">
             <li><span class="num">▲</span><span>Playtesting + balance</span></li>
             <li><span class="num">▲</span><span>Marketing + social</span></li>
             <li><span class="num">▲</span><span>Manufacturing liaison</span></li>
             <li><span class="num">▲</span><span>Community growth</span></li>
           </ul>
         </div>
-        <div class="card x5">
+        <div class="card flex-col">
           <div class="stripe"></div>
-          <h3 class="sub x4">Akmal</h3>
-          <div class="mono x3">ENGINE · COMMUNITY</div>
-          <ul class="clean x2">
+          <h3 class="sub fs-22">Akmal</h3>
+          <div class="mono is-3">ENGINE · COMMUNITY</div>
+          <ul class="clean is-2">
             <li><span class="num">▲</span><span>Online engine development</span></li>
             <li><span class="num">▲</span><span>Bot AI + training</span></li>
             <li><span class="num">▲</span><span>Community management</span></li>
             <li><span class="num">▲</span><span>Backend infrastructure</span></li>
           </ul>
         </div>
-        <div class="card x5">
+        <div class="card flex-col">
           <div class="stripe red"></div>
-          <h3 class="sub x4">Iqbal</h3>
-          <div class="mono x3">LEAD ARTIST · CREATIVE</div>
-          <ul class="clean x2">
+          <h3 class="sub fs-22">Iqbal</h3>
+          <div class="mono is-3">LEAD ARTIST · CREATIVE</div>
+          <ul class="clean is-2">
             <li><span class="num">▲</span><span>Game art + illustration</span></li>
             <li><span class="num">▲</span><span>Component design</span></li>
             <li><span class="num">▲</span><span>Crowdfunding creative</span></li>
@@ -1829,7 +1841,7 @@
       </div>
     </div>
     <div class="footer">
-      <span class="brand-mark x1"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
       <span class="mono">four people · full coverage</span>
     </div>
   </section>
