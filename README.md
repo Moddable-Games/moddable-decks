@@ -1,67 +1,56 @@
-# Moddable.Games — Investor Pitch Deck
+# Moddable.Games — Master Deck
 
-A 20-slide HTML pitch deck for Moddable.Games, targeting $250K–$500K from angel investors.
+A multi-audience HTML presentation system for Moddable.Games. One master deck, multiple filtered views for different audiences.
 
 ## Quick start
 
-Open `index.html` in a browser. Arrow keys navigate between slides. Works with GitHub Pages — deploy the repo root directly.
+Open `index.html` in a browser. Arrow keys navigate between slides.
+
+| URL | Audience | Slides |
+|---|---|---|
+| `?deck=opportunities` | Angels / partners | 20 |
+| `?deck=crowdfunding` | Backers / campaign supporters | 13 |
+| `?deck=internal` | Team (shows all slides + deck-membership pills) | 25 |
+| No param | Splash page (no deck access) | — |
+
+Works with GitHub Pages — deploy the repo root directly.
 
 ## Structure
 
 ```
-index.html          The deck (source of truth)
+index.html              The master deck (all 25 slides)
 css/
-  deck.css          Deck layout + component styles
+  deck.css              Deck layout + component styles
   colors_and_type.css   Design tokens (colour, type, spacing)
 js/
-  deck-stage.js     Custom element handling navigation, scaling, print
+  deck-stage.js         Custom element: navigation, scaling, print
+  deck-filter.js        Audience filtering, badges, slide numbering
 assets/
-  team/             Transparent PNG cutouts (Mark, Kevin, Akmal, Iqbal)
-  dungeon-chess/    Dungeon Chess logo suite
-  hex-horizon.jpg   Hero backdrop
+  team/                 Transparent PNG cutouts
+  dungeon-chess/        Dungeon Chess logo suite
+  hex-horizon.jpg       Hero backdrop
   moddable-logo.png    Brand mark
-fonts/              Daggersquare, Inter, JetBrains Mono
-archive/            PDF export, print version, standalone, content.md
-reference/          Design system UI kits + previews (proof-of-work appendix)
+fonts/                  Daggersquare, Inter, JetBrains Mono
+archive/                PDF export, print version, standalone, content.md
+reference/              Design system UI kits + previews (proof-of-work)
 ```
 
-## The deck
+## How filtering works
 
-| Slide | Title |
-|---|---|
-| 01 | Title |
-| 02 | Mission |
-| 03 | Nukes (first game) |
-| 04 | Why hexagons |
-| 05 | Online engine |
-| 06 | Bots |
-| 07 | Pipeline |
-| 08 | Vision |
-| 09 | Market size |
-| 10 | Business models |
-| 11 | Beyond hexes (traction) |
-| 12 | Go-to-market (mods) |
-| 13 | Chess |
-| 14 | Dungeon Chess |
-| 15 | 18-month milestones |
-| 16 | Competitive landscape + moat |
-| 17 | Team + credibility |
-| 18 | Use of funds |
-| 19 | The ask ($250K–$500K) |
-| 20 | Contact |
-
-## Investment structure
-
-- **Equity**: Pre-seed stake in Moddable.Games (valuation negotiable)
-- **Game royalties**: 5–15% net revenue share on a named title, capped at 3x return
+Each `<section>` slide has a `data-decks` attribute listing which audiences see it (e.g. `data-decks="opportunities internal crowdfunding"`). The `deck-filter.js` script reads `?deck=` from the URL, sets `data-deck-skip` on non-matching slides, and updates page numbers to reflect the filtered count.
 
 ## PDF generation
 
-The `<deck-stage>` component supports `@media print` — use the browser's Print > Save as PDF (landscape, no margins) for a clean one-slide-per-page export.
+The `<deck-stage>` component supports `@media print` — use the browser's Print > Save as PDF (landscape, no margins) for a clean one-slide-per-page export. Skipped slides are excluded from print.
+
+## Investment structure (opportunities deck)
+
+- **Equity**: Pre-seed stake in Moddable.Games (valuation negotiable)
+- **Game royalties**: 5–15% net revenue share on a named title, capped at 3x return
 
 ## Changelog
 
 | Date | Change |
 |---|---|
-| 2026-05-20 | CSS extraction complete (415 inline styles → external deck.css). Milestones, moat, and credibility slides added. |
-| 2026-05-19 | Repo restructured. Slides 16, 18, 19 rewritten. Team cutouts, Dungeon Chess logo integrated. |
+| 2026-05-20 | Inline styles extracted to deck.css (238 classes). Multi-audience filtering system added. New slides: milestones, competitive + moat, pledge tiers, fulfilment, internal status/blockers/responsibilities. |
+| 2026-05-19 | Repo restructured. Slides 18, 19 rewritten. Team cutouts and Dungeon Chess logo integrated. |
