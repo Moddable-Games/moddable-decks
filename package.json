@@ -1,0 +1,24 @@
+{
+  "name": "moddable-decks",
+  "version": "1.0.0",
+  "description": "A multi-audience HTML presentation system for Moddable.Games. One master deck, multiple filtered views for different audiences.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Moddable-Games/moddable-decks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Moddable-Games/moddable-decks/issues"
+  },
+  "homepage": "https://github.com/Moddable-Games/moddable-decks#readme",
+  "dependencies": {
+    "puppeteer": "^25.0.4"
+  }
+}

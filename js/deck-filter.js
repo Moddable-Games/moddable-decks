@@ -137,8 +137,8 @@
           currentEl.textContent = String(visibleIndexOf(startAbsIndex) || 1);
         }
         // Navigate to initial slide if hash was provided
-        if (startAbsIndex > 0 && stage.goto) {
-          stage.goto(startAbsIndex);
+        if (startAbsIndex > 0 && stage.goTo) {
+          stage.goTo(startAbsIndex);
         }
       } else {
         requestAnimationFrame(patchShadowDOM);

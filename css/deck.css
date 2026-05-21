@@ -333,6 +333,7 @@
     letter-spacing: -3px;
   }
   .stat-num.sm { font-size: 96px; }
+  .stat-num.card-price { font-size: 64px; letter-spacing: -1px; }
   .stat-label {
     font-family: var(--mg-font-body);
     font-size: 20px;
