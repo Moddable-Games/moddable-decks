@@ -9,8 +9,13 @@ Open `index.html` in a browser. Arrow keys navigate between slides.
 | URL | Audience | Slides |
 |---|---|---|
 | `?deck=opportunities` | Angels / partners | 20 |
-| `?deck=crowdfunding` | Backers / campaign supporters | 13 |
-| `?deck=internal` | Team (shows all slides + deck-membership pills) | 25 |
+| `?deck=crowdfunding` | Backers / campaign supporters | 15 |
+| `?deck=internal` | Team (shows all slides + deck-membership pills) | 28 |
+| `?deck=press` | Journalists / content creators | 8 |
+| `?deck=partner` | Distributors / retail buyers | 7 |
+| `?deck=expo` | Convention booth loop | 6 |
+| `?deck=hiring` | Potential hires / collaborators | 4 |
+| `?deck=product` | Per-game launch (customers) | 5 |
 | No param | Splash page (no deck access) | — |
 
 Works with GitHub Pages — deploy the repo root directly.
@@ -18,11 +23,12 @@ Works with GitHub Pages — deploy the repo root directly.
 ## Structure
 
 ```
-index.html              The master deck (all 25 slides)
+index.html              The master deck (all 28 slides)
 css/
   deck.css              Deck layout + component styles
   colors_and_type.css   Design tokens (colour, type, spacing)
 js/
+  deck-data.js          Deck definitions + slide metadata (API-readiness stage 1)
   deck-stage.js         Custom element: navigation, scaling, print
   deck-filter.js        Audience filtering, badges, slide numbering
 assets/
@@ -52,5 +58,6 @@ The `<deck-stage>` component supports `@media print` — use the browser's Print
 
 | Date | Change |
 |---|---|
+| 2026-05-21 | Data extraction: slide metadata to deck-data.js (API-readiness stage 1). 5 new deck types added (press, partner, expo, hiring, product). Crowdfunding deck expanded: stretch goals, social proof, why-back-us slides. Removed Vision from crowdfunding. SVG inline styles moved to CSS. Fixed pre-existing SVG attribute corruption (x1/x2). Began is-N → semantic class rename (16 of 148 done). |
 | 2026-05-20 | Inline styles extracted to deck.css (238 classes). Multi-audience filtering system added. New slides: milestones, competitive + moat, pledge tiers, fulfilment, internal status/blockers/responsibilities. |
 | 2026-05-19 | Repo restructured. Slides 18, 19 rewritten. Team cutouts and Dungeon Chess logo integrated. |

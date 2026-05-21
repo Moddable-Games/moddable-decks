@@ -1,14 +1,11 @@
 (function () {
-  var DECKS = {
-    opportunities: { label: 'Opportunities', color: '#d11a1a' },
-    crowdfunding: { label: 'Crowdfunding', color: '#3a9928' },
-    internal: { label: 'Master Plan', color: '#0c4f8d' }
-  };
+  var DATA = window.DeckData;
+  if (!DATA) return;
 
+  var DECKS = DATA.decks;
   var params = new URLSearchParams(window.location.search);
   var activeDeck = params.get('deck');
 
-  // No deck param = splash page
   if (!activeDeck || !DECKS[activeDeck]) {
     document.addEventListener('DOMContentLoaded', function () {
       var stage = document.querySelector('deck-stage');
@@ -20,10 +17,6 @@
     return;
   }
 
-  // Clamp hash to visible slide count
-  var _clampHash = true;
-
-  // SYNCHRONOUS — runs before deck-stage.js registers the custom element
   if (activeDeck !== 'internal') {
     var slides = document.querySelectorAll('deck-stage section[data-decks]');
     slides.forEach(function (slide) {
@@ -34,15 +27,12 @@
     });
   }
 
-  // Deferred UI updates
   document.addEventListener('DOMContentLoaded', function () {
-    // Update title slide eyebrow
     var titleEyebrow = document.querySelector('section[data-screen-label="01 Title"] .eyebrow');
     if (titleEyebrow) {
       titleEyebrow.innerHTML = '<span class="arrow">▲</span> MODDABLE.GAMES · ' + DECKS[activeDeck].label.toUpperCase() + ' · 2026';
     }
 
-    // Badge (not for internal)
     if (activeDeck !== 'internal') {
       var badge = document.createElement('div');
       badge.className = 'deck-badge deck-badge-' + activeDeck;
@@ -50,7 +40,6 @@
       document.body.appendChild(badge);
     }
 
-    // Renumber visible slides
     var visibleCount = 0;
     document.querySelectorAll('deck-stage section[data-decks]').forEach(function (slide) {
       if (!slide.hasAttribute('data-deck-skip')) visibleCount++;
@@ -66,7 +55,6 @@
       }
     });
 
-    // Per-slide deck-membership pills (internal only)
     if (activeDeck === 'internal') {
       document.querySelectorAll('deck-stage section[data-decks]').forEach(function (slide) {
         var tags = slide.getAttribute('data-decks').split(' ');
@@ -76,14 +64,13 @@
           if (tag === 'internal') return;
           var pill = document.createElement('span');
           pill.className = 'deck-pill deck-pill-' + tag;
-          pill.textContent = tag.charAt(0).toUpperCase() + tag.slice(1);
+          pill.textContent = DECKS[tag] ? DECKS[tag].label : tag;
           container.appendChild(pill);
         });
         slide.appendChild(container);
       });
     }
 
-    // Hide skipped thumbnails in shadow DOM
     function patchShadowDOM() {
       var stage = document.querySelector('deck-stage');
       if (stage && stage.shadowRoot) {
@@ -98,8 +85,7 @@
     }
     setTimeout(patchShadowDOM, 100);
 
-    // Clamp hash if it exceeds visible slide count
-    if (_clampHash && window.location.hash) {
+    if (window.location.hash) {
       var hashNum = parseInt(window.location.hash.replace('#', ''), 10);
       if (hashNum > visibleCount) {
         history.replaceState(null, '', window.location.pathname + window.location.search + '#1');
