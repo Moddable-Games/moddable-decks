@@ -78,7 +78,22 @@ window.DeckData = {
     '25-why-back-us',
     '26-current-status',
     '27-blockers',
-    '28-responsibilities'
+    '28-responsibilities',
+    '29-quick-facts',
+    '30-story-angles',
+    '31-assets',
+    '32-retail-proposition',
+    '33-product-line',
+    '34-logistics',
+    '35-play-now',
+    '36-what-is-this',
+    '37-community',
+    '38-how-we-work',
+    '39-open-roles',
+    '40-what-you-get',
+    '41-in-the-box',
+    '42-how-to-play',
+    '43-get-it'
   ],
 
   slides: {
@@ -221,6 +236,81 @@ window.DeckData = {
       title: 'Responsibilities',
       theme: 'ivory',
       decks: ['internal']
+    },
+    '29-quick-facts': {
+      title: 'Quick facts',
+      theme: 'ivory',
+      decks: ['press', 'internal']
+    },
+    '30-story-angles': {
+      title: 'Story angles',
+      theme: 'dark',
+      decks: ['press', 'internal']
+    },
+    '31-assets': {
+      title: 'Assets',
+      theme: 'ivory',
+      decks: ['press', 'internal']
+    },
+    '32-retail-proposition': {
+      title: 'Retail proposition',
+      theme: 'ivory',
+      decks: ['partner', 'internal']
+    },
+    '33-product-line': {
+      title: 'Product line',
+      theme: 'ivory',
+      decks: ['partner', 'internal']
+    },
+    '34-logistics': {
+      title: 'Logistics',
+      theme: 'dark',
+      decks: ['partner', 'internal']
+    },
+    '35-play-now': {
+      title: 'Play now',
+      theme: 'cosmic',
+      decks: ['expo', 'internal']
+    },
+    '36-what-is-this': {
+      title: 'What is this',
+      theme: 'dark',
+      decks: ['expo', 'internal']
+    },
+    '37-community': {
+      title: 'Community',
+      theme: 'dark',
+      decks: ['expo', 'internal']
+    },
+    '38-how-we-work': {
+      title: 'How we work',
+      theme: 'dark',
+      decks: ['hiring', 'internal']
+    },
+    '39-open-roles': {
+      title: 'Open roles',
+      theme: 'ivory',
+      decks: ['hiring', 'internal']
+    },
+    '40-what-you-get': {
+      title: 'What you get',
+      theme: 'cosmic',
+      decks: ['hiring', 'internal']
+    },
+    '41-in-the-box': {
+      title: 'In the box',
+      theme: 'ivory',
+      decks: ['product', 'internal']
+    },
+    '42-how-to-play': {
+      title: 'How to play',
+      theme: 'dark',
+      decks: ['product', 'internal']
+    },
+    '43-get-it': {
+      title: 'Get it',
+      theme: 'cosmic',
+      decks: ['product', 'internal']
     }
   }
 };

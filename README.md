@@ -10,12 +10,12 @@ Open `index.html` in a browser. Arrow keys navigate between slides.
 |---|---|---|
 | `?deck=opportunities` | Angels / partners | 20 |
 | `?deck=crowdfunding` | Backers / campaign supporters | 15 |
-| `?deck=internal` | Team (shows all slides + deck-membership pills) | 28 |
-| `?deck=press` | Journalists / content creators | 8 |
-| `?deck=partner` | Distributors / retail buyers | 7 |
-| `?deck=expo` | Convention booth loop | 6 |
-| `?deck=hiring` | Potential hires / collaborators | 4 |
-| `?deck=product` | Per-game launch (customers) | 5 |
+| `?deck=internal` | Team (shows all slides + deck-membership pills) | 43 |
+| `?deck=press` | Journalists / content creators | 11 |
+| `?deck=partner` | Distributors / retail buyers | 10 |
+| `?deck=expo` | Convention booth loop | 9 |
+| `?deck=hiring` | Potential hires / collaborators | 7 |
+| `?deck=product` | Per-game launch (customers) | 8 |
 | No param | Splash page (no deck access) | — |
 
 Works with GitHub Pages — deploy the repo root directly.
@@ -23,7 +23,7 @@ Works with GitHub Pages — deploy the repo root directly.
 ## Structure
 
 ```
-index.html              The master deck (all 28 slides)
+index.html              The master deck (all 43 slides)
 css/
   deck.css              Deck layout + component styles
   colors_and_type.css   Design tokens (colour, type, spacing)
