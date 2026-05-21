@@ -119,13 +119,13 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 84px 120px 132px;
+    padding: 84px 120px 140px;
   }
 
   /* ---- Slide header (eyebrow + slide number) ---- */
   .slide-head {
     display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 64px;
+    margin-bottom: 40px;
   }
   .eyebrow {
     font-family: var(--mg-font-pixel);
