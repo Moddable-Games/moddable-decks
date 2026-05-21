@@ -17,6 +17,7 @@
     return;
   }
 
+  // Mark non-matching slides as skipped (synchronous — DOM is available)
   if (activeDeck !== 'internal') {
     var slides = document.querySelectorAll('deck-stage section[data-decks]');
     slides.forEach(function (slide) {
@@ -27,33 +28,36 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    var titleEyebrow = document.querySelector('section[data-screen-label="01 Title"] .eyebrow');
-    if (titleEyebrow) {
-      titleEyebrow.innerHTML = '<span class="arrow">▲</span> MODDABLE.GAMES · ' + DECKS[activeDeck].label.toUpperCase() + ' · 2026';
+  // Renumber visible slides immediately (DOM exists since scripts are at end of body)
+  var visibleCount = 0;
+  document.querySelectorAll('deck-stage section[data-decks]').forEach(function (slide) {
+    if (!slide.hasAttribute('data-deck-skip')) visibleCount++;
+  });
+  var idx = 0;
+  document.querySelectorAll('deck-stage section[data-decks]').forEach(function (slide) {
+    if (!slide.hasAttribute('data-deck-skip')) {
+      idx++;
+      var label = (idx < 10 ? '0' : '') + idx + ' / ' + visibleCount;
+      slide.querySelectorAll('.pagenum').forEach(function (el) {
+        el.textContent = label;
+      });
     }
+  });
 
+  // Update title eyebrow
+  var titleEyebrow = document.querySelector('section[data-screen-label="01 Title"] .eyebrow');
+  if (titleEyebrow) {
+    titleEyebrow.innerHTML = '<span class="arrow">▲</span> MODDABLE.GAMES · ' + DECKS[activeDeck].label.toUpperCase() + ' · 2026';
+  }
+
+  // Deferred UI (badge, pills, shadow DOM patching)
+  document.addEventListener('DOMContentLoaded', function () {
     if (activeDeck !== 'internal') {
       var badge = document.createElement('div');
       badge.className = 'deck-badge deck-badge-' + activeDeck;
       badge.textContent = DECKS[activeDeck].label;
       document.body.appendChild(badge);
     }
-
-    var visibleCount = 0;
-    document.querySelectorAll('deck-stage section[data-decks]').forEach(function (slide) {
-      if (!slide.hasAttribute('data-deck-skip')) visibleCount++;
-    });
-    var idx = 0;
-    document.querySelectorAll('deck-stage section[data-decks]').forEach(function (slide) {
-      if (!slide.hasAttribute('data-deck-skip')) {
-        idx++;
-        var label = (idx < 10 ? '0' : '') + idx + ' / ' + visibleCount;
-        slide.querySelectorAll('.pagenum').forEach(function (el) {
-          el.textContent = label;
-        });
-      }
-    });
 
     if (activeDeck === 'internal') {
       var allSlides = Array.from(document.querySelectorAll('deck-stage section[data-decks]'));
