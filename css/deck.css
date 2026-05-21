@@ -119,7 +119,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 84px 120px 140px;
+    padding: 64px 120px 96px;
   }
 
   /* ---- Slide header (eyebrow + slide number) ---- */
@@ -276,7 +276,7 @@
 
   /* ---- Footer bar ---- */
   .footer {
-    position: absolute; bottom: 40px; left: 120px; right: 120px;
+    position: absolute; bottom: 32px; left: 120px; right: 120px;
     display: flex; align-items: center; justify-content: space-between;
     font-family: var(--mg-font-mono);
     font-size: 13px;
@@ -482,14 +482,14 @@
 .card-meta { font-size: 11px; color: var(--mg-stone); letter-spacing: 0.08em; margin-top: 4px; }
 .fs-22 { font-size: 22px; }
 .flex-col { display: flex; flex-direction: column; }
-.grid-4col { margin-top: 48px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; flex: 1; }
+.grid-4col { margin-top: 32px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; flex: 1; }
 .fs-88 { font-size: 88px; }
 .mt-24 { margin-top: 24px; }
 .card-label-light { font-size: 13px; letter-spacing: 0.1em; color: var(--mg-cosmic-glow); }
-.grid-2col { margin-top: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; flex: 1; }
+.grid-2col { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; flex: 1; }
 .card-heading { font-size: 28px; margin-top: 8px; }
 .card-label { font-size: 13px; letter-spacing: 0.1em; color: var(--mg-stone); }
-.grid-3col { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; flex: 1; }
+.grid-3col { margin-top: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; flex: 1; }
 .mt-16 { margin-top: 16px; }
 .card-heading-lg { font-size: 28px; margin-top: 12px; }
 .grid-3col-16 { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; flex: 1; }
@@ -500,7 +500,7 @@
 .is-21 { font-size: 48px; color: var(--mg-red); margin-top: 12px; }
 .is-22 { font-size: 48px; color: var(--mg-green); margin-top: 12px; }
 .is-23 { font-size: 48px; color: var(--mg-blue); margin-top: 12px; }
-.grid-4col-24 { margin-top: 56px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; flex: 1; }
+.grid-4col-24 { margin-top: 36px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; flex: 1; }
 .is-25 { margin-top: 88px; font-size: 14px; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; }
 .flex-row-gap-16 { display: flex; gap: 16px; }
 .is-27 { height: 88px; padding: 0 56px; font-size: 32px; }
