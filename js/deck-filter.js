@@ -98,6 +98,7 @@
               if (!allSections[i].hasAttribute('data-deck-skip')) visIndex++;
             }
             currentEl.textContent = String(visIndex);
+            history.replaceState(null, '', window.location.pathname + window.location.search + '#' + visIndex);
           });
           var initIndex = parseInt(currentEl.textContent, 10) - 1;
           var visInit = 0;
