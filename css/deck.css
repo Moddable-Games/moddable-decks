@@ -825,7 +825,13 @@
   letter-spacing: 0.1em;
   color: #fff;
   opacity: 0.85;
-  pointer-events: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.deck-pill:hover {
+  opacity: 1;
+  transform: scale(1.08);
 }
 .deck-pill-opportunities { background: #d11a1a; }
 .deck-pill-crowdfunding { background: #3a9928; }

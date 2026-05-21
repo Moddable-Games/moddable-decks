@@ -56,15 +56,20 @@
     });
 
     if (activeDeck === 'internal') {
-      document.querySelectorAll('deck-stage section[data-decks]').forEach(function (slide) {
+      var allSlides = Array.from(document.querySelectorAll('deck-stage section[data-decks]'));
+      allSlides.forEach(function (slide, slideIndex) {
         var tags = slide.getAttribute('data-decks').split(' ');
         var container = document.createElement('div');
         container.className = 'deck-pills';
         tags.forEach(function (tag) {
           if (tag === 'internal') return;
-          var pill = document.createElement('span');
+          var pill = document.createElement('a');
           pill.className = 'deck-pill deck-pill-' + tag;
           pill.textContent = DECKS[tag] ? DECKS[tag].label : tag;
+          var posInDeck = allSlides.slice(0, slideIndex + 1).filter(function (s) {
+            return s.getAttribute('data-decks').split(' ').indexOf(tag) !== -1;
+          }).length;
+          pill.href = '?deck=' + tag + '#' + posInDeck;
           container.appendChild(pill);
         });
         slide.appendChild(container);
