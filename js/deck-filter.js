@@ -88,6 +88,24 @@
         stage.shadowRoot.appendChild(s);
         var totalEl = stage.shadowRoot.querySelector('.total');
         if (totalEl) totalEl.textContent = String(visibleCount);
+        var currentEl = stage.shadowRoot.querySelector('.current');
+        if (currentEl && activeDeck !== 'internal') {
+          var allSections = Array.from(document.querySelectorAll('deck-stage section[data-decks]'));
+          stage.addEventListener('slidechange', function (e) {
+            var absIndex = e.detail.index;
+            var visIndex = 0;
+            for (var i = 0; i <= absIndex; i++) {
+              if (!allSections[i].hasAttribute('data-deck-skip')) visIndex++;
+            }
+            currentEl.textContent = String(visIndex);
+          });
+          var initIndex = parseInt(currentEl.textContent, 10) - 1;
+          var visInit = 0;
+          for (var i = 0; i <= initIndex && i < allSections.length; i++) {
+            if (!allSections[i].hasAttribute('data-deck-skip')) visInit++;
+          }
+          currentEl.textContent = String(visInit || 1);
+        }
       } else {
         requestAnimationFrame(patchShadowDOM);
       }
