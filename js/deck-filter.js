@@ -48,10 +48,10 @@
     document.querySelectorAll('deck-stage section[data-decks]').forEach(function (slide) {
       if (!slide.hasAttribute('data-deck-skip')) {
         idx++;
-        var pagenum = slide.querySelector('.pagenum');
-        if (pagenum) {
-          pagenum.textContent = (idx < 10 ? '0' : '') + idx + ' / ' + visibleCount;
-        }
+        var label = (idx < 10 ? '0' : '') + idx + ' / ' + visibleCount;
+        slide.querySelectorAll('.pagenum').forEach(function (el) {
+          el.textContent = label;
+        });
       }
     });
 
