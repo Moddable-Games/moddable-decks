@@ -536,8 +536,8 @@ ul.clean.list-invest { margin-top: 32px; font-size: 20px; flex: 1; }
 .card-avatar {
   position: relative;
   width: 100%;
-  height: 260px;
-  margin: -110px auto 0;
+  height: 250px;
+  margin: -80px auto 0;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -550,9 +550,9 @@ ul.clean.list-invest { margin-top: 32px; font-size: 20px; flex: 1; }
   bottom: 0;
   left: 5%;
   right: 5%;
-  height: 8px;
+  height: 10px;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 40%, transparent 70%);
 }
 .card-avatar .hex-frame { display: none; }
 .card-avatar .img-behind { display: none; }
@@ -562,28 +562,28 @@ ul.clean.list-invest { margin-top: 32px; font-size: 20px; flex: 1; }
   width: auto;
 }
 .card-avatar .img-breakout.team-mark {
-  height: 560px;
-  clip-path: inset(2% 0 43% 0);
-  margin-bottom: calc(-560px * 0.43);
+  height: 540px;
+  clip-path: inset(0 0 35% 0);
+  margin-bottom: calc(-540px * 0.35);
 }
 .card-avatar .img-breakout.team-kevin {
-  height: 560px;
-  clip-path: inset(9% 0 41% 0);
-  margin-bottom: calc(-560px * 0.41);
+  height: 540px;
+  clip-path: inset(7% 0 33% 0);
+  margin-bottom: calc(-540px * 0.33);
 }
 .card-avatar .img-breakout.team-akmal {
-  height: 565px;
-  clip-path: inset(4% 0 42% 0);
-  margin-bottom: calc(-565px * 0.42);
+  height: 545px;
+  clip-path: inset(2% 0 34% 0);
+  margin-bottom: calc(-545px * 0.34);
 }
 .card-avatar .img-breakout.team-iqbal {
-  height: 680px;
-  clip-path: inset(16% 0 48% 0);
-  margin-bottom: calc(-680px * 0.48);
+  height: 700px;
+  clip-path: inset(13% 0 39% 0);
+  margin-bottom: calc(-700px * 0.39);
 }
-.flex-col-50 { display: flex; flex-direction: column; padding: 24px; padding-top: 32px; overflow: visible; }
-.grid-4col-51 { margin-top: 120px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; flex: 1; }
-.grid-4col-51 .card { overflow: visible; }
+.flex-col-50 { display: flex; flex-direction: column; padding: 20px; padding-top: 28px; overflow: visible; }
+.grid-4col-51 { margin-top: 100px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; flex: 1; }
+.grid-4col-51 .card { overflow: visible; padding: 20px; }
 .body-lg-charcoal-md { max-width: 520px; color: var(--mg-charcoal); margin-bottom: 8px; }
 .moat-body { color: var(--mg-text-70); margin-top: 8px; font-size: 14px; }
 .fs-20 { font-size: 20px; }
