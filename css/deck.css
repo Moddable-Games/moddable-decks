@@ -556,15 +556,15 @@ ul.clean.list-invest { margin-top: 32px; font-size: 20px; flex: 1; }
 .card-avatar .img-breakout {
   position: absolute;
   z-index: 1;
-  bottom: calc(-483px * 0.40 + 6px);
+  bottom: calc(-483px * 0.35 + 6px);
   left: 50%;
   transform: translateX(-50%);
   width: 386px;
   height: auto;
-  clip-path: inset(0 0 40% 0);
+  clip-path: inset(0 0 35% 0);
 }
 .flex-col-50 { display: flex; flex-direction: column; padding: 20px; padding-top: 28px; overflow: visible; }
-.grid-4col-51 { margin-top: 160px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-content: start; }
+.grid-4col-51 { margin-top: 190px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-content: start; }
 .grid-4col-51 .card { overflow: visible; padding: 20px; }
 .body-lg-charcoal-md { max-width: 520px; color: var(--mg-charcoal); margin-bottom: 8px; }
 .moat-body { color: var(--mg-text-70); margin-top: 8px; font-size: 14px; }
