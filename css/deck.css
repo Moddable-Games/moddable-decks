@@ -536,8 +536,8 @@ ul.clean.list-invest { margin-top: 32px; font-size: 20px; flex: 1; }
 .card-avatar {
   position: relative;
   width: 100%;
-  height: 200px;
-  margin: -40px auto 0;
+  height: 280px;
+  margin: -30px auto 0;
   overflow: visible;
 }
 .card-avatar::after {
@@ -560,7 +560,7 @@ ul.clean.list-invest { margin-top: 32px; font-size: 20px; flex: 1; }
   transform: translateX(-50%);
   width: 420px;
   height: auto;
-  clip-path: inset(0 0 40% 0);
+  clip-path: inset(0 0 38% 0);
 }
 .flex-col-50 { display: flex; flex-direction: column; padding: 20px; padding-top: 28px; overflow: visible; }
 .grid-4col-51 { margin-top: 260px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; flex: 1; }
