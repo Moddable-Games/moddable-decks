@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Moddable-Games/moddable-decks#readme",
   "dependencies": {
-    "puppeteer": "^25.0.4"
+    "puppeteer": "^25.0.4",
+    "qrcode": "^1.5.4"
   }
 }
