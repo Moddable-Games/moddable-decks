@@ -561,23 +561,8 @@ ul.clean.list-invest { margin-top: 32px; font-size: 20px; flex: 1; }
   z-index: 1;
   width: 340px;
   height: auto;
-}
-.card-avatar .img-breakout.team-mark {
-  clip-path: inset(0 0 35% 0);
-  margin-bottom: calc(-509px * 0.35);
-}
-.card-avatar .img-breakout.team-kevin {
-  clip-path: inset(7% 0 33% 0);
-  margin-bottom: calc(-510px * 0.33);
-}
-.card-avatar .img-breakout.team-akmal {
-  clip-path: inset(2% 0 34% 0);
-  margin-bottom: calc(-510px * 0.34);
-}
-.card-avatar .img-breakout.team-iqbal {
-  width: 460px;
-  clip-path: inset(5% 0 30% 0);
-  margin-bottom: calc(-536px * 0.30);
+  clip-path: inset(0 0 32% 0);
+  margin-bottom: calc(-425px * 0.32);
 }
 .flex-col-50 { display: flex; flex-direction: column; padding: 20px; padding-top: 28px; overflow: visible; }
 .grid-4col-51 { margin-top: 100px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; flex: 1; }
