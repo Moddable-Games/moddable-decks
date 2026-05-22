@@ -556,7 +556,7 @@ ul.clean.list-invest { margin-top: 32px; font-size: 20px; flex: 1; }
 .card-avatar .img-breakout {
   position: absolute;
   z-index: 1;
-  bottom: 6px;
+  bottom: calc(-475px * 0.38 + 6px);
   left: 50%;
   transform: translateX(-50%);
   width: 380px;
