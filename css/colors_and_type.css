@@ -69,6 +69,29 @@
   --mg-on-dark:    #ffffff;
   --mg-on-dark-mute: rgba(255,255,255,0.72);
 
+  /* Game-specific accents */
+  --mg-dc-green:   #b8f0a8;   /* Dungeon Chess — verdant glow accent */
+  --mg-nukes-red:  #ffb3b3;   /* Nukes — soft red/pink accent */
+  --mg-nukes-amber:#ffb84d;   /* Nukes — amber/nuke icon */
+  --mg-hex-blue:   #aed4ff;   /* Hex engine — light blue accent */
+  --mg-hl-amber:   #f7c14b;   /* Highlight / emphasis amber */
+
+  /* Deck-type accents (badges + pills) */
+  --mg-deck-press:    #9b59b6;
+  --mg-deck-partner:  #e67e22;
+  --mg-deck-expo:     #1abc9c;
+  --mg-deck-hiring:   #f39c12;
+  --mg-deck-product:  #e74c3c;
+
+  /* Overlays & translucency */
+  --mg-overlay-heavy:  rgba(0,0,0,0.6);
+  --mg-overlay-mid:    rgba(0,0,0,0.55);
+  --mg-overlay-light:  rgba(0,0,0,0.45);
+  --mg-text-60:        rgba(255,255,255,0.6);
+  --mg-text-55:        rgba(255,255,255,0.55);
+  --mg-text-70:        rgba(255,255,255,0.7);
+  --mg-border-subtle:  rgba(255,255,255,0.08);
+
   /* Functional */
   --mg-success:    var(--mg-green);
   --mg-warning:    #e89a1a;
