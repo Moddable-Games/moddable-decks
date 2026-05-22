@@ -58,6 +58,7 @@ The `<deck-stage>` component supports `@media print` — use the browser's Print
 
 | Date | Change |
 |---|---|
+| 2026-05-22 | Renamed all 132 numeric `is-N` classes to semantic names. Consolidated CSS variables (game accents, deck-type colours, overlays). Team slide reworked: normalised photos to 800x1000 canvas with aligned heads, pop-out-of-card effect with shadow ground lines. QR codes generated for expo slides (Nukes + Discord). Team data + assets propagated to moddable-website project. |
 | 2026-05-21 | Fixed footer overflow on 11 slides. Fixed CSS specificity bug (ul.clean overriding .card-list margin). Card headings reduced to fit single lines in 3/4-col grids. Dark-card text readability fix. Community slide (36) columns aligned. Data extraction: slide metadata to deck-data.js (API-readiness stage 1). 5 new deck types added (press, partner, expo, hiring, product). Crowdfunding deck expanded: stretch goals, social proof, why-back-us slides. Removed Vision from crowdfunding. SVG inline styles moved to CSS. Fixed pre-existing SVG attribute corruption (x1/x2). Began is-N → semantic class rename (16 of 148 done). |
 | 2026-05-20 | Inline styles extracted to deck.css (238 classes). Multi-audience filtering system added. New slides: milestones, competitive + moat, pledge tiers, fulfilment, internal status/blockers/responsibilities. |
 | 2026-05-19 | Repo restructured. Slides 18, 19 rewritten. Team cutouts and Dungeon Chess logo integrated. |
