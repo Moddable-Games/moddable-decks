@@ -56,6 +56,14 @@ The `<deck-stage>` component supports `@media print` — use the browser's Print
 
 ## Changelog
 
+#### 2026-05-23
+- Added title card slides before each game section (Nukes, Moddable Chess, Dungeon Chess) with proper logos
+- Game logos sourced from moddable-website project (nukes-logo.png, mongo-logo.png, endless-skies-logo.png, moddable-chess-cube.svg)
+- New species showcase slide (14b): 2x2 grid of Dungeon Chess prototype miniature art
+- Renamed races → species on DC detail slide, updated mechanic callouts (Draft/Cannons/Terrain/Maps)
+- Fixed external links missing `target="_blank" rel="noopener"`
+- Converted changelog to date-headed bullet point format
+
 #### 2026-05-22
 - Renamed all 132 numeric `is-N` classes to semantic names
 - Consolidated CSS variables (game accents, deck-type colours, overlays)
