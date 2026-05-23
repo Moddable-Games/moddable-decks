@@ -905,7 +905,7 @@ ul.clean.list-invest { margin-top: 32px; font-size: 20px; flex: 1; }
 h3.sub.goal-title { margin-bottom: 12px; font-size: 26px; }
 .quote-text { font-style: italic; line-height: 1.6; margin-bottom: 16px; }
 .quote-attr { font-size: 14px; opacity: 0.7; }
-.social-stats { text-align: center; }
+.social-stats { text-align: center; max-width: none; }
 .stat-inline { font-size: 1.2em; font-weight: 700; color: var(--mg-blue); }
 .stat-sep { margin: 0 16px; opacity: 0.4; }
 .why-title { margin-bottom: 12px; }
