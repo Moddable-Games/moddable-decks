@@ -6,7 +6,9 @@ Generated 2026-05-23. Maps every shared data point across the Moddable.Games eco
 
 ## 1. Game Facts
 
-**Source of truth:** `moddable-website/data/games-sync.json` (synced from rulebook frontmatter via `npm run sync`)
+**Source of truth:** `nukes-rulebook/games/*/content/rulebook.md` frontmatter (synced to website via `npm run sync`)
+
+All rulebook frontmatter verified 2026-05-23 against actual files.
 
 ### Nukes
 
@@ -16,8 +18,8 @@ Generated 2026-05-23. Maps every shared data point across the Moddable.Games eco
 | Duration | 45+ min | 45+ MIN (slides 03, 07) | 45+ min | Aligned |
 | Age | 12+ | 12+ (slide 03) | 12+ | Aligned |
 | Version | 0.9.3 | v0.9.2 (slide 03 mock UI) | 0.9.3 | Deck stale |
-| Tokens | — | 60 (slide 41) | 75 (25/player, 3 colours) | Contradiction |
-| Hex tiles | — | 19 (slide 41) | 44 | Contradiction |
+| Tokens | — | 60 (slide 41) | 75 (25/player, 3 colours) | Deck WRONG — rulebook confirmed |
+| Hex tiles | — | 19 (slide 41) | 44 | Deck WRONG — rulebook confirmed |
 | Website game page players | 3 (mg-game-nukes-page.js) | — | — | Website wrong |
 | Website game page age | 14+ (mg-game-nukes-page.js) | — | — | Website wrong |
 | Website game page time | 60–90 min (mg-game-nukes-page.js) | — | — | Website wrong |
@@ -129,15 +131,20 @@ All milestones aligned (synced via deck-sync system).
 
 ## 6. Species / Faction Names
 
-**Decision needed — no current source of truth.**
+**Source of truth: rulebook** (`nukes-rulebook/games/dungeon-chess/content/rulebook.md`)
 
-| Project | Names used | CSS classes |
-|---------|-----------|-------------|
-| Deck (slide 14, species showcase) | Humans, Undead, Redskins, Greenskins | chip-race-knight, chip-race-wraith, chip-race-demonic, chip-race-verdant |
-| Website (mg-game-dungeon-chess-page.js) | Demonics, Wraiths, Knights, Verdants | — |
-| moddable-chess app | — (uses CSS classes from deck) | chip-race-knight, etc. |
+The rulebook says: **Humans, Undead, Redskins, Greenskins**
 
-The CSS class names (`knight`, `wraith`, `demonic`, `verdant`) align with the website names but not the deck names. The deck was updated to use "flavour" names (Humans, Undead, Redskins, Greenskins) during the 2026-05-23 session.
+| Project | Names used | Matches rulebook? |
+|---------|-----------|-------------------|
+| Rulebook (dungeon-chess) | Humans, Undead, Redskins, Greenskins | Source of truth |
+| Deck (slide 14, species showcase) | Humans, Undead, Redskins, Greenskins | Yes |
+| moddable-chess app (js/data.js) | Humans, Undead, Redskins, Greenskins | Yes |
+| Website (mg-game-dungeon-chess-page.js) | Demonics, Wraiths, Knights, Verdants | No — STALE |
+
+The website is the only project using old names. The CSS classes in the deck (`chip-race-knight`, `chip-race-wraith`, `chip-race-demonic`, `chip-race-verdant`) are vestiges of the old naming but don't display to users.
+
+**Action:** Update website DC page to use Humans/Undead/Redskins/Greenskins. CSS class rename is low priority (internal only).
 
 **Tracked in:** moddable-decks#16, moddable-website#38
 
