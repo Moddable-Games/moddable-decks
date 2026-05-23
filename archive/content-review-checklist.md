@@ -177,14 +177,16 @@ Updated 2026-05-23. Only items requiring your input remain.
 
 ---
 
-## Missing resources (need building)
+## Missing resources
 
-- [ ] `moddable.games/press` — press kit page + ZIP archive
-- [ ] `moddable.games/subscribe` — newsletter signup
-- [ ] `moddable.games/tools/decks` — card deck tool page
-- [ ] `moddable.games/tools/chess` — chess variant loader page
-- [ ] Press assets: PDF press release, backgrounder, b-roll, 4K screenshots, hi-res headshots
-- [ ] Digital rulebook PDF (for $15 backers)
+Pages created as stubs (2026-05-23) — content is placeholder, tools not yet functional:
+
+- [x] `moddable.games/press` — stub page created, lists assets but ZIP not yet built
+- [x] `moddable.games/subscribe` — stub page created, no form backend yet
+- [x] `moddable.games/tools/decks` — stub page created, tool not built
+- [x] `moddable.games/tools/chess` — stub page created, tool not built
+- [ ] Press assets: PDF press release, backgrounder, b-roll, 4K screenshots, hi-res headshots — NONE CREATED
+- [ ] Digital rulebook PDF (for $15 backers) — exists in rulebook project but not hosted as download
 
 ## Social accounts (verify they exist)
 
