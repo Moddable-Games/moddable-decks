@@ -73,7 +73,6 @@ The `<deck-stage>` component supports `@media print` — use the browser's Print
 - Dark card text contrast fix on ivory slides (CSS specificity)
 - Social stats line width matched to 3-column grid
 - Cross-project fact audit: 7 issues created on moddable-website (#36–42)
-- "Spot check" routine added to global CLAUDE.md
 
 #### 2026-05-22
 - Renamed all 132 numeric `is-N` classes to semantic names
