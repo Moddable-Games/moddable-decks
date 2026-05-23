@@ -574,7 +574,7 @@ ul.clean.list-invest { margin-top: 32px; font-size: 20px; flex: 1; }
 .moat-heading { font-size: 12px; letter-spacing: 0.14em; color: var(--mg-cosmic-glow); margin-bottom: 16px; }
 .card-dark { margin-top: 20px; background: var(--mg-ink); color: var(--mg-on-dark); border-color: transparent; padding: 24px 36px; }
 .card-dark .stat-num { font-size: 72px; }
-.card-dark .body-lg, .card-dark .body, .card-dark p { color: rgba(255,255,255,0.88); }
+.card-dark .body-lg, .card-dark .body, .card-dark p, .slide.ivory .card-dark .body-lg, .slide.ivory .card-dark p { color: rgba(255,255,255,0.88); }
 .comp-us-gap { font-size: 11px; color: var(--mg-cosmic-glow); margin-top: 12px; }
 .comp-us-body { color: rgba(255,255,255,0.8); margin-top: 10px; font-size: 13px; flex: 1; }
 .comp-us-title { font-size: 20px; margin-top: 8px; color: var(--mg-on-dark); }
