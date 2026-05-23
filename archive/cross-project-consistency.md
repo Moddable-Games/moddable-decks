@@ -17,12 +17,12 @@ All rulebook frontmatter verified 2026-05-23 against actual files.
 | Players | 2–3 | 2–3 (slides 03, 07) | 2–3 | Aligned |
 | Duration | 45+ min | 45+ MIN (slides 03, 07) | 45+ min | Aligned |
 | Age | 12+ | 12+ (slide 03) | 12+ | Aligned |
-| Version | 0.9.3 | v0.9.2 (slide 03 mock UI) | 0.9.3 | Deck stale |
-| Tokens | — | 60 (slide 41) | 75 (25/player, 3 colours) | Deck WRONG — rulebook confirmed |
-| Hex tiles | — | 19 (slide 41) | 44 | Deck WRONG — rulebook confirmed |
-| Website game page players | 3 (mg-game-nukes-page.js) | — | — | Website wrong |
-| Website game page age | 14+ (mg-game-nukes-page.js) | — | — | Website wrong |
-| Website game page time | 60–90 min (mg-game-nukes-page.js) | — | — | Website wrong |
+| Version | 0.9.3 | v0.9.3 (slides 03, 26) | 0.9.3 | FIXED 2026-05-23 |
+| Tokens | — | 75 (25/player, 3 colours) | 75 (25/player, 3 colours) | FIXED 2026-05-23 |
+| Hex tiles | — | 44 (slides 41, 42, 43) | 44 | FIXED 2026-05-23 |
+| Website game page players | 2–3 | — | — | FIXED 2026-05-23 |
+| Website game page age | 12+ | — | — | FIXED 2026-05-23 |
+| Website game page time | 45+ min | — | — | FIXED 2026-05-23 |
 
 ### Dungeon Chess
 
@@ -54,7 +54,7 @@ All rulebook frontmatter verified 2026-05-23 against actual files.
 
 | Field | Website (games-sync.json) | Deck | Status |
 |-------|---------------------------|------|--------|
-| Duration | 4–6 hr | "under three hours" (slide 12) | Contradiction |
+| Duration | 4–6 hr | "4–6 hours (vs 8+)" (slide 12) | FIXED 2026-05-23 |
 | Players | 3–6 | — | — |
 | Base game | Twilight Imperium 4e | TWILIGHT IMPERIUM 4TH ED. (slide 12) | Aligned |
 
@@ -115,7 +115,7 @@ All milestones aligned (synced via deck-sync system).
 | `https://moddable.games` | Deck (splash), website | Yes | Website root |
 | `https://nukes.moddable.games` | Deck (slides 1,3,5,35,42,43) | Unverified | Subdomain — not in local projects |
 | `moddable.games/tools/nukes` | Website (actual path) | Yes | — |
-| `moddable.games/tool/nukes` | Deck (slide 03 mock) | No | Path mismatch: `/tool/` vs `/tools/` |
+| `moddable.games/tools/nukes` | Deck (slide 03 mock) | Yes | FIXED 2026-05-23 (was `/tool/`) |
 | `moddable.games/tool/decks` | Deck (slide 11) | No | Page doesn't exist |
 | `moddable.games/tool/chess` | Deck (slide 11) | No | Page doesn't exist |
 | `moddable.games/press` | Deck (slide 31) | No | No /press directory |
@@ -215,7 +215,7 @@ The website is the only project using old names. The CSS classes in the deck (`c
 
 | Correct path (website) | Wrong path (deck) | Fix needed |
 |------------------------|-------------------|------------|
-| `/tools/nukes` | `/tool/nukes` (slide 03) | Singular → plural |
+| `/tools/nukes` | `/tools/nukes` (slide 03) | FIXED 2026-05-23 |
 | `/games/dungeon-chess/` | — | Not referenced in deck |
 | `/community/` | — | Deck uses discord.gg directly |
 
