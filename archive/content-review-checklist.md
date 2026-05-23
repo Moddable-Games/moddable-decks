@@ -278,7 +278,58 @@ Generated 2026-05-23. Tick off each claim once verified as accurate.
 
 ## Cross-slide inconsistencies to resolve
 
-- [ ] **Nukes play time**: Slide 07 says "30 MIN" but slides 03, 29, 42 say "45+ MIN" — which is correct?
-- [ ] **Nukes player count**: Slide 07 says "2P" but slides 03, 29, 42 say "2–3" — which is correct?
+- [x] **Nukes play time**: Slide 07 said "30 MIN" — fixed to "45+ MIN" (2026-05-23)
+- [x] **Nukes player count**: Slide 07 said "2P" — fixed to "2–3P" (2026-05-23)
 - [ ] **Board components**: Slide 21 says "4 board sections" but slide 41 says "19 hex tiles" — clarify relationship
-- [ ] **Blocker now resolved**: Slide 27 lists "Daggersquare font licence" as unconfirmed — this is now confirmed (FFC licence, free for commercial use). Update slide.
+- [x] **Blocker now resolved**: Slide 27 Daggersquare licence — fixed (2026-05-23)
+
+---
+
+## Missing / Unverifiable Resources
+
+### URLs mentioned in deck
+
+- [ ] **`nukes.moddable.games`** (Slides 1, 3, 5, 35, 42, 43) — Subdomain; needs manual verification it's live
+- [ ] **`moddable.games/tool/nukes`** (Slide 3 UI mock) — PATH MISMATCH: website uses `tools/nukes` (plural)
+- [ ] **`moddable.games/tool/decks`** (Slide 11) — DOES NOT EXIST in website
+- [ ] **`moddable.games/tool/chess`** (Slide 11) — DOES NOT EXIST in website
+- [ ] **`moddable.games/press`** (Slide 31) — DOES NOT EXIST; no /press directory
+- [ ] **`moddable.games/subscribe`** (Slide 37) — DOES NOT EXIST; no subscribe page
+- [ ] **`discord.gg/moddable`** (Slide 37) — Needs verification; stored URL is `discord.com/invite/WXENAywsQb` — same server?
+- [ ] **`youtube.com/@moddablegames`** (Slide 37) — Needs verification channel exists
+- [ ] **`bsky.app/moddablegames`** (Slide 37) — URL format likely wrong (should be `bsky.app/profile/...`)
+- [ ] **`team@moddable.games`** (Slides 1, 19, 29, Contact) — Verify email works
+- [ ] **`press@moddable.games`** (Slide 29 footer) — Verify email works
+- [ ] **`ign.com/articles/cyberpunk-tcg-crowdfunding-record-25-million`** (Slide 9) — Verify article exists
+
+### Promised downloadables that don't exist yet
+
+- [ ] ZIP archive of press assets (Slide 31) — "moddable.games/press" doesn't exist
+- [ ] One-page press release PDF (Slide 31)
+- [ ] Founder bio + company backgrounder (Slide 31)
+- [ ] Fact sheet / deck as PDF (Slide 31)
+- [ ] Rulebook excerpt for press (Slide 31)
+- [ ] Digital rulebook PDF for $15 backers (Slide 21)
+- [ ] Gameplay b-roll 30s + 60s clips (Slide 31)
+- [ ] Online engine screenshots 4K pack (Slide 31)
+- [ ] Hi-res founder headshots for press (Slide 31)
+- [ ] Logo SVG/PNG brand asset download (Slide 31)
+
+### Social accounts — verify they exist
+
+- [ ] Discord: `discord.gg/moddable` — verify invite works
+- [ ] YouTube: `youtube.com/@moddablegames` — verify channel has content
+- [ ] Bluesky: `bsky.app/moddablegames` — verify account exists (URL format?)
+- [ ] `@moddablegames` handle — which platforms? (X/Instagram not specified)
+- [ ] BoardGameGeek page (referenced in quotes, Slide 24)
+
+### Features claimed as live that may not be built
+
+- [ ] Card deck tool (Slide 11) — "847 sessions/wk" but page doesn't exist
+- [ ] Chess variant loader (Slide 11) — "1,560 games/wk" but page doesn't exist
+- [ ] "4 variants playable online" for Moddable Chess (Slides 15, 26)
+- [ ] Dungeon Chess "LIVE PROTOTYPE · IN ENGINE" (Slide 14) — playable where?
+- [ ] 3 bot difficulty tiers (Slide 6) — likely aspirational, not built
+- [ ] "4.2 star average session rating" (Slide 24) — no rating system visible
+- [ ] "Econopoly 95% / LAUNCH READY" (Slide 12) — no assets or page found
+- [ ] "500+ games played in alpha" (Slides 24, 25) — unverifiable
