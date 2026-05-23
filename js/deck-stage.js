@@ -135,11 +135,13 @@
       opacity: 0;
       pointer-events: none;
       visibility: hidden;
+      transition: opacity 300ms ease, visibility 0s 300ms;
     }
     ::slotted([data-deck-active]) {
       opacity: 1;
       pointer-events: auto;
       visibility: visible;
+      transition: opacity 300ms ease, visibility 0s;
     }
 
     /* Tap zones for mobile — back/forward thirds like Stories.
@@ -531,6 +533,7 @@
         page-break-after: always;
         break-inside: avoid;
         overflow: hidden;
+        transition: none !important;
       }
       /* :last-child alone isn't enough once data-deck-skip hides the
          trailing slide(s) — the last *visible* slide still carries
