@@ -49,11 +49,6 @@ Each `<section>` slide has a `data-decks` attribute listing which audiences see 
 
 The `<deck-stage>` component supports `@media print` — use the browser's Print > Save as PDF (landscape, no margins) for a clean one-slide-per-page export. Skipped slides are excluded from print.
 
-## Investment structure (opportunities deck)
-
-- **Equity**: Pre-seed stake in Moddable.Games (valuation negotiable)
-- **Game royalties**: 5–15% net revenue share on a named title, capped at 3x return
-
 ## Changelog
 
 #### 2026-05-23
