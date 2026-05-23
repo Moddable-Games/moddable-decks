@@ -216,7 +216,7 @@
     .btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
     .btn:active { background: rgba(255,255,255,0.18); }
     .btn:focus { outline: none; }
-    .btn:focus-visible { outline: none; }
+    .btn:focus-visible { outline: 2px solid rgba(255,255,255,0.7); outline-offset: 2px; }
     .btn::-moz-focus-inner { border: 0; }
     .btn svg { width: 14px; height: 14px; display: block; }
     .btn.reset {
@@ -1045,6 +1045,10 @@
         }
 
         slide.setAttribute('data-deck-slide', String(i));
+        slide.setAttribute('role', 'group');
+        slide.setAttribute('aria-roledescription', 'slide');
+        const label = slide.getAttribute('data-screen-label') || `Slide ${n}`;
+        slide.setAttribute('aria-label', label);
       });
 
       if (this._totalEl) this._totalEl.textContent = String(this._slides.length || 1);
@@ -1097,8 +1101,13 @@
       // not the stale deep-link hash from initial load.
       try { history.replaceState(null, '', '#' + (curr + 1)); } catch (e) {}
       this._slides.forEach((s, i) => {
-        if (i === curr) s.setAttribute('data-deck-active', '');
-        else s.removeAttribute('data-deck-active');
+        if (i === curr) {
+          s.setAttribute('data-deck-active', '');
+          s.removeAttribute('aria-hidden');
+        } else {
+          s.removeAttribute('data-deck-active');
+          s.setAttribute('aria-hidden', 'true');
+        }
       });
       if (this._countEl) this._countEl.textContent = String(curr + 1);
       // Follow-scroll on every navigation (init deep-link, keyboard, click,
