@@ -924,6 +924,12 @@ h3.sub.goal-title { margin-bottom: 12px; font-size: 26px; }
 .pad-center .community-grid > .card { justify-content: center; }
 .pad-center .community-grid > .card:last-child { gap: 106px; }
 
+/* ---- Print: hide screen-only chrome ---- */
+@media print {
+  .deck-badge { display: none !important; }
+  .splash { display: none !important; }
+}
+
 /* ---- SVG diagram styles ---- */
 .svg-responsive { width: 100%; height: auto; display: block; }
 .svg-fill { width: 100%; height: 100%; display: block; overflow: visible; }
