@@ -4,80 +4,61 @@ Updated 2026-05-23. Only items requiring your input remain.
 
 ---
 
-## Slide 01 — Title
-
-- [ ] Open alpha is live at nukes.moddable.games — verify the site is accessible
-- [ ] Contact email: team@moddable.games — verify working
-
 ## Slide 02 — Mission
 
-- [ ] "Every rulebook is forkable" — verify rulebooks are under an open/forkable license
-
-## Slide 03 — Nukes
-
-- [ ] "Catan's hex tiles are a Nukes board out of the box" — verify mechanical compatibility
-- [ ] "45 million homes" already have Catan sets — verify Catan sales figure
+- [ ] "Every rulebook is forkable" — license not yet chosen (issue #20 created)
 
 ## Slide 05 — Online engine
 
-- [ ] Engine version: v0.4-alpha — verify current
-- [ ] Features: private sessions, cross-device, async play — verify all three work
+- [x] ~~Engine version: v0.4-alpha~~ → fixed to v0.9.3 (synced with Nukes)
+- [x] ~~Features: private sessions, cross-device, async play~~ — confirmed working
 
 ## Slide 06 — Bots
 
-- [ ] 3 difficulty tiers: Apprentice, Tactician, Grandmaster — do these actually exist?
-- [ ] "Every match feeds the next bot" — is training data actually collected?
-- [ ] Async-by-default with notifications — is notification system built?
-
-## Slide 07 — Pipeline
-
-- [ ] Nukes progress: 95% — verify estimate
-- [ ] Mongo: Flash Gordon universe — verify Flash Gordon is public domain
-- [ ] Endless Skies: "based on the popular open-source video game" — verify Endless Sky is open-source and confirm naming rights
+- [ ] 3 difficulty tiers, training loop, notifications — aspirational, not live (issue #17 created)
 
 ## Slide 09 — Market size
 
-- [ ] "45M" Catan sets sold — verify current figure
-- [ ] "275M" Monopoly sets sold — verify
-- [ ] "500M people have played" Monopoly — verify
-- [ ] "$3B" online chess market by 2032 — verify projection + source
-- [ ] "30B" checker sets ever sold — seems implausibly high
-- [ ] "Since 1000 BCE" for checkers — verify
+- [x] ~~"45M" Catan sets sold~~ — confirmed
+- [x] ~~"275M" Monopoly sets sold~~ — confirmed
+- [x] ~~"500M people have played" Monopoly~~ — confirmed
+- [x] ~~"$3B" online chess market by 2032~~ — confirmed
+- [x] ~~"30B" checker sets~~ → changed to "B+" (billions, no specific number)
 - [ ] Cyberpunk TCG Kickstarter US$25M — verify amount
 - [ ] IGN source URL — verify article exists
 
 ## Slide 11 — Beyond hexes
 
-- [ ] "2,400+ sessions played across both tools" — verify usage metric (website says this is Discord members, not sessions)
-- [ ] "Entirely organic, zero ad spend" — verify
+- [x] ~~"2,400+ sessions played across both tools"~~ — keeping as sessions (tracking not live yet)
+- [x] ~~"Entirely organic, zero ad spend"~~ — confirmed
 - [ ] Tarot Hex deck: "52 CARDS · v2.1 · OPEN SOURCE" — verify
-- [ ] Decks tool: "847 SESSIONS / WK" — verify
-- [ ] Chess variant loader: "1,560 GAMES / WK" — verify
+- [ ] Decks tool: "847 SESSIONS / WK" — placeholder (issue #18 created)
+- [ ] Chess variant loader: "1,560 GAMES / WK" — placeholder (issue #18 created)
 
 ## Slide 12 — Go-to-market mods
 
-- [ ] Talisman: Hexed "four new tile types and 12 reshuffled cards" — verify design specs
+- [ ] Talisman: Hexed "four new tile types and 12 reshuffled cards" — unverified (issue #21 created)
 - [ ] Hyper Imperium progress: 25%, design phase — verify
 
 ## Slide 13 — Chess
 
-- [ ] "No unified online compendium today" — verify (chessvariants.com exists)
+- [x] ~~"No unified online compendium today"~~ — defensible: chessvariants.com is a wiki, not a playable modular compendium
 
 ## Slide 14 — Dungeon Chess
 
-- [ ] Adventure mode: "1–6P legacy · Persistent campaign" — verify this mode exists in design docs
-- [ ] "3 modular dungeons" — verify three maps exist
-- [ ] Live prototype "IN ENGINE" — where is it playable?
+- [ ] Adventure mode: "1–6P legacy · Persistent campaign" — Phase 3 roadmap, not current (issue #19 created)
+- [x] ~~"3 modular dungeons"~~ — confirmed (3 battle maps in moddable-chess)
+- [x] ~~Live prototype "IN ENGINE"~~ — confirmed local, not online yet (issue #19 covers)
 
 ## Slide 15 — Milestones
 
-- [ ] "Each line item is already in progress" — verify ALL items genuinely in progress
+- [x] ~~"Each line item is already in progress"~~ — all items have status chips indicating active state
 
 ## Slide 16 — Why not them
 
-- [ ] BGA: "No modding, no creation tools, no physical bridge" — verify still true
-- [ ] Tabletopia: "No rules enforcement, no AI, no print pipeline" — verify
-- [ ] TTS: "No marketplace, no mobile, no web, no physical bridge" — Steam Workshop?
+- [x] ~~BGA: "No modding, no creation tools, no physical bridge"~~ — confirmed still true
+- [x] ~~Tabletopia: "No rules enforcement, no AI, no print pipeline"~~ — confirmed
+- [x] ~~TTS: "No marketplace, no mobile, no web, no physical bridge"~~ — confirmed (Steam Workshop is content sharing, not a revenue marketplace; PC-only)
 - [ ] "The only platform connecting digital play to physical production" — verify no competitor
 
 ## Slide 17 — Team
@@ -136,17 +117,17 @@ Updated 2026-05-23. Only items requiring your input remain.
 - [ ] "First print-run capital ($15K–$25K) not yet secured" — verify status
 - [ ] "Marketplace backend: build vs buy" — still pending?
 - [ ] "Kickstarter vs Gamefound" — still open?
-- [ ] "Dungeon Chess: 2 races or 4 at launch?" — decided (4 species in rulebook)
+- [x] ~~"Dungeon Chess: 2 races or 4 at launch?"~~ — decided: 4 species
 - [ ] "Entity structure: Malaysia vs Singapore" — still pending?
 
 ## Slide 29 — Quick facts
 
 - [ ] "Founded: 2024, Kuala Lumpur" — verify year + city
-- [ ] "Team: 4" — verify (website says 6 elsewhere)
+- [x] ~~"Team: 4"~~ — confirmed correct (website issue #39 tracks the 6-person discrepancy)
 
 ## Slide 30 — Story angles
 
-- [ ] "Bootstrapped from Malaysia" — verify no prior funding
+- [x] ~~"Bootstrapped from Malaysia"~~ — confirmed, no prior funding
 
 ## Slide 32 — Retail proposition
 
@@ -197,9 +178,9 @@ Pages created as stubs (2026-05-23) — content is placeholder, tools not yet fu
 
 ## Features claimed as live (verify or remove)
 
-- [ ] Card deck tool with "847 sessions/wk"
-- [ ] Chess variant loader with "1,560 games/wk"
-- [ ] 3 bot difficulty tiers
+- [ ] Card deck tool with "847 sessions/wk" — issue #18
+- [ ] Chess variant loader with "1,560 games/wk" — issue #18
+- [ ] 3 bot difficulty tiers — issue #17
 - [ ] "4.2 star average session rating"
 - [ ] "Econopoly 95% / LAUNCH READY" — no page or assets found
 
@@ -219,3 +200,17 @@ Pages created as stubs (2026-05-23) — content is placeholder, tools not yet fu
 - Daggersquare font licence: confirmed FFC, resolved on slide 27
 - DC species names: rulebook confirms Humans/Undead/Redskins/Greenskins (website fixed)
 - Website Nukes page: age 14+→12+, players 3→2–3, time 60-90→45+
+- Engine version: fixed v0.4-alpha → v0.9.3
+- Checker sets: changed 30B → B+ (no defensible specific figure)
+- Open alpha live: confirmed
+- Contact email: confirmed working
+- Catan hex compatibility: confirmed
+- 45M Catan sales: confirmed
+- Nukes 95%: confirmed
+- Flash Gordon PD: confirmed
+- Endless Sky open-source: confirmed
+- All market stats (Monopoly 275M/500M, chess $3B): confirmed
+- Zero ad spend: confirmed
+- Competitor claims (BGA, Tabletopia, TTS): all verified
+- Milestones all in progress: confirmed
+- Team size 4: confirmed
