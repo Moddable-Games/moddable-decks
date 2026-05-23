@@ -4,20 +4,72 @@
    modding community. Two-mode canvas, pill CTAs, flat elevation kept.
    ========================================================================= */
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=Press+Start+2P&family=Silkscreen:wght@400;700&family=Pixelify+Sans:wght@400;500;600;700&family=DotGothic16&family=Jersey+10&family=Workbench&family=VT323&family=Tiny5&family=Rubik+Pixels&family=Sixtyfour&family=Major+Mono+Display&family=Bungee&family=Bungee+Inline&family=Bungee+Shade&family=Honk&family=Doto:wght@500;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+/* Inter — variable font, latin-ext + latin subsets, weights 400–700 */
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-latin-ext.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Inter Tight — variable font, latin-ext + latin subsets, weights 500–700 */
+@font-face {
+  font-family: "Inter Tight";
+  src: url("../fonts/InterTight-latin-ext.woff2") format("woff2");
+  font-weight: 500 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inter Tight";
+  src: url("../fonts/InterTight-latin.woff2") format("woff2");
+  font-weight: 500 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* JetBrains Mono — variable font, latin-ext + latin subsets, weights 400–600 */
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/JetBrainsMono-latin-ext.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/JetBrainsMono-latin.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 /* Daggersquare — Iconian Fonts. Free for personal use (see fonts/Daggersquare-EULA.txt).
    THIS IS THE BRAND PIXEL FONT. Closest match to the Moddable.Games wordmark. */
 @font-face {
   font-family: "Daggersquare";
-  src: url("fonts/Daggersquare.otf") format("opentype");
+  src: url("../fonts/Daggersquare.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Daggersquare";
-  src: url("fonts/Daggersquare-Oblique.otf") format("opentype");
+  src: url("../fonts/Daggersquare-Oblique.otf") format("opentype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -99,20 +151,15 @@
   --mg-link:       var(--mg-blue-bright);
 
   /* ============================ TYPOGRAPHY ============================
-     Three families:
+     Four families (all self-hosted):
        display  → Inter Tight 500–700, tight tracking, for headlines + body heads
-       pixel    → Press Start 2P, the brand voice — for hero/wordmark moments ONLY
-       body     → Inter 400/600, default UI + prose
-       mono     → JetBrains Mono — stats, rules text, dice notation, mod versions
+       pixel    → Daggersquare, the brand voice — for hero/wordmark moments ONLY
+       body     → Inter 400–700, default UI + prose
+       mono     → JetBrains Mono 400–600 — stats, rules text, dice notation, mod versions
      ================================================================== */
 
   --mg-font-display: "Inter Tight", "Aeonik Pro", system-ui, sans-serif;
-  --mg-font-pixel:   "Daggersquare", "Press Start 2P", "Courier New", monospace;
-  /* Alternate pixel candidates — swap into --mg-font-pixel to compare. */
-  --mg-font-pixel-press-start: "Press Start 2P", monospace;
-  --mg-font-pixel-silkscreen:  "Silkscreen", monospace;
-  --mg-font-pixel-pixelify:    "Pixelify Sans", monospace;
-  --mg-font-pixel-dotgothic:   "DotGothic16", monospace;
+  --mg-font-pixel:   "Daggersquare", "Courier New", monospace;
   --mg-font-body:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mg-font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
