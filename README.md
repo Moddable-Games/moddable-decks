@@ -67,6 +67,13 @@ The `<deck-stage>` component supports `@media print` — use the browser's Print
 - Content review checklist generated (archive/content-review-checklist.md)
 - Daggersquare font blocker resolved on internal slide
 - 8 GitHub issues closed (#3, #4, #8, #9, #10, #12, #13, #14)
+- Build-time data sync system: `scripts/sync-data.js` pulls from website JSON, `js/deck-sync.js` hydrates slides
+- 23 data-sync attributes wired across slides 03, 07, 14, 15, 17
+- Renamed "Nuke Chess" → "Nukes" throughout (10 instances)
+- Dark card text contrast fix on ivory slides (CSS specificity)
+- Social stats line width matched to 3-column grid
+- Cross-project fact audit: 7 issues created on moddable-website (#36–42)
+- "Spot check" routine added to global CLAUDE.md
 
 #### 2026-05-22
 - Renamed all 132 numeric `is-N` classes to semantic names
