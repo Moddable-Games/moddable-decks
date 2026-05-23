@@ -72,7 +72,10 @@ The `<deck-stage>` component supports `@media print` — use the browser's Print
 - Renamed "Nuke Chess" → "Nukes" throughout (10 instances)
 - Dark card text contrast fix on ivory slides (CSS specificity)
 - Social stats line width matched to 3-column grid
-- Cross-project fact audit: 7 issues created on moddable-website (#36–42)
+- Cross-project fact audit and fixes: version 0.9.3, 44 tiles, 75 tokens, Hyper Imperium 4–6hr, URL paths corrected
+- Cross-project consistency document (archive/cross-project-consistency.md)
+- Website stubs created: /press, /subscribe, /tools/decks, /tools/chess
+- 15 total issues closed (8 deck + 7 website)
 
 #### 2026-05-22
 - Renamed all 132 numeric `is-N` classes to semantic names
