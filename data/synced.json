@@ -1,0 +1,255 @@
+{
+  "_meta": {
+    "syncedAt": "2026-05-23T10:09:03.131Z",
+    "websitePath": "/Applications/MAMP/htdocs/MODDABLE/moddable-website",
+    "version": 1
+  },
+  "games": {
+    "dungeon-chess": {
+      "title": "Dungeon Chess",
+      "version": "0.1.0",
+      "players": "2–4",
+      "duration": "30–120 min",
+      "age": "12+",
+      "tagline": "Asymmetric fantasy strategy on modular dungeon boards",
+      "type": "mod",
+      "base_game": "Chess",
+      "status": "alpha",
+      "updated": "2026-05-22",
+      "published": true
+    },
+    "econopoly": {
+      "title": "Econopoly",
+      "version": "0.9.0",
+      "players": "2–6",
+      "duration": "60 min",
+      "age": "10+",
+      "tagline": "Monopoly with a working economy",
+      "type": "mod",
+      "base_game": "Monopoly",
+      "status": "live",
+      "updated": "2026-05-10",
+      "published": false
+    },
+    "endless-skies": {
+      "title": "Endless Skies",
+      "version": "1.3.0",
+      "players": "1–4",
+      "duration": "60 min",
+      "age": "10+",
+      "tagline": "Cooperative survival in procedurally generated skies",
+      "type": "game",
+      "base_game": null,
+      "status": "dev",
+      "updated": "2026-05-18",
+      "published": false
+    },
+    "hyper-imperium": {
+      "title": "Hyper Imperium",
+      "version": "2.0.1",
+      "players": "3–6",
+      "duration": "4–6 hr",
+      "age": "14+",
+      "tagline": "A faster, more political Twilight Imperium",
+      "type": "mod",
+      "base_game": "Twilight Imperium 4e",
+      "status": "live",
+      "updated": "2026-05-15",
+      "published": false
+    },
+    "mongo": {
+      "title": "Mongo",
+      "version": "0.8.2",
+      "players": "3–6",
+      "duration": "90 min",
+      "age": "14+",
+      "tagline": "Global conquest in the Flash Gordon universe",
+      "type": "game",
+      "base_game": null,
+      "status": "playtest",
+      "updated": "2026-05-20",
+      "published": false
+    },
+    "nukes": {
+      "title": "Nukes",
+      "version": "0.9.3",
+      "players": "2–3",
+      "duration": "45+ min",
+      "age": "12+",
+      "tagline": "Cold-war territory control on a hex map with nuclear brinkmanship",
+      "type": "game",
+      "base_game": null,
+      "status": "live",
+      "updated": "2026-05-22",
+      "published": true
+    },
+    "talisman-hexed": {
+      "title": "Talisman: Hexed",
+      "version": "1.0.0",
+      "players": "2–6",
+      "duration": "90 min",
+      "age": "13+",
+      "tagline": "Open-world hex tiles for Talisman — a new map every session",
+      "type": "mod",
+      "base_game": "Talisman 4e",
+      "status": "live",
+      "updated": "2026-04-15",
+      "published": false
+    }
+  },
+  "team": [
+    {
+      "handle": "mark",
+      "name": "Mark Smalley",
+      "role": "Founder · DM · Builder",
+      "bio": "Modder since forever. Built the world's first NoSQL CMS and a 500 Startups-backed Bitcoin wallet.",
+      "img": "mark.png"
+    },
+    {
+      "handle": "kevin",
+      "name": "Kevin Chand",
+      "role": "Playtest · Growth · Ops",
+      "bio": "Systems thinker. Chief playtester and social engineer leading online growth, marketing and manufacturing.",
+      "img": "kevin.png"
+    },
+    {
+      "handle": "akmal",
+      "name": "Akmal Fikri",
+      "role": "Engine · Community",
+      "bio": "Web developer and board-game evangelist. Builds the online engine — grey hair earned the hard way.",
+      "img": "akmal.png"
+    },
+    {
+      "handle": "iqbal",
+      "name": "Iqbal Ridzuan",
+      "role": "Lead Artist · Creative",
+      "bio": "Head of creative. BioHack and Mechamato — featured on BoardGameGeek and IMDB.",
+      "img": "iqbal.png"
+    }
+  ],
+  "milestones": [
+    {
+      "quarter": "Q3 2026",
+      "text": "Nukes: first 500-unit print run ships",
+      "color": "#d11a1a"
+    },
+    {
+      "quarter": "Q3 2026",
+      "text": "Moddable Chess: 4 variants playable online",
+      "color": "#3a9928"
+    },
+    {
+      "quarter": "Q4 2026",
+      "text": "Dungeon Chess: crowdfunding campaign live",
+      "color": "#14161c"
+    },
+    {
+      "quarter": "Q1 2027",
+      "text": "Marketplace beta: creators upload + sell mods",
+      "color": "#0c4f8d"
+    },
+    {
+      "quarter": "Q2 2027",
+      "text": "Mongo: multiplayer playtest online",
+      "color": "#0c4f8d"
+    },
+    {
+      "quarter": "Q3 2027",
+      "text": "Print-on-demand pipeline live",
+      "color": "#0c4f8d"
+    }
+  ],
+  "mods": [
+    {
+      "title": "Talisman: Hexed",
+      "category": "Reskin",
+      "baseGame": "Talisman 4e",
+      "stats": "2–6 players · 90 min · 13+",
+      "path": "/mods/talisman-hexed/"
+    },
+    {
+      "title": "Hyper Imperium",
+      "category": "Rebalance",
+      "baseGame": "Twilight Imperium 4e",
+      "stats": "3–6 players · 4–6 hr · 14+",
+      "path": "/mods/hyper-imperium/"
+    },
+    {
+      "title": "Nuke Catan",
+      "category": "Total conversion",
+      "baseGame": "Catan",
+      "stats": "3–5 players · 60 min · 12+",
+      "path": "/mods/nuke-catan/"
+    },
+    {
+      "title": "Fog of War Chess",
+      "category": "Total conversion",
+      "baseGame": "Chess",
+      "stats": "2 players · 20–40 min · 10+",
+      "path": "/mods/fog-of-war-chess/"
+    },
+    {
+      "title": "4-Player Chess",
+      "category": "Reskin",
+      "baseGame": "Chess",
+      "stats": "4 players · 30 min · 10+",
+      "path": "/mods/4-player-chess/"
+    },
+    {
+      "title": "Hexagonal Chess (Glinski)",
+      "category": "Total conversion",
+      "baseGame": "Chess",
+      "stats": "2 players · 30–60 min · 12+",
+      "path": "/mods/hexagonal-chess/"
+    },
+    {
+      "title": "Econopoly",
+      "category": "Rebalance",
+      "baseGame": "Monopoly",
+      "stats": "2–6 players · 60 min · 10+",
+      "path": "/mods/econopoly/"
+    },
+    {
+      "title": "Anti-Monopoly",
+      "category": "Total conversion",
+      "baseGame": "Monopoly",
+      "stats": "2–6 players · 60 min · 10+",
+      "path": "/mods/anti-monopoly/"
+    },
+    {
+      "title": "Flooded Catan",
+      "category": "Rebalance",
+      "baseGame": "Catan",
+      "stats": "3–4 players · 75 min · 10+",
+      "path": "/mods/flooded-catan/"
+    },
+    {
+      "title": "The Diamond Mine",
+      "category": "Total conversion",
+      "baseGame": "Catan",
+      "stats": "3–4 players · 60 min · 10+",
+      "path": "/mods/the-diamond-mine/"
+    },
+    {
+      "title": "Shattered Ascension",
+      "category": "Rebalance",
+      "baseGame": "Twilight Imperium 4e",
+      "stats": "3–8 players · 6–12 hr · 16+",
+      "path": "/mods/shattered-ascension/"
+    },
+    {
+      "title": "CivRisk",
+      "category": "Rebalance",
+      "baseGame": "Risk",
+      "stats": "3–5 players · 180 min · 14+",
+      "path": "/mods/civrisk/"
+    },
+    {
+      "title": "Custom World Risk",
+      "category": "Reskin",
+      "baseGame": "Risk",
+      "stats": "2–6 players · 120 min · 12+",
+      "path": "/mods/custom-world-risk/"
+    }
+  ]
+}
