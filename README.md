@@ -63,6 +63,15 @@ The `<deck-stage>` component supports `@media print` — use the browser's Print
 - Renamed races → species on DC detail slide, updated mechanic callouts (Draft/Cannons/Terrain/Maps)
 - Fixed external links missing `target="_blank" rel="noopener"`
 - Converted changelog to date-headed bullet point format
+- Self-hosted Google Fonts (Inter, Inter Tight, JetBrains Mono) — removed CDN dependency
+- Slide transitions (300ms crossfade)
+- Accessibility pass (ARIA roles, focus indicators, SVG labels)
+- PDF export verified and fixed (deck badge hidden in print)
+- Species images optimised (31MB → 1MB)
+- Factual errors fixed (Nukes pipeline specs, WordPress claim, Discord count)
+- Content review checklist generated (archive/content-review-checklist.md)
+- Daggersquare font blocker resolved on internal slide
+- 8 GitHub issues closed (#3, #4, #8, #9, #10, #12, #13, #14)
 
 #### 2026-05-22
 - Renamed all 132 numeric `is-N` classes to semantic names
