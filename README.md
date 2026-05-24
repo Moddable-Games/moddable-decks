@@ -51,6 +51,22 @@ The `<deck-stage>` component supports `@media print` — use the browser's Print
 
 ## Changelog
 
+#### 2026-05-24
+- Full content review pass: verified ~30 factual claims with user
+- Fixed engine version v0.4-alpha → v0.9.3 (slide 05)
+- Fixed checkers stat: "30B" → "B+" (no defensible source for specific number)
+- Fixed IGN URL slug: "crowdfunding" → "kickstarter" (verified article exists)
+- Fixed dead Discord vanity link → working invite URL
+- Fixed social handles: replaced non-existent Bluesky with real Instagram
+- Replaced fabricated "4.2★ rating" with verified "$0 ad spend"
+- Updated founded info: added UK incorporation (2025)
+- Resolved marketplace blocker: building in-house
+- Updated marketplace status: "scoping in progress"
+- Removed inappropriate "fan-made" disclaimer from contact slide
+- Removed content-review-checklist.md (all items now tracked in GitHub issues)
+- Created issues #17–#26 covering all unverified/aspirational claims
+- Cross-project issues created: moddable-chess #27–#28, website #43–#45, Nukes-Rulebook #25–#26
+
 #### 2026-05-23
 - Added title card slides before each game section (Nukes, Moddable Chess, Dungeon Chess) with proper logos
 - Game logos sourced from moddable-website project (nukes-logo.png, mongo-logo.png, endless-skies-logo.png, moddable-chess-cube.svg)
