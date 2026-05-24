@@ -21,7 +21,7 @@ Updated 2026-05-24. Only items requiring your input remain.
 ## Slide 12 — Go-to-market mods
 
 - [ ] Talisman: Hexed "four new tile types and 12 reshuffled cards" — unverified (issue #21)
-- [ ] Hyper Imperium progress: 25%, design phase — verify
+- [x] ~~Hyper Imperium progress: 25%, design phase~~ — confirmed
 
 ## Slide 14 — Dungeon Chess
 
@@ -72,7 +72,7 @@ All financial claims consolidated into **issue #22**:
 ## Slide 27 — Blockers (internal)
 
 - [x] ~~Marketplace backend~~ — decided: building in-house (updated in deck)
-- [ ] Kickstarter vs Gamefound — still open
+- [ ] Kickstarter vs Gamefound — still open (issue #25)
 - [x] ~~Dungeon Chess races~~ — decided: 4 species
 - [x] ~~Entity structure~~ — updated to "UK holding → MY/SG subsidiary?"
 
@@ -101,15 +101,15 @@ Pages created as stubs (2026-05-23) — content is placeholder, tools not yet fu
 - [x] `moddable.games/subscribe` — stub page created, no form backend yet
 - [x] `moddable.games/tools/decks` — stub page created, tool not built
 - [x] `moddable.games/tools/chess` — stub page created, tool not built
-- [ ] Press assets: PDF press release, backgrounder, b-roll, 4K screenshots, hi-res headshots — NONE CREATED
-- [ ] Digital rulebook PDF (for $15 backers) — exists in rulebook project but not hosted as download
+- [ ] Press assets: PDF press release, backgrounder, b-roll, 4K screenshots, hi-res headshots — NONE CREATED (issue #26)
+- [ ] Digital rulebook PDF (for $15 backers) — exists in rulebook project but not hosted as download (Nukes-Rulebook #26)
 
 ## Social accounts (verify they exist)
 
 - [x] ~~Discord~~ — `discord.gg/moddable` was DEAD; fixed to `discord.com/invite/WXENAywsQb`
 - [x] ~~YouTube~~ — `youtube.com/@moddablegames` exists
 - [x] ~~Bluesky~~ — NOT on Bluesky; replaced with Instagram in deck
-- [ ] BoardGameGeek page — not created yet
+- [ ] BoardGameGeek page — not created yet (website #45)
 - [x] ~~X/Twitter~~ — `x.com/moddablegames` exists (from website)
 - [x] ~~Instagram~~ — `instagram.com/moddablegames` exists (from website)
 - [x] ~~TikTok~~ — `tiktok.com/@moddablegames` exists (from website, not in deck)
