@@ -10,12 +10,12 @@ Updated 2026-05-24. Only items requiring your input remain.
 
 ## Slide 09 — Market size
 
-- [ ] Cyberpunk TCG Kickstarter US$25M — verify amount
-- [ ] IGN source URL — verify article exists
+- [x] ~~Cyberpunk TCG Kickstarter US$25M~~ — confirmed (over $25M, 43K+ backers, April 2026)
+- [x] ~~IGN source URL~~ — fixed slug: `cyberpunk-tcg-kickstarter-record-25-million` (was "crowdfunding")
 
 ## Slide 11 — Beyond hexes
 
-- [ ] Tarot Hex deck: "52 CARDS · v2.1 · OPEN SOURCE" — verify specs
+- [ ] Entire slide needs rework — Tarot Hex specs fabricated, tool mocks don't reflect reality (issue #24)
 - [ ] Tool usage stats — placeholders, need real analytics (issue #18, website #43)
 
 ## Slide 12 — Go-to-market mods
@@ -106,17 +106,20 @@ Pages created as stubs (2026-05-23) — content is placeholder, tools not yet fu
 
 ## Social accounts (verify they exist)
 
-- [ ] Discord: `discord.gg/moddable` — same as stored URL?
-- [ ] YouTube: `youtube.com/@moddablegames`
-- [ ] Bluesky: `bsky.app/moddablegames` (URL format?)
-- [ ] BoardGameGeek page
+- [x] ~~Discord~~ — `discord.gg/moddable` was DEAD; fixed to `discord.com/invite/WXENAywsQb`
+- [x] ~~YouTube~~ — `youtube.com/@moddablegames` exists
+- [x] ~~Bluesky~~ — NOT on Bluesky; replaced with Instagram in deck
+- [ ] BoardGameGeek page — not created yet
+- [x] ~~X/Twitter~~ — `x.com/moddablegames` exists (from website)
+- [x] ~~Instagram~~ — `instagram.com/moddablegames` exists (from website)
+- [x] ~~TikTok~~ — `tiktok.com/@moddablegames` exists (from website, not in deck)
 
 ## Features claimed as live (verify or remove)
 
 - [ ] Card deck tool with "847 sessions/wk" — issue #18
 - [ ] Chess variant loader with "1,560 games/wk" — issue #18
 - [ ] 3 bot difficulty tiers — issue #17
-- [ ] "4.2 star average session rating" — issue #23
+- [x] ~~"4.2 star average session rating"~~ — was fabricated, replaced with "$0 ad spend"
 - [x] ~~Econopoly 95% / LAUNCH READY~~ — confirmed (rules exist outside these repos)
 
 ---
@@ -157,3 +160,11 @@ Pages created as stubs (2026-05-23) — content is placeholder, tools not yet fu
 - Nukes "zero luck": confirmed (no random mechanics)
 - Bot features: aspirational (issue #17)
 - Social proof: all placeholder (issue #23)
+- IGN URL slug: fixed "crowdfunding" → "kickstarter"
+- Discord vanity link: dead; fixed to working invite URL
+- Bluesky: not on platform; replaced with Instagram in expo slide
+- Social handles: verified X, YouTube, Instagram all exist
+- 4.2★ rating: fabricated; replaced with "$0 ad spend" (confirmed true)
+- Hyper Imperium 25%: confirmed
+- Kickstarter vs Gamefound: still open
+- Econopoly 95%: confirmed (rules exist outside these repos)
