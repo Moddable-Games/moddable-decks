@@ -1,160 +1,95 @@
 # Content Review Checklist
 
-Updated 2026-05-23. Only items requiring your input remain.
+Updated 2026-05-24. Only items requiring your input remain.
 
 ---
 
 ## Slide 02 — Mission
 
-- [ ] "Every rulebook is forkable" — license not yet chosen (issue #20 created)
-
-## Slide 05 — Online engine
-
-- [x] ~~Engine version: v0.4-alpha~~ → fixed to v0.9.3 (synced with Nukes)
-- [x] ~~Features: private sessions, cross-device, async play~~ — confirmed working
-
-## Slide 06 — Bots
-
-- [ ] 3 difficulty tiers, training loop, notifications — aspirational, not live (issue #17 created)
+- [ ] "Every rulebook is forkable" — license not yet chosen (issue #20 created, cross-project: Nukes-Rulebook #25, website #44)
 
 ## Slide 09 — Market size
 
-- [x] ~~"45M" Catan sets sold~~ — confirmed
-- [x] ~~"275M" Monopoly sets sold~~ — confirmed
-- [x] ~~"500M people have played" Monopoly~~ — confirmed
-- [x] ~~"$3B" online chess market by 2032~~ — confirmed
-- [x] ~~"30B" checker sets~~ → changed to "B+" (billions, no specific number)
 - [ ] Cyberpunk TCG Kickstarter US$25M — verify amount
 - [ ] IGN source URL — verify article exists
 
 ## Slide 11 — Beyond hexes
 
-- [x] ~~"2,400+ sessions played across both tools"~~ — keeping as sessions (tracking not live yet)
-- [x] ~~"Entirely organic, zero ad spend"~~ — confirmed
-- [ ] Tarot Hex deck: "52 CARDS · v2.1 · OPEN SOURCE" — verify
-- [ ] Decks tool: "847 SESSIONS / WK" — placeholder (issue #18 created)
-- [ ] Chess variant loader: "1,560 GAMES / WK" — placeholder (issue #18 created)
+- [ ] Tarot Hex deck: "52 CARDS · v2.1 · OPEN SOURCE" — verify specs
+- [ ] Tool usage stats — placeholders, need real analytics (issue #18, website #43)
 
 ## Slide 12 — Go-to-market mods
 
-- [ ] Talisman: Hexed "four new tile types and 12 reshuffled cards" — unverified (issue #21 created)
+- [ ] Talisman: Hexed "four new tile types and 12 reshuffled cards" — unverified (issue #21)
 - [ ] Hyper Imperium progress: 25%, design phase — verify
-
-## Slide 13 — Chess
-
-- [x] ~~"No unified online compendium today"~~ — defensible: chessvariants.com is a wiki, not a playable modular compendium
 
 ## Slide 14 — Dungeon Chess
 
-- [ ] Adventure mode: "1–6P legacy · Persistent campaign" — Phase 3 roadmap, not current (issue #19 created)
-- [x] ~~"3 modular dungeons"~~ — confirmed (3 battle maps in moddable-chess)
-- [x] ~~Live prototype "IN ENGINE"~~ — confirmed local, not online yet (issue #19 covers)
-
-## Slide 15 — Milestones
-
-- [x] ~~"Each line item is already in progress"~~ — all items have status chips indicating active state
-
-## Slide 16 — Why not them
-
-- [x] ~~BGA: "No modding, no creation tools, no physical bridge"~~ — confirmed still true
-- [x] ~~Tabletopia: "No rules enforcement, no AI, no print pipeline"~~ — confirmed
-- [x] ~~TTS: "No marketplace, no mobile, no web, no physical bridge"~~ — confirmed (Steam Workshop is content sharing, not a revenue marketplace; PC-only)
-- [ ] "The only platform connecting digital play to physical production" — verify no competitor
+- [ ] Adventure mode: "1–6P legacy" — Phase 3 roadmap, not current (issue #19, chess #27)
 
 ## Slide 17 — Team
 
-- [ ] Mark: "world's first NoSQL CMS" — verify claim
-- [ ] Mark: "500 Startups-backed Bitcoin wallet" — verify
-- [ ] Iqbal: "featured on BoardGameGeek and IMDB" — verify listings exist
+- [x] ~~Mark: "world's first NoSQL CMS"~~ — confirmed
+- [x] ~~Mark: "500 Startups-backed Bitcoin wallet"~~ — confirmed
+- [x] ~~Iqbal: "featured on BoardGameGeek and IMDB"~~ — confirmed
 
-## Slide 18 — Use of funds
+## Slide 18, 21, 22, 23, 32, 33, 34 — Financial claims
 
-- [ ] "$250K–$500K funds 18 months" — verify runway calculation
-- [ ] "First Nukes print run (500 units)" — verify quotes received for this quantity
-- [ ] Convention targets: "Essen, GenCon, PAX" — verify planned/budgeted
+All financial claims consolidated into **issue #22**:
+- [ ] Runway calculation ($250K–$500K = 18 months)
+- [ ] Print run quotes (500 units)
+- [ ] Convention budget (Essen, GenCon, PAX) — aspirational, not confirmed in financials
+- [ ] Tier pricing ($15/$45/$85/$150) and free shipping viability
+- [ ] Stretch goal thresholds ($50K–$150K) — not yet budgeted
+- [ ] Retail margins (50%+ keystone) — aspirational
+- [ ] Reorder rate (3x) — needs source
+- [ ] MSRP/wholesale pricing — needs financial check
+- [ ] MAP policy — needs financial check
+- [ ] Fulfilment (SE Asia partners, US/EU/APAC hubs) — aspirational
+- [ ] 8 months post-campaign delivery — needs verification
+- [ ] Logistics (Texas, Netherlands, 5–7 day) — aspirational
+- [ ] Demo programme (buy 12, get 1 free) — needs financial check
 
 ## Slide 19 — The ask
 
-- [ ] "Pre-seed equity in Moddable.Games" — verify entity exists
-- [ ] "Board advisory seat at $250K+" — verify offered
-- [ ] "Pre-revenue" — verify still true
-- [ ] Royalty: "5–15% net revenue share, 3x cap" — verify terms
-
-## Slide 21 — Pledge tiers
-
-- [ ] Tier pricing ($15/$45/$85/$150) — verify
-- [ ] Tier 2 "4 board sections" — clarify relationship to 44 hex tiles
-- [ ] "All tiers include free shipping" — verify financially viable
-
-## Slide 22 — Fulfilment
-
-- [ ] "Manufacture in Southeast Asia with established partners" — verify partners exist
-- [ ] "US, EU, and APAC hubs" — verify arrangements
-- [ ] "8 months post-campaign" delivery — verify realistic
-
-## Slide 23 — Stretch goals
-
-- [ ] Stretch goal thresholds ($50K/$75K/$100K/$150K) — verify
-- [ ] "All stretch goals ship free" — verify budgeted
+- [x] ~~Entity exists~~ — confirmed (UK registered 2025)
+- [x] ~~Pre-revenue~~ — confirmed
+- [x] ~~Deal terms~~ — confirmed (board seat at $250K+, royalty 5–15% net, 3x cap)
 
 ## Slide 24 — Social proof
 
-- [ ] "500+ games played in alpha" — verify count
-- [ ] "4.2 star average session rating" — what is the source?
-- [ ] All three quotes — are these real testimonials or placeholders?
+- [ ] All stats and quotes are placeholders (issue #23)
 
 ## Slide 26 — Current status (internal)
 
-- [ ] "Manufacturing quotes received" — verify
-- [ ] "4 variants playable online" — verify exactly 4 exist
-- [ ] "Dungeon Chess prototype live" — where?
-- [ ] "Crowdfunding page in draft" — verify draft exists
-- [ ] "Design system complete" — verify
-- [ ] "Marketplace: spec + wireframes" — verify documents exist
+- [x] ~~Manufacturing quotes received~~ — confirmed
+- [x] ~~4 variants playable online~~ — confirmed
+- [x] ~~Dungeon Chess prototype live~~ — confirmed (local)
+- [x] ~~Crowdfunding page in draft~~ — confirmed
+- [x] ~~Design system complete~~ — confirmed
+- [x] ~~Marketplace~~ — updated to "scoping in progress"
 
 ## Slide 27 — Blockers (internal)
 
-- [ ] "First print-run capital ($15K–$25K) not yet secured" — verify status
-- [ ] "Marketplace backend: build vs buy" — still pending?
-- [ ] "Kickstarter vs Gamefound" — still open?
-- [x] ~~"Dungeon Chess: 2 races or 4 at launch?"~~ — decided: 4 species
-- [ ] "Entity structure: Malaysia vs Singapore" — still pending?
+- [x] ~~Marketplace backend~~ — decided: building in-house (updated in deck)
+- [ ] Kickstarter vs Gamefound — still open
+- [x] ~~Dungeon Chess races~~ — decided: 4 species
+- [x] ~~Entity structure~~ — updated to "UK holding → MY/SG subsidiary?"
 
 ## Slide 29 — Quick facts
 
-- [ ] "Founded: 2024, Kuala Lumpur" — verify year + city
-- [x] ~~"Team: 4"~~ — confirmed correct (website issue #39 tracks the 6-person discrepancy)
-
-## Slide 30 — Story angles
-
-- [x] ~~"Bootstrapped from Malaysia"~~ — confirmed, no prior funding
-
-## Slide 32 — Retail proposition
-
-- [ ] "50%+ Keystone margin" — verify
-- [ ] "3x Avg reorder rate vs single-SKU games" — verify + source
-
-## Slide 33 — Product line
-
-- [ ] All MSRP/wholesale pricing — verify
-- [ ] "MAP policy enforced" — verify exists
-
-## Slide 34 — Logistics
-
-- [ ] "US: warehouse in Texas" — verify
-- [ ] "EU: Netherlands hub" — verify
-- [ ] "5–7 day delivery" — verify
-- [ ] "Demo copy programme (buy 12, get 1 free)" — verify terms
+- [x] ~~Founded~~ — updated to "2024, Kuala Lumpur · Incorporated 2025, UK"
+- [x] ~~Team: 4~~ — confirmed
 
 ## Slide 42 — How to play
 
-- [ ] "Each player places 6 tokens on their home tiles" — verify starting setup
-- [ ] "No draws. No stalemates." — verify against rulebook
-- [ ] "Zero luck" — what about the 24 action cards?
+- [x] ~~"Each player places 6 tokens on their home tiles"~~ — matches rulebook
+- [x] ~~"No draws. No stalemates."~~ — correct (elimination game)
+- [x] ~~"Zero luck"~~ — confirmed (no random mechanics beyond starting player selection)
 
 ## Contact slide
 
-- [ ] "fan-made and not affiliated with any rights-holder" — verify legally appropriate given company structure
+- [x] ~~"fan-made" disclaimer~~ — removed (inappropriate for incorporated company seeking investment)
 
 ---
 
@@ -181,12 +116,12 @@ Pages created as stubs (2026-05-23) — content is placeholder, tools not yet fu
 - [ ] Card deck tool with "847 sessions/wk" — issue #18
 - [ ] Chess variant loader with "1,560 games/wk" — issue #18
 - [ ] 3 bot difficulty tiers — issue #17
-- [ ] "4.2 star average session rating"
-- [ ] "Econopoly 95% / LAUNCH READY" — no page or assets found
+- [ ] "4.2 star average session rating" — issue #23
+- [x] ~~Econopoly 95% / LAUNCH READY~~ — confirmed (rules exist outside these repos)
 
 ---
 
-## Previously resolved (2026-05-23)
+## Previously resolved
 
 - Nukes play time: fixed "30 MIN" → "45+ MIN" on slide 07
 - Nukes player count: fixed "2P" → "2–3P" on slide 07
@@ -201,7 +136,7 @@ Pages created as stubs (2026-05-23) — content is placeholder, tools not yet fu
 - DC species names: rulebook confirms Humans/Undead/Redskins/Greenskins (website fixed)
 - Website Nukes page: age 14+→12+, players 3→2–3, time 60-90→45+
 - Engine version: fixed v0.4-alpha → v0.9.3
-- Checker sets: changed 30B → B+ (no defensible specific figure)
+- Checker sets: changed 30B → B+ (no defensible specific source)
 - Open alpha live: confirmed
 - Contact email: confirmed working
 - Catan hex compatibility: confirmed
@@ -214,3 +149,11 @@ Pages created as stubs (2026-05-23) — content is placeholder, tools not yet fu
 - Competitor claims (BGA, Tabletopia, TTS): all verified
 - Milestones all in progress: confirmed
 - Team size 4: confirmed
+- Founded: updated to include UK incorporation
+- Entity blocker: updated (UK holding → MY/SG subsidiary?)
+- Marketplace blocker: resolved (building in-house)
+- Marketplace status: updated to "scoping in progress"
+- Fan-made disclaimer: removed
+- Nukes "zero luck": confirmed (no random mechanics)
+- Bot features: aspirational (issue #17)
+- Social proof: all placeholder (issue #23)
