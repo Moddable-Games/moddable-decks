@@ -64,6 +64,15 @@ The `<deck-stage>` component supports `@media print` — use the browser's Print
 - Created issues #29, #30, #31 for items requiring user assets
 - Gitignored `reference/` and `archive/` for public release
 - Updated README slide counts to match current 48-slide deck
+- Added social sharing meta tags (OG + Twitter) with versioned image URLs
+- Generated 1200x630 OG image with hex-horizon background and wordmark
+- Replaced rectangular favicon with proper SVG + 32px PNG + apple-touch-icon
+- Added "Learn More" button to splash (opens press deck)
+- Updated meta tags: removed "Master Plan" references, now public-facing copy
+- Removed deck-badge from non-internal audience decks
+- Repo made public, GitHub Pages enabled at decks.moddable.games
+- Cross-project: added OG tags + images to moddable-chess, dungeon-chess, moddable-rules
+- Cross-project: added `?v=` to all 52 website OG image URLs, regenerated with real logos
 
 #### 2026-05-24
 - Full content review pass: verified ~30 factual claims with user
