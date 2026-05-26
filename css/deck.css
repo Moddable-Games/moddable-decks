@@ -839,6 +839,13 @@ ul.clean.list-invest { margin-top: 32px; font-size: 20px; flex: 1; }
   color: rgba(255,255,255,0.3);
   letter-spacing: 0.1em;
 }
+.splash-version {
+  margin-top: 8px;
+  font-family: var(--mg-font-mono);
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.05em;
+}
 
 /* ---- Deck badge ---- */
 .deck-badge {
