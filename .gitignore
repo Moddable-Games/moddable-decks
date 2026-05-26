@@ -5,5 +5,6 @@ build-preview.py
 moddable-preview.html
 node_modules/
 dist/
-node_modules/
 pdf/
+reference/
+archive/

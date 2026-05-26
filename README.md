@@ -8,14 +8,14 @@ Open `index.html` in a browser. Arrow keys navigate between slides.
 
 | URL | Audience | Slides |
 |---|---|---|
-| `?deck=opportunities` | Angels / partners | 20 |
-| `?deck=crowdfunding` | Backers / campaign supporters | 15 |
-| `?deck=internal` | Team (shows all slides + deck-membership pills) | 43 |
-| `?deck=press` | Journalists / content creators | 11 |
-| `?deck=partner` | Distributors / retail buyers | 10 |
-| `?deck=expo` | Convention booth loop | 9 |
+| `?deck=opportunities` | Angels / partners | 25 |
+| `?deck=crowdfunding` | Backers / campaign supporters | 19 |
+| `?deck=internal` | Team (shows all slides + deck-membership pills) | 48 |
+| `?deck=press` | Journalists / content creators | 13 |
+| `?deck=partner` | Distributors / retail buyers | 12 |
+| `?deck=expo` | Convention booth loop | 13 |
 | `?deck=hiring` | Potential hires / collaborators | 7 |
-| `?deck=product` | Per-game launch (customers) | 8 |
+| `?deck=product` | Per-game launch (customers) | 12 |
 | No param | Splash page (no deck access) | — |
 
 Works with GitHub Pages — deploy the repo root directly.
@@ -23,7 +23,7 @@ Works with GitHub Pages — deploy the repo root directly.
 ## Structure
 
 ```
-index.html              The master deck (all 43 slides)
+index.html              The master deck (all 48 slides)
 css/
   deck.css              Deck layout + component styles
   colors_and_type.css   Design tokens (colour, type, spacing)
@@ -37,8 +37,7 @@ assets/
   hex-horizon.jpg       Hero backdrop
   moddable-logo.png    Brand mark
 fonts/                  Daggersquare, Inter, JetBrains Mono
-archive/                PDF export, print version, standalone, content.md
-reference/              Design system UI kits + previews (proof-of-work)
+scripts/                PDF generation (Puppeteer), version bump
 ```
 
 ## How filtering works
@@ -50,6 +49,21 @@ Each `<section>` slide has a `data-decks` attribute listing which audiences see 
 The `<deck-stage>` component supports `@media print` — use the browser's Print > Save as PDF (landscape, no margins) for a clean one-slide-per-page export. Skipped slides are excluded from print.
 
 ## Changelog
+
+#### 2026-05-26
+- Fixed PDF rendering: text-shadow caused dark rectangular bands in print — disabled in `@media print`
+- Fixed PDF generation: headless Chrome rAF race condition caused blank PDFs for some decks
+- Fixed slide 12 (Licensing): content overflow — compressed layout so "Why ShareAlike" section fits
+- Added version system: `version.txt` + `scripts/bump.sh` propagating cache-busting `?v=` params
+- Updated splash footer: licensing summary (CC-BY-SA 4.0 · Code MIT · Art proprietary)
+- Updated tool URLs to web.moddable.games
+- Added CNAME for decks.moddable.games
+- Added ROADMAP tags to DC Adventures and Bots slides
+- Removed fabricated traction stats from slide 11 (sessions/games per week)
+- Closed issues #17, #18, #19, #24, #26, #28
+- Created issues #29, #30, #31 for items requiring user assets
+- Gitignored `reference/` and `archive/` for public release
+- Updated README slide counts to match current 48-slide deck
 
 #### 2026-05-24
 - Full content review pass: verified ~30 factual claims with user

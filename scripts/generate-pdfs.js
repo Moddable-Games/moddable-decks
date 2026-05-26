@@ -37,7 +37,17 @@ async function generateDeckPDF(browser, deckName) {
       requestAnimationFrame(check);
     });
   });
-  await page.evaluate(() => new Promise(r => setTimeout(r, 500)));
+  // Wait for fonts to load, then force-remove data-fonts-pending
+  // (rAF-gated reveal doesn't fire reliably in headless Chrome)
+  await page.evaluate(() => {
+    return Promise.race([
+      document.fonts.ready,
+      new Promise(r => setTimeout(r, 3000))
+    ]).then(() => {
+      document.querySelector('deck-stage').removeAttribute('data-fonts-pending');
+    });
+  });
+  await page.evaluate(() => new Promise(r => setTimeout(r, 300)));
 
   // Get visible slide count
   const slideCount = await page.evaluate(() => {
