@@ -93,12 +93,6 @@
 
   // Deferred UI (badge, pills, shadow DOM patching, initial navigation)
   document.addEventListener('DOMContentLoaded', function () {
-    if (activeDeck !== 'internal') {
-      var badge = document.createElement('div');
-      badge.className = 'deck-badge deck-badge-' + activeDeck;
-      badge.textContent = DECKS[activeDeck].label;
-      document.body.appendChild(badge);
-    }
 
     if (activeDeck === 'internal') {
       allSections.forEach(function (slide) {
