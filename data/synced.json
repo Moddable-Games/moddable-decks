@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "syncedAt": "2026-05-23T10:09:03.131Z",
+    "syncedAt": "2026-05-27T12:00:00.000Z",
     "websitePath": "/Applications/MAMP/htdocs/MODDABLE/moddable-website",
-    "version": 1
+    "version": 2
   },
   "games": {
     "dungeon-chess": {
@@ -97,6 +97,32 @@
       "published": false
     }
   },
+  "engines": {
+    "moddable-chess": {
+      "title": "Moddable Chess",
+      "tagline": "39 playable variants. One modular engine.",
+      "url": "https://chess.moddable.games/",
+      "stats": [
+        { "value": "39", "label": "playable variants" },
+        { "value": "2000+", "label": "documented variants" },
+        { "value": "1", "label": "AI opponent" }
+      ],
+      "features": ["SVG board renderer", "AI opponent (minimax)", "Embed API", "Extension API", "Touch/mobile support"],
+      "consumers": ["Dungeon Chess", "Chess Variant Loader"]
+    },
+    "moddable-hexmaps": {
+      "title": "Moddable Hexmaps",
+      "tagline": "Hex map generation for any game. Seeded, shareable, moddable.",
+      "url": "https://hex.moddable.games/",
+      "stats": [
+        { "value": "3", "label": "supported games" },
+        { "value": "∞", "label": "seeded maps" },
+        { "value": "3", "label": "render styles" }
+      ],
+      "features": ["Canvas renderer", "Seeded RNG", "Import/export JSON", "Style selector", "Editor mode"],
+      "consumers": ["Nukes", "Talisman: Hexed", "Hyper Imperium"]
+    }
+  },
   "team": [
     {
       "handle": "mark",
@@ -135,7 +161,7 @@
     },
     {
       "quarter": "Q3 2026",
-      "text": "Moddable Chess: 4 variants playable online",
+      "text": "Moddable Chess: 39 variants live · Hexmaps: 3 games live",
       "color": "#3a9928"
     },
     {

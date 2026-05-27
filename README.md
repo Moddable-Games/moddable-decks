@@ -50,6 +50,19 @@ The `<deck-stage>` component supports `@media print` — use the browser's Print
 
 ## Changelog
 
+#### 2026-05-27
+- Restructured deck: separated "games" (consumer products) from "engines" (developer SDKs/infrastructure)
+- Slide 05: now focused on Nukes Online as the playable product
+- Slide 11: renamed "Beyond Hexes" → "The Stack", frames engines as infrastructure layer with clear architecture diagram
+- Added Moddable Hexmaps throughout: hex.moddable.games references, UI mock, status column
+- Updated chess variant count: 20 → 39 (verified from moddable-chess/data/variants.json)
+- Updated milestone: "4 variants playable online" → "39 variants live · Hexmaps: 3 games live"
+- Slide 26 (Current Status): expanded to 4-column grid (Game · Engine · Engine · Platform)
+- Updated Quick Facts engines line to list all three live domains
+- Synced engines data to data/synced.json from moddable-website/data/engines.json
+- Bumped version to 1.0.4
+- Closes #32, #33
+
 #### 2026-05-26
 - Fixed PDF rendering: text-shadow caused dark rectangular bands in print — disabled in `@media print`
 - Fixed PDF generation: headless Chrome rAF race condition caused blank PDFs for some decks
