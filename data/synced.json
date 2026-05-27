@@ -100,10 +100,10 @@
   "engines": {
     "moddable-chess": {
       "title": "Moddable Chess",
-      "tagline": "39 playable variants. One modular engine.",
+      "tagline": "54 playable variants. One modular engine.",
       "url": "https://chess.moddable.games/",
       "stats": [
-        { "value": "39", "label": "playable variants" },
+        { "value": "54", "label": "playable variants" },
         { "value": "2000+", "label": "documented variants" },
         { "value": "1", "label": "AI opponent" }
       ],
@@ -161,7 +161,7 @@
     },
     {
       "quarter": "Q3 2026",
-      "text": "Moddable Chess: 39 variants live · Hexmaps: 3 games live",
+      "text": "Moddable Chess: 54 variants live · Hexmaps: 3 games live",
       "color": "#3a9928"
     },
     {

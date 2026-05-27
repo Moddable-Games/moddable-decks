@@ -55,8 +55,8 @@ The `<deck-stage>` component supports `@media print` — use the browser's Print
 - Slide 05: now focused on Nukes Online as the playable product
 - Slide 11: redesigned as "The Stack" — side-by-side real screenshots, minimal text, screenshots dominate
 - Added Moddable Hexmaps throughout: hex.moddable.games references, status column
-- Updated chess variant count: 20 → 39 (verified from moddable-chess/data/variants.json)
-- Updated milestone: "4 variants playable online" → "39 variants live · Hexmaps: 3 games live"
+- Updated chess variant count: 20 → 39 → 54 (verified from moddable-chess plugin port)
+- Updated milestone: "4 variants playable online" → "54 variants live · Hexmaps: 3 games live"
 - Slide 26 (Current Status): expanded to 4-column grid (Game · Engine · Engine · Platform)
 - Updated Quick Facts engines line to list all three live domains
 - Synced engines data to data/synced.json from moddable-website/data/engines.json
