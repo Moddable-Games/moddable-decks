@@ -753,7 +753,7 @@ ul.clean.list-invest { margin-top: 32px; font-size: 20px; flex: 1; }
 .chip-num-red { color:var(--mg-nukes-red); font-family: var(--mg-font-mono); font-size: 13px; }
 .chip-dark-red { background: var(--mg-overlay-mid); border-color: rgba(255,179,179,0.25); color: var(--mg-on-dark); gap: 8px; }
 .mechanic-label { font-size: 11px; color: var(--mg-nukes-red); letter-spacing: 0.14em; margin-bottom: 10px; }
-.media-frame { background: var(--mg-canvas-light); display: block; aspect-ratio: 16/10; overflow: hidden; }
+.media-frame { background: #1a1a1a; display: block; aspect-ratio: 16/10; overflow: hidden; }
 .badge-alpha-red { color: var(--mg-nukes-red); }
 .body-callout { font-size: 18px; color: var(--mg-on-dark); margin: 0; line-height: 1.4; }
 .callout-label-red { font-size: 11px; color: var(--mg-nukes-red); letter-spacing: 0.14em; margin-bottom: 6px; }
