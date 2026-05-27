@@ -939,21 +939,21 @@ h3.sub.goal-title { margin-bottom: 12px; font-size: 26px; }
 .pad-center .community-grid > .card:last-child { gap: 106px; }
 
 /* ---- Slide-specific overrides ---- */
-.slide-licensing .pad { padding-top: 40px; padding-bottom: 48px; }
-.slide-licensing .slide-head { margin-bottom: 16px; }
-.slide-licensing .title { font-size: 80px; }
-.slide-licensing .body-lg { font-size: 22px; }
-.slide-licensing .grid-3col-16 { flex: 0; margin-top: 28px; gap: 24px; }
-.slide-licensing .card { padding: 20px 24px; }
-.slide-licensing h3.sub.card-heading-lg { font-size: 22px; margin-top: 6px; margin-bottom: 8px; }
-.slide-licensing .clean li { font-size: 18px; margin-bottom: 4px; }
+.slide-licensing .pad { padding-bottom: 48px; }
+.slide-licensing .slide-head { margin-bottom: 12px; }
+.slide-licensing .title { font-size: 64px; }
+.slide-licensing .body-lg { font-size: 20px; }
+.slide-licensing .grid-3col-16 { flex: 0; margin-top: 20px; gap: 20px; }
+.slide-licensing .card { padding: 18px 22px; }
+.slide-licensing h3.sub.card-heading-lg { font-size: 20px; margin-top: 4px; margin-bottom: 6px; }
+.slide-licensing .clean li { font-size: 16px; margin-bottom: 3px; }
 .slide-licensing .status-note { margin-top: 4px; font-size: 11px; }
-.slide-licensing .card.card-dark { margin-top: 20px; padding: 24px 32px; }
-.slide-licensing .moat-heading { margin-bottom: 12px; }
-.slide-licensing .grid-3col-55 { gap: 32px; }
-.slide-licensing h3.sub.fs-20 { font-size: 20px; }
-.slide-licensing .moat-body { font-size: 18px; margin-top: 10px; }
-.slide-licensing .footer { position: relative; bottom: auto; margin-top: 16px; padding: 0; }
+.slide-licensing .card.card-dark { margin-top: 16px; padding: 20px 28px; }
+.slide-licensing .moat-heading { margin-bottom: 10px; }
+.slide-licensing .grid-3col-55 { gap: 28px; }
+.slide-licensing h3.sub.fs-20 { font-size: 18px; }
+.slide-licensing .moat-body { font-size: 16px; margin-top: 8px; }
+.slide-licensing .footer { position: relative; bottom: auto; margin-top: 12px; padding: 0; }
 
 /* ---- Print: hide screen-only chrome ---- */
 @media print {
