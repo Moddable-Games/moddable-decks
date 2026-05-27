@@ -683,6 +683,11 @@ ul.clean.list-invest { margin-top: 32px; font-size: 20px; flex: 1; }
 .callout-label-cosmic { font-size: 12px; color: var(--mg-cosmic-glow); letter-spacing: 0.14em; margin-bottom: 6px; }
 .callout-cosmic { margin-top: 36px; padding: 22px 26px; border-radius: 16px; background: var(--mg-overlay-light); border: 1px solid rgba(174,212,255,0.25); max-width: 560px; }
 .split-engine { display: grid; grid-template-columns: 1fr 1.15fr; gap: 72px; flex: 1; align-items: center; }
+.grid-2col-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; flex: 1; margin-top: 24px; }
+.stack-lede { margin-top: 8px; margin-bottom: 0; font-size: 20px; color: rgba(255,255,255,0.8); }
+.stack-label { margin-top: 12px; }
+.stack-label-title { font-size: 12px; letter-spacing: 0.14em; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+.stack-label-stat { font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); }
 .pt-4 { padding-top: 4px; }
 .list-item-pad { padding: 7px 0; }
 .fs-18 { font-size: 18px; }
