@@ -50,6 +50,19 @@ The `<deck-stage>` component supports `@media print` — use the browser's Print
 
 ## Changelog
 
+#### 2026-05-28
+- Synced chess variant count 54→64 (Tier 2 extensions, plugin port complete in moddable-chess v0.6.8)
+- Synced hexmaps game count 3→4 (Colony added in moddable-hexmaps v0.4.0)
+- Strengthened engine narrative: both engines now have plugin systems + public "Build a Variant/Game" guides
+- Updated progress cards: chess highlights plugin system + "anyone can build variants"; hexmaps lists Colony
+- Updated competitive landscape: "us" card now emphasises plugin engines, not generic open-source
+- Updated moat section: "Community catalogue" → "Plugin ecosystem" with public guides angle
+- Updated Vision slide: engine card references plugin systems
+- Updated funded track: "Build the online engine" → "Scale plugin engines"
+- Updated platform progress: added /tools/ section + Dice Lab
+- Removed Nuke Catan from synced.json (removed from website — invented, no supporting material)
+- Updated data/synced.json: engine versions, features, consumers, milestone text
+
 #### 2026-05-27
 - Restructured deck: separated "games" (consumer products) from "engines" (developer SDKs/infrastructure)
 - Slide 05: now focused on Nukes Online as the playable product
