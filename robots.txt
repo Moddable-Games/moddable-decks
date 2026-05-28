@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Allow: /?deck=press
+
+Sitemap: https://decks.moddable.games/sitemap.xml

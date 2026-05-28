@@ -17,6 +17,14 @@
     return;
   }
 
+  // Block search engines from all decks except press
+  if (activeDeck !== 'press') {
+    var noindex = document.createElement('meta');
+    noindex.name = 'robots';
+    noindex.content = 'noindex, nofollow';
+    document.head.appendChild(noindex);
+  }
+
   var allSections = Array.from(document.querySelectorAll('deck-stage section[data-decks]'));
 
   // Generate slug from screen label (strip leading number, lowercase, hyphenate)
