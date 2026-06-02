@@ -60,7 +60,6 @@ The `<deck-stage>` component supports `@media print` — use the browser's Print
 - Dungeon Chess status: alpha → live
 - Hexmaps synced.json updated to consumer SDK language
 - Closed #37
-- Bumped to v1.0.8
 
 #### 2026-05-28
 - Synced chess variant count 54→64 (Tier 2 extensions, plugin port complete in moddable-chess v0.6.8)
