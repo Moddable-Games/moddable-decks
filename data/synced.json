@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "syncedAt": "2026-05-28T12:00:00.000Z",
+    "syncedAt": "2026-06-02T12:00:00.000Z",
     "websitePath": "/Applications/MAMP/htdocs/MODDABLE/moddable-website",
-    "version": 2
+    "version": 3
   },
   "games": {
     "dungeon-chess": {
@@ -14,8 +14,8 @@
       "tagline": "Asymmetric fantasy strategy on modular dungeon boards",
       "type": "mod",
       "base_game": "Chess",
-      "status": "alpha",
-      "updated": "2026-05-22",
+      "status": "live",
+      "updated": "2026-06-02",
       "published": true
     },
     "econopoly": {
@@ -100,15 +100,15 @@
   "engines": {
     "moddable-chess": {
       "title": "Moddable Chess",
-      "tagline": "64 playable variants. Plugin engine with public guide.",
+      "tagline": "70 playable variants. Consumer SDK — other games build on it.",
       "url": "https://chess.moddable.games/",
-      "version": "0.6.8",
+      "version": "0.7.1",
       "stats": [
-        { "value": "64", "label": "playable variants" },
+        { "value": "70", "label": "playable variants" },
         { "value": "2000+", "label": "documented variants" },
         { "value": "1", "label": "AI opponent" }
       ],
-      "features": ["Plugin system", "Build a Variant guide", "SVG board renderer", "AI opponent (minimax)", "Embed API", "Touch/mobile support"],
+      "features": ["Consumer SDK", "Game controller", "Renderer extensions", "Opening books", "Developer guides", "SVG board renderer", "AI (negamax + Web Worker)", "Embed API", "Touch/mobile support"],
       "consumers": ["Dungeon Chess", "Chess Variant Loader"]
     },
     "moddable-hexmaps": {
@@ -163,7 +163,7 @@
     },
     {
       "quarter": "Q3 2026",
-      "text": "Moddable Chess: 64 variants live · Hexmaps: 4 games live",
+      "text": "Moddable Chess: 70 variants live · Consumer SDK shipped · Hexmaps: 4 games live",
       "color": "#3a9928"
     },
     {
