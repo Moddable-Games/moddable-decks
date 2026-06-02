@@ -113,7 +113,7 @@
     },
     "moddable-hexmaps": {
       "title": "Moddable Hexmaps",
-      "tagline": "Hex map generation for any game. Plugin engine with public guide.",
+      "tagline": "Hex map generation for any game. Consumer SDK with public guide.",
       "url": "https://hex.moddable.games/",
       "version": "0.4.0",
       "stats": [
@@ -121,7 +121,7 @@
         { "value": "∞", "label": "seeded maps" },
         { "value": "3", "label": "render styles" }
       ],
-      "features": ["Plugin system", "Colony guide", "Canvas renderer", "Seeded RNG", "Import/export JSON", "Style selector", "Editor mode"],
+      "features": ["Consumer SDK", "Colony guide", "Canvas renderer", "Seeded RNG", "Import/export JSON", "Style selector", "Editor mode"],
       "consumers": ["Nukes", "Talisman: Hexed", "Hyper Imperium", "Colony"]
     }
   },

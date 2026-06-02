@@ -50,6 +50,18 @@ The `<deck-stage>` component supports `@media print` — use the browser's Print
 
 ## Changelog
 
+#### 2026-06-02
+- Synced MCE stats: 64→70 variants, v0.6.8→v0.7.1 (consumer APIs, game controller, renderer extensions, opening books)
+- Repositioned core narrative: "plugin system" → "consumer SDK" across all slides
+- Redesigned slide 14 (Dungeon Chess): reframed as platform proof — shows MCE provides vs DC adds
+- Updated slide 13b title card: "Asymmetric skirmishes" → "First consumer game · Built entirely on Moddable Chess"
+- Updated moat: "Plugin ecosystem" → "Consumer SDK" with Dungeon Chess as shipped proof
+- Updated go-to-market lede: "Three mods in development" → "Ten mods published"
+- Dungeon Chess status: alpha → live
+- Hexmaps synced.json updated to consumer SDK language
+- Closed #37
+- Bumped to v1.0.8
+
 #### 2026-05-28
 - Synced chess variant count 54→64 (Tier 2 extensions, plugin port complete in moddable-chess v0.6.8)
 - Synced hexmaps game count 3→4 (Colony added in moddable-hexmaps v0.4.0)
