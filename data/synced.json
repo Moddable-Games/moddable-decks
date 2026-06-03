@@ -1,13 +1,13 @@
 {
   "_meta": {
-    "syncedAt": "2026-06-02T12:00:00.000Z",
+    "syncedAt": "2026-06-03T12:00:00.000Z",
     "websitePath": "/Applications/MAMP/htdocs/MODDABLE/moddable-website",
     "version": 3
   },
   "games": {
     "dungeon-chess": {
       "title": "Dungeon Chess",
-      "version": "0.1.0",
+      "version": "0.2.1",
       "players": "2–4",
       "duration": "30–120 min",
       "age": "12+",
@@ -72,7 +72,7 @@
     },
     "nukes": {
       "title": "Nukes",
-      "version": "0.9.3",
+      "version": "0.9.5",
       "players": "2–3",
       "duration": "45+ min",
       "age": "12+",
@@ -115,13 +115,13 @@
       "title": "Moddable Hexmaps",
       "tagline": "Hex map generation for any game. Consumer SDK with public guide.",
       "url": "https://hex.moddable.games/",
-      "version": "0.4.0",
+      "version": "0.5.1",
       "stats": [
         { "value": "4", "label": "supported games" },
         { "value": "∞", "label": "seeded maps" },
         { "value": "3", "label": "render styles" }
       ],
-      "features": ["Consumer SDK", "Colony guide", "Canvas renderer", "Seeded RNG", "Import/export JSON", "Style selector", "Editor mode"],
+      "features": ["Consumer SDK", "Colony guide", "Canvas renderer", "Seeded RNG", "Import/export JSON", "Style selector", "Editor mode", "PNG/PDF/SVG export", "Seafarers expansion"],
       "consumers": ["Nukes", "Talisman: Hexed", "Hyper Imperium", "Colony"]
     }
   },
