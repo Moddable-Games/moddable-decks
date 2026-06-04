@@ -47,7 +47,7 @@
     "hyper-imperium": {
       "title": "Hyper Imperium",
       "version": "2.0.1",
-      "players": "3–6",
+      "players": "4–6",
       "duration": "4–6 hr",
       "age": "14+",
       "tagline": "A faster, more political Twilight Imperium",
@@ -83,8 +83,8 @@
       "updated": "2026-05-22",
       "published": true
     },
-    "talisman-hexed": {
-      "title": "Talisman: Hexed",
+    "talisman-worlds": {
+      "title": "Talisman Worlds",
       "version": "1.0.0",
       "players": "2–6",
       "duration": "90 min",
@@ -115,14 +115,14 @@
       "title": "Moddable Hexmaps",
       "tagline": "Hex map generation for any game. Consumer SDK with public guide.",
       "url": "https://hex.moddable.games/",
-      "version": "0.5.1",
+      "version": "0.6.1",
       "stats": [
-        { "value": "4", "label": "supported games" },
+        { "value": "6", "label": "supported games" },
         { "value": "∞", "label": "seeded maps" },
-        { "value": "3", "label": "render styles" }
+        { "value": "4", "label": "render styles" }
       ],
       "features": ["Consumer SDK", "Colony guide", "Canvas renderer", "Seeded RNG", "Import/export JSON", "Style selector", "Editor mode", "PNG/PDF/SVG export", "Seafarers expansion"],
-      "consumers": ["Nukes", "Talisman: Hexed", "Hyper Imperium", "Colony"]
+      "consumers": ["Nukes", "Talisman Worlds", "Hyper Imperium", "Colony", "Planet Mongo", "Endless Skies"]
     }
   },
   "team": [
@@ -163,7 +163,7 @@
     },
     {
       "quarter": "Q3 2026",
-      "text": "Moddable Chess: 70 variants live · Consumer SDK shipped · Hexmaps: 4 games live",
+      "text": "Moddable Chess: 70 variants live · Consumer SDK shipped · Hexmaps: 6 games live",
       "color": "#3a9928"
     },
     {
@@ -189,17 +189,17 @@
   ],
   "mods": [
     {
-      "title": "Talisman: Hexed",
+      "title": "Talisman Worlds",
       "category": "Reskin",
       "baseGame": "Talisman 4e",
       "stats": "2–6 players · 90 min · 13+",
-      "path": "/mods/talisman-hexed/"
+      "path": "/mods/talisman-worlds/"
     },
     {
       "title": "Hyper Imperium",
       "category": "Rebalance",
       "baseGame": "Twilight Imperium 4e",
-      "stats": "3–6 players · 4–6 hr · 14+",
+      "stats": "4–6 players · 4–6 hr · 14+",
       "path": "/mods/hyper-imperium/"
     },
 {
