@@ -8,22 +8,23 @@ Open `index.html` in a browser. Arrow keys navigate between slides.
 
 | URL | Audience | Slides |
 |---|---|---|
-| `?deck=opportunities` | Angels / partners | 25 |
+| `?deck=opportunities` | Angels / partners | 27 |
 | `?deck=crowdfunding` | Backers / campaign supporters | 19 |
-| `?deck=internal` | Team (shows all slides + deck-membership pills) | 48 |
-| `?deck=press` | Journalists / content creators | 13 |
+| `?deck=internal` | Team (shows all slides + deck-membership pills) | 50 |
+| `?deck=press` | Journalists / content creators | 15 |
 | `?deck=partner` | Distributors / retail buyers | 12 |
 | `?deck=expo` | Convention booth loop | 13 |
 | `?deck=hiring` | Potential hires / collaborators | 7 |
 | `?deck=product` | Per-game launch (customers) | 12 |
 | No param | Splash page (no deck access) | — |
 
+
 Works with GitHub Pages — deploy the repo root directly.
 
 ## Structure
 
 ```
-index.html              The master deck (all 48 slides)
+index.html              The master deck (all 50 slides)
 css/
   deck.css              Deck layout + component styles
   colors_and_type.css   Design tokens (colour, type, spacing)
@@ -49,6 +50,17 @@ Each `<section>` slide has a `data-decks` attribute listing which audiences see 
 The `<deck-stage>` component supports `@media print` — use the browser's Print > Save as PDF (landscape, no margins) for a clean one-slide-per-page export. Skipped slides are excluded from print.
 
 ## Changelog
+
+#### 2026-06-10
+- Synced engine versions: Chess v0.7.1→v0.9.1, Hexmaps v0.6.1→v0.8.1
+- Added new slide 11b: Developer Platform (MCP tools, AI-callable engines)
+- Added new slide 11c: Developer Traction (stats, first-mover positioning)
+- Updated moat narrative: "Bot training data" → "AI integration layer" (15 MCP tools live)
+- Updated slide 26 (Current Status): engine versions, MCP servers, developer portal
+- Fixed domain: web.moddable.games → moddable.games (domain consolidation)
+- Removed trailing full stops from all 40+ headings (global rule compliance)
+- Updated synced.json: engine features, consumers, stats
+- Bumped version to 1.0.11
 
 #### 2026-06-02
 - Repositioned deck narrative: "plugin system" → "consumer SDK" — Dungeon Chess is now the platform proof

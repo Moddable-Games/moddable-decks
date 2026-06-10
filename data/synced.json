@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "syncedAt": "2026-06-03T12:00:00.000Z",
+    "syncedAt": "2026-06-10T12:00:00.000Z",
     "websitePath": "/Applications/MAMP/htdocs/MODDABLE/moddable-website",
     "version": 3
   },
@@ -102,26 +102,26 @@
       "title": "Moddable Chess",
       "tagline": "70 playable variants. Consumer SDK — other games build on it.",
       "url": "https://chess.moddable.games/",
-      "version": "0.7.1",
+      "version": "0.9.1",
       "stats": [
         { "value": "70", "label": "playable variants" },
         { "value": "2000+", "label": "documented variants" },
-        { "value": "1", "label": "AI opponent" }
+        { "value": "5", "label": "AI difficulties" }
       ],
-      "features": ["Consumer SDK", "Game controller", "Renderer extensions", "Opening books", "Developer guides", "SVG board renderer", "AI (negamax + Web Worker)", "Embed API", "Touch/mobile support"],
-      "consumers": ["Dungeon Chess", "Chess Variant Loader"]
+      "features": ["Consumer SDK", "Game controller", "Renderer extensions", "Opening books", "Developer guides", "SVG board renderer", "AI (negamax + Web Worker)", "Embed API", "Touch/mobile support", "MCP server (7 tools)", "Native ESM", "Animation styles"],
+      "consumers": ["Dungeon Chess", "Chess Variant Loader", "tools.moddable.games"]
     },
     "moddable-hexmaps": {
       "title": "Moddable Hexmaps",
       "tagline": "Hex map generation for any game. Consumer SDK with public guide.",
       "url": "https://hex.moddable.games/",
-      "version": "0.6.1",
+      "version": "0.8.1",
       "stats": [
         { "value": "6", "label": "supported games" },
         { "value": "∞", "label": "seeded maps" },
         { "value": "4", "label": "render styles" }
       ],
-      "features": ["Consumer SDK", "Colony guide", "Canvas renderer", "Seeded RNG", "Import/export JSON", "Style selector", "Editor mode", "PNG/PDF/SVG export", "Seafarers expansion"],
+      "features": ["Consumer SDK", "Map controller", "Canvas renderer", "Seeded RNG", "Import/export JSON", "Style selector", "Editor mode", "PNG/PDF/SVG export", "Seafarers expansion", "MCP server (6 tools)", "Native ESM", "Render hooks"],
       "consumers": ["Nukes", "Talisman Worlds", "Hyper Imperium", "Colony", "Planet Mongo", "Endless Skies"]
     }
   },
