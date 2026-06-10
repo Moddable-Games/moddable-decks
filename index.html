@@ -7,7 +7,7 @@
 <meta name="description" content="Open-source tabletop games powered by two modular engines, plus a marketplace for modders. Play free, mod anything, print on demand.">
 <meta property="og:title" content="Moddable.Games — Making games you already own">
 <meta property="og:description" content="Open-source tabletop games powered by two modular engines, plus a marketplace for modders. Play free, mod anything, print on demand.">
-<meta property="og:image" content="https://decks.moddable.games/assets/og-image.png?v=1.0.11">
+<meta property="og:image" content="https://decks.moddable.games/assets/og-image.png?v=1.0.12">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://decks.moddable.games/">
@@ -16,12 +16,12 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Moddable.Games — Making games you already own">
 <meta name="twitter:description" content="Open-source tabletop games powered by two modular engines, plus a marketplace for modders. Play free, mod anything, print on demand.">
-<meta name="twitter:image" content="https://decks.moddable.games/assets/og-image.png?v=1.0.11">
-<link rel="stylesheet" href="css/colors_and_type.css?v=1.0.11">
+<meta name="twitter:image" content="https://decks.moddable.games/assets/og-image.png?v=1.0.12">
+<link rel="stylesheet" href="css/colors_and_type.css?v=1.0.12">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="css/deck.css?v=1.0.11">
+<link rel="stylesheet" href="css/deck.css?v=1.0.12">
 </head>
 <body>
 
@@ -35,7 +35,7 @@
     <a href="https://nukes.moddable.games" target="_blank" rel="noopener" class="splash-btn splash-btn-secondary">Play Nukes</a>
   </div>
   <p class="splash-disclaimer">&copy; 2025–2026 Moddable.Games Ltd &middot; Rules CC-BY-SA 4.0 &middot; Code MIT &middot; Art proprietary</p>
-  <p class="splash-version">v1.0.11</p>
+  <p class="splash-version">v1.0.12</p>
 </div>
 
 <template id="__bundler_thumbnail" data-bg-color="#0a0d2a">
@@ -1741,77 +1741,288 @@
   </section>
 
   <!-- ============================================================
-       SLIDE 21 — PLEDGE TIERS (Kickstarter only)
+       SLIDE 21 — WHY CHESS, WHY NOW (Crowdfunding)
        ============================================================ -->
-  <section class="slide ivory" data-screen-label="21 Pledge tiers" data-decks="crowdfunding">
+  <section class="slide ivory" data-screen-label="21 Why chess" data-decks="crowdfunding">
     <div class="pad">
       <div class="slide-head">
-        <span class="eyebrow"><span class="arrow">▲</span> Back this project</span>
+        <span class="eyebrow"><span class="arrow">▲</span> Moddable Chess — the catalyst</span>
         <span class="pagenum">21</span>
       </div>
-      <h1 class="title fs-88">Pick your<br/>pledge tier</h1>
-      <div class="grid-4col-24">
-        <div class="card flex-col">
-          <div class="stripe"></div>
-          <div class="mono card-label">TIER 1</div>
-          <h3 class="sub card-heading">Digital Backer</h3>
-          <div class="stat-num stat-num-blue-lg">$15</div>
-          <ul class="clean card-list">
-            <li><span class="num">▲</span><span>Digital rulebook (PDF)</span></li>
-            <li><span class="num">▲</span><span>Online engine access</span></li>
-            <li><span class="num">▲</span><span>Backer Discord role</span></li>
-          </ul>
+
+      <div class="grid-title-aside">
+        <h1 class="title fs-88">
+          Why chess<br/>Why <em class="hl-blue">now</em>
+        </h1>
+        <p class="body-lg body-lg-charcoal-md">
+          Chess is moddable, public domain, and never been more popular.
+          Hundreds of variants exist — but no playable physical compendium.
+          We're building the first one.
+        </p>
+      </div>
+
+      <div class="grid-4col-68">
+        <div class="card flex-col-67">
+          <div class="stat-num stat-num-blue">2000+</div>
+          <div class="mono card-label">DOCUMENTED VARIANTS</div>
+          <p class="body comp-platform-body">
+            Scattered across forum threads, PDFs, and Wikipedia. No unified playable collection exists.
+          </p>
         </div>
-        <div class="card flex-col">
-          <div class="stripe green"></div>
-          <div class="mono card-label">TIER 2</div>
-          <h3 class="sub card-heading">Standard Edition</h3>
-          <div class="stat-num stat-num-green-lg">$45</div>
-          <ul class="clean card-list">
-            <li><span class="num">▲</span><span>Physical game (4 board sections)</span></li>
-            <li><span class="num">▲</span><span>75 tokens</span></li>
-            <li><span class="num">▲</span><span>Everything in Tier 1</span></li>
-          </ul>
+        <div class="card flex-col-67">
+          <div class="stat-num stat-num-red">70</div>
+          <div class="mono card-label">PLAYABLE ONLINE TODAY</div>
+          <p class="body comp-platform-body">
+            Our engine already runs 70 variants with AI opponents. The digital product is live and proven.
+          </p>
         </div>
-        <div class="card flex-col">
-          <div class="stripe red"></div>
-          <div class="mono card-label">TIER 3</div>
-          <h3 class="sub card-heading">Deluxe Edition</h3>
-          <div class="stat-num stat-num-red-lg">$85</div>
-          <ul class="clean card-list">
-            <li><span class="num">▲</span><span>15 board sections (full 4-player)</span></li>
-            <li><span class="num">▲</span><span>100+ premium pieces</span></li>
-            <li><span class="num">▲</span><span>Name in the rulebook</span></li>
-          </ul>
+        <div class="card flex-col-67">
+          <div class="stat-num stat-num-green">0</div>
+          <div class="mono card-label">PHYSICAL COMPENDIUMS</div>
+          <p class="body comp-platform-body">
+            No one has shipped a modular physical set that plays hundreds of variants from one box.
+          </p>
         </div>
-        <div class="card flex-col-20">
-          <div class="stripe stripe-cosmic-bg"></div>
-          <div class="mono card-label-light">TIER 4</div>
-          <h3 class="sub card-heading">Dungeon Edition</h3>
-          <div class="stat-num stat-num-cosmic">$150</div>
-          <ul class="clean card-list">
-            <li><span class="num">▲</span><span>Dungeon Chess expansion</span></li>
-            <li><span class="num">▲</span><span>4 asymmetric faction sets</span></li>
-            <li><span class="num">▲</span><span>Everything in Tiers 1–3</span></li>
-          </ul>
+        <div class="card flex-col-67">
+          <div class="stat-num stat-num-cosmic">$3B</div>
+          <div class="mono card-label">ONLINE CHESS BY 2032</div>
+          <p class="body comp-platform-body">
+            Chess has never been more popular. The audience is massive, engaged, and hungry for novelty.
+          </p>
+        </div>
+      </div>
+
+      <div class="card card-dark mt-24">
+        <div class="mono moat-heading">▲ THE CROWDFUNDING THESIS</div>
+        <p class="body moat-body">Ship a modular chess set that plays hundreds of variants from a few fundamental board sections. The more we raise, the more sections we ship, and the more variant families unlock. Dungeon Chess is the headline stretch goal that transforms it into something beyond chess.</p>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="mono">chess.moddable.games · 70 variants live · public domain</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 22 — THE LADDER (Crowdfunding)
+       ============================================================ -->
+  <section class="slide dark" data-screen-label="22 The ladder" data-decks="crowdfunding">
+    <div class="bg-ink"></div>
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Stretch goal ladder</span>
+        <span class="pagenum">22</span>
+      </div>
+
+      <div class="grid-title-aside">
+        <h1 class="title max-w-1100">
+          A ladder of<br/>stretch goals
+        </h1>
+        <p class="body-lg body-lg-muted">
+          Each tier adds more sections to the board — and unlocks the next family
+          of variants the engine already supports.
+        </p>
+      </div>
+
+      <div class="flex-col-gap-12">
+        <div class="card grid-title-aside-72">
+          <div class="mono timeline-date-blue">LV·01</div>
+          <div>
+            <div class="sub fs-26">Regular 2-player Chess</div>
+            <div class="mono status-note">4 board sections · 100 squares · 60 chess pieces</div>
+          </div>
+          <span class="chip blue">BASE GOAL</span>
+        </div>
+
+        <div class="card grid-title-aside-72">
+          <div class="mono timeline-date-green">LV·02</div>
+          <div>
+            <div class="sub fs-26">Unlock 4-player Chess</div>
+            <div class="mono status-note">15 board sections · 192 squares · 100+ pieces</div>
+          </div>
+          <span class="chip green">STRETCH</span>
+        </div>
+
+        <div class="card grid-title-aside-72">
+          <div class="mono timeline-date-blue">LV·03</div>
+          <div>
+            <div class="sub fs-26">Unlock XiangQi + 4-Board variants</div>
+            <div class="mono status-note">26 board sections · 256 squares · regional rule sets</div>
+          </div>
+          <span class="chip chip-white">STRETCH</span>
+        </div>
+
+        <div class="card grid-title-aside-79">
+          <div class="mono timeline-date-cosmic">LV·04</div>
+          <div>
+            <div class="sub timeline-heading">Unlock Dungeon Chess</div>
+            <div class="mono status-note">Asymmetric factions · Spells · Objects · Campaign mode</div>
+          </div>
+          <span class="chip chip-cosmic-fill">HEADLINE</span>
+        </div>
+
+        <div class="card grid-title-aside-72">
+          <div class="mono timeline-date-green">LV·05+</div>
+          <div>
+            <div class="sub fs-26">Community decides</div>
+            <div class="mono status-note">Extra races · Upgraded boards · Custom components — set by backer vote</div>
+          </div>
+          <span class="chip green">OPEN-ENDED</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="mono">more sections → more variants → more value</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 23 — THE PRODUCT (Crowdfunding)
+       ============================================================ -->
+  <section class="slide ivory" data-screen-label="23 Board sections" data-decks="crowdfunding">
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> Modular board sections</span>
+        <span class="pagenum">23</span>
+      </div>
+
+      <h1 class="title max-w-1500">
+        A few sections<br/>Hundreds of <em class="hl-blue">variants</em>
+      </h1>
+      <p class="lede lede-wide-mt">
+        Each section is double-sided — plain squares on the front, pre-printed variant layouts on the back.
+        Flip and combine to build any board the engine supports.
+      </p>
+
+      <div class="grid-2col-stack">
+        <!-- Board layouts SVG -->
+        <div>
+          <svg class="svg-responsive" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg" aria-label="Modular board section configurations">
+            <defs>
+              <style>
+                .sec { fill: none; stroke: #0c4f8d; stroke-width: 2; rx: 4; }
+                .sec-fill { fill: rgba(12,79,141,0.08); stroke: #0c4f8d; stroke-width: 2; rx: 4; }
+                .sec-lbl { font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #0c4f8d; letter-spacing: 0.1em; text-anchor: middle; font-weight: 600; }
+                .sec-meta { font-family: 'JetBrains Mono', monospace; font-size: 9px; fill: #7a8290; letter-spacing: 0.08em; text-anchor: middle; }
+              </style>
+            </defs>
+
+            <!-- Regular: 1 section -->
+            <g transform="translate(40, 20)">
+              <rect class="sec-fill" x="0" y="0" width="100" height="100"/>
+              <text class="sec-lbl" x="50" y="125">REGULAR</text>
+              <text class="sec-meta" x="50" y="140">1 section · 8×8</text>
+            </g>
+
+            <!-- 4-Player: cross shape -->
+            <g transform="translate(200, 10)">
+              <rect class="sec" x="40" y="0" width="40" height="30"/>
+              <rect class="sec" x="0" y="30" width="40" height="40"/>
+              <rect class="sec-fill" x="40" y="30" width="40" height="40"/>
+              <rect class="sec" x="80" y="30" width="40" height="40"/>
+              <rect class="sec" x="40" y="70" width="40" height="30"/>
+              <text class="sec-lbl" x="60" y="125">4-PLAYER</text>
+              <text class="sec-meta" x="60" y="140">15 sections · cross</text>
+            </g>
+
+            <!-- 4-Board: 2x2 grid -->
+            <g transform="translate(400, 20)">
+              <rect class="sec" x="0" y="0" width="48" height="48"/>
+              <rect class="sec-fill" x="52" y="0" width="48" height="48"/>
+              <rect class="sec-fill" x="0" y="52" width="48" height="48"/>
+              <rect class="sec" x="52" y="52" width="48" height="48"/>
+              <text class="sec-lbl" x="50" y="125">4-BOARD</text>
+              <text class="sec-meta" x="50" y="140">4 sections · 2×2</text>
+            </g>
+
+            <!-- Alice: 2 parallel -->
+            <g transform="translate(40, 200)">
+              <rect class="sec-fill" x="0" y="0" width="60" height="80"/>
+              <rect class="sec" x="80" y="0" width="60" height="80"/>
+              <text class="sec-lbl" x="70" y="105">ALICE</text>
+              <text class="sec-meta" x="70" y="120">2 sections · parallel</text>
+            </g>
+
+            <!-- Courier: wide -->
+            <g transform="translate(220, 220)">
+              <rect class="sec-fill" x="0" y="0" width="150" height="60"/>
+              <text class="sec-lbl" x="75" y="85">COURIER</text>
+              <text class="sec-meta" x="75" y="100">1 wide section · 12×8</text>
+            </g>
+
+            <!-- Omega/Grand: with corner pockets -->
+            <g transform="translate(430, 200)">
+              <rect class="sec" x="14" y="14" width="80" height="60"/>
+              <rect class="sec-fill" x="0" y="0" width="12" height="12"/>
+              <rect class="sec-fill" x="96" y="0" width="12" height="12"/>
+              <rect class="sec-fill" x="0" y="76" width="12" height="12"/>
+              <rect class="sec-fill" x="96" y="76" width="12" height="12"/>
+              <text class="sec-lbl" x="54" y="110">OMEGA</text>
+              <text class="sec-meta" x="54" y="125">5 sections · corners</text>
+            </g>
+
+            <!-- Dungeon: corridor -->
+            <g transform="translate(120, 370)">
+              <rect class="sec" x="0" y="0" width="40" height="80"/>
+              <rect class="sec-fill" x="44" y="20" width="80" height="40"/>
+              <rect class="sec" x="128" y="0" width="40" height="80"/>
+              <rect class="sec" x="44" y="0" width="80" height="16"/>
+              <rect class="sec" x="44" y="64" width="80" height="16"/>
+              <text class="sec-lbl" x="84" y="105">DUNGEON</text>
+              <text class="sec-meta" x="84" y="120">Corridor layouts · LV·04</text>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Right: explanation -->
+        <div>
+          <div class="flex-col-gap-24-200">
+            <div class="card flex-row-gap-32-198">
+              <div class="stat-num stat-num-blue-xl">↕</div>
+              <div>
+                <div class="mono card-label">DOUBLE-SIDED</div>
+                <div class="sub sub-detail">Front: plain squares</div>
+                <p class="body body-muted">Back: pre-printed variant layouts (coloured squares for Alice, XiangQi, 4-Board, etc.)</p>
+              </div>
+            </div>
+
+            <div class="card flex-row-gap-32-198">
+              <div class="stat-num stat-num-green-xl">∞</div>
+              <div>
+                <div class="mono card-label">COMBINATORIAL</div>
+                <div class="sub sub-detail">Flip and combine</div>
+                <p class="body body-muted">The same sections reconfigure into Regular, 4-Player, Alice, Courier, Omega, and Dungeon layouts.</p>
+              </div>
+            </div>
+
+            <div class="card flex-row-gap-32">
+              <div class="stat-num stat-num-cosmic-xl">70</div>
+              <div>
+                <div class="mono label-track">ENGINE-BACKED</div>
+                <div class="sub sub-white">Every variant playable online today</div>
+                <p class="body body-faded">The physical set matches the digital engine. Learn online, play at the table.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="footer">
       <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
-      <span class="mono">all tiers include free shipping</span>
+      <span class="mono">modular · double-sided · hundreds of variants from one box</span>
     </div>
   </section>
 
   <!-- ============================================================
-       SLIDE 22 — FULFILMENT (Kickstarter only)
+       SLIDE 23b — FULFILMENT (Crowdfunding)
        ============================================================ -->
-  <section class="slide cosmic" data-screen-label="22 Fulfilment" data-decks="crowdfunding">
+  <section class="slide cosmic" data-screen-label="23b Fulfilment" data-decks="crowdfunding">
     <div class="bg-cosmic"></div>
     <div class="pad">
       <div class="slide-head">
         <span class="eyebrow"><span class="arrow">▲</span> Fulfilment</span>
-        <span class="pagenum">22</span>
+        <span class="pagenum"></span>
       </div>
       <h1 class="title">When you<br/>get your game</h1>
       <p class="lede mt-32">
@@ -1843,45 +2054,71 @@
   </section>
 
   <!-- ============================================================
-       SLIDE 23 — STRETCH GOALS (Crowdfunding only)
+       SLIDE 23c — PLEDGE TIERS (Crowdfunding)
        ============================================================ -->
-  <section class="slide ivory" data-screen-label="23 Stretch goals" data-decks="crowdfunding">
+  <section class="slide dark" data-screen-label="23c Pledge tiers" data-decks="crowdfunding">
+    <div class="bg-cosmic"></div>
     <div class="pad">
       <div class="slide-head">
-        <span class="eyebrow"><span class="arrow">▲</span> Stretch goals</span>
-        <span class="pagenum">23</span>
+        <span class="eyebrow"><span class="arrow">▲</span> Back this project</span>
+        <span class="pagenum"></span>
       </div>
-      <h1 class="title fs-88">The more we raise,<br/>the more you get</h1>
+      <h1 class="title max-w-1500">Pick your level</h1>
       <div class="grid-4col-24">
         <div class="card flex-col">
-          <div class="stripe green"></div>
-          <div class="mono goal-label">$50K FUNDED</div>
-          <h3 class="sub goal-title">Base Game</h3>
-          <p class="body mt-16">Nukes: 4 hex-board sections, 75 tokens, full rulebook. The game as designed.</p>
+          <div class="stripe"></div>
+          <div class="mono card-label-light">DIGITAL</div>
+          <h3 class="sub card-heading-lg">Backer</h3>
+          <div class="stat-num stat-num-blue-lg">$15</div>
+          <ul class="clean card-list">
+            <li><span class="num">▲</span><span>All 70 variants online</span></li>
+            <li><span class="num">▲</span><span>Digital rulebook (PDF)</span></li>
+            <li><span class="num">▲</span><span>Backer Discord role</span></li>
+          </ul>
+          <div class="mono status-note mt-24">INSTANT ACCESS</div>
         </div>
         <div class="card flex-col">
-          <div class="stripe"></div>
-          <div class="mono goal-label">$75K</div>
-          <h3 class="sub goal-title">Solo &amp; 2v2 Modes</h3>
-          <p class="body mt-16">AI opponent cards for solo play plus official 2v2 team rules with shared-nuke mechanics.</p>
+          <div class="stripe green"></div>
+          <div class="mono card-label-light">LV·01</div>
+          <h3 class="sub card-heading-lg">Standard 2P</h3>
+          <div class="stat-num stat-num-green-lg">$45</div>
+          <ul class="clean card-list">
+            <li><span class="num">▲</span><span>4 board sections (8×8)</span></li>
+            <li><span class="num">▲</span><span>60 chess pieces</span></li>
+            <li><span class="num">▲</span><span>Printed rulebook</span></li>
+          </ul>
+          <div class="mono status-note mt-24">REGULAR CHESS + VARIANTS</div>
         </div>
         <div class="card flex-col">
           <div class="stripe red"></div>
-          <div class="mono goal-label">$100K</div>
-          <h3 class="sub goal-title">Dungeon Expansion</h3>
-          <p class="body mt-16">4 asymmetric faction sets, dungeon tiles, campaign mode. A second game in the box.</p>
+          <div class="mono card-label-light">LV·02</div>
+          <h3 class="sub card-heading-lg">Deluxe 4P</h3>
+          <div class="stat-num stat-num-red-lg">$85</div>
+          <ul class="clean card-list">
+            <li><span class="num">▲</span><span>15 board sections</span></li>
+            <li><span class="num">▲</span><span>100+ pieces (4 colours)</span></li>
+            <li><span class="num">▲</span><span>Name in the rulebook</span></li>
+          </ul>
+          <div class="mono status-note mt-24">4-PLAYER + ALL 8×8 VARIANTS</div>
         </div>
         <div class="card flex-col">
-          <div class="stripe cosmic"></div>
-          <div class="mono goal-label">$150K</div>
-          <h3 class="sub goal-title">Deluxe Components</h3>
-          <p class="body mt-16">Upgraded weighted pieces, neoprene playmat, magnetic board sections, embossed box.</p>
+          <div class="stripe stripe-cosmic-bg"></div>
+          <div class="mono card-label-light">LV·04</div>
+          <h3 class="sub card-heading-lg">Dungeon Edition</h3>
+          <div class="stat-num stat-num-cosmic">$150</div>
+          <ul class="clean card-list">
+            <li><span class="num">▲</span><span>26 board sections</span></li>
+            <li><span class="num">▲</span><span>4 faction miniature sets</span></li>
+            <li><span class="num">▲</span><span>Campaign mode + spells</span></li>
+          </ul>
+          <div class="mono status-note mt-24">EVERYTHING + DUNGEON CHESS</div>
         </div>
       </div>
+      <p class="mono mt-24 note-bottom">All physical tiers include free shipping · Digital access included at every level</p>
     </div>
     <div class="footer">
-      <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
-      <span class="mono">all stretch goals ship free to backers</span>
+      <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="mono">one box · hundreds of games · lifetime of play</span>
     </div>
   </section>
 
@@ -1934,25 +2171,25 @@
         <span class="eyebrow"><span class="arrow">▲</span> Why back us</span>
         <span class="pagenum">25</span>
       </div>
-      <h1 class="title max-w-1500">This isn't a prototype<br/>It's a platform</h1>
+      <h1 class="title max-w-1500">70 variants live online<br/>Now fund the physical set</h1>
       <div class="grid-3col">
         <div class="card flex-col">
-          <h3 class="sub why-title">Already playable</h3>
-          <p class="body-lg">The online engine is live. 500+ games played. This isn't "we hope to build" — it's "help us finish."</p>
+          <h3 class="sub why-title">Not vapourware</h3>
+          <p class="body-lg">The engine is live at chess.moddable.games — 70 variants playable right now with AI opponents. This isn't "we hope to build."</p>
         </div>
         <div class="card flex-col">
-          <h3 class="sub why-title">Open &amp; moddable</h3>
-          <p class="body-lg">Every rulebook is open-source. Every variant is community-driven. You're not buying a game — you're joining an ecosystem.</p>
+          <h3 class="sub why-title">Public domain, infinite ceiling</h3>
+          <p class="body-lg">Chess is the world's most modded game. No licensing. No IP risk. The community grows the catalogue without us.</p>
         </div>
         <div class="card flex-col">
-          <h3 class="sub why-title">More games, forever</h3>
-          <p class="body-lg">Your pledge funds the platform. Every future mod, expansion, and community creation builds on what you help launch.</p>
+          <h3 class="sub why-title">One box, hundreds of games</h3>
+          <p class="body-lg">Your pledge funds the modular board sections. Each stretch goal unlocks more variant families — one purchase, a lifetime of play.</p>
         </div>
       </div>
     </div>
     <div class="footer">
       <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
-      <span class="mono">back now · play forever</span>
+      <span class="mono">chess.moddable.games · play now · fund the physical</span>
     </div>
   </section>
 
@@ -2851,10 +3088,10 @@
 
 </deck-stage>
 
-<script src="js/deck-sync.js?v=1.0.11"></script>
-<script src="js/deck-data.js?v=1.0.11"></script>
-<script src="js/deck-filter.js?v=1.0.11"></script>
-<script src="js/deck-stage.js?v=1.0.11"></script>
+<script src="js/deck-sync.js?v=1.0.12"></script>
+<script src="js/deck-data.js?v=1.0.12"></script>
+<script src="js/deck-filter.js?v=1.0.12"></script>
+<script src="js/deck-stage.js?v=1.0.12"></script>
 
 </body>
 </html>
