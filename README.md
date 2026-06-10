@@ -52,6 +52,7 @@ The `<deck-stage>` component supports `@media print` — use the browser's Print
 ## Changelog
 
 #### 2026-06-10
+- Added GA4 event tracking: deck_select, slide_navigate, deck_complete, outbound_click (#40)
 - Reworked crowdfunding deck: chess-as-catalyst narrative replaces Nukes-centric framing (#38)
 - New slide 21: Why Chess, Why Now (catalyst thesis, stats, crowdfunding argument)
 - New slide 22: The Ladder (LV01-05 modular board stretch goals)
