@@ -65,6 +65,8 @@ The `<deck-stage>` component supports `@media print` — use the browser's Print
 - Updated moat: "Bot training data" → "AI integration layer"
 - Fixed domain: web.moddable.games → moddable.games
 - Removed trailing full stops from all headings (global rule compliance)
+- Compacted Developer Platform slide: pills replace 3-col connection card
+- Compacted Board Sections slide: smaller SVGs, title-aside layout, compact cards and chips
 - Deck now 52 slides (crowdfunding: 21, opportunities: 27, press: 15)
 
 #### 2026-06-02
