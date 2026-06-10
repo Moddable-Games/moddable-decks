@@ -913,22 +913,11 @@
         </div>
       </div>
 
-      <div class="card card-dark mt-24">
-        <div class="mono moat-heading">▲ ONE COMMAND TO CONNECT</div>
-        <div class="grid-3col-55">
-          <div>
-            <h3 class="sub fs-20">MCP Protocol</h3>
-            <p class="body moat-body">Claude, Cursor, Windsurf — any AI agent connects to our engines instantly via tools.moddable.games</p>
-          </div>
-          <div>
-            <h3 class="sub fs-20">REST + OpenAPI</h3>
-            <p class="body moat-body">Standard HTTP endpoints for traditional integrations. Full OpenAPI spec for code generation.</p>
-          </div>
-          <div>
-            <h3 class="sub fs-20">Native ESM</h3>
-            <p class="body moat-body">Zero dependencies, zero build step. Import directly in browser, Node.js, or Cloudflare Workers.</p>
-          </div>
-        </div>
+      <div class="flex-wrap mt-24">
+        <span class="pill live"><span class="dot"></span>MCP Protocol · any AI agent</span>
+        <span class="pill">REST + OpenAPI</span>
+        <span class="pill">Native ESM · zero build step</span>
+        <span class="pill">tools.moddable.games</span>
       </div>
     </div>
     <div class="footer">
@@ -1887,18 +1876,20 @@
         <span class="pagenum">23</span>
       </div>
 
-      <h1 class="title max-w-1500">
-        A few sections<br/>Hundreds of <em class="hl-blue">variants</em>
-      </h1>
-      <p class="lede lede-wide-mt">
-        Each section is double-sided — plain squares on the front, pre-printed variant layouts on the back.
-        Flip and combine to build any board the engine supports.
-      </p>
+      <div class="grid-title-aside">
+        <h1 class="title">
+          A few sections<br/>Hundreds of <em class="hl-blue">variants</em>
+        </h1>
+        <p class="body-lg body-lg-charcoal-md">
+          Each section is double-sided — plain squares on the front, pre-printed variant layouts on the back.
+          Flip and combine to build any board the engine supports.
+        </p>
+      </div>
 
-      <div class="grid-2col-stack">
+      <div class="grid-2col-stack align-top mt-40">
         <!-- Board layouts SVG -->
         <div>
-          <svg class="svg-responsive" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg" aria-label="Modular board section configurations">
+          <svg class="svg-responsive" viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg" aria-label="Modular board section configurations">
             <defs>
               <style>
                 .sec { fill: none; stroke: #0c4f8d; stroke-width: 2; rx: 4; }
@@ -1908,102 +1899,90 @@
               </style>
             </defs>
 
-            <!-- Regular: 1 section -->
-            <g transform="translate(40, 20)">
-              <rect class="sec-fill" x="0" y="0" width="100" height="100"/>
-              <text class="sec-lbl" x="50" y="125">REGULAR</text>
-              <text class="sec-meta" x="50" y="140">1 section · 8×8</text>
+            <!-- Row 1: Regular, 4-Player, 4-Board -->
+            <g transform="translate(20, 10)">
+              <rect class="sec-fill" x="0" y="0" width="80" height="80"/>
+              <text class="sec-lbl" x="40" y="100">REGULAR</text>
+              <text class="sec-meta" x="40" y="113">1 section</text>
             </g>
 
-            <!-- 4-Player: cross shape -->
-            <g transform="translate(200, 10)">
-              <rect class="sec" x="40" y="0" width="40" height="30"/>
-              <rect class="sec" x="0" y="30" width="40" height="40"/>
-              <rect class="sec-fill" x="40" y="30" width="40" height="40"/>
-              <rect class="sec" x="80" y="30" width="40" height="40"/>
-              <rect class="sec" x="40" y="70" width="40" height="30"/>
-              <text class="sec-lbl" x="60" y="125">4-PLAYER</text>
-              <text class="sec-meta" x="60" y="140">15 sections · cross</text>
+            <g transform="translate(160, 5)">
+              <rect class="sec" x="30" y="0" width="30" height="22"/>
+              <rect class="sec" x="0" y="22" width="30" height="30"/>
+              <rect class="sec-fill" x="30" y="22" width="30" height="30"/>
+              <rect class="sec" x="60" y="22" width="30" height="30"/>
+              <rect class="sec" x="30" y="52" width="30" height="22"/>
+              <text class="sec-lbl" x="45" y="100">4-PLAYER</text>
+              <text class="sec-meta" x="45" y="113">15 sections</text>
             </g>
 
-            <!-- 4-Board: 2x2 grid -->
-            <g transform="translate(400, 20)">
-              <rect class="sec" x="0" y="0" width="48" height="48"/>
-              <rect class="sec-fill" x="52" y="0" width="48" height="48"/>
-              <rect class="sec-fill" x="0" y="52" width="48" height="48"/>
-              <rect class="sec" x="52" y="52" width="48" height="48"/>
-              <text class="sec-lbl" x="50" y="125">4-BOARD</text>
-              <text class="sec-meta" x="50" y="140">4 sections · 2×2</text>
+            <g transform="translate(310, 15)">
+              <rect class="sec" x="0" y="0" width="36" height="36"/>
+              <rect class="sec-fill" x="40" y="0" width="36" height="36"/>
+              <rect class="sec-fill" x="0" y="40" width="36" height="36"/>
+              <rect class="sec" x="40" y="40" width="36" height="36"/>
+              <text class="sec-lbl" x="38" y="100">4-BOARD</text>
+              <text class="sec-meta" x="38" y="113">4 sections</text>
             </g>
 
-            <!-- Alice: 2 parallel -->
-            <g transform="translate(40, 200)">
-              <rect class="sec-fill" x="0" y="0" width="60" height="80"/>
-              <rect class="sec" x="80" y="0" width="60" height="80"/>
-              <text class="sec-lbl" x="70" y="105">ALICE</text>
-              <text class="sec-meta" x="70" y="120">2 sections · parallel</text>
+            <g transform="translate(440, 15)">
+              <rect class="sec-fill" x="0" y="0" width="45" height="60"/>
+              <rect class="sec" x="55" y="0" width="45" height="60"/>
+              <text class="sec-lbl" x="50" y="100">ALICE</text>
+              <text class="sec-meta" x="50" y="113">2 parallel</text>
             </g>
 
-            <!-- Courier: wide -->
-            <g transform="translate(220, 220)">
-              <rect class="sec-fill" x="0" y="0" width="150" height="60"/>
-              <text class="sec-lbl" x="75" y="85">COURIER</text>
-              <text class="sec-meta" x="75" y="100">1 wide section · 12×8</text>
+            <!-- Row 2: Courier, Omega, Dungeon -->
+            <g transform="translate(20, 150)">
+              <rect class="sec-fill" x="0" y="0" width="130" height="50"/>
+              <text class="sec-lbl" x="65" y="70">COURIER</text>
+              <text class="sec-meta" x="65" y="83">1 wide · 12×8</text>
             </g>
 
-            <!-- Omega/Grand: with corner pockets -->
-            <g transform="translate(430, 200)">
-              <rect class="sec" x="14" y="14" width="80" height="60"/>
-              <rect class="sec-fill" x="0" y="0" width="12" height="12"/>
-              <rect class="sec-fill" x="96" y="0" width="12" height="12"/>
-              <rect class="sec-fill" x="0" y="76" width="12" height="12"/>
-              <rect class="sec-fill" x="96" y="76" width="12" height="12"/>
-              <text class="sec-lbl" x="54" y="110">OMEGA</text>
-              <text class="sec-meta" x="54" y="125">5 sections · corners</text>
+            <g transform="translate(200, 145)">
+              <rect class="sec" x="10" y="10" width="60" height="45"/>
+              <rect class="sec-fill" x="0" y="0" width="9" height="9"/>
+              <rect class="sec-fill" x="73" y="0" width="9" height="9"/>
+              <rect class="sec-fill" x="0" y="58" width="9" height="9"/>
+              <rect class="sec-fill" x="73" y="58" width="9" height="9"/>
+              <text class="sec-lbl" x="41" y="87">OMEGA</text>
+              <text class="sec-meta" x="41" y="100">5 sections</text>
             </g>
 
-            <!-- Dungeon: corridor -->
-            <g transform="translate(120, 370)">
-              <rect class="sec" x="0" y="0" width="40" height="80"/>
-              <rect class="sec-fill" x="44" y="20" width="80" height="40"/>
-              <rect class="sec" x="128" y="0" width="40" height="80"/>
-              <rect class="sec" x="44" y="0" width="80" height="16"/>
-              <rect class="sec" x="44" y="64" width="80" height="16"/>
-              <text class="sec-lbl" x="84" y="105">DUNGEON</text>
-              <text class="sec-meta" x="84" y="120">Corridor layouts · LV·04</text>
+            <g transform="translate(360, 145)">
+              <rect class="sec" x="0" y="0" width="30" height="60"/>
+              <rect class="sec-fill" x="34" y="15" width="60" height="30"/>
+              <rect class="sec" x="98" y="0" width="30" height="60"/>
+              <text class="sec-lbl" x="64" y="80">DUNGEON</text>
+              <text class="sec-meta" x="64" y="93">Corridors · LV·04</text>
             </g>
           </svg>
         </div>
 
         <!-- Right: explanation -->
-        <div>
-          <div class="flex-col-gap-24-200">
-            <div class="card flex-row-gap-32-198">
-              <div class="stat-num stat-num-blue-xl">↕</div>
-              <div>
-                <div class="mono card-label">DOUBLE-SIDED</div>
-                <div class="sub sub-detail">Front: plain squares</div>
-                <p class="body body-muted">Back: pre-printed variant layouts (coloured squares for Alice, XiangQi, 4-Board, etc.)</p>
-              </div>
+        <div class="flex-col-gap-16">
+          <div class="card card-compact flex-row-gap-32-198">
+            <div class="stat-num stat-num-blue-md">↕</div>
+            <div>
+              <div class="mono card-label">DOUBLE-SIDED</div>
+              <div class="sub sub-detail">Front: plain squares</div>
+              <p class="body body-muted">Back: pre-printed variant layouts (coloured squares for Alice, XiangQi, 4-Board, etc.)</p>
             </div>
+          </div>
 
-            <div class="card flex-row-gap-32-198">
-              <div class="stat-num stat-num-green-xl">∞</div>
-              <div>
-                <div class="mono card-label">COMBINATORIAL</div>
-                <div class="sub sub-detail">Flip and combine</div>
-                <p class="body body-muted">The same sections reconfigure into Regular, 4-Player, Alice, Courier, Omega, and Dungeon layouts.</p>
-              </div>
+          <div class="card card-compact flex-row-gap-32-198">
+            <div class="stat-num stat-num-green-md">∞</div>
+            <div>
+              <div class="mono card-label">COMBINATORIAL</div>
+              <div class="sub sub-detail">Flip and combine</div>
+              <p class="body body-muted">The same sections reconfigure into Regular, 4-Player, Alice, Courier, Omega, and Dungeon layouts.</p>
             </div>
+          </div>
 
-            <div class="card flex-row-gap-32">
-              <div class="stat-num stat-num-cosmic-xl">70</div>
-              <div>
-                <div class="mono label-track">ENGINE-BACKED</div>
-                <div class="sub sub-white">Every variant playable online today</div>
-                <p class="body body-faded">The physical set matches the digital engine. Learn online, play at the table.</p>
-              </div>
-            </div>
+          <div class="flex-wrap">
+            <span class="chip blue">70 variants online</span>
+            <span class="chip card-white">Physical matches digital</span>
+            <span class="chip card-white">Learn online, play at the table</span>
           </div>
         </div>
       </div>
