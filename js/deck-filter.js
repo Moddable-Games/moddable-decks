@@ -7,6 +7,8 @@
   var activeDeck = params.get('deck');
 
   if (!activeDeck || !DECKS[activeDeck]) {
+    var noindexSplash = document.getElementById('meta-noindex');
+    if (noindexSplash) noindexSplash.remove();
     document.addEventListener('DOMContentLoaded', function () {
       var stage = document.querySelector('deck-stage');
       if (stage) stage.style.display = 'none';
@@ -17,12 +19,10 @@
     return;
   }
 
-  // Block search engines from all decks except press
-  if (activeDeck !== 'press') {
-    var noindex = document.createElement('meta');
-    noindex.name = 'robots';
-    noindex.content = 'noindex, nofollow';
-    document.head.appendChild(noindex);
+  // Allow search engines for press deck only (static noindex in HTML head)
+  if (activeDeck === 'press') {
+    var noindex = document.getElementById('meta-noindex');
+    if (noindex) noindex.remove();
   }
 
   var allSections = Array.from(document.querySelectorAll('deck-stage section[data-decks]'));

@@ -1,13 +1,13 @@
 {
   "_meta": {
-    "syncedAt": "2026-06-10T12:00:00.000Z",
+    "syncedAt": "2026-06-19T12:00:00.000Z",
     "websitePath": "/Applications/MAMP/htdocs/MODDABLE/moddable-website",
-    "version": 3
+    "version": 4
   },
   "games": {
     "dungeon-chess": {
       "title": "Dungeon Chess",
-      "version": "0.2.1",
+      "version": "1.3.1",
       "players": "2–4",
       "duration": "30–120 min",
       "age": "12+",
@@ -15,7 +15,7 @@
       "type": "mod",
       "base_game": "Chess",
       "status": "live",
-      "updated": "2026-06-02",
+      "updated": "2026-06-19",
       "published": true
     },
     "econopoly": {
@@ -72,7 +72,7 @@
     },
     "nukes": {
       "title": "Nukes",
-      "version": "0.9.5",
+      "version": "0.9.7",
       "players": "2–3",
       "duration": "45+ min",
       "age": "12+",
@@ -102,7 +102,7 @@
       "title": "Moddable Chess",
       "tagline": "70 playable variants. Consumer SDK — other games build on it.",
       "url": "https://chess.moddable.games/",
-      "version": "0.9.1",
+      "version": "0.9.7",
       "stats": [
         { "value": "70", "label": "playable variants" },
         { "value": "2000+", "label": "documented variants" },
@@ -115,7 +115,7 @@
       "title": "Moddable Hexmaps",
       "tagline": "Hex map generation for any game. Consumer SDK with public guide.",
       "url": "https://hex.moddable.games/",
-      "version": "0.8.1",
+      "version": "0.8.3",
       "stats": [
         { "value": "6", "label": "supported games" },
         { "value": "∞", "label": "seeded maps" },
@@ -163,7 +163,7 @@
     },
     {
       "quarter": "Q3 2026",
-      "text": "Moddable Chess: 70 variants live · Consumer SDK shipped · Hexmaps: 6 games live",
+      "text": "Moddable Chess: 70 variants live · Consumer SDK shipped · Hexmaps: 6 games live · 21 rulebooks published",
       "color": "#3a9928"
     },
     {

@@ -586,6 +586,10 @@ ul.clean.list-invest { margin-top: 32px; font-size: 20px; flex: 1; }
 .comp-platform-label { font-size: 12px; letter-spacing: 0.1em; color: var(--mg-stone); }
 .flex-col-67 { display: flex; flex-direction: column; padding: 28px; }
 .grid-4col-68 { margin-top: 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.grid-5col-pipeline { margin-top: 40px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.pipeline-step { padding: 24px 20px; }
+.pipeline-title { font-size: 20px; margin-top: 8px; margin-bottom: 8px; }
+.body-pipeline { font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.7); }
 .body-lg-charcoal-sm { max-width: 480px; color: var(--mg-charcoal); margin-bottom: 8px; }
 .fs-26 { font-size: 26px; }
 .timeline-date-stone { font-size: 14px; font-weight: 600; color: var(--mg-stone); }

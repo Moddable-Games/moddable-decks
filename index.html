@@ -3,11 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow" id="meta-noindex">
 <title>Moddable.Games — Making games you already own</title>
 <meta name="description" content="Open-source tabletop games powered by two modular engines, plus a marketplace for modders. Play free, mod anything, print on demand.">
 <meta property="og:title" content="Moddable.Games — Making games you already own">
 <meta property="og:description" content="Open-source tabletop games powered by two modular engines, plus a marketplace for modders. Play free, mod anything, print on demand.">
-<meta property="og:image" content="https://decks.moddable.games/assets/og-image.png?v=1.0.14">
+<meta property="og:image" content="https://decks.moddable.games/assets/og-image.png?v=1.1.0">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://decks.moddable.games/">
@@ -16,12 +17,12 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Moddable.Games — Making games you already own">
 <meta name="twitter:description" content="Open-source tabletop games powered by two modular engines, plus a marketplace for modders. Play free, mod anything, print on demand.">
-<meta name="twitter:image" content="https://decks.moddable.games/assets/og-image.png?v=1.0.14">
-<link rel="stylesheet" href="css/colors_and_type.css?v=1.0.14">
+<meta name="twitter:image" content="https://decks.moddable.games/assets/og-image.png?v=1.1.0">
+<link rel="stylesheet" href="css/colors_and_type.css?v=1.1.0">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="css/deck.css?v=1.0.14">
+<link rel="stylesheet" href="css/deck.css?v=1.1.0">
 <script src="js/analytics.js" defer></script>
 </head>
 <body>
@@ -226,7 +227,7 @@
     </div>
     <div class="footer">
       <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
-      <span class="mono">nukes.moddable.games · rulebook v0.9.5</span>
+      <span class="mono">nukes.moddable.games · rulebook v0.9.7</span>
     </div>
   </section>
 
@@ -400,47 +401,47 @@
   <section class="slide ivory" data-screen-label="06 Bots" data-decks="opportunities internal">
     <div class="pad">
       <div class="slide-head">
-        <span class="eyebrow"><span class="arrow">▲</span> Practice partners <span class="tag-roadmap">ROADMAP</span></span>
+        <span class="eyebrow"><span class="arrow">▲</span> AI opponents</span>
         <span class="pagenum">06 / 20</span>
       </div>
 
       <div class="split-right-narrow">
         <div>
           <h1 class="title">
-            Play with<br/>friends — or<br/><em class="hl-blue">instructive bots.</em>
+            Every variant<br/>ships with an<br/><em class="hl-blue">AI opponent.</em>
           </h1>
           <p class="lede mt-40">
-            Every game played online — human-vs-human or human-vs-bot —
-            improves the next bot you'll face. The engine is a teaching engine
-            first, an opponent second.
+            Five difficulty levels, from first-time players to experienced tacticians.
+            Negamax search with iterative deepening, transposition tables, and
+            variant-specific evaluators. Runs entirely client-side via Web Workers.
           </p>
         </div>
 
         <div class="flex-col-gap-24-200">
           <div class="card flex-row-gap-32-198">
-            <div class="stat-num stat-num-blue-xl">3</div>
+            <div class="stat-num stat-num-blue-xl">5</div>
             <div>
-              <div class="mono card-label">DIFFICULTY TIERS</div>
-              <div class="sub sub-detail">Apprentice · Tactician · Grandmaster</div>
-              <p class="body body-muted">Each tier annotates its moves — learn by watching the AI think.</p>
+              <div class="mono card-label">DIFFICULTY LEVELS</div>
+              <div class="sub sub-detail">Beginner · Easy · Medium · Hard · Expert</div>
+              <p class="body body-muted">Adaptive search depth and time limits per level. Zero server cost.</p>
             </div>
           </div>
 
           <div class="card flex-row-gap-32-198">
-            <div class="stat-num stat-num-green-xl">∞</div>
+            <div class="stat-num stat-num-green-xl">70</div>
             <div>
-              <div class="mono card-label">TRAINING DATA</div>
-              <div class="sub sub-detail">Every match feeds the next bot.</div>
-              <p class="body body-muted">Anonymised game logs, opt-out by default for private sessions.</p>
+              <div class="mono card-label">VARIANTS WITH AI</div>
+              <div class="sub sub-detail">Every variant playable solo from day one.</div>
+              <p class="body body-muted">Automated test harness validates all 70. AI vs AI confirms game-over detection.</p>
             </div>
           </div>
 
           <div class="card flex-row-gap-32">
-            <div class="stat-num stat-num-cosmic-xl">∅</div>
+            <div class="stat-num stat-num-cosmic-xl">0</div>
             <div>
-              <div class="mono label-track">LATENCY MODE</div>
-              <div class="sub sub-white">Async-by-default.</div>
-              <p class="body body-faded">No live-server requirement. Notify on opponent's move.</p>
+              <div class="mono label-track">SERVER COST</div>
+              <div class="sub sub-white">Runs in-browser. No GPU. No API calls.</div>
+              <p class="body body-faded">Web Worker thread keeps the UI responsive. Works offline.</p>
             </div>
           </div>
         </div>
@@ -448,7 +449,7 @@
     </div>
     <div class="footer">
       <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
-      <span class="pagenum">06 / 20</span>
+      <span class="mono">chess.moddable.games · 5 levels · 70 variants · client-side AI</span>
     </div>
   </section>
 
@@ -550,32 +551,36 @@
 
       <div class="flex-col-center">
         <h1 class="display display-massive">
-          Become the<br/>ecosystem tabletop<br/>is still <em class="hl-amber">missing</em>.
+          Write rules.<br/>Ship <em class="hl-amber">games</em>.
         </h1>
         <p class="lede lede-wide">
-          A place where physical and online play converge under community ownership —
-          and an online engine and marketplace where anyone can monetise their creations.
+          The north star: a structured rulebook becomes a playable game automatically.
+          AI agents research and write. A universal engine renders. The catalogue grows itself.
         </p>
 
-        <div class="grid-3col-179">
+        <div class="grid-4col-68">
           <div class="card card-glass">
-            <div class="mono card-label-light">01 · ENGINES</div>
-            <div class="sub sub-platform">Consumer SDKs — other games build on our engines.</div>
+            <div class="mono card-label-light">01 · RULES</div>
+            <div class="sub sub-platform">Open-source rulebooks as structured data. Machine-readable, forkable, community-owned.</div>
           </div>
           <div class="card card-glass">
-            <div class="mono card-label-light">02 · MARKETPLACE</div>
-            <div class="sub sub-platform">Designers sell mods, art and expansions.</div>
+            <div class="mono card-label-light">02 · ENGINE</div>
+            <div class="sub sub-platform">One universal engine: chess, draughts, Go, and beyond. Bootstraps from schema.</div>
           </div>
           <div class="card card-glass">
-            <div class="mono card-label-light">03 · COMMUNITY</div>
-            <div class="sub sub-platform">Modders own the catalogue.</div>
+            <div class="mono card-label-light">03 · PLATFORM</div>
+            <div class="sub sub-platform">Play online, embed anywhere, print on demand. Marketplace for mods and expansions.</div>
+          </div>
+          <div class="card card-glass">
+            <div class="mono card-label-light">04 · AGENTS</div>
+            <div class="sub sub-platform">AI orchestration scales production. Research, build, and QA run autonomously.</div>
           </div>
         </div>
       </div>
     </div>
     <div class="footer">
       <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
-      <span class="mono">physical + online + community-owned</span>
+      <span class="mono">rulebook → engine → game · the tabletop ecosystem, automated</span>
     </div>
   </section>
 
@@ -809,7 +814,7 @@
         <span class="pagenum">11 / 20</span>
       </div>
 
-      <h1 class="title stack-title">Games on top, <em class="hl-amber">engines</em> underneath</h1>
+      <h1 class="title stack-title">Games on top, one <em class="hl-amber">universal engine</em> underneath</h1>
 
       <div class="grid-2col-stack">
         <!-- CHESS -->
@@ -851,7 +856,7 @@
     </div>
     <div class="footer">
       <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
-      <span class="mono">games = product · engines = moat · platform = scale</span>
+      <span class="mono">games = product · universal engine = moat · platform = scale</span>
     </div>
   </section>
 
@@ -974,7 +979,7 @@
           <div class="stat-num stat-num-cosmic">3</div>
           <div class="mono card-label">LIVE CONSUMERS</div>
           <p class="body comp-platform-body">
-            Dungeon Chess, tools.moddable.games, and the SDK demo — each proving a different integration pattern.
+            Dungeon Chess (with iframe embed), tools.moddable.games, and the SDK demo — three integration patterns live.
           </p>
         </div>
       </div>
@@ -1000,6 +1005,141 @@
     <div class="footer">
       <span class="brand-mark c-blue"><span class="glyph">▲</span> MODDABLE.GAMES</span>
       <span class="mono">moddable.games/developers · tools.moddable.games</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 11d — THE PIPELINE (AI-ORCHESTRATED PRODUCTION)
+       ============================================================ -->
+  <section class="slide dark" data-screen-label="11d The pipeline" data-decks="opportunities internal press">
+    <div class="bg-cosmic"></div>
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> How we scale</span>
+        <span class="pagenum"></span>
+      </div>
+
+      <div class="grid-title-aside">
+        <h1 class="title max-w-1100">
+          Write rules.<br/>Get a <em class="hl-amber">playable game</em>.
+        </h1>
+        <p class="body-lg body-lg-muted">
+          AI agents research, write, and build games autonomously. The rulebook
+          is the source of truth; engines consume it directly. A team of 4 ships
+          at the pace of 40.
+        </p>
+      </div>
+
+      <!-- Pipeline flow -->
+      <div class="grid-5col-pipeline">
+        <div class="card card-glass pipeline-step">
+          <div class="mono card-label-light">01 · RESEARCH</div>
+          <div class="sub pipeline-title">AI finds rules</div>
+          <p class="body body-pipeline">Agents scan patents, archives, and public domain sources. Verified content only.</p>
+        </div>
+        <div class="card card-glass pipeline-step">
+          <div class="mono card-label-light">02 · WRITE</div>
+          <div class="sub pipeline-title">Structured rulebook</div>
+          <p class="body body-pipeline">Machine-readable markdown with frontmatter. Board topology, pieces, win conditions.</p>
+        </div>
+        <div class="card card-glass pipeline-step">
+          <div class="mono card-label-light">03 · BUILD</div>
+          <div class="sub pipeline-title">Engine generates</div>
+          <p class="body body-pipeline">Universal engine bootstraps a playable game directly from the schema. No hand-coding.</p>
+        </div>
+        <div class="card card-glass pipeline-step">
+          <div class="mono card-label-light">04 · PUBLISH</div>
+          <div class="sub pipeline-title">Live everywhere</div>
+          <p class="body body-pipeline">Website auto-generates play pages. Embed via iframe. Print-ready PDF rulebook.</p>
+        </div>
+        <div class="card card-glass pipeline-step">
+          <div class="mono card-label-light">05 · GROW</div>
+          <div class="sub pipeline-title">Community forks</div>
+          <p class="body body-pipeline">Open-source rules invite PRs. Every variant is a pull request. Catalogue compounds.</p>
+        </div>
+      </div>
+
+      <!-- Proof points -->
+      <div class="flex-wrap mt-24">
+        <span class="pill live"><span class="dot"></span>21 games shipped by agents</span>
+        <span class="pill">171 variants catalogued</span>
+        <span class="pill">3 original expansion mods designed</span>
+        <span class="pill">$12K total · ~$570/game</span>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="mono">rulebook → engine → playable game · fully autonomous pipeline</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 11e — THE HOUSE (AI PRODUCTION TEAM)
+       ============================================================ -->
+  <section class="slide dark" data-screen-label="11e The House" data-decks="opportunities internal press">
+    <div class="bg-ink"></div>
+    <div class="pad">
+      <div class="slide-head">
+        <span class="eyebrow"><span class="arrow">▲</span> The House</span>
+        <span class="pagenum"></span>
+      </div>
+
+      <div class="grid-title-aside">
+        <h1 class="title fs-88">
+          Our AI team ships<br/><em class="hl-amber">real games.</em>
+        </h1>
+        <p class="body-lg body-lg-muted">
+          AI agents that ship games and serve players. Same MCP tools power both sides.
+        </p>
+      </div>
+
+      <div class="grid-3col-16">
+        <div class="card flex-col">
+          <div class="stripe red mb-16"></div>
+          <div class="mono card-label-light">AUGMENTED MOD</div>
+          <h3 class="sub card-heading-lg">Nukes: Siege</h3>
+          <p class="body body-pipeline">Total conversion of the hostage mechanic. Recruit tokens by returning to occupied regions. Designed, written, and published autonomously.</p>
+          <div class="mono card-label-light mt-16">2 players · 90 min · 14+</div>
+        </div>
+
+        <div class="card flex-col">
+          <div class="stripe mb-16"></div>
+          <div class="mono card-label-light">AUGMENTED MOD</div>
+          <h3 class="sub card-heading-lg">Nukes: Asymmetric Powers</h3>
+          <p class="body body-pipeline">Power Cards add explicit asymmetry: Covert Network, Arms Industry, Airborne Corps. Standard Nukes underneath, unique abilities on top.</p>
+          <div class="mono card-label-light mt-16">2–3 players · 60 min · 12+</div>
+        </div>
+
+        <div class="card flex-col">
+          <div class="stripe green mb-16"></div>
+          <div class="mono card-label-light">AUGMENTED MOD</div>
+          <h3 class="sub card-heading-lg">Nukes: Fallout</h3>
+          <p class="body body-pipeline">Biohazard tiles spread each round. Every nuclear strike leaves a growing contamination zone. Win before the map runs out.</p>
+          <div class="mono card-label-light mt-16">2–3 players · 60 min · 12+</div>
+        </div>
+      </div>
+
+      <div class="card card-dark mt-24">
+        <div class="mono moat-heading">▲ WHAT THE HOUSE HAS SHIPPED</div>
+        <div class="grid-3col-55">
+          <div>
+            <h3 class="sub fs-20">21 rulebooks</h3>
+            <p class="body moat-body">Researched from public domain sources, structured as machine-readable markdown, published with PDF and web output.</p>
+          </div>
+          <div>
+            <h3 class="sub fs-20">3 expansion mods</h3>
+            <p class="body moat-body">Original game design for our own IP. Not transcription: creative work guided by game design heuristics.</p>
+          </div>
+          <div>
+            <h3 class="sub fs-20">15 MCP tools</h3>
+            <p class="body moat-body">The same AI-callable tools that power production also serve players in Discord and on the web. One infrastructure, two audiences.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
+      <span class="mono">The House · autonomous production + Discord bot + MCP tools · moddable.games/community</span>
     </div>
   </section>
 
@@ -1355,7 +1495,7 @@
     </div>
     <div class="footer">
       <span class="brand-mark"><span class="glyph">▲</span> MODDABLE.GAMES</span>
-      <span class="mono">first consumer shipped · MCE game controller · renderer hooks · terrain predicates</span>
+      <span class="mono">first consumer shipped · embed mode live · MCE game controller · renderer hooks</span>
     </div>
   </section>
 
@@ -1427,7 +1567,7 @@
 
         <div class="card grid-title-aside-72">
           <div class="mono timeline-date-blue" data-sync-milestone="1" data-sync-field="quarter">Q3 2026</div>
-          <div><div class="sub fs-26" data-sync-milestone="1" data-sync-field="text">Moddable Chess: 70 variants live · Consumer SDK shipped · Hexmaps: 6 games live</div></div>
+          <div><div class="sub fs-26" data-sync-milestone="1" data-sync-field="text">Moddable Chess: 70 variants live · Consumer SDK shipped · Hexmaps: 6 games live · 21 rulebooks published</div></div>
           <span class="chip green">LIVE</span>
         </div>
 
@@ -1509,23 +1649,27 @@
           <div class="mono comp-us-label">MODDABLE.GAMES</div>
           <h3 class="sub comp-us-title">Create, play, sell, print</h3>
           <p class="body comp-us-body">
-            Consumer SDKs — other games build on our engines. Dungeon Chess is the first. Marketplace, bots, print-on-demand.
+            Consumer SDKs, AI-orchestrated production, open-source rulebooks. 21 games shipped, 70 variants playable with AI. Embed anywhere.
           </p>
-          <div class="mono comp-us-gap">CONSUMER SDK · OPEN SOURCE</div>
+          <div class="mono comp-us-gap">AI PRODUCTION · OPEN SOURCE · EMBED API</div>
         </div>
       </div>
 
       <!-- Moat -->
       <div class="card card-dark">
         <div class="mono moat-heading">▲ OUR MOAT — WHY THEY CAN'T CATCH US</div>
-        <div class="grid-3col-55">
+        <div class="grid-4col-68">
           <div>
             <h3 class="sub fs-20">Consumer SDK</h3>
-            <p class="body moat-body">Other games build on our engines. Dungeon Chess shipped on MCE — every new consumer deepens the lock-in.</p>
+            <p class="body moat-body">Other games build on our engines. Dungeon Chess shipped on MCE — every new consumer deepens lock-in.</p>
           </div>
           <div>
-            <h3 class="sub fs-20">AI integration layer</h3>
+            <h3 class="sub fs-20">AI integration</h3>
             <p class="body moat-body">15 MCP tools live. Every AI agent that connects deepens network effects. No competitor has this.</p>
+          </div>
+          <div>
+            <h3 class="sub fs-20">AI production</h3>
+            <p class="body moat-body">Agents research, write, and ship games autonomously. $12K in compute has produced 21 games and 171 variants.</p>
           </div>
           <div>
             <h3 class="sub fs-20">Physical bridge</h3>
@@ -3068,10 +3212,10 @@
 
 </deck-stage>
 
-<script src="js/deck-sync.js?v=1.0.14"></script>
-<script src="js/deck-data.js?v=1.0.14"></script>
-<script src="js/deck-filter.js?v=1.0.14"></script>
-<script src="js/deck-stage.js?v=1.0.14"></script>
+<script src="js/deck-sync.js?v=1.1.0"></script>
+<script src="js/deck-data.js?v=1.1.0"></script>
+<script src="js/deck-filter.js?v=1.1.0"></script>
+<script src="js/deck-stage.js?v=1.1.0"></script>
 
 </body>
 </html>
