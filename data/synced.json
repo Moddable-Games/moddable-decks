@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "syncedAt": "2026-06-19T12:00:00.000Z",
+    "syncedAt": "2026-06-27T12:00:00.000Z",
     "websitePath": "/Applications/MAMP/htdocs/MODDABLE/moddable-website",
     "version": 4
   },
@@ -72,7 +72,7 @@
     },
     "nukes": {
       "title": "Nukes",
-      "version": "0.9.7",
+      "version": "0.9.8",
       "players": "2–3",
       "duration": "45+ min",
       "age": "12+",
@@ -100,15 +100,15 @@
   "engines": {
     "moddable-chess": {
       "title": "Moddable Chess",
-      "tagline": "70 playable variants. Consumer SDK — other games build on it.",
+      "tagline": "74 playable variants. Consumer SDK — other games build on it.",
       "url": "https://chess.moddable.games/",
-      "version": "0.9.7",
+      "version": "0.9.22",
       "stats": [
-        { "value": "70", "label": "playable variants" },
+        { "value": "74", "label": "playable variants" },
         { "value": "2000+", "label": "documented variants" },
         { "value": "5", "label": "AI difficulties" }
       ],
-      "features": ["Consumer SDK", "Game controller", "Renderer extensions", "Opening books", "Developer guides", "SVG board renderer", "AI (negamax + Web Worker)", "Embed API", "Touch/mobile support", "MCP server (7 tools)", "Native ESM", "Animation styles"],
+      "features": ["Consumer SDK", "Game controller", "Renderer extensions", "Opening books", "Developer guides", "SVG board renderer", "AI (negamax + Web Worker)", "Embed API", "Touch/mobile support", "MCP server (7 tools)", "Native ESM", "Animation styles", "40 piece sets (1500+ SVGs)", "Movement primitives API", "Rule plugins"],
       "consumers": ["Dungeon Chess", "Chess Variant Loader", "tools.moddable.games"]
     },
     "moddable-hexmaps": {
@@ -163,7 +163,7 @@
     },
     {
       "quarter": "Q3 2026",
-      "text": "Moddable Chess: 70 variants live · Consumer SDK shipped · Hexmaps: 6 games live · 21 rulebooks published",
+      "text": "Moddable Chess: 74 variants live · Consumer SDK shipped · Hexmaps: 6 games live · 24 rulebooks published",
       "color": "#3a9928"
     },
     {
