@@ -47,6 +47,12 @@ window.DeckData = {
       color: '#e74c3c',
       description: 'Per-game or per-mod focused — what it is, why it matters, how to get it',
       audience: 'Potential customers at launch'
+    },
+    'elevator-pitch': {
+      label: 'Elevator Pitch',
+      color: '#2c3e50',
+      description: '10-slide executive summary — vision, market, stack, traction, team',
+      audience: 'Time-constrained investors, first meetings, cold intros'
     }
   },
 

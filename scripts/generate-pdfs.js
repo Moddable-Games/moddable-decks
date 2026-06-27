@@ -14,7 +14,8 @@ const DECKS = [
   'partner',
   'expo',
   'hiring',
-  'product'
+  'product',
+  'elevator-pitch'
 ];
 
 async function generateDeckPDF(browser, deckName) {
