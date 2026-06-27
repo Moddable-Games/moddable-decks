@@ -22,4 +22,6 @@ echo "$NEW" > "$FILE"
 
 find . -name '*.html' -not -path './build/*' -print0 | xargs -0 sed -i '' "s/v=[0-9]*\.[0-9]*\.[0-9]*/v=$NEW/g"
 
+sed -i '' "s/>v[0-9]*\.[0-9]*\.[0-9]*</>v$NEW</g" index.html
+
 echo "Bumped: $CURRENT → $NEW"
