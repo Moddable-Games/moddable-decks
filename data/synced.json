@@ -109,7 +109,7 @@
         { "value": "5", "label": "AI difficulties" }
       ],
       "features": ["Consumer SDK", "Game controller", "Renderer extensions", "Opening books", "Developer guides", "SVG board renderer", "AI (negamax + Web Worker)", "Embed API", "Touch/mobile support", "MCP server (7 tools)", "Native ESM", "Animation styles", "40 piece sets (1500+ SVGs)", "Movement primitives API", "Rule plugins"],
-      "consumers": ["Dungeon Chess", "Chess Variant Loader", "tools.moddable.games"]
+      "consumers": ["Dungeon Chess", "Chess Tools (analyzer + puzzles)", "tools.moddable.games", "External piece set contributors"]
     },
     "moddable-hexmaps": {
       "title": "Moddable Hexmaps",
