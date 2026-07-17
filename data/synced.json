@@ -100,11 +100,11 @@
   "engines": {
     "moddable-chess": {
       "title": "Moddable Chess",
-      "tagline": "74 playable variants. Consumer SDK — other games build on it.",
+      "tagline": "153 playable variants. Consumer SDK — other games build on it.",
       "url": "https://chess.moddable.games/",
       "version": "0.9.22",
       "stats": [
-        { "value": "74", "label": "playable variants" },
+        { "value": "153", "label": "playable variants" },
         { "value": "2000+", "label": "documented variants" },
         { "value": "5", "label": "AI difficulties" }
       ],
@@ -163,7 +163,7 @@
     },
     {
       "quarter": "Q3 2026",
-      "text": "Moddable Chess: 74 variants live · Consumer SDK shipped · Hexmaps: 6 games live · 24 rulebooks published",
+      "text": "Moddable Chess: 153 variants live · Consumer SDK shipped · Hexmaps: 6 games live · 41 rulebooks published",
       "color": "#3a9928"
     },
     {
